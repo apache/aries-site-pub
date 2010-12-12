@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd";>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements. See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License. You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet"
+href="http://incubator.apache.org/aries/resources/site.css";></link>
+    <script src="http://incubator.apache.org/aries/resources/space.js";
+type="text/javascript"></script>
+<meta name="keywords" content="..."/>
+<meta name="description" content="..." />
+    <title>
+		Apache Aries - Maven best practice in Aries
+    </title>
+  </head>
+<body onload="init()">
+
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr width="100%">
+    <td id="cell-0-0" colspan="2">&nbsp;</td>
+    <td id="cell-0-1">&nbsp;</td>
+    <td id="cell-0-2" colspan="2">&nbsp;</td>
+  </tr>
+  <tr width="100%">
+    <td id="cell-1-0">&nbsp;</td>
+    <td id="cell-1-1">&nbsp;</td>
+    <td id="cell-1-2">
+      <div style="padding: 5px;">
+        <div id="banner">
+          <!-- Banner -->
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tr>
+					<td align="left" class="topbardiv" nowrap="">
+						<a href="http://incubator.apache.org/aries/" title="Apache Aries (incubating)"> <img border="0" src="http://incubator.apache.org/aries/images/Arieslogo_Horizontal.gif"> </a>
+					</td>
+					<td align="right" nowrap="">
+						<a href="http://www.apache.org/" title="The Apache Software Foundation"> <img border="0" src="http://incubator.apache.org/aries/images/apache-incubator-logo.png"> </a>
+      				</td>
+				</tr>
+			</table>
+          <!-- Banner -->
+        </div>
+      </div>
+      <div id="top-menu">
+        <table border="0" cellpadding="1" cellspacing="0" width="100%">
+          <tr>
+            <td>
+              <div align="left">
+                <!-- Breadcrumbs -->
+                <!-- Breadcrumbs -->
+              </div>
+            </td>
+            <td>
+              <div align="right">
+                <!-- Quicklinks -->
+					<DIV style="padding: 5px 5px 0px 25px;">
+						<FORM action="http://www.google.com/search" method="get" style="font-size: 10px;">
+						<A href="http://www.apache.org/licenses/LICENSE-2.0.html" class="external-link" rel="nofollow">License</A> <A href="sitemap.html" title="SiteMap">Site Map</A> 
+						<INPUT name="ie" type="hidden" value="UTF-8"></INPUT>
+						<INPUT name="oe" type="hidden" value="UTF-8"></INPUT>
+						<INPUT maxlength="255" name="q" size="15" type="text" value></INPUT>
+						<INPUT name="btnG" type="submit" value="Search"></INPUT>
+						<INPUT name="domains" type="hidden" value="incubator.apache.org/aries"></INPUT>
+						<INPUT name="sitesearch" type="hidden" value="incubator.apache.org/aries"></INPUT>
+						</FORM>
+					</DIV>
+                <!-- Quicklinks -->
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+    <td id="cell-1-3">&nbsp;</td>
+    <td id="cell-1-4">&nbsp;</td>
+  </tr>
+  <tr width="100%">
+    <td id="cell-2-0" colspan="2">&nbsp;</td>
+    <td id="cell-2-1">
+      <table>
+        <tr height="100%" valign="top">
+          <td height="100%">
+            <div id="wrapper-menu-page-right">
+              <div id="wrapper-menu-page-top">
+                <div id="wrapper-menu-page-bottom">
+                  <div id="menu-page">
+                    <!-- NavigationBar -->
+					<ul>
+<li><h3><a href="overview.html">Overview</a></h3><ul>
+<li><h4><a href="boardreports.html">Board Reports</a></h4></li>
+<li><h4><a href="sitemap.html">Site Map</a></h4></li>
+</ul>
+</li>
+<li><h3><a href="documentation.html">Documentation</a></h3><ul>
+<li><h4><a href="ariesprogrammingmodel.html">Programming Model</a></h4></li>
+<li><h4><a href="pointerstoosgispecifications.html">Pointers to OSGi specs</a></h4></li>
+<li><h4><a href="integrators-guide.html">Integrators Guide</a></h4></li>
+<li><h4><a href="articles.html">Articles</a></h4></li>
+<li><h4><a href="https://svn.apache.org/repos/asf/incubator/aries/slides/">Slides</a></h4></li>
+<li><h4><a href="tutorials.html">Tutorials</a></h4></li>
+</ul>
+</li>
+<li><h3><a href="downloads.html">Downloads</a></h3></li>
+<li><h3><a href="community.html">Community</a></h3><ul>
+<li><h4><a href="gettinginvolved.html">Getting Involved</a></h4></li>
+<li><h4><a href="people.html">Who we are</a></h4></li>
+<li><h4><a href="mailinglists.html">Mailing lists</a></h4></li>
+<li><h4><a href="http://blogs.apache.org/aries/">Aries Group Blog</a></h4></li>
+</ul>
+</li>
+<li><h3><a href="development.html">Development</a></h3><ul>
+<li><h4><a href="https://svn.apache.org/repos/asf/incubator/aries/.html">Source Control </a></h4></li>
+<li><h4><a href="https://issues.apache.org/jira/browse/aries.html">Bug Tracking</a></h4></li>
+<li><h4><a href="buildingaries.html">Building Aries </a></h4></li>
+<li><h4><a href="releasingaries.html">Releasing Aries </a></h4></li>
+<li><h4><a href="compliancetesting.html">OSGi Compliance Tests </a></h4></li>
+<li><h4><a href="http://hudson.zones.apache.org/hudson/.html">Build System</a></h4></li>
+<li><h4><a href="maintainingthewebpages.html">Web Site Maintenance </a></h4></li>
+</ul>
+</li>
+<li><h3><a href="modules.html">Modules</a></h3><ul>
+<li><h4><a href="samples.html">Samples</a></h4></li>
+<li><h4><a href="blueprint.html">Blueprint</a></h4></li>
+<li><h4><a href="jndiproject.html">JNDI</a></h4></li>
+<li><h4><a href="jpaproject.html">JPA</a></h4></li>
+<li><h4><a href="applications.html">Applications</a></h4></li>
+<li><h4><a href="transactionsproject.html">Transactions</a></h4></li>
+<li><h4><a href="-ebamavenpluginproject.html">EBA Maven Plugin </a></h4></li>
+<li><h4><a href="spi-fly.html">SPI Fly</a></h4></li>
+</ul>
+</li>
+<li><h3> <a href="sponsorship.html">Sponsorship</a></h3></li>
+</ul> 
+                    <!-- NavigationBar -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td height="100%" width="100%">
+            <!-- Content -->
+            <div class="wiki-content"><p><a name="MavenbestpracticeinAries-Assembledbestpracticenotes"></a></p>
+<h1 id="assembled_best_practice_notes">Assembled best practice notes</h1>
+<p><a name="MavenbestpracticeinAries-Overallstructure"></a></p>
+<h3 id="overall_structure">Overall structure</h3>
+<p>The Aries project is a collection of loosely couple sub-projects, therefore
+it must be possible to build each project on it's own. This implies:</p>
+<ol>
+<li>A parent pom that isn't at the root of the SVN trunk</li>
+<li>Each sub-project has enough pom info so that it can be released
+independently</li>
+<li>default-parent has dependency management for basic osgi-dependencies that
+all projects are almost certain to use (this includes PAX dependencies for
+testing)</li>
+<li>Each sub-project has legal files in its checkout root</li>
+<li>Each sub-project has an SCM element in its pom, but no others do.</li>
+<li>Each subproject has dependency management for everything included in it. 
+In addition, it has its subprojects listed in dependency management.  This
+means that</li>
+<li>modules<h1 id="modules_in_a_subproject_dont_need_to_include_versions_for_use_of_other">modules in a subproject don't need to include versions for use of other</h1>
+</li>
+<li>depending on the subproject pom with scope import  (see the samples pom for
+an example).<h1 id="you_can_get_dependency_management_for_all_the_modules_in_a_subproject_by">you can get dependency management for all the modules in a subproject by</h1>
+</li>
+<li>As a result of the above, modules don't have any versions in any
+dependency elements</li>
+</ol>
+<p><a name="MavenbestpracticeinAries-Goodpracticeinthepom"></a></p>
+<h3 id="good_practice_in_the_pom">Good practice in the pom</h3>
+<ol>
+<li>Alphabetic ordering in dependency management</li>
+<li>Include a brief description of the project</li>
+<li>Commenting in platform dependencies, see samples assembly projects.</li>
+</ol>
+<p><a name="MavenbestpracticeinAries-GroupandArtifactnames"></a></p>
+<h3 id="group_and_artifact_names">Group and Artifact names</h3>
+<ol>
+<li>The Bundle Symbolic Name is explicitly set to the Maven artifactId. For
+projects which deliver bundles, the artifactID will therefore completely
+describe the jar and must begin org.apache.aries.{subproject}. For
+projects which do not deliver bundles (for example agregator projects) it
+is acceptable to use a short descriptive artifactID.</li>
+<li>The group ID will overlap with the artifactId and will normally be of the
+form org.apache.aries.{subproject}</li>
+</ol></div>
+            <!-- Content -->
+          </td>
+        </tr>
+      </table>
+   </td>
+   <td id="cell-2-2" colspan="2">&nbsp;</td>
+  </tr>
+  <tr width="100%">
+   <td id="cell-3-0">&nbsp;</td>
+   <td id="cell-3-1">&nbsp;</td>
+   <td id="cell-3-2">
+     <div id="footer">
+       <!-- Footer -->
+       <div id="site-footer">
+         <a href="http://incubator.apache.org/aries/privacy-policy.html";>Privacy
+Policy</a> 
+       </div>
+       <!-- Footer -->
+     </div>
+   </td>
+   <td id="cell-3-3">&nbsp;</td>
+   <td id="cell-3-4">&nbsp;</td>
+  </tr>
+  <tr width="100%">
+    <td id="cell-4-0" colspan="2">&nbsp;</td>
+    <td id="cell-4-1">&nbsp;</td>
+    <td id="cell-4-2" colspan="2">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html> 
