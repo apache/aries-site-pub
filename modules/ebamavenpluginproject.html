@@ -22,7 +22,7 @@
 	<meta name="keywords" content="..."/>
 	<meta name="description" content="..." />
     <title>
-		Apache Aries - Index
+		Apache Aries - EBAMavenPluginProject
     </title>
   </head>
 <body onload="SetMenu()">
@@ -234,35 +234,92 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="Index-ApacheAries"></a></p>
-<h1 id="apache_aries">Apache Aries</h1>
-<p>The Aries project delivers a set of pluggable Java components enabling
-an enterprise OSGi application programming model. This includes
-implementations and extensions of application-focused specifications
-defined by the OSGi Alliance Enterprise Expert Group (EEG) and an assembly
-format for multi-bundle applications, for deployment to a variety of OSGi
-based runtimes.</p>
-<p>The OSGi R4 V4.2 Enterprise Specification can be found here:</p>
-<p><a href="http://www.osgi.org/Download/Release4V42">http://www.osgi.org/Download/Release4V42</a></p>
-<p>To understand the complete scope of the Aries project, see the Aries
-proposal document on the <a href="http://wiki.apache.org/incubator/AriesProposal">incubator wiki</a>
-.</p>
-<p><a name="Index-BuildingandUsingAriesComponents"></a></p>
-<h2 id="breaking_news">Breaking news!!!</h2>
-<p>On 15th December 2010, Aries has graduated from the Incubator and is now a Top Level Project at the ASF. Congratulations to everyone in the Aries community in achieving this milestone.</p>
-<h2 id="building_and_using_aries_components">Building and Using Aries Components</h2>
-<p>To understand how to <em>use</em> Aries components, take a look at the <a href="blueprinthelloworldtutorial.html">BlueprintHelloWorldTutorial</a>
- pages which guides you through how to build the Aries code, provides
-sample applications and describes how to set up an environment in which to
-run the consuming application.</p>
-<p>Aries provides enterprise OSGi componentry such as the Blueprint container
-and projects to integrate enterprise technologies such as JTA, JNDI and JPA
-into an OSGi environment to make these available to OSGi bundles. Some
-Aries components, such as the Aries Blueprint container, require nothing
-more than an OSGi framework (such as Equinox or Felix) to run on; others
-are intended to be integrated into application server or integration
-runtimes such as ServiceMix or Geronimo.</p>
-<p>Continuous builds of Aries are available for download from <a href="http://hudson.zones.apache.org/hudson/view/Aries/">http://hudson.zones.apache.org/hudson/view/Aries/</a></p></div>
+            <div class="wiki-content"><p><a name="EBAMavenPluginProject-EBAMavenPlugin"></a></p>
+<h1 id="eba_maven_plugin">EBA Maven Plugin</h1>
+<p>The EBA Maven Plugin provides the ability to generate EBA archives using
+Maven.  The EBA archive format is described in <a href="applications.html">Applications</a>
+.  An EBA archive can optionally contain an Application manifest
+(APPLICATION.MF).  This can be added in one of two ways</p>
+<ol>
+<li>Hand written and added into the archive.</li>
+<li>Generated based on pom configuration.</li>
+</ol>
+<p><a name="EBAMavenPluginProject-UsingthePlugin"></a></p>
+<h2 id="using_the_plugin">Using the Plugin</h2>
+<p>The plugin is included by as follows:</p>
+<div class="codehilite"><pre>    <span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.apache.aries<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>eba-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+    <span class="nt">&lt;/build&gt;</span>
+</pre></div>
+
+
+<p>By default it will not generate a manifest, so in the above example it will
+attempt to copy a pre-defined APPLICATION.MF from
+src/main/resources/META-INF.  If that file does not exist, then no
+application manifest will be included.</p>
+<p><a name="EBAMavenPluginProject-GeneratinganAPPLICATION.MF"></a></p>
+<h2 id="generating_an_applicationmf">Generating an APPLICATION.MF</h2>
+<p>The following example shows how to get the plugin to generate an
+APPLICATION.MF based on the pom configuration:</p>
+<div class="codehilite"><pre>    <span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.apache.aries<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>eba-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;configuration&gt;</span>
+            <span class="nt">&lt;generateManifest&gt;</span>true<span class="nt">&lt;/generateManifest&gt;</span>
+        <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+    <span class="nt">&lt;/build&gt;</span>
+</pre></div>
+
+
+<p>The pom to application manfiest header mapping is as follows:
+<em> Pom <groupId/>.<artifactId/> -&gt; Application-SymbolicName
+</em> Pom <name/> -&gt; Application-Name
+<em> Pom <version/> -&gt; Application-Version (cleaned up for OSGi)
+</em> Pom <description/> -&gt; Application-Description
+* Pom <dependencies/> -&gt; Application-Content</p>
+<p><a name="EBAMavenPluginProject-OverridingApplication-SymbolicName"></a></p>
+<h2 id="overriding_application-symbolicname">Overriding Application-SymbolicName</h2>
+<p>The application symbolic name defaults to the
+${pom.groupId}.${pom.artifaceId}.  The following shows how to override
+this:</p>
+<div class="codehilite"><pre><span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;instructions&gt;</span>
+    <span class="nt">&lt;Application</span><span class="err">-SymbolicName</span><span class="nt">&gt;</span><span class="cp">${</span><span class="n">pom</span><span class="o">.</span><span class="n">artifaceId</span><span class="cp">}</span><span class="nt">&lt;/Application-SymbolicName&gt;</span>
+  <span class="nt">&lt;/instructions&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+
+
+<p><a name="EBAMavenPluginProject-AddingApplication-ExportServiceandApplication-ImportServiceheaders"></a></p>
+<h2 id="adding_application-exportservice_and_application-importservice_headers">Adding Application-ExportService and Application-ImportService headers</h2>
+<p>The application import service and export service headers can be set as
+follows.  The text inside the elements is included as-is.</p>
+<div class="codehilite"><pre><span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;instructions&gt;</span>
+    <span class="nt">&lt;Application-ExportService&gt;</span>...<span class="nt">&lt;/Application-ExportService&gt;</span>
+    <span class="nt">&lt;Application-ImportService&gt;</span>...<span class="nt">&lt;/Application-ImportService&gt;</span>
+  <span class="nt">&lt;/instructions&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+
+
+<p><a name="EBAMavenPluginProject-Includingtransitivedependencies"></a></p>
+<h2 id="including_transitive_dependencies">Including transitive dependencies</h2>
+<p>By default, the archive will only include the direct dependencies of the
+project.  Transitive dependencies can be includes as follows:</p>
+<div class="codehilite"><pre><span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;useTransitiveDependencies&gt;</span>true<span class="nt">&lt;/useTransitiveDependencies&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></div></div>
             <!-- Content -->
           </td>
         </tr>

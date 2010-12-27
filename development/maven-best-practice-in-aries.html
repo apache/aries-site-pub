@@ -22,7 +22,7 @@
 	<meta name="keywords" content="..."/>
 	<meta name="description" content="..." />
     <title>
-		Apache Aries - Index
+		Apache Aries - Maven best practice in Aries
     </title>
   </head>
 <body onload="SetMenu()">
@@ -234,35 +234,50 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="Index-ApacheAries"></a></p>
-<h1 id="apache_aries">Apache Aries</h1>
-<p>The Aries project delivers a set of pluggable Java components enabling
-an enterprise OSGi application programming model. This includes
-implementations and extensions of application-focused specifications
-defined by the OSGi Alliance Enterprise Expert Group (EEG) and an assembly
-format for multi-bundle applications, for deployment to a variety of OSGi
-based runtimes.</p>
-<p>The OSGi R4 V4.2 Enterprise Specification can be found here:</p>
-<p><a href="http://www.osgi.org/Download/Release4V42">http://www.osgi.org/Download/Release4V42</a></p>
-<p>To understand the complete scope of the Aries project, see the Aries
-proposal document on the <a href="http://wiki.apache.org/incubator/AriesProposal">incubator wiki</a>
-.</p>
-<p><a name="Index-BuildingandUsingAriesComponents"></a></p>
-<h2 id="breaking_news">Breaking news!!!</h2>
-<p>On 15th December 2010, Aries has graduated from the Incubator and is now a Top Level Project at the ASF. Congratulations to everyone in the Aries community in achieving this milestone.</p>
-<h2 id="building_and_using_aries_components">Building and Using Aries Components</h2>
-<p>To understand how to <em>use</em> Aries components, take a look at the <a href="blueprinthelloworldtutorial.html">BlueprintHelloWorldTutorial</a>
- pages which guides you through how to build the Aries code, provides
-sample applications and describes how to set up an environment in which to
-run the consuming application.</p>
-<p>Aries provides enterprise OSGi componentry such as the Blueprint container
-and projects to integrate enterprise technologies such as JTA, JNDI and JPA
-into an OSGi environment to make these available to OSGi bundles. Some
-Aries components, such as the Aries Blueprint container, require nothing
-more than an OSGi framework (such as Equinox or Felix) to run on; others
-are intended to be integrated into application server or integration
-runtimes such as ServiceMix or Geronimo.</p>
-<p>Continuous builds of Aries are available for download from <a href="http://hudson.zones.apache.org/hudson/view/Aries/">http://hudson.zones.apache.org/hudson/view/Aries/</a></p></div>
+            <div class="wiki-content"><p><a name="MavenbestpracticeinAries-Assembledbestpracticenotes"></a></p>
+<h1 id="assembled_best_practice_notes">Assembled best practice notes</h1>
+<p><a name="MavenbestpracticeinAries-Overallstructure"></a></p>
+<h3 id="overall_structure">Overall structure</h3>
+<p>The Aries project is a collection of loosely couple sub-projects, therefore
+it must be possible to build each project on its own. This implies:</p>
+<ol>
+<li>A parent pom that isn't at the root of the SVN trunk</li>
+<li>Each sub-project has enough pom info so that it can be released
+independently</li>
+<li>default-parent has dependency management for basic osgi-dependencies that
+all projects are almost certain to use (this includes PAX dependencies for
+testing)</li>
+<li>Each sub-project has legal files in its checkout root</li>
+<li>Each sub-project has an SCM element in its pom, but no others do.</li>
+<li>Each subproject has dependency management for everything included in it. 
+In addition, it has its subprojects listed in dependency management.  This
+means that</li>
+<li>modules in a subproject don't need to include versions for use of other
+modules</li>
+<li>you can get dependency management for all the modules in a subproject by
+depending on the subproject pom with scope import  (see the samples pom for
+an example).</li>
+<li>As a result of the above, modules don't have any versions in any
+dependency elements</li>
+</ol>
+<p><a name="MavenbestpracticeinAries-Goodpracticeinthepom"></a></p>
+<h3 id="good_practice_in_the_pom">Good practice in the pom</h3>
+<ol>
+<li>Alphabetic ordering in dependency management</li>
+<li>Include a brief description of the project</li>
+<li>Commenting in platform dependencies, see samples assembly projects.</li>
+</ol>
+<p><a name="MavenbestpracticeinAries-GroupandArtifactnames"></a></p>
+<h3 id="group_and_artifact_names">Group and Artifact names</h3>
+<ol>
+<li>The Bundle Symbolic Name is explicitly set to the Maven artifactId. For
+projects which deliver bundles, the artifactID will therefore completely
+describe the jar and must begin org.apache.aries.{subproject}. For
+projects which do not deliver bundles (for example agregator projects) it
+is acceptable to use a short descriptive artifactID.</li>
+<li>The group ID will overlap with the artifactId and will normally be of the
+form org.apache.aries.{subproject}</li>
+</ol></div>
             <!-- Content -->
           </td>
         </tr>

@@ -22,7 +22,7 @@
 	<meta name="keywords" content="..."/>
 	<meta name="description" content="..." />
     <title>
-		Apache Aries - Index
+		Apache Aries - BuildingAries
     </title>
   </head>
 <body onload="SetMenu()">
@@ -234,35 +234,125 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="Index-ApacheAries"></a></p>
-<h1 id="apache_aries">Apache Aries</h1>
-<p>The Aries project delivers a set of pluggable Java components enabling
-an enterprise OSGi application programming model. This includes
-implementations and extensions of application-focused specifications
-defined by the OSGi Alliance Enterprise Expert Group (EEG) and an assembly
-format for multi-bundle applications, for deployment to a variety of OSGi
-based runtimes.</p>
-<p>The OSGi R4 V4.2 Enterprise Specification can be found here:</p>
-<p><a href="http://www.osgi.org/Download/Release4V42">http://www.osgi.org/Download/Release4V42</a></p>
-<p>To understand the complete scope of the Aries project, see the Aries
-proposal document on the <a href="http://wiki.apache.org/incubator/AriesProposal">incubator wiki</a>
-.</p>
-<p><a name="Index-BuildingandUsingAriesComponents"></a></p>
-<h2 id="breaking_news">Breaking news!!!</h2>
-<p>On 15th December 2010, Aries has graduated from the Incubator and is now a Top Level Project at the ASF. Congratulations to everyone in the Aries community in achieving this milestone.</p>
-<h2 id="building_and_using_aries_components">Building and Using Aries Components</h2>
-<p>To understand how to <em>use</em> Aries components, take a look at the <a href="blueprinthelloworldtutorial.html">BlueprintHelloWorldTutorial</a>
- pages which guides you through how to build the Aries code, provides
-sample applications and describes how to set up an environment in which to
-run the consuming application.</p>
-<p>Aries provides enterprise OSGi componentry such as the Blueprint container
-and projects to integrate enterprise technologies such as JTA, JNDI and JPA
-into an OSGi environment to make these available to OSGi bundles. Some
-Aries components, such as the Aries Blueprint container, require nothing
-more than an OSGi framework (such as Equinox or Felix) to run on; others
-are intended to be integrated into application server or integration
-runtimes such as ServiceMix or Geronimo.</p>
-<p>Continuous builds of Aries are available for download from <a href="http://hudson.zones.apache.org/hudson/view/Aries/">http://hudson.zones.apache.org/hudson/view/Aries/</a></p></div>
+            <div class="wiki-content"><p><a name="BuildingAries-ExtractingandbuildingAries"></a></p>
+<h1 id="extracting_and_building_aries">Extracting and building Aries</h1>
+<p>There are two ways to do this. The first avoids using the command line but
+can leave you with some fixing up to do on the projects.</p>
+<p><a name="BuildingAries-Prereqs"></a></p>
+<h2 id="prereqs">Prereqs</h2>
+<ul>
+<li>Check that Maven is 2.0.10 or higher (mvn --version)</li>
+<li>Download and extract eclipse-jee-ganymede-SR2-linux-gtk.tar.gz (this is
+the 3.4 version)</li>
+<li>Install Subversion client http://subclipse.tigris.org/update_1.6.x (Just
+the Subclipse and Core)</li>
+<li>Install m2eclipse http://m2eclipse.sonatype.org/update/ (Maven
+Integration and Maven optional components)</li>
+</ul>
+<p><a name="BuildingAries-BuildatthecommandlinethenimportintoEclipseifyouneedEclipse."></a></p>
+<h2 id="build_at_the_command_line_then_import_into_eclipse_if_you_need_eclipse">Build at the command line then import into Eclipse if you need Eclipse.</h2>
+<p>This is the easiest way to build Aries and then work on the modules using
+Eclipse. If you don't care about Eclipse go to the next section.</p>
+<ul>
+<li>check out from the command line {{svn co
+https://svn.apache.org/repos/asf/incubator/aries/trunk aries}}</li>
+<li>cd aries</li>
+<li>mvn clean</li>
+<li>cd parent</li>
+<li>mvn install</li>
+<li>cd ../eba-maven-plugin</li>
+<li>mvn install (<em>See note below</em>)</li>
+<li>cd ..</li>
+<li>mvn install</li>
+<li>mvn eclipse:eclipse (should see 'BUILD SUCCESSFUL' message)</li>
+<li>fire up eclipse and switch to the Java perspective</li>
+<li>import the projects. File-&gt;import-&gt;General-&gt;existing projects into
+workspace. Import 'blueprint, 'jndi', 'testsupport' and 'transaction'</li>
+</ul>
+<p>If everything looks good run a  maven build with the target 'install' (adds
+jars to your local repository) or 'package' (just creates jars in your
+workspace). Hit F5 in the package explorer view to refresh and you should
+see packaged jar files under the <em>target</em> directories in the projects.</p>
+<br>
+
+<hr />
+<p><strong>Note:</strong>
+Note: There is currently (September 2010) what appears to be a timing issue
+that is causing unpredictable test failures during a full build. If you see
+test failures, try 'mvn install -fae'</p>
+<hr />
+<p><a name="BuildingAries-Justbuildit-noEclipse"></a></p>
+<h2 id="just_build_it_-_no_eclipse">Just build it - no Eclipse</h2>
+<ul>
+<li>check out from the command line {{svn co
+https://svn.apache.org/repos/asf/incubator/aries/trunk aries}}</li>
+<li>cd aries</li>
+<li>mvn clean</li>
+<li>cd parent</li>
+<li>mvn install</li>
+<li>cd ../eba-maven-plugin</li>
+<li>mvn install</li>
+<li>cd ..</li>
+<li><em>mvn -fn install</em> (-fn continues after failures), or {{mvn -fn
+package}} (alternatively, you can disable the tests with {{mvn
+-Dmaven.test.skip=true install}} with the side-effect of making the build
+process much faster)</li>
+</ul>
+<p><a name="BuildingAries-Eclipseonly"></a></p>
+<h2 id="eclipse_only">Eclipse only</h2>
+<p>This should work if you are command-line averse. On the other hand it seems
+to be the best way to get into a mess with the M2Eclipse plugin.</p>
+<ul>
+<li>In the SVN view, add the aries repository
+https://svn.apache.org/repos/asf/incubator/aries</li>
+<li>Expand the repository, right click on trunk and take 'check out as Maven
+project'
+There will be errors in the projects. To fix these:</li>
+<li>Right click on pom/xml in the aries project, select 'run as Maven
+build....'</li>
+<li>Type 'clean' in as the build goal</li>
+<li>Repeat the process using 'eclipse:eclipse' as the build goals'</li>
+<li>Close and re-open all the projects</li>
+</ul>
+<p>If there are still failures see the "Fixing failures" step below. If
+everything looks good run a final maven build with the target 'install'
+(adds jars to your local repository) or 'package' (just creates jars in
+your workspace). Hit F5 in the package explorer view to refresh and you
+should see packaged jar files under the <em>target</em> directories in the
+projects.</p>
+<p><a name="BuildingAries-Fixingfailures"></a></p>
+<h2 id="fixing_failures">Fixing failures</h2>
+<p><a name="BuildingAries-InEclipse"></a></p>
+<h5 id="in_eclipse">In Eclipse</h5>
+<p>You will see some of the blueprint projects don't build. To fix this you
+need to comment out the following line:</p>
+<div class="codehilite"><pre><span class="o">&lt;!--</span> <span class="o">&lt;</span><span class="n">classpathentry</span> <span class="n">kind</span><span class="o">=</span><span class="s">&quot;src&quot;</span>
+<span class="n">path</span><span class="o">=</span><span class="s">&quot;/Users/linsun/aries/blueprint/blueprint-api/src/main/resources/org/osgi/service/blueprint&quot;</span>
+<span class="n">including</span><span class="o">=</span><span class="s">&quot;blueprint.xsd&quot;</span> <span class="n">excluding</span><span class="o">=</span><span class="s">&quot;**/*.java&quot;</span><span class="o">/&gt;</span> <span class="o">--&gt;</span>
+</pre></div>
+
+
+<p>in the .classpath file in the aries-blueprint-core project.</p>
+<p>If there is a build error in the org.apache.aries.blueprint.itests project
+then remove this jar:</p>
+<div class="codehilite"><pre><span class="n">org</span><span class="sr">/apache/</span><span class="n">felix</span><span class="sr">/org.osgi.foundation/</span><span class="mi">1</span><span class="o">.</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="n">jar</span>
+</pre></div>
+
+
+<p>from the project's classpath.</p>
+<p>If there is a build error in the aries-jmx-core project then configure this
+project's build path to add the JRE System Library to Java Build Path.</p>
+<p>There should be no outstanding errors.</p>
+<p><a name="BuildingAries-Outofmemoryerrors"></a></p>
+<h5 id="out_of_memory_errors">Out of memory errors</h5>
+<p>You may find that building Aries fails with out of memory exceptions on
+some systems (eg Mac)  if you use the standard Java settings. Setting the
+two environment variables as shown below may help.</p>
+<div class="codehilite"><pre><span class="n">export</span> <span class="n">MAVEN_OPTS</span><span class="o">=</span><span class="s">&quot;-XX:MaxPermSize=128m -Xms512m -Xmx512m</span>
+<span class="s">-XX:+HeapDumpOnOutOfMemoryError&quot;</span>
+<span class="n">export</span> <span class="n">JAVA_OPTS</span><span class="o">=</span><span class="s">&quot;-Xmx1024m -XX:MaxPermSize=128m</span>
+<span class="s">-XX:+HeapDumpOnOutOfMemoryError&quot;</span>
+</pre></div></div>
             <!-- Content -->
           </td>
         </tr>

@@ -22,7 +22,7 @@
 	<meta name="keywords" content="..."/>
 	<meta name="description" content="..." />
     <title>
-		Apache Aries - Index
+		Apache Aries - JNDIProject
     </title>
   </head>
 <body onload="SetMenu()">
@@ -234,35 +234,92 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="Index-ApacheAries"></a></p>
-<h1 id="apache_aries">Apache Aries</h1>
-<p>The Aries project delivers a set of pluggable Java components enabling
-an enterprise OSGi application programming model. This includes
-implementations and extensions of application-focused specifications
-defined by the OSGi Alliance Enterprise Expert Group (EEG) and an assembly
-format for multi-bundle applications, for deployment to a variety of OSGi
-based runtimes.</p>
-<p>The OSGi R4 V4.2 Enterprise Specification can be found here:</p>
-<p><a href="http://www.osgi.org/Download/Release4V42">http://www.osgi.org/Download/Release4V42</a></p>
-<p>To understand the complete scope of the Aries project, see the Aries
-proposal document on the <a href="http://wiki.apache.org/incubator/AriesProposal">incubator wiki</a>
-.</p>
-<p><a name="Index-BuildingandUsingAriesComponents"></a></p>
-<h2 id="breaking_news">Breaking news!!!</h2>
-<p>On 15th December 2010, Aries has graduated from the Incubator and is now a Top Level Project at the ASF. Congratulations to everyone in the Aries community in achieving this milestone.</p>
-<h2 id="building_and_using_aries_components">Building and Using Aries Components</h2>
-<p>To understand how to <em>use</em> Aries components, take a look at the <a href="blueprinthelloworldtutorial.html">BlueprintHelloWorldTutorial</a>
- pages which guides you through how to build the Aries code, provides
-sample applications and describes how to set up an environment in which to
-run the consuming application.</p>
-<p>Aries provides enterprise OSGi componentry such as the Blueprint container
-and projects to integrate enterprise technologies such as JTA, JNDI and JPA
-into an OSGi environment to make these available to OSGi bundles. Some
-Aries components, such as the Aries Blueprint container, require nothing
-more than an OSGi framework (such as Equinox or Felix) to run on; others
-are intended to be integrated into application server or integration
-runtimes such as ServiceMix or Geronimo.</p>
-<p>Continuous builds of Aries are available for download from <a href="http://hudson.zones.apache.org/hudson/view/Aries/">http://hudson.zones.apache.org/hudson/view/Aries/</a></p></div>
+            <div class="wiki-content"><p><a name="JNDIProject-Overview"></a></p>
+<h1 id="jndi">JNDI</h1>
+<p>The Aries JNDI project aims to provide a fully compliant implementation of
+the OSGi Alliance JNDI Service Specification. This specification details
+how to advertise InitialContextFactory and ObjectFactories in an OSGi
+environment. It also defines how to obtain services from the service
+registry via JNDI.</p>
+<p><a name="JNDIProject-ServiceRegistryaccessfromJNDI"></a></p>
+<h2 id="service_registry_access_from_jndi">Service Registry access from JNDI</h2>
+<p>The OSGi service registry provides a centralised register/query capability
+for OSGi services. A common pattern outside of OSGi is to make use of the
+JNDI API to access services from a directory system. The OSGi service
+registry can be viewed as an example of such a system. The Aries JNDI
+project provides two URL lookup mechanisms via JNDI that can be used to
+access the service registry.</p>
+<p><a name="JNDIProject-osgi:service"></a></p>
+<h2 id="osgiservice">osgi:service</h2>
+<p>The osgi:service lookup scheme is defined by the JNDI Service Specification
+and follows the scheme:</p>
+<div class="codehilite"><pre><span class="err">osgi:service/&lt;interface&gt;[/&lt;filter&gt;](/&lt;filter&gt;.html)</span>
+</pre></div>
+
+
+<p>The interface part is an interface name, like javax.sql.DataSource, or
+javax.jms.ConnectionFactory. The filter allows selection based on the
+properties of the service.</p>
+<p>This example:</p>
+<div class="codehilite"><pre><span class="n">Context</span> <span class="n">ctx</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InitialContext</span><span class="p">();</span>
+
+<span class="n">Runnable</span> <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">Runnable</span><span class="p">)</span><span class="n">ctx</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="s">&quot;osgi:service/java.lang.Runnable&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>is equivalent to this code written to the OSGi service registry API.</p>
+<div class="codehilite"><pre><span class="n">BundleContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">getABundleContext</span><span class="p">();</span>
+<span class="n">ServiceReference</span> <span class="nb">ref</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">getServiceReference</span><span class="p">(</span><span class="s">&quot;java.lang.Runnable&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">ref</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Runnable</span> <span class="n">r</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="nb">ref</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Lets say you wanted to filter for a Runnable with a property called <em>fred</em>
+which was mapped to <em>wilma</em>. You could write</p>
+<div class="codehilite"><pre><span class="n">Context</span> <span class="n">ctx</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InitialContext</span><span class="p">();</span>
+
+<span class="n">Runnable</span> <span class="n">r</span> <span class="o">=</span>
+<span class="p">(</span><span class="n">Runnable</span><span class="p">)</span><span class="n">ctx</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="s">&quot;osgi:service/java.lang.Runnable/(fred=wilma)&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>which is equivalent to:</p>
+<div class="codehilite"><pre><span class="n">BundleContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">getABundleContext</span><span class="p">();</span>
+<span class="n">ServiceReference</span><span class="o">[]</span><span class="p">(</span><span class="o">.</span><span class="n">html</span><span class="p">)</span>
+ <span class="n">refs</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">getServiceReference</span><span class="p">(</span><span class="s">&quot;java.lang.Runnable&quot;</span><span class="p">,</span> <span class="s">&quot;(fred=wilma)&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">refs</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Runnable</span> <span class="n">r</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">refs</span><span class="p">[</span><span class="n">refs</span><span class="o">.</span><span class="nb">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">](</span><span class="n">refs</span><span class="o">.</span><span class="nb">length</span><span class="o">---</span><span class="mi">1</span><span class="o">.</span><span class="n">html</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+
+
+<p>}</p>
+<p>The osgi:service namepsace returns proxies, so if the Runnable was
+unregistered the proxy would switch to an equivalent alternative. If no
+such alternative exists then an org.osgi.framework.ServiceException with a
+type of ServiceException.UNREGISTERED.</p>
+<p><a name="JNDIProject-osgi:servicelist"></a></p>
+<h2 id="osgiservicelist">osgi:servicelist</h2>
+<p>It is possible that there are multiple services in the registry that match.
+In this case the osgi:servicelist lookup scheme can be used. It has the
+same format as osgi:service, but it is designed to return multiple.</p>
+<p><a name="JNDIProject-aries:services"></a></p>
+<h2 id="ariesservices">aries:services</h2>
+<p>The aries:services scheme works in the same way as the osgi:service scheme,
+but does not perform proxying. You get the actual object back. Care must be
+taken with this approach as the service could be unregistered, but the
+client cannot tell to stop using it. As a result it should only be used if
+the service is to be used for a short period of time. In addition their is
+no way to indicate that the client is no longer using the service, so clean
+up cannot occur.</p>
+<p><a name="JNDIProject-MoreInformation"></a></p>
+<h2 id="more_information">More Information</h2>
+<p>For more information, check out section "126 JNDI Services Specification
+Version 1.0" in the "OSGi Service Platform Enterprise Specification,
+Release 4, Version 4.2" available for public download from the <a href="http://www.osgi.org/Download/Release4V42">OSGi Alliance</a>
+.</p></div>
             <!-- Content -->
           </td>
         </tr>

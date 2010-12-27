@@ -22,7 +22,7 @@
 	<meta name="keywords" content="..."/>
 	<meta name="description" content="..." />
     <title>
-		Apache Aries - Index
+		Apache Aries - SPI Fly
     </title>
   </head>
 <body onload="SetMenu()">
@@ -234,35 +234,49 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="Index-ApacheAries"></a></p>
-<h1 id="apache_aries">Apache Aries</h1>
-<p>The Aries project delivers a set of pluggable Java components enabling
-an enterprise OSGi application programming model. This includes
-implementations and extensions of application-focused specifications
-defined by the OSGi Alliance Enterprise Expert Group (EEG) and an assembly
-format for multi-bundle applications, for deployment to a variety of OSGi
-based runtimes.</p>
-<p>The OSGi R4 V4.2 Enterprise Specification can be found here:</p>
-<p><a href="http://www.osgi.org/Download/Release4V42">http://www.osgi.org/Download/Release4V42</a></p>
-<p>To understand the complete scope of the Aries project, see the Aries
-proposal document on the <a href="http://wiki.apache.org/incubator/AriesProposal">incubator wiki</a>
-.</p>
-<p><a name="Index-BuildingandUsingAriesComponents"></a></p>
-<h2 id="breaking_news">Breaking news!!!</h2>
-<p>On 15th December 2010, Aries has graduated from the Incubator and is now a Top Level Project at the ASF. Congratulations to everyone in the Aries community in achieving this milestone.</p>
-<h2 id="building_and_using_aries_components">Building and Using Aries Components</h2>
-<p>To understand how to <em>use</em> Aries components, take a look at the <a href="blueprinthelloworldtutorial.html">BlueprintHelloWorldTutorial</a>
- pages which guides you through how to build the Aries code, provides
-sample applications and describes how to set up an environment in which to
-run the consuming application.</p>
-<p>Aries provides enterprise OSGi componentry such as the Blueprint container
-and projects to integrate enterprise technologies such as JTA, JNDI and JPA
-into an OSGi environment to make these available to OSGi bundles. Some
-Aries components, such as the Aries Blueprint container, require nothing
-more than an OSGi framework (such as Equinox or Felix) to run on; others
-are intended to be integrated into application server or integration
-runtimes such as ServiceMix or Geronimo.</p>
-<p>Continuous builds of Aries are available for download from <a href="http://hudson.zones.apache.org/hudson/view/Aries/">http://hudson.zones.apache.org/hudson/view/Aries/</a></p></div>
+            <div class="wiki-content"><p>This page describes the SPI Fly component.
+The SPI Fly component is aimed at providing general support for the JRE SPI
+mechanism (including the usage of META-INF/services) in OSGi.</p>
+<p>The code can be found in
+http://svn.apache.org/repos/asf/incubator/aries/trunk/spi-fly</p>
+<p>Currently the implementation does the following:</p>
+<ul>
+<li>It only considers bundles that have the following Manifest (opt-in)
+header: <em>SPI-Provider</em> (the value is not used at the moment).</li>
+<li>For every new bundle being installed that has the opt-in header, it
+checks the META-INF/services directory for any files. If found it registers
+a service in the Service Registry for each implementation found with the
+following property
+ <em>spi.provider.url = <the URL to the associated META-INF/services file></em></li>
+</ul>
+<p>Additional ideas/concerns:</p>
+<ul>
+<li>
+<p>We need to find a mechanism to find any SPI implementations that are part
+of the JRE itself and register these in the Service Registry. Since there
+is typically not a META-INF/services file for these mechanisms nor do they
+implement a common interface we need another mechanism.
+<strong> Can anyone think of a generic mechanism?
+</strong> An ugly alternative could be to manually enumerate these, but this is a
+bit of a maintenance nightmare.</p>
+</li>
+<li>
+<p><em>gnodet:</em> the javamail spec do use the META-INF/services discovery
+mechanism, but to detect and instantiate classes using constructors
+that have arguments. We need to investigate if it could cause any real
+problem with the design ... or find a specific way for javamail maybe ...</p>
+</li>
+</ul>
+<p>We need to support 'traditional' clients that don't look in the OSGi
+service registry to obtain their SPI implementation. Some ideas in this
+area are: </p>
+<ul>
+<li>We could automatically set a System Property for every SPI implementation
+found. That would typically shift the 'default' choice for an
+implementation to the last one found. </li>
+<li>Classloader problems around loading an implementation?</li>
+<li>Various Lifecycle issues when using the traditional way.</li>
+</ul></div>
             <!-- Content -->
           </td>
         </tr>
