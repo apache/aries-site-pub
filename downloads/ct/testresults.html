@@ -22,7 +22,7 @@
 	<meta name="keywords" content="..."/>
 	<meta name="description" content="..." />
     <title>
-		Apache Aries - Community
+		Apache Aries - TestResults
     </title>
   </head>
 <body onload="SetMenu()">
@@ -133,7 +133,7 @@
         <a href="/aries/downloads/currentrelease.html">Current Release</a> 
     </div>
     <div class="menuitem">
-        <a href="/aries/downloads/testresults.html">Compliance Tests</a> 
+        <a href="/aries/downloads/ct/current-release/testresults.html">Compliance Tests</a> 
     </div>
     <div class="menuitem">
         <a href="/aries/downloads/releasenotes.html">Release Notes</a> 
@@ -234,19 +234,28 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="Community-Community"></a></p>
-<h1 id="community">Community</h1>
-<p>There are many ways to be part of the Apache Aries community. You will find
-suggestions under <a href="gettinginvolved.html">getting involved</a>
-. </p>
+            <div class="wiki-content"><p>These are the test results for the most recent Aries release.</p>
+<h3 id="blueprint">Blueprint</h3>
 <ul>
-<li><a href="gettinginvolved.html">Getting Involved</a></li>
-<li><a href="people.html">Who we are</a></li>
-<li><a href="mailinglists.html">Mailing lists</a></li>
-<li><a href="http://blogs.apache.org/aries/">Aries Group Blog</a></li>
+<li><a href="ct/0.2/org.osgi.test.cases.blueprint.html">Blueprint </a></li>
+<li><a href="ct/0.2/org.osgi.test.cases.blueprint.java5.html">Blueprint-java5 </a></li>
+<li><a href="ct/0.2/org.osgi.test.cases.blueprint.security.html">Blueprint-security </a></li>
 </ul>
-<p>You can also find us on IRC, attach freenode and join #apache-aries.</p>
-<p>Our twitter tag is #apache-aries.</p></div>
+<h2 id="jndi">JNDI</h2>
+<ul>
+<li><a href="ct/0.2/org.osgi.test.cases.jndi.html">JNDI </a></li>
+</ul>
+<h2 id="jmx">JMX</h2>
+<ul>
+<li><a href="ct/0.2/org.osgi.test.cases.jmx.html">JMX </a></li>
+</ul>
+<h2 id="jpa">JPA</h2>
+<p>Not run. The Aries container managed JPA implementation is not expected to
+pass the existing compliance tests for user managed JPA.</p>
+<h2 id="transaction">Transaction</h2>
+<ul>
+<li><a href="ct/0.2/org.osgi.test.cases.transaction.html">Transaction </a></li>
+</ul></div>
             <!-- Content -->
           </td>
         </tr>
