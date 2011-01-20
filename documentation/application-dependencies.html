@@ -22,7 +22,7 @@
 	<meta name="keywords" content="..."/>
 	<meta name="description" content="..." />
     <title>
-		Apache Aries - 
+		Apache Aries - Aries Application Modules
     </title>
   </head>
 <body onload="SetMenu()">
@@ -239,29 +239,29 @@
 <p>Below are the list of bundles in the format of mavenBundle(groupId, artifactId) required if using Apache Aries application module.</p>
 <p><a name="Applications-CoreBundles"></a></p>
 <h2 id="core_runtime_bundles">Core Runtime bundles</h2>
-<p>mavenBundle("org.apache.aries.blueprint", "org.apache.aries.blueprint" ),
-mavenBundle("org.apache.aries", "org.apache.aries.util" ),
-mavenBundle("org.apache.felix", "org.apache.felix.bundlerepository"),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.resolver.obr"),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.install" ),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.api" ),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.management" ),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.utils" ),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.modeller"),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.default.local.platform"),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.noop.platform.repo"),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.noop.postresolve.process"),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.deployment.management"),</p>
+<p>mavenBundle("org.apache.aries.blueprint", "org.apache.aries.blueprint" ),<br/>
+mavenBundle("org.apache.aries", "org.apache.aries.util" ),<br/>
+mavenBundle("org.apache.felix", "org.apache.felix.bundlerepository"),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.resolver.obr"),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.install" ),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.api" ),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.management" ),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.utils" ),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.modeller"),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.default.local.platform"),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.noop.platform.repo"),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.noop.postresolve.process"),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.deployment.management"),<br/></p>
 <p>Besides the above bundles, either the non-isolated runtime or isolated runtime is also required.
 <a name="Applications-NonIsoloatedAriesapplication"></a></p>
 <h2 id="non-isolated_runtime">Non-isolated Runtime</h2>
-<p>mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime" ),
+<p>mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime" ),<br/>
 <a name="Applications-IsoloatedAriesapplication"></a></p>
 <h2 id="isolated_runtime">Isolated Runtime</h2>
-<p>mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.isolated"),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.framework"),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.framework.management"),
-mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.repository"),</p>
+<p>mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.isolated"),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.framework"),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.framework.management"),<br/>
+mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.repository"),<br/></p>
 <p><a name="Applications-ReplacableBundles"></a></p>
 <h2 id="replacable_bundles">Replacable bundles</h2>
 <p>If the application modules are used in a application server, the following bundles should/can be replaced and the services should/can be implemented by the application server.</p>
