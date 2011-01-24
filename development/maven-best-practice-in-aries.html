@@ -235,24 +235,24 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="MavenbestpracticeinAries-Assembledbestpracticenotes"></a></p>
-<h1 id="assembled_best_practice_notes">Assembled best practice notes</h1>
+<h1 id="maven_best_practice_in_aries_development">Maven best practice in Aries development</h1>
 <p><a name="MavenbestpracticeinAries-Overallstructure"></a></p>
 <h3 id="overall_structure">Overall structure</h3>
-<p>The Aries project is a collection of loosely couple sub-projects, therefore
-it must be possible to build each project on its own. This implies:</p>
+<p>The Aries project is a collection of loosely couple modules, therefore
+it must be possible to build each module on its own. This implies:</p>
 <ol>
-<li>A parent pom that isn't at the root of the SVN trunk</li>
-<li>Each sub-project has enough pom info so that it can be released
-independently</li>
-<li>default-parent has dependency management for basic osgi-dependencies that
+<li>A parent pom that isn't at the root of the SVN trunk.</li>
+<li>Each module has enough pom info so that it can be released
+independently.</li>
+<li>parent/default-parent has dependency management for basic osgi-dependencies that
 all projects are almost certain to use (this includes PAX dependencies for
-testing)</li>
-<li>Each sub-project has legal files in its checkout root</li>
-<li>Each sub-project has an SCM element in its pom, but no others do.</li>
-<li>Each subproject has dependency management for everything included in it. 
-In addition, it has its subprojects listed in dependency management.  This
+testing).</li>
+<li>Each module has legal files in its checkout root.</li>
+<li>Each module has an SCM element in its top level pom and <em>not</em> in any other pom in the module.</li>
+<li>Each module has dependency management for everything included in it. 
+In addition, it has its sub-projects listed in dependency management.  This
 means that</li>
-<li>modules in a subproject don't need to include versions for use of other
+<li>sub-project poms should not include versions for use of other
 modules</li>
 <li>you can get dependency management for all the modules in a subproject by
 depending on the subproject pom with scope import  (see the samples pom for
@@ -266,6 +266,7 @@ dependency elements</li>
 <li>Alphabetic ordering in dependency management</li>
 <li>Include a brief description of the project</li>
 <li>Commenting in platform dependencies, see samples assembly projects.</li>
+<li>Use ${project.version} <em>not</em> ${version} for Maven 3 compatibility.</li>
 </ol>
 <p><a name="MavenbestpracticeinAries-GroupandArtifactnames"></a></p>
 <h3 id="group_and_artifact_names">Group and Artifact names</h3>
