@@ -251,7 +251,46 @@ ID and password are the same ones as you use for Aries SVN.</p>
 <p>The Wiki syntax is called Markdown and is documented <a href="http://www.freewisdom.org/projects/python-markdown/">here</a>. Some extensions are installed in 
 the CMS system (eg tables, syntax highlighting). </p>
 <p>More information on CMS is 
-available <a href="http://wiki.apache.org/general/ApacheCms2010">here</a></p></div>
+available <a href="http://wiki.apache.org/general/ApacheCms2010">here</a></p>
+<h1 id="making_major_changes">Making major changes</h1>
+<p>Because the site is all in SVN its possible to check it out, make and test changes locally and then check in again much as you woudl with code changes.
+To do this you will need:</p>
+<ul>
+<li>A local copy of the cms build tools</li>
+<li>A local setup of Apache</li>
+</ul>
+<p>First, checkout the site , like this:</p>
+<div class="codehilite"><pre><span class="n">svn</span> <span class="n">co</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/si</span><span class="n">te</span><span class="sr">/trunk/</span> <span class="n">site</span>
+</pre></div>
+
+
+<h2 id="to_build_the_site_using_the_build_tools">To build the site using the build tools.</h2>
+<p>First check the cms build tools out of SVN: </p>
+<div class="codehilite"><pre><span class="n">svn</span> <span class="n">co</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/i</span><span class="n">nfra</span><span class="sr">/websites/cms/build/</span> <span class="n">buildtools</span>
+</pre></div>
+
+
+<p>To run the build_site.pl script you will need to install the Python version 
+of Markup. The instructions for finding and installing Python pre-reqs are given [here] (http://wiki.apache.org/general/ApacheCMSFAQ)</p>
+<p>Then to build the site use this command:</p>
+<p>perl build_site.pl --source-base /path/to/newsite/trunk/ --target-base /path/to/output/</p>
+<p>which will create *.html in /path/to/output/content</p>
+<h2 id="check_the_site_on_a_local_server">Check the site on a local server.</h2>
+<p>Use a vhost to check the site. On a Mac this means adding the following stanza to /etc/apache2/extra/httpd-vhosts.conf</p>
+<p><VirtualHost *:80>
+    DocumentRoot "/Users/zoe/Sites/zaries/www"
+    ServerName zaries
+    ErrorLog "/Users/zoe/Sites/zaries/error.log"
+    CustomLog "/Users/zoe/Sites/zaries/access.log" custom</p>
+<div class="codehilite"><pre><span class="n">LogLevel</span> <span class="n">debug</span>
+</pre></div>
+
+
+</VirtualHost>
+
+<p>To test the site,  move it like this:</p>
+<p>mv /path/to/output/content /Users/zoe/Sites/zaries/www</p>
+<p>Then navigate to http://zaries in a browser.</p></div>
             <!-- Content -->
           </td>
         </tr>

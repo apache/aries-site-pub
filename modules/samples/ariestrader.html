@@ -257,7 +257,7 @@ the sample itself (see instructions below).<br />
 <p>Download and unzip the source zip for the <a href="aries:downloads.html">latest release</a>
  of Aries Samples and build the equinox-test-harness module under
 ariestrader:</p>
-<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mi">0</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">incubating</span><span class="sr">/ariestrader/</span><span class="n">assemblies</span><span class="o">/</span><span class="n">equinox</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">harness</span>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">0.2</span><span class="o">-</span><span class="n">incubating</span><span class="sr">/ariestrader/</span><span class="n">assemblies</span><span class="o">/</span><span class="n">equinox</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">harness</span>
 <span class="n">mvn</span> <span class="n">install</span>
 </pre></div>
 
@@ -278,7 +278,8 @@ an Equinox assembly that pulls in all of the necessary dependencies.<br />
 </p>
 <p>The first task is to start the Apache Aries modules in an OSGi framework
 using the Eclipse Equinox test harness</p>
-<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span><span class="mi">3</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="n">v20090520</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">0.2</span><span class="o">-</span><span class="n">incubating</span><span class="sr">/ariestrader/</span><span class="n">assemblies</span><span class="sr">/equinox-test-harness/</span><span class="n">target</span>
+<span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span><span class="mf">3.5.0</span><span class="o">.</span><span class="n">v20090520</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
 </pre></div>
 
 

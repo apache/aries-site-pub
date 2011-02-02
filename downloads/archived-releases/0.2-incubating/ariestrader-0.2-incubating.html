@@ -22,7 +22,7 @@
 	<meta name="keywords" content="..."/>
 	<meta name="description" content="..." />
     <title>
-		Apache Aries - Archived Releases
+		Apache Aries - AriesTrader
     </title>
   </head>
 <body onload="SetMenu()">
@@ -234,12 +234,121 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="ArchivedReleases-Archivedreleases"></a></p>
-<h1 id="archived_releases">Archived releases</h1>
-<ul>
-<li><a href="archived-releases/0.1-incubating/0.1-incubating.html">0.1-incubating release</a></li>
-<li><a href="archived-releases/0.2-incubating/0.2-incubating.html">0.2-incubating release</a></li>
-</ul></div>
+            <div class="wiki-content"><p><a name="AriesTrader-TheAriesTraderSample"></a></p>
+<h1 id="the_ariestrader_sample">The AriesTrader Sample</h1>
+<p><a name="AriesTrader-Prereqs"></a></p>
+<h3 id="prereqs">Prereqs</h3>
+<br>
+
+<hr />
+<p><strong>Note:</strong> </p>
+<p>These instructions are for the 0.2-incubating release of Aries.
+Instructions for older releases can be found <a href="archiveinstructions.html">here</a>
+. In the 0.2-incubating release the AriesTrader sample was changed such
+that it is no longer required for you to install Derby independently.  The
+Derby version included in the sample is fully leveraged internally in the
+sample and therefore no additional Derby installation is required. 
+However, there are steps required to initialize the Database from within
+the sample itself (see instructions below).<br />
+</p>
+<hr />
+<p><a name="AriesTrader-CreatingtheOSGiplatform(equinox-test-harness)forAriesTrader"></a></p>
+<h3 id="creating_the_osgi_platform_equinox-test-harness_for_ariestrader">Creating the OSGi platform (equinox-test-harness) for AriesTrader</h3>
+<p>Download and unzip the source zip for the <a href="aries:downloads.html">latest release</a>
+ of Aries Samples and build the equinox-test-harness module under
+ariestrader:</p>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">0.2</span><span class="o">-</span><span class="n">incubating</span><span class="sr">/ariestrader/</span><span class="n">assemblies</span><span class="o">/</span><span class="n">equinox</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">harness</span>
+<span class="n">mvn</span> <span class="n">install</span>
+</pre></div>
+
+
+<p>This procedure will pull in the binaries from the latest release and its
+dependencies.</p>
+<p><a name="AriesTrader-AlternativebuildusingApacheAriestrunk."></a></p>
+<h3 id="alternative_build_using_apache_aries_trunk">Alternative build using Apache Aries trunk.</h3>
+<p>As an alternative to using the released version you can also choose to work
+with the latest, unreleased code.  This will require the use of subversion
+to checkout the code followed by building the entire Apache Aries project. 
+Directions are provided here:  <a href="aries:buildingaries.html">Building Aries instructions</a>
+.</p>
+<p><a name="AriesTrader-StartingtheEquinoxTestHarnesstoruntheAriesTradersample"></a></p>
+<h3 id="starting_the_equinox_test_harness_to_run_the_ariestrader_sample">Starting the Equinox Test Harness to run the AriesTrader sample</h3>
+<p>AriesTrader needs a test harness to run in.  For this purpose we are using
+an Equinox assembly that pulls in all of the necessary dependencies.<br />
+</p>
+<p>The first task is to start the Apache Aries modules in an OSGi framework
+using the Eclipse Equinox test harness</p>
+<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span><span class="mf">3.5.0</span><span class="o">.</span><span class="n">v20090520</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
+</pre></div>
+
+
+<p>The OSGi console should start up, the 'ss' command should show the active
+bundles but the AriesTrader application is not yet installed (with the
+exception of the ariestrader derby datasource which is started with the
+test harness for convenience).<br />
+</p>
+<p><a name="AriesTrader-InstallingAriesTraderintheEquinoxTestHarness"></a></p>
+<h3 id="installing_ariestrader_in_the_equinox_test_harness">Installing AriesTrader in the Equinox Test Harness</h3>
+<p>To install the AriesTrader application simply copy the eba for AriesTrader
+into the target/load directory which was created when test harness
+containing Aries was started.  For convenience the AriesTraders EBAs are
+copied into the target directory as part of creating the OSGi Equinox test
+harness. </p>
+<p>When using the "JDBC" only AriesTrader configuration which supports only
+jdbc persistence:</p>
+<div class="codehilite"><pre><span class="n">cp</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">aries</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">ariestrader</span><span class="o">.</span><span class="n">jdbc</span><span class="o">-*.</span><span class="n">eba</span> <span class="n">load</span><span class="o">/</span>
+</pre></div>
+
+
+<p>When using the "All" AriesTrader configuration which supports all currently
+available persistence modes:</p>
+<div class="codehilite"><pre><span class="n">cp</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">aries</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">ariestrader</span><span class="o">.</span><span class="n">all</span><span class="o">-*.</span><span class="n">eba</span> <span class="n">load</span><span class="o">/</span>
+</pre></div>
+
+
+<p>Now the 'ss' command should show all of the AriesTrader bundles in state
+'ACTIVE'.</p>
+<p>If you subsequently delete org.apache.aries.samples.ariestrader.jdbc-<em>.eba
+or org.apache.aries.samples.ariestrader.all-</em>.eba from the target/load
+directory the application will be uninstalled.</p>
+<p><a name="AriesTrader-AccessingandusingtheAriesTradersample"></a></p>
+<h3 id="accessing_and_using_the_ariestrader_sample">Accessing and using the AriesTrader sample</h3>
+<p>Point your browser at <a href="http://localhost:8080/org.apache.aries.samples.ariestrader.web/">http://localhost:8080/org.apache.aries.samples.ariestrader.web/</a></p>
+<p>Select the "Configuration" tab and the "Configure AriesTrader run-time
+parameters" choice.  Then select from among the available runtime modes
+(defauls to JDBC).  Be sure to click "update config" to save your
+selection.</p>
+<p>At the moment the following persistence modes are available when using the
+"all" EBA:
+<em> JDBC persistence
+</em> JPA application managed entity manager persistence
+* JPA container managed entity managers using declarative transaction
+support<br />
+</p>
+<p>By default, the sample starts with JDBC persistence.  To select another
+persistence mechanism see the directions under "Accessing and using the
+AriesTrader sample. </p>
+<p>After selecting the persistence mode you must create the AriesTrader
+Database tables and indexs.  Select the "Configuration" tab and the
+"(Re)-create AriesTrader Tables and Indexes". </p>
+<p>Next, you must seed the database with test content.  Once again go to the
+"Configuration" tab but this time select "(Re)-populate AriesTrader
+Database" from the available choices to seed the database with a default
+set of users and stock quotes.  You will see a number of quotes (default is
+400) and users (default is 200) created.</p>
+<p>Select the "Trading &amp; Portfolios" tab to use the mock trade application or
+the "Primitives" tab to run some of the web primitive tests (PingJSPEL is
+not currently working).  You can also run the "Test AriesTrader Scenario"
+from the "Configuration" tab which will launch a new browser window and
+step through a trading scenario with each reload of the page.</p>
+<p><a name="AriesTrader-AbouttheAriesTraderSample"></a></p>
+<h3 id="about_the_ariestrader_sample">About the AriesTrader Sample</h3>
+<p>The AriesTrader sample is a modified version of the Apache Geronimo
+DayTrader sample.  It has been somewhat simplified and reorganized to
+support the Apache Aries programming model.<br />
+</p>
+<p>The AriesTrader sample bundles are organized like this:</p>
+<p><img alt="at2" src="ariesTraderOverview2.png" /></p></div>
             <!-- Content -->
           </td>
         </tr>

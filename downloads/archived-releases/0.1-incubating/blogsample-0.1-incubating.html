@@ -22,7 +22,7 @@
 	<meta name="keywords" content="..."/>
 	<meta name="description" content="..." />
     <title>
-		Apache Aries - Archived Releases
+		Apache Aries - BlogSample-0.1-incubating
     </title>
   </head>
 <body onload="SetMenu()">
@@ -234,12 +234,83 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="ArchivedReleases-Archivedreleases"></a></p>
-<h1 id="archived_releases">Archived releases</h1>
-<ul>
-<li><a href="archived-releases/0.1-incubating/0.1-incubating.html">0.1-incubating release</a></li>
-<li><a href="archived-releases/0.2-incubating/0.2-incubating.html">0.2-incubating release</a></li>
-</ul></div>
+            <div class="wiki-content"><p><a name="BlogSample-0.1-incubating-TheBlogSample-version0.1-incubating."></a></p>
+<h1 id="the_blog_sample_-_version_01-incubating">The Blog Sample - version 0.1-incubating.</h1>
+<p><a name="BlogSample-0.1-incubating-RunningtheBlogSample"></a></p>
+<h2 id="running_the_blog_sample">Running the Blog Sample</h2>
+<p><a name="BlogSample-0.1-incubating-Prereqs"></a></p>
+<h3 id="prereqs">Prereqs</h3>
+<p>Follow the instructions <a href="http://db.apache.org/derby/papers/DerbyTut/install_software.html#derby">here</a>
+ to complete the following actions: Download Derby, Install Derby, Set
+DERBY_INSTALL, Configure Embedded Derby and then Verify Derby. </p>
+<br>
+
+<hr />
+<p><strong>Note:</strong>
+The version of Derby used by the current release and development versions
+of the Blog Sample is 10.5.3.0. Since May 2010 the Derby tutorial points to
+the latest Derby release (10.6.x) - if this is installed the Blog sample
+will not work. See <a href="https://issues.apache.org/jira/browse/ARIES-317">ARIES-317</a>
+. For the present the best solution is to install Derby 10.5.3.</p>
+<hr />
+<p><a name="BlogSample-0.1-incubating-CreatetheOSGiplatformfortheBlogsample"></a></p>
+<h3 id="create_the_osgi_platform_for_the_blog_sample">Create the OSGi platform for the Blog sample</h3>
+<p>Download and unzip the source zip for the <a href="aries:downloads.html">latest release</a>
+ of Aries Samples and build the blog-assembly module:</p>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="n">incubating</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span>
+<span class="n">mvn</span> <span class="n">install</span>
+</pre></div>
+
+
+<p>This procedure will pull in the binaries from the latest release and its
+dependencies.</p>
+<p><a name="BlogSample-0.1-incubating-RunningtheBlogsample"></a></p>
+<h3 id="running_the_blog_sample_1">Running the Blog sample</h3>
+<p>Download the JDBC based Blog sample application (.eba file) from the <a href="aries:downloads.html">latest release</a>
+.</p>
+<p>Create the database</p>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="n">incubating</span><span class="sr">/blog-sample/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span><span class="o">/</span><span class="n">target</span>
+<span class="n">export</span>
+<span class="n">CLASSPATH</span><span class="o">=</span><span class="nv">$DERBY_INSTALL</span><span class="sr">/lib/</span><span class="n">derby</span><span class="o">.</span><span class="n">jar:</span><span class="nv">$DERBY_INSTALL</span><span class="sr">/lib/</span><span class="n">derbytools</span><span class="o">.</span><span class="n">jar:</span><span class="o">.</span>
+<span class="n">java</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">derby</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">ij</span> <span class="n">blogDB</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+
+
+<p>now start Aries in an OSGi framework (we're using Eclipse Equinox in this
+case)</p>
+<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span><span class="mf">3.5.0</span><span class="o">.</span><span class="n">v20090520</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
+</pre></div>
+
+
+<p>The OSGi console should start up, the 'ss' command should show all of the
+Blog bundles in state 'ACTIVE'.</p>
+<p>Now start the blog application (.eba file) you downloaded earlier, by
+copying it into the load directory which was created when Aries started.</p>
+<p>Point your browser to <a href="http://localhost:8080/org.apache.aries.samples.blog.web/">http://localhost:8080/org.apache.aries.samples.blog.web/</a></p>
+<p>If you subsequently delete the .eba from the load directory the application
+will be uninstalled.</p>
+<p><a name="BlogSample-0.1-incubating-RunningthesampleusingaJPApersistencelayer"></a></p>
+<h3 id="running_the_sample_using_a_jpa_persistence_layer">Running the sample using a JPA persistence layer</h3>
+<p>The first blog sample application was written to use a JDBC persistence
+layer. There is a second application implemented to demonstrate the JPA
+capability</p>
+<p>To run the blog sample which uses the JPA persistence layer, start the OSGi
+framework, remove any previous copies of the blog sample from the
+target/load directory, then copy the Blog sample JPA .eba file into the
+load directory.</p>
+<p>Finally, after typing 'refresh' at the OSGi console, point your browser at <a href="http://localhost:8080/org.apache.aries.samples.blog.web/">http://localhost:8080/org.apache.aries.samples.blog.web/</a>
+. You should see something that looks precisely the same as the blog sample
+running with the JDBC persistence layer, but this time running using the
+JPA persistence layer.</p>
+<p><a name="BlogSample-0.1-incubating-Usingthelatest,unreleasedcode"></a></p>
+<h2 id="using_the_latest_unreleased_code">Using the latest, unreleased code</h2>
+<p>If you prefer to use the very latest code from subversion, checkout and
+build the Aries trunk by following the <a href="aries:buildingaries.html">Building Aries instructions</a>
+.</p>
+<p><a name="BlogSample-0.1-incubating-AbouttheBlogsample"></a></p>
+<h2 id="about_the_blog_sample">About the Blog sample</h2>
+<p>The blog sample components can be visualised like this:</p>
+<p><img alt="bs" src="BlogSample.png" /></p></div>
             <!-- Content -->
           </td>
         </tr>
