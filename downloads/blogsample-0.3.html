@@ -242,37 +242,43 @@
 
 <hr />
 <p><strong>Note:</strong>
-These instructions are for the current development stream of Aries.
-Instructions for older releases can be found <a href="/downloads/archivedreleases.html">here</a>
-Instructions for the current release of Aries can be found <a href="/downloads/blogsample-0.3.html">here</a></p>
+These instructions are for the 0.3 release of Aries.
+Instructions for older releases can be found <a href="/downloads/archivedrelease.html">here</a>
+. In the 0.2-incubating release the sample was changed to use an in-memory
+database to avoid dependency on an explicit version of Derby. If you would
+prefer to use a database on disk check the instructions for the
+0.1-incubating release. You will also need to modify datasource.xml (under
+blog-datasource) as indicated in the comments and then rebuild the sample.</p>
 <hr />
 <p><a name="BlogSample-CreatetheOSGiplatformfortheBlogsample"></a></p>
 <h3 id="create_the_osgi_platform_for_the_blog_sample">Create the OSGi platform for the Blog sample</h3>
-<p>Download and build the development stream of Aries, see <a href="/development/buildingaries.html">here</a></p>
-<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span><span class="o">/</span><span class="n">target</span>
-<span class="nb">mkdir</span> <span class="n">load</span>
+<p>Download and unzip the source zip for the <a href="/downloads/currentrelease.html">latest release</a>
+ of Aries Samples and build the blog-assembly module:</p>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">0.3</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span>
+<span class="n">mvn</span> <span class="n">install</span>
 </pre></div>
 
 
-<p>The full Aries build builds the blog sample by default, all of the platform pre-reqs will be available in the target directory.
-Create the load directory. This used to be done automatically by Felix file install, but in more recent
-versions yo have to create your own.
-<a name="BlogSample-RunningtheBlogsample"></a></p>
+<p>This procedure will pull in the binaries from the latest release and its
+dependencies.</p>
+<p><a name="BlogSample-RunningtheBlogsample"></a></p>
 <h3 id="running_the_blog_sample_1">Running the Blog sample</h3>
-<p>Start Aries in an OSGi framework (we're using Eclipse Equinox in this
+<p>Download the JDBC based Blog sample application (.eba file) from the <a href="/downloads/currentrelrease.html">latest release</a>
+. Change directory to the blog-assembly target directory:</p>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">0.3</span><span class="sr">/blog-sample/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span><span class="o">/</span><span class="n">target</span>
+</pre></div>
+
+
+<p>now start Aries in an OSGi framework (we're using Eclipse Equinox in this
 case)</p>
 <div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span><span class="mf">3.5.0</span><span class="o">.</span><span class="n">v20090520</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
 </pre></div>
 
 
 <p>The OSGi console should start up, the 'ss' command should show all of the
-platform bundles in state 'ACTIVE'.</p>
-<p>To run the blog application (.eba file) copy </p>
-<div class="codehilite"><pre><span class="n">samples</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">jdbc</span><span class="o">-</span><span class="n">eba</span><span class="sr">/target/</span><span class="o">*.</span><span class="n">eba</span>
-</pre></div>
-
-
-<p>into the load directory.</p>
+Blog bundles in state 'ACTIVE'.</p>
+<p>To start the blog application (.eba file) you downloaded earlier, create a directory
+call load and copying it into the load directory.</p>
 <p>Point your browser to <a href="http://localhost:8080/blog/">http://localhost:8080/blog/</a></p>
 <p>If you subsequently delete the .eba from the load directory the application
 will be uninstalled.</p>
@@ -282,17 +288,18 @@ will be uninstalled.</p>
 layer. There is a second application implemented to demonstrate the JPA
 capability</p>
 <p>To run the blog sample which uses the JPA persistence layer, start the OSGi
-framework as before, remove any previous copies of the blog sample from the
-target/load directory, then copy </p>
-<div class="codehilite"><pre><span class="n">samples</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">jpa</span><span class="o">-</span><span class="n">eba</span><span class="sr">/target/</span><span class="o">*.</span><span class="n">eba</span>
-</pre></div>
-
-
-<p>into the load directory.</p>
+framework, remove any previous copies of the blog sample from the
+target/load directory, then copy the Blog sample JPA .eba file into the
+load directory.</p>
 <p>Finally, after typing 'refresh' at the OSGi console, point your browser at <a href="http://localhost:8080/blog/">http://localhost:8080/blog/</a>
 . You should see something that looks precisely the same as the blog sample
 running with the JDBC persistence layer, but this time running using the
 JPA persistence layer.</p>
+<p><a name="BlogSample-Usingthelatest,unreleasedcode"></a></p>
+<h2 id="using_the_latest_unreleased_code">Using the latest, unreleased code</h2>
+<p>If you prefer to use the very latest code from subversion, checkout and
+build the Aries trunk by following the <a href="aries:buildingaries.html">Building Aries instructions</a>
+.</p>
 <p><a name="BlogSample-AbouttheBlogsample"></a></p>
 <h2 id="about_the_blog_sample">About the Blog sample</h2>
 <p>The blog sample components can be visualised like this:</p>
