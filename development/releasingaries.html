@@ -438,7 +438,7 @@ it to restart where it left off.</p>
 
 
 <p>Run the following commands:</p>
-<div class="codehilite"><pre><span class="n">mvn</span> <span class="n">versions:update</span><span class="o">-</span><span class="n">parent</span>
+<div class="codehilite"><pre><span class="n">mvn</span> <span class="n">versions:update</span><span class="o">-</span><span class="n">parent</span>   <span class="o">!</span><span class="n">Update</span> <span class="n">parent</span> <span class="n">to</span> <span class="n">latest</span> <span class="n">available</span>
 <span class="n">mvn</span> <span class="n">versions:use</span><span class="o">-</span><span class="n">releases</span> <span class="o">*</span><span class="n">See</span> <span class="n">Note</span> <span class="mi">3</span> <span class="n">below</span><span class="o">*</span>
 <span class="n">svn</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;updated to latest releases&quot;</span>
 <span class="n">rm</span> <span class="n">pom</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">versionsBackup</span>
@@ -508,6 +508,18 @@ archived here /www/archive.apache.org/dist/incubator/aries.</p>
 <p>First, delete the previous distribution from the distribution directory.
 Download the release artifacts using a script like <a href="release-0.2">this</a>
 . Next, update the Aries Downloads pages to refer to the new artifacts.</p>
+<h3 id="tidying_up_tasks">Tidying up tasks</h3>
+<ul>
+<li>Move trunk to a new level, useful *ix commands:<ul>
+<li>find . -name "pom.xml" -exec sed -ie "s#0.3-SNAPSHOT#0.4-SNAPSHOT#g" {} ;</li>
+<li>find . -name pom.xmle | xargs -I {} rm {} <br/>
+   or use a fancy editor.</li>
+</ul>
+</li>
+<li>Get the compliance tests run</li>
+<li>Release notes</li>
+<li>Tidy up JIRA</li>
+</ul>
 <p><a name="ReleasingAries-Whattodowhenpeoplefindproblemswiththerelease"></a></p>
 <h3 id="what_to_do_when_people_find_problems_with_the_release">What to do when people find problems with the release</h3>
 <ul>
