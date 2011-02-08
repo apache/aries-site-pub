@@ -22,7 +22,7 @@
 	<meta name="keywords" content="..."/>
 	<meta name="description" content="..." />
     <title>
-		Apache Aries - ReleaseNotes
+		Apache Aries - TestResults
     </title>
   </head>
 <body onload="SetMenu()">
@@ -234,60 +234,28 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="ReleaseNotes-ReleaseNotes"></a></p>
-<h1 id="release_notes">Release Notes</h1>
-<p><a name="ReleaseNotes-NewandNoteworthy"></a></p>
-<h3 id="new_and_noteworthy">New and Noteworthy</h3>
-<p>Welcome to the 0.3 release. </p>
+            <div class="wiki-content"><p>These are the test results for the current Aries release.</p>
+<h3 id="blueprint">Blueprint</h3>
 <ul>
-<li>Compliance tests (TBD)</li>
-<li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310981&amp;version=12315310">JIRA Release Notes </a></li>
+<li><a href="ct/current-release/org.osgi.test.cases.blueprint.html">Blueprint </a></li>
+<li><a href="ct/current-release/org.osgi.test.cases.blueprint.java5.html">Blueprint-java5 </a></li>
+<li><a href="ct/current-release/org.osgi.test.cases.blueprint.security.html">Blueprint-security </a></li>
 </ul>
-<p><a name="ReleaseNotes-NewComponents"></a></p>
-<h3 id="new_components">New Components</h3>
-<h4 id="proxy">Proxy</h4>
-<p>The proxy component was added in 0.3. Proxy allows you to generate proxyies based on interfaces or classes, eg object damping. Proxy
-provides a service to both blueprint and JNDI.</p>
-<h3 id="major_updates">Major updates</h3>
-<h4 id="application">Application.</h4>
-<p>The application component in 0.3 provides a runtime in which OSGi applications are isolated from
-each other, and the provisioning support that it requires. These changes mean that the 0.3 release of aplication is significantly different 
-from the 0.2 release.
-<p>The resolver also supports external bundle repositories in 0.3.</p></p>
-<h4 id="blueprint">Blueprint</h4>
-<p>Blueprint namespace support has been added. This makes it possible to look up Blueprint components from Web or 
-Persistence bundles.</p>
-<p><a name="ReleaseNotes-Modulesinthisrelease"></a></p>
-<h3 id="modules_in_this_release">Modules in this release</h3>
+<h2 id="jndi">JNDI</h2>
 <ul>
-<li>testsupport</li>
-<li>util</li>
-<li>proxy</li>
-<li>quiesce</li>
-<li>application</li>
-<li>blueprint</li>
-<li>transaction</li>
-<li>jpa</li>
-<li>jndi</li>
-<li>jmx</li>
-<li>web</li>
-<li>samples</li>
+<li><a href="ct/current-release/org.osgi.test.cases.jndi.html">JNDI </a></li>
 </ul>
-<p><a name="ReleaseNotes-Newsamples"></a></p>
-<h3 id="new_samples">New samples</h3>
-<p>No new samples but we changed the Blog Sample and Aries Trader samples so
-that no database initialisation is required prior to running the sample.</p>
-<p><a name="ReleaseNotes-NewTutorials"></a></p>
-<h3 id="new_tutorials">New Tutorials</h3>
-<p>None</p>
-<p><a name="ReleaseNotes-APIbreaking"></a></p>
-<h3 id="api_breaking">API breaking</h3>
-<p>None.</p>
-<p><a name="ReleaseNotes-KnownIssues"></a></p>
-<h3 id="known_issues">Known Issues</h3>
-<p>None.</p>
-<p><a name="ReleaseNotes-Importantchangestoconsiderwhenupgrading"></a></p>
-<h3 id="important_changes_to_consider_when_upgrading">Important changes to consider when upgrading</h3></div>
+<h2 id="jmx">JMX</h2>
+<ul>
+<li><a href="ct/current-release/org.osgi.test.cases.jmx.html">JMX </a></li>
+</ul>
+<h2 id="jpa">JPA</h2>
+<p>Not run. The Aries container managed JPA implementation is not expected to
+pass the existing compliance tests for user managed JPA.</p>
+<h2 id="transaction">Transaction</h2>
+<ul>
+<li><a href="ct/current-release/org.osgi.test.cases.transaction.html">Transaction </a></li>
+</ul></div>
             <!-- Content -->
           </td>
         </tr>
