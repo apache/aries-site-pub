@@ -253,33 +253,73 @@ current process did not use semantic versioning, and, as an OSGi project we shou
 <tr><td class="confluenceTd">  8 </td><td class="confluenceTd"> A way to ensure that a given component doesn't have conflicting dependencies </td><td class="confluenceTd"> ?  </td></tr>
 </table>
 
-<p>Our ideal for a release process would involve to release by module, one might visualise the process like this: </p>
-
+<h2 id="release_all_aries_components_at_once">Release all Aries components at once.</h2>
+<h3 id="advantages_of_releasing_everything_at_once_and_at_the_same_level">Advantages of releasing everything at once and at the same level</h3>
+<ol>
+<li>Conceptually very simple of consumers. For example, if as a consumer I pick up something called Blueprint version 0.4 I know that I
+will need to get Util version 0.4 to go with it.</li>
+<li>A relatively simple release process, one JIRA component, one set of release notes.</li>
+<li>We can release a set of samples at the same version with some guarentee that the samples all work with the release.</li>
+</ol>
+<h3 id="disadvantages_of_releasing_everything_at_once">Disadvantages of releasing everything at once</h3>
+<ol>
+<li>Not using of OSGi semantic versioning of bundles. After every we release we bump the major versions of all bundles in trunk.</li>
+</ol>
+<p>Package versions are managed separately (correctly) and the Maven bundle plugin will ensure packges are imported in the correct range based of
+ the projects dependencies. Implementers need to use "provide:=true" to get the correct range. Package export version should be maintained 
+either using package.info or in the pom.xml.</p>
+<h2 id="releasing_by_module">Releasing by module</h2>
+<p><p>Our ideal for a release process would involve to release by module, this is 
+really just an evolution of the process that we already use but it would involve 
+using semantic versioning of bundles. One might visualise the process like this: </p></p>
 <p><img alt="rel" src="release_by_module.png" /></p>
-<p>In this case, we have a module version (independent of the version of its sub-modules) and a set of sub-modules which may each be indepndently versioned.
+<p>In this case, we have a module version (independent of the version of its sub-modules) and a set of sub-modules which may each be indepndently versioned.</p>
 
-## Advantages of release by module
- 1. Releasing a coherent set of bundles that have been built and run together
- 1. Releasing a buildable set of source for all constituent bundles in one zip file
- 1. A more consumable unit than a set of single bundles - easier for Aries consumers. A smaller number of discrete downloads.
-
-## Disadvantages of the release by module process
- 1. We would want to release a whole module at once, this would mean re-releasing bundles at the same level 
- (and with the same content) as a previous release. This is not a major issue
- 1. Developer would need to be careful to version submodules poms independently from the parent/reactor pom. Again, 
- not a major issue but a change from the way we work at the moment.
- 1. The Maven release plugin will not cope with having different levels of snapshot in the same release. 
+<h3 id="advantages_of_release_by_module">Advantages of release by module</h3>
+<ol>
+<li>Releasing a coherent set of bundles that have been built and run together</li>
+<li>Releasing a buildable set of source for all constituent bundles in one zip file</li>
+<li>A more consumable unit than a set of single bundles - easier for Aries consumers. A smaller number of discrete downloads.</li>
+</ol>
+<h3 id="disadvantages_of_the_release_by_module_process">Disadvantages of the release by module process</h3>
+<ol>
+<li>We would have to release a whole module at once, this would mean re-releasing bundles at the same level 
+ (and with the same content) as a previous release. This is not a major issue but we would probably not want them in the 
+www.apache.org/dist/aries directory.</li>
+<li>Developer would need to be careful to version submodules poms independently from the parent/reactor pom. Again, 
+ not a major issue but a change from the way we work at the moment.</li>
+<li>The Maven release plugin will not cope with having different levels of snapshot in the same release. 
 Therefore we would either require changes in the Maven release plugin or we would have to stop using it 
-and maintain our own alternative, to allow us to release by module.
- 1. It's not all clear what the strategy for branching would be. For example, consider the following scenario: 
-![rel](branches_and_modules.png)
-<p>The bundles in trunk should be versioned differently from the versions in branch. This really mandates a bump in the major version.
-<p>The consequence of not bumping the major version and using the versioning tool to compare versions in trunk (for the next release from trunk)
-and using the versioning tool to create bug fix versions from the branch has the potential to lead to the situation in which bundles with the
-same version number have different content.
-<p>For example, as time goes on another release (version 6) of the proxy module is created, the version compare tool dictates that proxy-impl 
-should be released at version 0.4.2. But now, someone who wants a fix to proxy-impl in 0.4.1 (in proxy module version 5) which would be provided
-from the branch, would also get a proxy-impl bundle at version 0.4.2 with different content. This is a situation which must be avoided.</div>
+and maintain our own alternative, to allow us to release by module.</li>
+<li>It's not all clear what the strategy for branching would be. For example, consider the following scenario: 
+<img alt="rel" src="dual_component_module.png" />
+<p>In this case a release of the blueprint module at version 1.5 contains bundles blueprint-core at version 1.0.1 and blueprint-cm
+at version 1.0.2.</p>
+<p>Over a period of time, development in trunk continues and a change is made to blueprint-core which mandates an increase in
+the major version. Another release of blueprint (version 1.6) is made containing blueprint-cm at version 1.0i.3 and blueprint-core at version 1.1.0.</p>
+<p>Meanwhile a customer finds a problem in blueprint module version 1.5 in the blueprint-cm module. They would like a release of the blueprint module
+at version 1.5.1 with blueprint-cm at 1.0.3. Unfortunately this is impossible because we have already released blueprint-cm at 1.0.3
+and it works with blueprint-core 1.1.0. So, we have no way to meet the requirement </p></li>
+</ol>
+<h2 id="releasing_by_bundle">Releasing by bundle</h2>
+<p>Other OSGi projects, for example Sling and Felix, release by bundle.</p>
+<h3 id="advantages_of_releasing_by_bundle">Advantages of releasing by bundle</h3>
+<ol>
+<li>Other projects already do it so there is a well understood model</li>
+<li>All the existing tools work</li>
+<li>OSGi semantic versioning can be used properly</li>
+</ol>
+<h3 id="disadvantages_of_releasing_by_bundle">Disadvantages of releasing by bundle</h3>
+<ol>
+<li>It is more difficult for a consumer of Aries modules to understand which bundles form a logical grouping</li>
+<li>There are a lot of bundles to manage independently. This has implications:<br/><ul>
+<li>Releasing - mvn release:prepare, and so on,  needs to be run for each bundle separately. However, many bundles could be rolled up into one vote.</li>
+<li>Each bundle has to have its own JIRA component</li>
+<li>Our svn tree would need to be restructured - probably in a similar way to the Sling tree. Each bundle would have its own trunk &amp; branches.</li>
+</ul>
+</li>
+<li>There are still some issues with branching and it is still possible to get into a situation similar to that described above. </li>
+</ol></div>
             <!-- Content -->
           </td>
         </tr>
