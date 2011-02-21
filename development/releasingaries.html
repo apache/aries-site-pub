@@ -255,6 +255,7 @@ when it has.</p>
 <li>Creating and storing GPG keys</li>
 <li>Setting up your environment</li>
 <li>Creating a branch to release from</li>
+<li>JIRA preparation</li>
 <li>Checking release artifacts on your local system</li>
 <li>Creating a snapshot release (optional - not really part of the release
 process, uses mvn deploy)</li>
@@ -264,6 +265,7 @@ release:perform)</li>
 <li>Promoting the release artifacts to the Apache release repository</li>
 <li>Making the release artifacts available from the Aries web pages</li>
 <li>What to do when people find problems with the release artifacts</li>
+<li>JIRA tasks</li>
 </ol>
 <p>The best current documentation for releases is <a href="http://apache.org/dev/publishing-maven-artifacts.html">here</a>
  - but this isn't released yet. It covers all the steps listed above so on
@@ -353,6 +355,12 @@ file does need one. As an alternative you can use 'mvn -Prat install'.</p>
 <h3 id="creating_a_snapshot_release">Creating a snapshot release</h3>
 <p>TBD. This isn't a necessary step in the release process but should still be
 documented here.</p>
+<h3 id="jira_preparation">JIRA preparation</h3>
+<ul>
+<li>After initial release discussion on the mailing list you should have a list of JIRA issues that are required in the release. If not, the default assumption is 'everything that has been fixed since the last release'.</li>
+<li>Make sure that there is a JIRA component that matches the name of the release, if not, create one.</li>
+<li>Check through defects, make sure that anything that is included in the release has been closed. If there are open issues move them to the next release.</li>
+</ul>
 <p><a name="ReleasingAries-Creatingtherelease"></a></p>
 <h3 id="creating_the_release">Creating the release</h3>
 <p><a name="ReleasingAries-Creatingthereleaseartifactsinastagingrepository"></a></p>
@@ -519,7 +527,7 @@ Download the release artifacts using a script like <a href="release-0.2">this</a
 </li>
 <li>Get the compliance tests run</li>
 <li>Release notes</li>
-<li>Tidy up JIRA</li>
+<li>Release the component in JIRA (manage components), check the JIRA release notes.</li>
 </ul>
 <p><a name="ReleasingAries-Whattodowhenpeoplefindproblemswiththerelease"></a></p>
 <h3 id="what_to_do_when_people_find_problems_with_the_release">What to do when people find problems with the release</h3>
