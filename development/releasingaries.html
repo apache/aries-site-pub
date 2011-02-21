@@ -277,7 +277,7 @@ agree its content. Allow at least a week for this discussion. </p>
 <p><a name="ReleasingAries-CreatingandstoringGPGkeys"></a></p>
 <h3 id="creating_and_storing_gpg_keys">Creating and storing GPG keys</h3>
 <p>For Aries your GPG key will need to be in this file:
-https://svn.apache.org/repos/asf/incubator/aries/KEYS (follow the
+https://svn.apache.org/repos/asf/aries/KEYS (follow the
 instructions in the file) and checkin</p>
 <p><a name="ReleasingAries-Settingupyourenvironment"></a></p>
 <h3 id="setting_up_your_environment">Setting up your environment</h3>
@@ -289,9 +289,9 @@ to do it. Running the commands to create the release can take some time,
 especially if you have to revert anything. This is much easier if you are
 working in your own branch and not in trunk where other people may be
 committing code.</p>
-<div class="codehilite"><pre><span class="n">svn</span> <span class="n">copy</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/incubator/</span><span class="n">aries</span><span class="o">/</span><span class="n">trunk</span> <span class="o">\</span>
+<div class="codehilite"><pre><span class="n">svn</span> <span class="n">copy</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">trunk</span> <span class="o">\</span>
 
-<span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/incubator/</span><span class="n">aries</span><span class="sr">/branches/</span><span class="mi">0</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="n">incubating</span><span class="o">-</span><span class="n">RCx</span> <span class="o">\</span>
+<span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">branches</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="n">incubating</span><span class="o">-</span><span class="n">RCx</span> <span class="o">\</span>
 
   <span class="o">-</span><span class="n">m</span> <span class="s">&quot;Creating a release branch of /aries/trunk.&quot;</span>
 </pre></div>
@@ -299,18 +299,18 @@ committing code.</p>
 
 <p>Where '0.X' is the number of the release.</p>
 <p>Checkout the new branch, for example, for the 0.2-incubating  release:</p>
-<div class="codehilite"><pre><span class="n">svn</span> <span class="n">co</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/incubator/</span><span class="n">aries</span><span class="sr">/branches/</span><span class="mf">0.2</span><span class="o">-</span><span class="n">incubating</span><span class="o">-</span><span class="n">RCx</span> <span class="n">aries</span><span class="o">-</span><span class="mf">0.2</span><span class="o">-</span><span class="n">candidate</span>
+<div class="codehilite"><pre><span class="n">svn</span> <span class="n">co</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">branches</span><span class="o">/</span><span class="mf">0.2</span><span class="o">-</span><span class="n">incubating</span><span class="o">-</span><span class="n">RCx</span> <span class="n">aries</span><span class="o">-</span><span class="mf">0.2</span><span class="o">-</span><span class="n">candidate</span>
 </pre></div>
 
 
 <p><em>IMPORTANT</em> If you are using a branch to release you <em>must</em> edit the top
 level pom.xml for each module to change the SCM references to point to the
 branch and not to trunk. For example:</p>
-<div class="codehilite"><pre><span class="nt">&lt;connection&gt;</span>scm:svn:http://svn.apache.org/repos/asf/incubator/aries/branches/0.2-incubating-RCx/parent<span class="nt">&lt;/connection&gt;</span>
+<div class="codehilite"><pre><span class="nt">&lt;connection&gt;</span>scm:svn:http://svn.apache.org/repos/asf/aries/branches/0.2-RCx/parent<span class="nt">&lt;/connection&gt;</span>
 
-<span class="nt">&lt;developerConnection&gt;</span>scm:svn:https://svn.apache.org/repos/asf/incubator/aries/branches/0.2-incubating-RCx/parent<span class="nt">&lt;/developerConnection&gt;</span>
+<span class="nt">&lt;developerConnection&gt;</span>scm:svn:https://svn.apache.org/repos/asf/aries/branches/0.2-RCx/parent<span class="nt">&lt;/developerConnection&gt;</span>
 
-<span class="nt">&lt;url&gt;</span>scm:svn:http://svn.apache.org/repos/asf/incubator/aries/branches/0.2-incubating-RCx/parent<span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;url&gt;</span>scm:svn:http://svn.apache.org/repos/asf/aries/branches/0.2-RCx/parent<span class="nt">&lt;/url&gt;</span>
 </pre></div>
 
 
@@ -503,8 +503,8 @@ there they will be automatically moved to the Maven repository.</p>
 <p><a name="ReleasingAries-MakingthereleaseartifactsavailablefromtheArieswebpages."></a></p>
 <h3 id="making_the_release_artifacts_available_from_the_aries_web_pages">Making the release artifacts available from the Aries web pages.</h3>
 <p>Anything that is to be downloaded must be put in
-/www/www.apache.org/dist/incubator/aries on minotaur. The distributions are
-archived here /www/archive.apache.org/dist/incubator/aries.</p>
+/www/www.apache.org/dist/aries on minotaur. The distributions are
+archived here /www/archive.apache.org/dist/aries.</p>
 <p>First, delete the previous distribution from the distribution directory.
 Download the release artifacts using a script like <a href="release-0.2">this</a>
 . Next, update the Aries Downloads pages to refer to the new artifacts.</p>
@@ -550,7 +550,7 @@ module this works on *ix:</p>
 through the release process again. </p>
 <p>In some cases you may also want to merge from trunk into the release
 branch. The syntax to do this is:</p>
-<div class="codehilite"><pre><span class="n">svn</span> <span class="n">merge</span> <span class="o">-</span><span class="n">c</span> <span class="n">ZZZZZZ</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/incubator/</span><span class="n">aries</span><span class="o">/</span><span class="n">trunk</span>
+<div class="codehilite"><pre><span class="n">svn</span> <span class="n">merge</span> <span class="o">-</span><span class="n">c</span> <span class="n">ZZZZZZ</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">trunk</span>
 </pre></div>
 
 
