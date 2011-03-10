@@ -289,11 +289,11 @@ APPLICATION.MF based on the pom configuration:</p>
 <p><a name="EBAMavenPluginProject-OverridingApplication-SymbolicName"></a></p>
 <h2 id="overriding_application-symbolicname">Overriding Application-SymbolicName</h2>
 <p>The application symbolic name defaults to the
-${pom.groupId}.${pom.artifaceId}.  The following shows how to override
+${project.groupId}.${project.artifaceId}.  The following shows how to override
 this:</p>
 <div class="codehilite"><pre><span class="nt">&lt;configuration&gt;</span>
   <span class="nt">&lt;instructions&gt;</span>
-    <span class="nt">&lt;Application</span><span class="err">-SymbolicName</span><span class="nt">&gt;</span><span class="cp">${</span><span class="n">pom</span><span class="o">.</span><span class="n">artifaceId</span><span class="cp">}</span><span class="nt">&lt;/Application-SymbolicName&gt;</span>
+    <span class="nt">&lt;Application</span><span class="err">-SymbolicName</span><span class="nt">&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">artifaceId</span><span class="cp">}</span><span class="nt">&lt;/Application-SymbolicName&gt;</span>
   <span class="nt">&lt;/instructions&gt;</span>
 <span class="nt">&lt;/configuration&gt;</span>
 </pre></div>
