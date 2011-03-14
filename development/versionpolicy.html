@@ -22,7 +22,7 @@
 	<meta name="keywords" content="..."/>
 	<meta name="description" content="..." />
     <title>
-		Apache Aries - Board Report
+		Apache Aries - 
     </title>
   </head>
 <body onload="SetMenu()">
@@ -234,20 +234,50 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><h1 id="march_2011_board_report">March 2011 Board report</h1>
-<p>Aries delivers a set of pluggable Java components enabling an enterprise OSGi application programming model.</p>
-<h2 id="new-releases">New releases</h2>
-<p>These bug fix releases have been completed since the last board report:</p>
+            <div class="wiki-content"><h1 id="versioning_policy_-_draft">Versioning policy - DRAFT</h1>
+<p>The Aries  project aims to implement OSGi semantic versioning as described <a href="www.osgi.org/wiki/uploads/Links/SemanticVersioning.pdf">here</a>.</p>
+<p>The implementation of semantic versioning has a number of practical implications for managing a project. These are
+outlined in this section. </p>
+<h2 id="bundle_versions">Bundle versions</h2>
+<p>OSGi semantic versioning applies to bundles as well as packages. When releasing a new version of a bundle
+the change in the bundle version should give some indication of nature of the changes to the bundle.
+In Aries the bundle version is the same as version of the Maven artifact version. 
+During development, in trunk, the Maven artifact version may be:</p>
 <ul>
-<li>Aries Application 0.2.1</li>
-<li>Aries Blueprint 0.2.1</li>
-<li>Aries Blueprint 0.3.1</li>
+<li>either x.y.z Where x.y.z is the most recent release of the bundle</li>
+<li>or x.y.(z+1)-SNAPSHOT Indicating that the bundle has changed since it was last released.</li>
 </ul>
-<h2 id="release-by-bundle">Release by bundle</h2>
-<p>After some significant investigation and discussion, we recently concluded a vote to switch to a release-by-bundle scheme. This is to enable us to follow the guidance set out in the OSGi Alliance Semantic Versioning white paper. </p>
-<h2 id="community-update">Community update</h2>
-<p>Largely unchanged since last month dev@ 117 subscribers, user@ 129 subscribers. The dev@ list continues to be active with less traffic on the user@ list. No new committers or PMC members.</p>
-<p>There are no board level issues.</p></div>
+<p>Immediately after a release the Maven version is set the same as the release. Bundles which depend
+on the bundle will pick up the released version. When a developer first makes a change to the bundle the version
+is changed to be a SNAPSHOT version, indicating to a release manager that the bundle is a candidate for release.</p>
+<p>At release time the release version of the bundle must be assigned by the release manager after reviewing
+the changes to the bundle's package versions since the last release.</p>
+<h2 id="package_versions">Package versions</h2>
+<h3 id="exported_packages">Exported packages</h3>
+<p>Versions are usually specified in packageinfo files with the source code. The default-parent pom is 
+configures (in the build resources section) to expect packageinfo files. If your pom has a build
+resources section it replaces what is inherited from the default-parent, so you may need to reproduce 
+the section which specifies where packageinfo can be found.</p>
+<p>Developers <strong>must</strong> increment the versions in packageinfo files in strict accordance with OSGi
+semantic versioning when they make changes to a package. The version should relate to the most
+recent release of the package and not to the version found in trunk. For example:</p>
+<ul>
+<li>Scenario 1, making changes to a package with released version a.b.c</li>
+<li>Developer A fixes a bug in the package and increments it's version to a.b.c+1</li>
+<li>
+<p>Developer B fixes another bug in the package but leaves the version at a.b.c+1 </p>
+</li>
+<li>
+<p>Scenario 2, making changes to a package with released version a.b.c</p>
+</li>
+<li>Developer A fixes a bug in the package and increments it's version to a.b.c+1</li>
+<li>Developer B makes an API breaking change and increases the package version to (a+1).0.0</li>
+</ul>
+<h2 id="importing_packages">Importing packages</h2>
+<p>The bnd default version range policy for imports is the consumer policy (==, +), you may need to 
+override this if you want to be more prescriptive about specific Aries imports.
+The policy can be set by using the Maven property <aries.osgi.version.policy>, see the default-parent
+pom for an example.</p></div>
             <!-- Content -->
           </td>
         </tr>
