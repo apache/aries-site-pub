@@ -266,22 +266,18 @@ the section which specifies where packageinfo can be found.</p>
 <p>Developers <strong>must</strong> increment the versions in packageinfo files in strict accordance with OSGi
 semantic versioning when they make changes to a package. The version should relate to the most
 recent release of the package and not to the version found in trunk. For example:</p>
+<h4 id="scenario_1_making_changes_to_a_package_with_released_version_abc">Scenario 1, making changes to a package with released version a.b.c</h4>
 <ul>
-<li>Scenario 1, making changes to a package with released version a.b.c</li>
 <li>Developer A fixes a bug in the package and increments it's version to a.b.c+1</li>
-<li>
-<p>Developer B fixes another bug in the package but leaves the version at a.b.c+1 </p>
-</li>
-<li>
-<p>Scenario 2, making changes to a package with released version a.b.c</p>
-</li>
+<li>Developer B fixes another bug in the package but leaves the version at a.b.c+1 </li>
+</ul>
+<h4 id="scenario_2_making_changes_to_a_package_with_released_version_abc">Scenario 2, making changes to a package with released version a.b.c</h4>
+<ul>
 <li>Developer A adds a method to an interface in the package and increments it's version to a.b+1.0</li>
-<li>
-<p>Developer B fixes a bug in the package, leaves its version at a.b+1.0</p>
-</li>
-<li>
-<p>Scenario 3, making changes to a package with released version a.b.c</p>
-</li>
+<li>Developer B fixes a bug in the package, leaves its version at a.b+1.0</li>
+</ul>
+<h4 id="scenario_3_making_changes_to_a_package_with_released_version_abc">Scenario 3, making changes to a package with released version a.b.c</h4>
+<ul>
 <li>Developer A fixes a bug in the package, and increments its version to a.b.c+1</li>
 <li>Developer B deletes a method from an interface and increases the package version to a+1.0.0</li>
 </ul>
