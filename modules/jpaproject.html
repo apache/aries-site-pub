@@ -252,43 +252,46 @@ Release 4, Version 4.2" available for public download from the <a href="http://w
 <p>Step 1 : Module</p>
 <p>Every jar deployed on an OSGI platform must be adapted to be conform to OSGI standard. That means that the maven
 packaging which is defined as the default value must be defined to bundle</p>
-<p>{code}
-    <groupId>org.apache.aries.samples.blog</groupId>
-    <artifactId>org.apache.aries.samples.blog.persistence.jpa</artifactId>
-    <name>Apache Aries blog sample persistence</name>
-    <packaging>bundle</packaging>
-{code} </p>
+<div class="codehilite"><pre><span class="nt">&lt;groupId&gt;</span>org.apache.aries.samples.blog<span class="nt">&lt;/groupId&gt;</span>
+<span class="nt">&lt;artifactId&gt;</span>org.apache.aries.samples.blog.persistence.jpa<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;name&gt;</span>Apache Aries blog sample persistence<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;packaging&gt;</span>bundle<span class="nt">&lt;/packaging&gt;</span>
+</pre></div>
+
+
 <p>and that you must configure the maven-bundle-plugin (http://felix.apache.org/site/apache-felix-maven-bundle-plugin-bnd.html)
 to generate the MANIFEST.MF file required by OSGI platform.</p>
 <p>Remark : the modification to be made (packages to be imported or exported depends on your project setting)</p>
-<p>{code}
-    <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <configuration>
-            <instructions>
-                <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
-                <Private-Package>org.apache.aries.samples.blog.persistence.jpa.<em></Private-Package>
-                <Export-Package>!org.apache.aries.samples.blog.persistence.jpa.</em></Export-Package>
-            </instructions>
-        </configuration>
-    </plugin>
-{code}</p>
+<div class="codehilite"><pre><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.felix<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>maven-bundle-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;instructions&gt;</span>
+            <span class="nt">&lt;Bundle</span><span class="err">-SymbolicName</span><span class="nt">&gt;</span><span class="cp">${</span><span class="n">project</span><span class="o">.</span><span class="n">artifactId</span><span class="cp">}</span><span class="nt">&lt;/Bundle-SymbolicName&gt;</span>
+            <span class="nt">&lt;Private</span><span class="err">-Package</span><span class="nt">&gt;</span>org.apache.aries.samples.blog.persistence.jpa.*<span class="nt">&lt;/Private-Package&gt;</span>
+            <span class="nt">&lt;Export</span><span class="err">-Package</span><span class="nt">&gt;</span>!org.apache.aries.samples.blog.persistence.jpa.*<span class="nt">&lt;/Export-Package&gt;</span>
+        <span class="nt">&lt;/instructions&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</pre></div>
+
+
 <p>To allow the Aries JPA Container to setup your persistence layer (akka : instantiate the entityFactory with the information
 provided into the persistence.xml file), an additional modification must be made in your pom.xml file to package this file
 into the META-INF directory</p>
-<p>{code}
-    <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <configuration>
-            <instructions>
-                <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
-                ...
-            </instructions>
-        </configuration>
-    </plugin>
-{code}</p>
+<div class="codehilite"><pre><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.felix<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>maven-bundle-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;instructions&gt;</span>
+            <span class="nt">&lt;Meta-Persistence&gt;</span>META-INF/persistence.xml<span class="nt">&lt;/Meta-Persistence&gt;</span>
+            ...
+        <span class="nt">&lt;/instructions&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</pre></div>
+
+
 <p>When this step is done, your pom.xml file is ready to be used to package and install your bundle into the maven repository
 and next into a OSGI container (Apache Felix, Apache Karaf, Eclipse Equinox)</p>
 <p>Step 2 : Adapt the persistence file</p>
@@ -299,14 +302,13 @@ the datasource with a key used to find it from applications. JNDI is not support
 specification has made a proposition to provide a similar mechanism that Aries JNDI project covers (http://aries.apache.org/modules/jndiproject.html).</p>
 <p>To access to the datasource, you must provide within the <jta-data-source> or <non-jta-data-source> depending if you use a JTA
 transaction manager or not.</p>
-<p>{code}
-    <persistence-unit name="ReportIncident" transaction-type="JTA">
-        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider></p>
-<div class="codehilite"><pre>    <span class="nt">&lt;jta-data-source&gt;</span>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/reportincidentdb)<span class="nt">&lt;/jta-data-source&gt;</span>
+<div class="codehilite"><pre><span class="nt">&lt;persistence-unit</span> <span class="na">name=</span><span class="s">&quot;ReportIncident&quot;</span> <span class="na">transaction-type=</span><span class="s">&quot;JTA&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;provider&gt;</span>org.apache.openjpa.persistence.PersistenceProviderImpl<span class="nt">&lt;/provider&gt;</span>
+
+    <span class="nt">&lt;jta-data-source&gt;</span>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/reportincidentdb)<span class="nt">&lt;/jta-data-source&gt;</span>
 </pre></div>
 
 
-<p>{code}</p>
 <p>With J2EE applications, you simply use the jdbc key with the name of the datasource associated (jdbc/reportincidentdb). As OSGI uses a
  different mechanism, we must define two parameters, the "osgi:service" wich will allow to find from the OSGI Service registry (aka proxy)
  the interface "javax.sql.DataSource" and the name of the service "osgi.jndi.service.name", which is a filter property,  with its jndi name associated.</p>
@@ -316,12 +318,12 @@ transaction manager or not.</p>
 with the classes of your DAO layer and add Transactional aspect into the methods. This way of work allows to complety
 embed existing projects into ARIES sphere without modifications</p>
 <p>Here are the modifications to do in the blueprint xml file located under OSGI-INF/blueprint</p>
-<p>{code}
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.0.0"
     xmlns:jpa="http://aries.apache.org/xmlns/jpa/v1.0.0"
-    default-activation="lazy"></p>
+    default-activation="lazy">
+
 <div class="codehilite"><pre><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;incidentDAO&quot;</span>
     <span class="na">class=</span><span class="s">&quot;org.apache.camel.example.reportincident.dao.impl.IncidentDAOImpl&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;tx:transaction</span> <span class="na">method=</span><span class="s">&quot;*&quot;</span> <span class="na">value=</span><span class="s">&quot;Required&quot;</span> <span class="nt">/&gt;</span> (1)
@@ -349,17 +351,17 @@ embed existing projects into ARIES sphere without modifications</p>
 </pre></div>
 
 
-<p></blueprint>
-{code}</p>
-<p>(1) The <tx:transaction> tag allows to inject in your DAO layer the transactional aspect and using the following symbol
+</blueprint>
+
+<p>(1) The &lt;tx:transaction&gt; tag allows to inject in your DAO layer the transactional aspect and using the following symbol
 "*", Aries Transaction manager will create for each method a session to begin / commit or rollback a transaction in your class
-The scope of the transaction can be defined using the attribute value.
-(2) The JPA context is created using <jpa:context>. The entityManager (which corresponds to the property of your DAO class) will be
+The scope of the transaction can be defined using the attribute value.<br />
+(2) The JPA context is created using &lt;jpa:context&gt;. The entityManager (which corresponds to the property of your DAO class) will be
 injected using the property="entityManager". The reference to your unit name (defined in the persistence.xml file) is passed with the
  attribute unitname.
-file.
-(3) The <service> allows to expose an interface on the OSGI Registry Service using as key the name of the interface ("javax,sql.Datasource").
-The <service-properties> will let to define a property that we will use to retrieve the datasource from the registry</p>
+file.<br />
+(3) The &lt;service&gt; allows to expose an interface on the OSGI Registry Service using as key the name of the interface ("javax,sql.Datasource").
+The &lt;service-properties&gt; will let to define a property that we will use to retrieve the datasource from the registry</p>
 <p>Step 4 : Package the solution</p>
 <p>To package and deploy the solution, execute a "maven clean install" instruction and deploy your project on you OSGI platform</p></div>
             <!-- Content -->
