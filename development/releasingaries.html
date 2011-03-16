@@ -236,7 +236,7 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="ReleasingAries-HowtodoanAriesRelease"></a></p>
-<h1 id="how_to_do_an_aries_release">How to do an Aries Release</h1>
+<h1 id="how_to_do_an_aries_release_-_draft_release_by_bundle_process">How to do an Aries Release - Draft release by bundle process</h1>
 <p>To create a release you will need to create the release artifacts and move
 then to various places (ultimately the Maven central repository). The Maven
 commands and general outline of the process looks like this:</p>
@@ -255,11 +255,10 @@ when it has.</p>
 <li>Discussion of the release and its content on the aries-dev mailing list.</li>
 <li>Creating and storing GPG keys</li>
 <li>Setting up your environment</li>
-<li>Creating a branch to release from</li>
 <li>JIRA preparation</li>
+<li>Checking the release version of the bundle</li>
 <li>Checking release artifacts on your local system</li>
-<li>Creating a snapshot release (optional - not really part of the release
-process, uses mvn deploy)</li>
+<li>Creating a snapshot release </li>
 <li>Releasing to a staging repository (uses mvn release:prepare and mvn
 release:perform)</li>
 <li>Running a vote</li>
@@ -287,14 +286,10 @@ instructions in the file) and checkin</p>
 <p>Follow the general instructions linked to above. </p>
 <p><a name="ReleasingAries-Creatingabranchtoreleasefrom"></a></p>
 <h3 id="creating_a_branch_to_release_from">Creating a branch to release from</h3>
-<p>Although this isn't strictly speaking a necessary step it's pretty useful
-to do it. Running the commands to create the release can take some time,
-especially if you have to revert anything. This is much easier if you are
-working in your own branch and not in trunk where other people may be
-committing code.</p>
+<p>The recommendation is to avoid this unless you absolutely have to. </p>
 <div class="codehilite"><pre><span class="n">svn</span> <span class="n">copy</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">trunk</span> <span class="o">\</span>
 
-<span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">branches</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="n">incubating</span><span class="o">-</span><span class="n">RCx</span> <span class="o">\</span>
+<span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">branches</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="n">RCx</span> <span class="o">\</span>
 
   <span class="o">-</span><span class="n">m</span> <span class="s">&quot;Creating a release branch of /aries/trunk.&quot;</span>
 </pre></div>
@@ -302,7 +297,7 @@ committing code.</p>
 
 <p>Where '0.X' is the number of the release.</p>
 <p>Checkout the new branch, for example, for the 0.2-incubating  release:</p>
-<div class="codehilite"><pre><span class="n">svn</span> <span class="n">co</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">branches</span><span class="o">/</span><span class="mf">0.2</span><span class="o">-</span><span class="n">incubating</span><span class="o">-</span><span class="n">RCx</span> <span class="n">aries</span><span class="o">-</span><span class="mf">0.2</span><span class="o">-</span><span class="n">candidate</span>
+<div class="codehilite"><pre><span class="n">svn</span> <span class="n">co</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">branches</span><span class="o">/</span><span class="mf">0.2</span><span class="o">-</span><span class="n">RCx</span> <span class="n">aries</span><span class="o">-</span><span class="mf">0.2</span><span class="o">-</span><span class="n">candidate</span>
 </pre></div>
 
 
@@ -323,9 +318,19 @@ will not create a staging repository and will add stuff to the snapshot
 repository :-/.</p>
 <p>After taking the branch, change the pom versions in trunk to, say,
 0.3-incubating or whatever you want to call the next development version.</p>
+<p><a name="ReleasingAries-Checkingbundleversion"></a></p>
+<h3 id="checking_which_version_of_the_bundle_to_release">Checking which version of the bundle to release</h3>
+<p>If the Maven version of the bundle ends -SNAPSHOT then some change has been made which may require a release.
+To get a summary of the changes, use svn to compare with the most recently released tag, 
+for example:</p>
+<div class="codehilite"><pre> <span class="n">svn</span> <span class="n">diff</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">tags</span><span class="sr">/testsupport-0.3/</span>  <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">trunk</span><span class="sr">/testsupport/</span> <span class="o">--</span><span class="n">summarize</span>
+</pre></div>
+
+
+<p>In general, if no Java files have changed there is nothing to release (??? check this).</p>
 <p><a name="ReleasingAries-Checkingreleaseartifacts"></a></p>
 <h3 id="checking_release_artifacts">Checking release artifacts</h3>
-<p>I recommend deleting everything under ...org/apache/aries in your local
+<p>Delete everything under ...org/apache/aries in your local
 Maven repo. For linux/Mac users you will find this under ~/.m2/repository/.</p>
 <p>Check that the code builds using the usual <a href="buildingaries.html">sequence</a>
  of commands, but add the following arguments to the 'mvn install' command:</p>
@@ -344,7 +349,7 @@ Maven repo. For linux/Mac users you will find this under ~/.m2/repository/.</p>
 <p>This will run through the project and its sub projects generating a file
 called rat.txt in each target directory.
 The 'fn' means it will carry on even if it find a failure. To inspect the
-failures, the easiest way I've found so far is:</p>
+failures, use:</p>
 <div class="codehilite"><pre><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="n">rat</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">xargs</span> <span class="nb">grep</span> <span class="o">\!\</span><span class="p">?</span><span class="o">\</span><span class="p">?</span>
 </pre></div>
 
@@ -354,8 +359,8 @@ do not require an Apache license, eg MANIFEST.MF, but any <em>.java or </em>.js
 file does need one. As an alternative you can use 'mvn -Prat install'.</p>
 <p><a name="ReleasingAries-Creatingasnapshotrelease"></a></p>
 <h3 id="creating_a_snapshot_release">Creating a snapshot release</h3>
-<p>TBD. This isn't a necessary step in the release process but should still be
-documented here.</p>
+<p>This is important to do when releasing from trunk as other bundles may want
+to continue to depend on the -SNAPSHOT version while the release is voted through.</p>
 <h3 id="jira_preparation">JIRA preparation</h3>
 <ul>
 <li>After initial release discussion on the mailing list you should have a list of JIRA issues that are required in the release. If not, the default assumption is 'everything that has been fixed since the last release'.</li>

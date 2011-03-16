@@ -239,25 +239,6 @@
 <p>The Aries  project aims to implement OSGi semantic versioning as described <a href="www.osgi.org/wiki/uploads/Links/SemanticVersioning.pdf">here</a>.</p>
 <p>The implementation of semantic versioning has a number of practical implications for managing a project. These are
 outlined in this section. </p>
-<h2 id="bundle_versions">Bundle versions</h2>
-<p>OSGi semantic versioning applies to bundles as well as packages. When releasing a new version of a bundle
-the change in the bundle version should give some indication of nature of the changes to the bundle.
-In Aries the bundle version is the same as version of the Maven artifact version. 
-During development, in trunk, the Maven artifact version may be:</p>
-<ul>
-<li>either x.y.z Where x.y.z is the most recent release of the bundle</li>
-<li>or x.y.(z+1)-SNAPSHOT Indicating that the bundle has changed since it was last released.</li>
-</ul>
-<p>Immediately after a release the Maven version is set the same as the release. Bundles which depend
-on the bundle will pick up the released version. When a developer first makes a change to the bundle the version
-is changed to be a SNAPSHOT version, indicating to a release manager that the bundle is a candidate for release.</p>
-<p><strong>EITHER</strong>
-At release time the release version of the bundle must be assigned by the release manager after reviewing
-the changes to the bundle's package versions since the last release.</p>
-<p><strong>OR</strong>
-Whenever a developer makes a change to a package version they must check the bundle version and, if necessary, modify the bundle
-version in line with changes that have been made to packages. In this case the RM has no
-additional work - correct bundle semantic versioning is the responsibility of the developer making the code changes</p>
 <h2 id="package_versions">Package versions</h2>
 <h3 id="exported_packages">Exported packages</h3>
 <p>Versions are usually specified in packageinfo files with the source code. The default-parent pom is 
@@ -265,8 +246,8 @@ configures (in the build resources section) to expect packageinfo files. If your
 resources section it replaces what is inherited from the default-parent, so you may need to reproduce 
 the section which specifies where packageinfo can be found.</p>
 <p>Developers <strong>must</strong> increment the versions in packageinfo files in strict accordance with OSGi
-semantic versioning when they make changes to a package. The version should relate to the most
-recent release of the package and not to the version found in trunk. For example:</p>
+semantic versioning when they make changes to a package. The version should relate to the <strong>most
+recent release of the package</strong> and not to the version found in trunk. For example:</p>
 <h4 id="scenario_1_making_changes_to_a_package_with_released_version_abc">Scenario 1, making changes to a package with released version a.b.c</h4>
 <ul>
 <li>Developer A fixes a bug in the package and increments it's version to a.b.c+1</li>
@@ -280,13 +261,39 @@ recent release of the package and not to the version found in trunk. For example
 <h4 id="scenario_3_making_changes_to_a_package_with_released_version_abc">Scenario 3, making changes to a package with released version a.b.c</h4>
 <ul>
 <li>Developer A fixes a bug in the package, and increments its version to a.b.c+1</li>
-<li>Developer B deletes a method from an interface and increases the package version to a+1.0.0</li>
+<li>Developer B deletes a method from an interface and increases the package version to a+1.0.0. Note the final '0' here, developer B's change is more significant
+so there is no need to reflect Developer A's change with a micro version of '1'. Indeed, a version of a+1.0.1 would imply a bug fix to version a+1.0.0.</li>
 </ul>
 <h3 id="importing_packages">Importing packages</h3>
-<p>The bnd default version range policy for imports is the consumer policy (==, +), you may need to 
-override this if you want to be more prescriptive about specific Aries imports.
+<p>The bnd default version range policy for imports is the consumer policy (==, +). Implementers of interfaces will need to 
+override this. For example as an implementer of an interface the version range 
+would be the provider policy (==,=+).
 The policy can be set by using the Maven property <aries.osgi.version.policy>, see the default-parent
-pom for an example.</p></div>
+pom for an example.</p>
+<h2 id="bundle_versions">Bundle versions</h2>
+<p>OSGi semantic versioning applies to bundles as well as packages. When releasing a new version of a bundle
+the change in the bundle version should give some indication of nature of the changes to the bundle.
+In Aries the bundle version is the same as version of the Maven artifact version. 
+During development, in trunk, the Maven artifact version may be:</p>
+<ul>
+<li>either x.y.z Where x.y.z is the most recent release of the bundle</li>
+<li>or x.y.(z+1)-SNAPSHOT Indicating that the bundle has changed since it was last released.</li>
+</ul>
+<p>Immediately after a release the Maven version is set the same as the release. Bundles which depend
+on the bundle will pick up the released version. When a developer first makes a change to the bundle the version
+is changed to be a SNAPSHOT version and some change made to the bundle version number, 
+indicating to a release manager that the bundle is a candidate for release.</p>
+<p>There are two possibilities for assigning a bundle version number at release time:</p>
+
+<p><strong>EITHER</strong>
+At release time the release version of the bundle must be assigned by the release manager after reviewing
+the changes to the bundle's package versions since the last release. This is not a particularly time consuming task as long as 
+packageinfo files are used for versioning packages.</p>
+<p><strong>OR</strong>
+Whenever a developer makes a change to a package version they must check the bundle version and, if necessary, modify the bundle
+version in line with changes that have been made to packages. In this case the RM has no
+additional work (although it might be argues that an RM should check the bundle version - this is then pretty much the same amount of work as actually assigning it)
+- correct bundle semantic versioning is the primary responsibility of the developer making the code changes.</p></div>
             <!-- Content -->
           </td>
         </tr>
