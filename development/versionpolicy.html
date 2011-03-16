@@ -293,7 +293,9 @@ packageinfo files are used for versioning packages.</p>
 Whenever a developer makes a change to a package version they must check the bundle version and, if necessary, modify the bundle
 version in line with changes that have been made to packages. In this case the RM has no
 additional work (although it might be argues that an RM should check the bundle version - this is then pretty much the same amount of work as actually assigning it)
-- correct bundle semantic versioning is the primary responsibility of the developer making the code changes.</p></div>
+- correct bundle semantic versioning is the primary responsibility of the developer making the code changes.</p>
+<p>NB Of course, bundles that don't export any packages will still change version when bugs are fixed. In this case
+the new release version will always be x.y.(z+1) if the last release was x.y.z.</p></div>
             <!-- Content -->
           </td>
         </tr>
