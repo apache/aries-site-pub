@@ -248,11 +248,11 @@ Version 1.0" in the "OSGi Service Platform Enterprise Specification,
 Release 4, Version 4.2" available for public download from the <a href="http://www.osgi.org/Download/Release4V42">OSGi Alliance</a>
 .</p>
 <p>Developing an Aries JPA project is very easy and can be achieved with simple steps described hereafter.</p>
-<h1 id="maven_project_creation">Maven Project Creation</h1>
+<h1 id="creation_of_a_jpa_project_using_maven">Creation of a JPA project using Maven</h1>
 <p>The first step consist in to create a maven module and make the following modifications to allow to deploy
  it as OSGI bundle on the platform and reference where the persistence XML file must loaded by the classpath to
  allow to the JPA container to configure the project accordingly.</p>
-<p>Step 1 : Module</p>
+<p><strong>Step 1 : Module</strong></p>
 <p>Every jar deployed on an OSGI platform must be adapted to be conform to OSGI standard. That means that the maven
 packaging which is defined as the default value must be defined to bundle</p>
 <div class="codehilite"><pre><span class="nt">&lt;groupId&gt;</span>org.apache.aries.samples.blog<span class="nt">&lt;/groupId&gt;</span>
@@ -297,7 +297,7 @@ into the META-INF directory</p>
 
 <p>When this step is done, your pom.xml file is ready to be used to package and install your bundle into the maven repository
 and next into a OSGI container (Apache Felix, Apache Karaf, Eclipse Equinox)</p>
-<p>Step 2 : Adapt the persistence file</p>
+<p><strong>Step 2 : Adapt the persistence file</strong></p>
 <p>We will not cover how to define the different parameters of the persistence file but present you what you should modify to
 deploy it on non J2EE platform, which is the case by definition for OSGI kernel. Curiously, there is only one think
 to modify and it concerns the access to the datasource. In J2EE world, we use JNDI as registry mecahnism to registry
@@ -306,9 +306,9 @@ specification has made a proposition to provide a similar mechanism that Aries J
 <p>To access to the datasource, you must provide within the <jta-data-source> or <non-jta-data-source> depending if you use a JTA
 transaction manager or not.</p>
 <div class="codehilite"><pre><span class="nt">&lt;persistence-unit</span> <span class="na">name=</span><span class="s">&quot;ReportIncident&quot;</span> <span class="na">transaction-type=</span><span class="s">&quot;JTA&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;provider&gt;</span>org.apache.openjpa.persistence.PersistenceProviderImpl<span class="nt">&lt;/provider&gt;</span>
+<span class="nt">&lt;provider&gt;</span>org.apache.openjpa.persistence.PersistenceProviderImpl<span class="nt">&lt;/provider&gt;</span>
 
-    <span class="nt">&lt;jta-data-source&gt;</span>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/reportincidentdb)<span class="nt">&lt;/jta-data-source&gt;</span>
+<span class="nt">&lt;jta-data-source&gt;</span>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/reportincidentdb)<span class="nt">&lt;/jta-data-source&gt;</span>
 </pre></div>
 
 
@@ -316,7 +316,7 @@ transaction manager or not.</p>
  different mechanism, we must define two parameters, the "osgi:service" wich will allow to find from the OSGI Service registry (aka proxy)
  the interface "javax.sql.DataSource" and the name of the service "osgi.jndi.service.name", which is a filter property,  with its jndi name associated.</p>
 <p>The other tags of the xml file are defined according to JPA specification</p>
-<p>Step 3 : Define the services and expose them</p>
+<p><strong>Step 3 : Define the services and expose them</strong></p>
 <p>The last step consist in to use Annotations and Injection mechanism to let the Aries JPA container to create the entity Manager
 with the classes of your DAO layer and add Transactional aspect into the methods. This way of work allows to complety
 embed existing projects into ARIES sphere without modifications</p>
@@ -365,8 +365,11 @@ injected using the property="entityManager". The reference to your unit name (de
 file.<br />
 (3) The &lt;service&gt; allows to expose an interface on the OSGI Registry Service using as key the name of the interface ("javax,sql.Datasource").
 The &lt;service-properties&gt; will let to define a property that we will use to retrieve the datasource from the registry</p>
-<p>Step 4 : Package the solution</p>
-<p>To package and deploy the solution, execute a "maven clean install" instruction and deploy your project on you OSGI platform</p></div>
+<p><strong>Step 4 : Package the solution</strong></p>
+<p>To package and deploy the solution, execute a "maven clean install" instruction and deploy your project into your favorite OSGI platform. Depending in which OSGI container
+you plan to deploy your projects, the bundles (Aries JPA, OpenJPA, Aries Transaction, ....) to be used will be
+different and you will have to identify them. The Aries samples project provides you a list of <a href="https://svn.apache.org/repos/asf/aries/trunk/samples/blog/blog-itests/src/test/java/org/apache/aries/samples/blog/itests/JpaBlogSampleWithEbaTest.java">bundles</a> and you 
+can use them as a starting point to create your first project.</p></div>
             <!-- Content -->
           </td>
         </tr>
