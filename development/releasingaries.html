@@ -239,23 +239,91 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="ReleasingAries-HowtodoanAriesRelease"></a></p>
-<h1 id="how_to_do_an_aries_release_-_draft_release_by_bundle_process">How to do an Aries Release - Draft release by bundle process</h1>
+<h1 id="how_to_do_an_aries_release">How to do an Aries Release</h1>
+<p>There are three types of Aries release:</p>
+<ol>
+<li>Releasing a single Aries bundle (or group of bundles)</li>
+<li>Releasing a distribution - a group of bundles that work together</li>
+<li>Releasing the samples</li>
+</ol>
+<p>The outline process is the same in all three cases, further on down this page there are details about how the
+Apache release process works and how to get set up to run it, read those sections first if this is 
+your first release. If you are already familiar with the Apache process just use the high level descriptions in the
+next few paragraphs to perform releases.</p>
+<h2 id="releasing_a_single_bundle_or_group_of_bundles">Releasing a single bundle or group of bundles.</h2>
+<h3 id="what_to_release_make_a_list">What to release? Make a list.</h3>
+<p>The Apache release process will not release any bundle that has dependencies on -SNAPSHOTS. If, for example,
+a release of the blueprint API bundle is required the first step is to find and release any of
+its -SNAPSHOT dependencies. Because Aries bundles are quite interdependent (see <a href="ModuleDependencies">here</a> 
+for an idea
+of how the modules relate to each other, it may be necessary to release quite a large number of bundles. So,
+step one is to make a list. 
+<p>To help with this, there is a file called aries_release_versions.txt in the top level
+aries directory - this contains a list of all the Aries modules and their current release versions. The file
+can be recreated (if necessary)
+using the perl script list_bundles_in_aries.pl, checked into SVN under the scripts directory. The text file
+is used for later steps in the release process, so by the end of the process it will have been updated to have
+a complete list
+of all Aries modules and their most recent version numbers after the release.</p></p>
+<h3 id="how_to_deal_with_jira">How to deal with JIRA</h3>
+<p>Before actually doing any releasing work through the list of bundles and understand what defects have been fixed
+(add more about JIRA versions here)</p>
+<h3 id="what_version_will_be_released">What version will be released?</h3>
+<p>For each bundle on the list check how its package versions have changed since the last release.
+Based on this, use the <a href="versionpolicy">versioning policy</a> to determine the version of the bundle that should be released.</p>
+<h3 id="releasing_bundles">Releasing bundles</h3>
+<p>For each bundle:</p>
+<ul>
+<li>Deploy a SNAPSHOT to the maven snapshot repository (mvn deploy)</li>
+<li>Build each module and run RAT checks</li>
+<li>Create the release artifacts (mvn release:prepare)</li>
+<li>Upload release artifacts to a staging repository (mvn release:perform)</li>
+</ul>
+<h3 id="complete_the_process">Complete the process</h3>
+<p>Once the bundles are in the staging repository, start a vote on the release. After 72 hours close the vote. To complete
+the release process it is necessary to copy the new bundles to the dist dir and update table on the web pages.</p>
+<h2 id="releasing_a_distribution">Releasing a distribution</h2>
+<p>A distribution is just a collection of Aries bundles which have already been released.
+The distribution is just a convenient way for consumers to download aries bundles and all
+of the Aries bundles that they depend on.
+There are three distributions:</p>
+<ul>
+<li>Blueprint</li>
+<li>Application (isolating framework)</li>
+<li>Application (non-isolating framework)</li>
+</ul>
+<p>The release process is just the same as for everything else, again, the right time to release these is
+immediately after a bundle(s) release when you have a collection of artifacts that 
+work together.</p>
+<h2 id="releasing_the_samples">Releasing the samples</h2>
+<p>The Aries samples are designed to work across all the Aries modules. Samples are released as a single
+module. All of the Aries dependencies are listed in the top level samples pom. In 
+trunk, the version of all the dependencies should always point the SNAPSHOT versions 
+in trunk. At release time these must all be modified to the latest released version of 
+each bundle. <em>It is very important the versions are set <strong>only</strong> in the top level 
+sample pom</em>. Both sub-modules and filtered resources need the version information, setting it in
+one place is the only way to avoid a mess.</p>
+<p>The best time to do a samples release is usually at the end of a bundle release when 
+all of the bundle version information is up to date in aries_release_versions.txt. </p>
+
+<p>It is critically important that the samples are all tested before making release. Some have itests
+but others (blueprint) are only tested manually. In fact it's wise to run through
+a quick manual check for the blog and aries trader samples as the itests do not catch everything.</p>
+
+<h1 id="background_information_on_the_apache_release_process">Background information on the Apache Release process</h1>
 <p>To create a release you will need to create the release artifacts and move
 then to various places (ultimately the Maven central repository). The Maven
 commands and general outline of the process looks like this:</p>
 <p><img alt="rel" src="AriesRelease.png" /></p>
-<p>The picture assumes that you are releasing from a branch rather than from
-trunk. The full maven commands are not shown - the intention is just to
+<p>The full maven commands are not shown - the intention is just to
 give an indication of which maven commands you will need to use to create
-assets in different places.</p>
-<p>Performing a release is described in detail <a href="http://apache.org/dev/publishing-maven-artifacts.html.html">here</a>
+release artifacts in different places.</p>
+<p>Performing a release is described in detail <a href="http://apache.org/dev/publishing-maven-artifacts.html">here</a>
 . This document It covers all the steps listed above so on these pages we
-will only add things which are specific to the Apache Aries release. Note:
-the document has not been release and this link will need to be updated
-when it has.</p>
+will only add things which are specific to the Apache Aries release. </p>
 <p>There are a few steps to the process:</p>
 <ol>
-<li>Discussion of the release and its content on the aries-dev mailing list.</li>
+<li>Discussion of the release and its content on the dev@aries mailing list.</li>
 <li>Creating and storing GPG keys</li>
 <li>Setting up your environment</li>
 <li>JIRA preparation</li>
@@ -268,16 +336,14 @@ release:perform)</li>
 <li>Promoting the release artifacts to the Apache release repository</li>
 <li>Making the release artifacts available from the Aries web pages</li>
 <li>What to do when people find problems with the release artifacts</li>
-<li>JIRA tasks</li>
 </ol>
-<p>The best current documentation for releases is <a href="http://apache.org/dev/publishing-maven-artifacts.html">here</a>
- - but this isn't released yet. It covers all the steps listed above so on
+<p>The best current documentation for releases is <a href="http://apache.org/dev/publishing-maven-artifacts.html">here</a>. It covers all the steps listed above so on
 these pages we will only add things which are specific to the Apache Aries
 release.</p>
 <p><a name="ReleasingAries-Discussionofthereleaseandit'scontentontheAriesmailinglist"></a></p>
 <h3 id="discussion_of_the_release_and_its_content_on_the_aries_mailing_list">Discussion of the release and its content on the Aries mailing list</h3>
-<p>Before starting off the release process it is essential to gain concensus
-on the aries-dev list that this is the right time for a release and to
+<p>Before starting off the release process it is essential to gain consensus
+on the dev@aries list that this is the right time for a release and to
 agree its content. Allow at least a week for this discussion. </p>
 <p><a name="ReleasingAries-CreatingandstoringGPGkeys"></a></p>
 <h3 id="creating_and_storing_gpg_keys">Creating and storing GPG keys</h3>
@@ -289,7 +355,8 @@ instructions in the file) and checkin</p>
 <p>Follow the general instructions linked to above. </p>
 <p><a name="ReleasingAries-Creatingabranchtoreleasefrom"></a></p>
 <h3 id="creating_a_branch_to_release_from">Creating a branch to release from</h3>
-<p>The recommendation is to avoid this unless you absolutely have to. </p>
+<p>It is strongly recomended that releases are made from trunk and NEVER from a branch. But, if you have to release from a branch this is what 
+you will need to do:</p>
 <div class="codehilite"><pre><span class="n">svn</span> <span class="n">copy</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">trunk</span> <span class="o">\</span>
 
 <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">branches</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="n">RCx</span> <span class="o">\</span>
@@ -304,8 +371,8 @@ instructions in the file) and checkin</p>
 </pre></div>
 
 
-<p><em>IMPORTANT</em> If you are using a branch to release you <em>must</em> edit the top
-level pom.xml for each module to change the SCM references to point to the
+<p><em>IMPORTANT</em> If you are using a branch to release you <strong>must</strong> edit the 
+pom.xml for <strong>each</strong> bundle to change the SCM references to point to the
 branch and not to trunk. For example:</p>
 <div class="codehilite"><pre><span class="nt">&lt;connection&gt;</span>scm:svn:http://svn.apache.org/repos/asf/aries/branches/0.2-RCx/parent<span class="nt">&lt;/connection&gt;</span>
 
@@ -330,7 +397,9 @@ for example:</p>
 </pre></div>
 
 
-<p>In general, if no Java files have changed there is nothing to release (??? check this).</p>
+<p>In general, if no Java files have changed only the micro version of the bundle will need to be incremented on release. If Java 
+code has changed it is important to check the packageinfo files to see whether package versions have changed. If so
+these might lead to the requirement to increment the major or minor versions the bundle.</p>
 <p><a name="ReleasingAries-Checkingreleaseartifacts"></a></p>
 <h3 id="checking_release_artifacts">Checking release artifacts</h3>
 <p>Delete everything under ...org/apache/aries in your local
@@ -364,6 +433,7 @@ file does need one. As an alternative you can use 'mvn -Prat install'.</p>
 <h3 id="creating_a_snapshot_release">Creating a snapshot release</h3>
 <p>This is important to do when releasing from trunk as other bundles may want
 to continue to depend on the -SNAPSHOT version while the release is voted through.</p>
+<p>mvn deploy (check exact format)</p>
 <h3 id="jira_preparation">JIRA preparation</h3>
 <ul>
 <li>After initial release discussion on the mailing list you should have a list of JIRA issues that are required in the release. If not, the default assumption is 'everything that has been fixed since the last release'.</li>
@@ -374,9 +444,8 @@ to continue to depend on the -SNAPSHOT version while the release is voted throug
 <h3 id="creating_the_release">Creating the release</h3>
 <p><a name="ReleasingAries-Creatingthereleaseartifactsinastagingrepository"></a></p>
 <h5 id="creating_the_release_artifacts_in_a_staging_repository">Creating the release artifacts in a staging repository</h5>
-<p>Aries is released as a set of modules, not all the modules in Aries are
-part of the release. Some modules depend on other modules. The release is
-created by releasing each module separately and in a specific order. It is
+<p>The release is
+created by releasing each bundle separately and in a specific order. It is
 also desirable to maintain the same IP address for the entire process (the
 staging repository is associated with your IP address, changing it results
 in the creation of a second staging repository).</p>
@@ -387,25 +456,27 @@ the next few steps.</p>
 </pre></div>
 
 
-<p>Then, change directory to 'parent'. It is necessary to release parent first
-because everything else depends on it. Run the following commands:</p>
-<div class="codehilite"><pre><span class="n">mvn</span> <span class="n">install</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span>
-<span class="n">mvn</span> <span class="n">release:prepare</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span>
-<span class="n">mvn</span> <span class="n">release:perform</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span>
-</pre></div>
-
-
 <p><em>Note</em> The prepare step will make some assumptions about the version of the
 development stream that is left after the release has been made. When
 releasing from a branch it may not be a good idea to accept the default for
 this, it will very likely conflict with the development version in use in
 trunk.</p>
-<p>The install command is required to make sure that you have a copy of the
-parent in your local repository - it's required for releasing the
-eba-maven-plugin.</p>
-<p>This _should _ start to put release artifacts into an Apache <a href="https://repository.apache.org/index.html#view-repositories;staging.html">staging repository </a>. You will need to log in to see it.
-If nothing appears in a staging repo you should stop here and work out why
-:-). If you have made a mistake it's quite easy to revert. The release
+<p>For each bundle that needs to be release perform the following commands:</p>
+<div class="codehilite"><pre><span class="n">Check</span> <span class="n">that</span> <span class="n">there</span> <span class="n">are</span> <span class="nb">no</span> <span class="n">depndencies</span> <span class="n">on</span> <span class="o">-</span><span class="n">SNAPSHOT</span> <span class="n">versions</span><span class="o">.</span>
+<span class="n">Ensure</span> <span class="n">that</span> <span class="n">everything</span> <span class="n">is</span> <span class="n">committed</span> <span class="n">in</span> <span class="n">SVN</span>
+<span class="n">mvn</span> <span class="n">release:prepare</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span> <span class="o">-</span><span class="n">DpreparationGoals</span><span class="o">=</span><span class="s">&quot;clean install&quot;</span> 
+<span class="n">mvn</span> <span class="n">release:perform</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span>
+</pre></div>
+
+
+<ul>
+<li>Note 1: Use the -DdryRun option to check that release-prepare works.</li>
+<li>Note 2: mvn release:prepare makes and commits changes in SVN. </li>
+<li>Note 3: mvn release:clean will do <em>most</em> of the cleaning up in the event of failures.</li>
+</ul>
+<p>This will put release artifacts into an Apache <a href="https://repository.apache.org/index.html#view-repositories;staging.html">staging repository </a>. You will need to log in to see it.
+If nothing appears in a staging repo you should stop here and work out why. 
+If you have made a mistake it's quite easy to revert. The release
 commands make and commit changes to the project's pom.xml files and they
 create a tag in SVN. To revert the changes you will need to revert the
 pom.xml files and delete the tag from svn.</p>
@@ -428,55 +499,6 @@ the last step, with a message like:</p>
 the US. When you make a commit, it isn't immediately available in Europe to
 svn up to. Just wait 10 secs and repeat the mvn release:prepare command for
 it to restart where it left off.</p>
-<p>The next step is to release the eba-maven-plugin.</p>
-<div class="codehilite"><pre><span class="n">cd</span> <span class="o">..</span><span class="sr">/eba/m</span><span class="n">aven</span><span class="o">-</span><span class="n">plugin</span>
-<span class="n">mvn</span> <span class="n">versions:update</span><span class="o">-</span><span class="n">parent</span>
-<span class="n">mvn</span> <span class="n">versions:use</span><span class="o">-</span><span class="n">releases</span>
-<span class="n">svn</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;updated to latest releases&quot;</span>
-<span class="n">mvn</span> <span class="n">release:prepare</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span>
-<span class="n">mvn</span> <span class="n">release:perform</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span>
-</pre></div>
-
-
-<p>Then for each project, in the order given below:</p>
-<div class="codehilite"><pre><span class="n">testsupport</span>
-<span class="n">util</span>
-<span class="n">proxy</span>
-<span class="n">quiesce</span>
-<span class="n">blueprint</span> 
-<span class="n">jndi</span>
-<span class="n">transaction</span>
-<span class="n">web</span>
-<span class="n">application</span>
-<span class="n">jmx</span>
-<span class="n">jpa</span>
-<span class="n">samples</span> <span class="o">*</span><span class="n">See</span> <span class="n">Note</span> <span class="mi">1</span> <span class="n">below</span><span class="o">*</span>
-</pre></div>
-
-
-<p>Run the following commands:</p>
-<div class="codehilite"><pre><span class="n">mvn</span> <span class="n">versions:update</span><span class="o">-</span><span class="n">parent</span>   <span class="o">!</span><span class="n">Update</span> <span class="n">parent</span> <span class="n">to</span> <span class="n">latest</span> <span class="n">available</span>
-<span class="n">mvn</span> <span class="n">versions:use</span><span class="o">-</span><span class="n">releases</span> <span class="o">*</span><span class="n">See</span> <span class="n">Note</span> <span class="mi">3</span> <span class="n">below</span><span class="o">*</span>
-<span class="n">svn</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;updated to latest releases&quot;</span>
-<span class="n">rm</span> <span class="n">pom</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">versionsBackup</span>
-<span class="n">mvn</span> <span class="n">release:prepare</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span> <span class="o">-</span><span class="n">DpreparationGoals</span><span class="o">=</span><span class="s">&quot;clean install&quot;</span>
-<span class="o">*</span><span class="n">See</span> <span class="n">Note</span> <span class="mi">2</span> <span class="n">below</span><span class="o">*</span>
-<span class="n">mvn</span> <span class="n">release:perform</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span>
-</pre></div>
-
-
-<ul>
-<li>Note 1: when doing mvn versions:* actions in samples, you must also
-manually change the version properties that are coded as properties in the top level
-pom.xml. The only '-SNAPSHOT' you should have left in samples/pom.xml is
-the version element for the module itself.</li>
-<li>Note 2: -DpreparationGoals="clean install"  is needed for all modules
-that have sub modules with dependencies between them, in practice this is
-most modules.</li>
-<li>Note 3: These two commands should only make changes to the top level pom.xml. However, this relies on people having 
-understood that all the modules' dependencies go in the top level pom. If they haven't it's better 
-to fix the poms before releasing.</li>
-</ul>
 <p><a name="ReleasingAries-Closingthestagingrepository"></a></p>
 <h5 id="closing_the_staging_repository">Closing the staging repository</h5>
 <p>After checking that the staging repository contains the artifacts that you
@@ -484,12 +506,11 @@ expect you should close the staging repository. This will make it available
 so that people can check the release.</p>
 <p><a name="ReleasingAries-Runningthevote(s)"></a></p>
 <h3 id="running_the_vote">Running the vote.</h3>
-<p>After all the modules are present in the staging repository you will need
-to close the repository so that reviewers can access the modules. At this
+<p>At this
 point you should write two notes to the dev@aries.apache.org mailing list.</p>
 <ul>
 <li>Subject [VOTE]
- Apache Aries (Incubating) version 0.X-incubating release candidate 02</li>
+ Apache Aries release candidate 0N</li>
 </ul>
 <p>The the source archive files should be explicitly called out by release
 manager in any release vote. From an Apache legal standpoint, this is what
@@ -498,19 +519,15 @@ this <a href="devlistvote.txt">sample note</a>
 , there is a link to each modules' source*.zip file.</p>
 <ul>
 <li>Subject [DISCUSS]
- Apache Aries (Incubating) version 0.X-incubating release candidate 0X</li>
+ Apache Aries  release candidate 0X</li>
 </ul>
 <p>The content should just indicate that the note starts a thread to discuss
-the Aries 0.X-incubating release.</p>
+the Aries release.</p>
 <p>After 72 hours, if no problems have been found in the release artifacts,
-the aries-dev vote can be summarised and closed. Note that at least three
-+1 votes from Aries IPMC members are required. </p>
-<p>After closing the vote on the aries-dev list, the second vote (on the
-general@) can be started. Here is a <a href="generallistvote.txt">sample note</a>
-, the subject of the note is [VOTE]Approval to release Apache Aries
-(Incubating) version 0.X-incubating</p>
-<p>After another 72 hours, assuming there are no objections, this vote can
-also be summarised and closed.</p>
+the dev@aries vote can be summarised and closed. Note that at least three
++1 votes from Aries PMC members are required. </p>
+<p>Finally - ensure that the file aries_release_version.txt is completely up to date and accurate. 
+You will use this file in the following steps to help build the release web pages.</p>
 <p><a name="ReleasingAries-Promotingthereleaseartifacts"></a></p>
 <h3 id="promoting_the_release_artifacts">Promoting the release artifacts</h3>
 <p>From the <a href="https://repository.apache.org/index.html#stagingRepositories">Nexus pages</a>
@@ -524,16 +541,11 @@ there they will be automatically moved to the Maven repository.</p>
 members of the group can access them. The distributions are
 archived here /www/archive.apache.org/dist/aries.</p>
 <p>First, delete the previous distribution from the distribution directory.
-Download the release artifacts using a script like <a href="release-0.2">this</a>
-. Next, update the Aries Downloads pages to refer to the new artifacts.</p>
+Download the release artifacts This is best done using a script, the script can be generated uing
+the perl script download_release_artifacts.pl. </p>
+<p>Next, update the Aries Downloads pages to refer to the new artifacts.</p>
 <h3 id="tidying_up_tasks">Tidying up tasks</h3>
 <ul>
-<li>Move trunk to a new level, useful *ix commands:<ul>
-<li>find . -name "pom.xml" -exec sed -ie "s#0.3-SNAPSHOT#0.4-SNAPSHOT#g" {} ;</li>
-<li>find . -name pom.xmle | xargs -I {} rm {} <br/>
-   or use a fancy editor.</li>
-</ul>
-</li>
 <li>Get the compliance tests run</li>
 <li>Release notes</li>
 <li>Release the component in JIRA (manage components), check the JIRA release notes.</li>
@@ -545,42 +557,7 @@ Download the release artifacts using a script like <a href="release-0.2">this</a
 <li>Clean up, fix and re-release.
 The good news here is that it isn't necessarily essential to re-release
 every module. </li>
-</ul>
-<p><a name="ReleasingAries-Cleaningup,fixingandre-releasing"></a></p>
-<h3 id="cleaning_up_fixing_and_re-releasing">Cleaning up, fixing and re-releasing</h3>
-<p>The release process makes changes to project poms and adds a tag in svn.
-The first step is to revert the changes to the poms in the problem modules. Hopefully (see Note 3 above)
-it will only be necessary to revert the top level module pom. If you have to revert other poms in the 
-module this works on *ix:</p>
-<p>Determine which revision you want to go back to (eg XXXXX)</p>
-<div class="codehilite"><pre><span class="n">svn</span> <span class="n">up</span> <span class="o">-</span><span class="n">r</span> <span class="n">XXXXXX</span>
-<span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="n">pom</span><span class="o">.</span><span class="n">xml</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="n">I</span> <span class="p">{}</span> <span class="n">mv</span> <span class="p">{}</span> <span class="p">{}</span><span class="n">_old</span>
-<span class="n">svn</span> <span class="n">up</span>
-<span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="n">pom</span><span class="o">.</span><span class="n">xml</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="n">I</span> <span class="p">{}</span> <span class="n">mv</span> <span class="p">{}</span><span class="n">_old</span> <span class="p">{}</span>
-<span class="n">svn</span> <span class="n">status</span> <span class="c1">#Check what you have changed!</span>
-<span class="n">svn</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;reverting release changes&quot;</span>
-</pre></div>
-
-
-<p>Next - delete the tag relating to the module from SVN</p>
-<p>Finally - delete the folder from the staging repository (Right-click over the folder and select delete)</p>
-<p>Make the fixes that you need to in the project, commit them and work
-through the release process again. </p>
-<p>In some cases you may also want to merge from trunk into the release
-branch. The syntax to do this is:</p>
-<div class="codehilite"><pre><span class="n">svn</span> <span class="n">merge</span> <span class="o">-</span><span class="n">c</span> <span class="n">ZZZZZZ</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">trunk</span>
-</pre></div>
-
-
-<p>Where ZZZZZZ is the revision associated with the fix.
-Note that you will be creating a new staging repository. The commands are
-repeated here for convenience:</p>
-<div class="codehilite"><pre><span class="n">mvn</span> <span class="n">versions:update</span><span class="o">-</span><span class="n">parent</span>
-<span class="n">mvn</span> <span class="n">versions:use</span><span class="o">-</span><span class="n">releases</span>
-<span class="n">svn</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;&lt;version&gt; RC&lt;#&gt;: updated to latest releases&quot;</span>
-<span class="n">mvn</span> <span class="n">release:prepare</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span> <span class="o">-</span><span class="n">DpreparationGoals</span><span class="o">=</span><span class="s">&quot;clean install&quot;</span>
-<span class="n">mvn</span> <span class="n">release:perform</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span>
-</pre></div></div>
+</ul></div>
             <!-- Content -->
           </td>
         </tr>
