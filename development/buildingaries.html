@@ -261,13 +261,12 @@ Eclipse. If you don't care about Eclipse go to the next section.</p>
 <li>check out from the command line: svn co
 https://svn.apache.org/repos/asf/aries/trunk aries</li>
 <li>cd aries</li>
-<li>mvn clean</li>
 <li>cd parent</li>
-<li>mvn install</li>
+<li>mvn clean install</li>
 <li>cd ../eba-maven-plugin</li>
-<li>mvn install (<em>See note below</em>)</li>
+<li>mvn clean install (<em>See note below</em>)</li>
 <li>cd ..</li>
-<li>mvn install</li>
+<li>mvn clean install</li>
 <li>mvn eclipse:eclipse (should see 'BUILD SUCCESSFUL' message)</li>
 <li>fire up eclipse and switch to the Java perspective</li>
 <li>import the projects. File-&gt;import-&gt;General-&gt;existing projects into
