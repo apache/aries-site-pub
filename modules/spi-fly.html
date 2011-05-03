@@ -241,49 +241,52 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p>This page describes the SPI Fly component.
+            <div class="wiki-content"><h1 id="spi-fly">SPI-Fly</h1>
+<p>This page describes the SPI Fly component.
 The SPI Fly component is aimed at providing general support for the JRE SPI
 mechanism (including the usage of META-INF/services) in OSGi.</p>
 <p>The code can be found in
-http://svn.apache.org/repos/asf/incubator/aries/trunk/spi-fly</p>
+http://svn.apache.org/repos/asf/incubator/aries/trunk/spi-fly however, the implementation is 
+currently not yet finished. </p>
 <p>Currently the implementation does the following:</p>
+<p>Providers:</p>
 <ul>
-<li>It only considers bundles that have the following Manifest (opt-in)
-header: <em>SPI-Provider</em> (the value is not used at the moment).</li>
+<li>It only considers provider bundles that have the following Manifest (opt-in)
+header: <strong>SPI-Provider = </strong>*</li>
 <li>For every new bundle being installed that has the opt-in header, it
 checks the META-INF/services directory for any files. If found it registers
 a service in the Service Registry for each implementation found with the
 following property
  <em>spi.provider.url = <the URL to the associated META-INF/services file></em></li>
 </ul>
-<p>Additional ideas/concerns:</p>
+<p>Consumers:</p>
 <ul>
-<li>
-<p>We need to find a mechanism to find any SPI implementations that are part
-of the JRE itself and register these in the Service Registry. Since there
-is typically not a META-INF/services file for these mechanisms nor do they
-implement a common interface we need another mechanism.
-<strong> Can anyone think of a generic mechanism?
-</strong> An ugly alternative could be to manually enumerate these, but this is a
-bit of a maintenance nightmare.</p>
-</li>
-<li>
-<p><em>gnodet:</em> the javamail spec do use the META-INF/services discovery
-mechanism, but to detect and instantiate classes using constructors
-that have arguments. We need to investigate if it could cause any real
-problem with the design ... or find a specific way for javamail maybe ...</p>
-</li>
+<li>It only considers consumer bundles that have the following Manifest (opt-in) header:
+<strong>SPI-Consumer = </strong>*</li>
+<li>When found, every call to java.util.ServiceLoader.load() will be modified automatically 
+to have the ThreadContextClassLoader set to have visibility of the right bundles.</li>
 </ul>
-<p>We need to support 'traditional' clients that don't look in the OSGi
-service registry to obtain their SPI implementation. Some ideas in this
-area are: </p>
-<ul>
-<li>We could automatically set a System Property for every SPI implementation
-found. That would typically shift the 'default' choice for an
-implementation to the last one found. </li>
-<li>Classloader problems around loading an implementation?</li>
-<li>Various Lifecycle issues when using the traditional way.</li>
-</ul></div>
+<h2 id="how_to_use">How to use</h2>
+<p>There are currently two ways to use the SPI-Fly component. If you have an OSGi 
+4.3 compliant framework that supports WeavingHooks you can use the dynamic weaving bundle. </p>
+<p>If you have an pre-4.3 OSGi framework or don't want to use bytecode weaving at runtime you 
+can use the static weaving approach.</p>
+<h2 id="dynamic_use">Dynamic use</h2>
+<p>Install and start the <tt>org.apache.aries.spifly.dynamic.bundle</tt> into the system. This bundle 
+has a dependency on <tt>org.objectweb.asm</tt> version 3.2 or newer.</p>
+<pre>osgi> ss    
+Framework is launched.    
+id  State       Bundle
+0   ACTIVE      org.eclipse.osgi_3.7.0.v20110304
+1   ACTIVE      org.objectweb.asm_3.2.0.v200909071300
+2   ACTIVE      org.apache.aries.spifly.dynamic.bundle_0.4.0.SNAPSHOT</pre>
+
+<h2 id="static_use">Static use</h2>
+<p>For static use, you need to modify the client bundle before installing it into the system. 
+The modification changes the byte code around java.util.ServiceLoader.load() calls in the 
+bundle and inserts calls to set the correct ThreadContextClassLoader around it.
+Provider bundles are still handles dynamically.</p>
+<h2 id="example">Example</h2></div>
             <!-- Content -->
           </td>
         </tr>
