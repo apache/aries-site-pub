@@ -241,7 +241,8 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><h1 id="jpa">JPA</h1>
+            <div class="wiki-content"><p>Title: JPAProject</p>
+<h1 id="jpa">JPA</h1>
 <p>The Aries JPA project will make it easy for JPA persistence providers such
 as <a href="http://openjpa.apache.org/">Apache OpenJPA</a>
  to be used in an OSGi environment and will provide container managed
@@ -250,7 +251,140 @@ persistence for the Blueprint container.</p>
 Version 1.0" in the "OSGi Service Platform Enterprise Specification,
 Release 4, Version 4.2" available for public download from the <a href="http://www.osgi.org/Download/Release4V42">OSGi Alliance</a>
 .</p>
-<p>Developing an Aries JPA project is very easy and can be achieved with simple steps described hereafter.</p>
+<p>Developing an Aries JPA project is very easy and can be achieved with simple steps described in the 
+"Creation of a JPA project using Maven" section. First, however it is useful to understand some of
+the basic concepts.</p>
+<h2 id="persistence_bundles">Persistence bundles</h2>
+<p>The Aries JPA container provides managed JPA support in an OSGi framework for OSGi persistence bundles.
+A persistence bundle is an OSGi bundle with three special characteristics:</p>
+<ul>
+<li>It contains one or more JPA mapped classes (Entity classes, Mapped superclasses and Embeddables)</li>
+<li>It contains a JPA persistence descriptor describing one or more persistence units</li>
+<li>The bundle manifest contains the header <strong>Meta-Persistence:</strong> </li>
+</ul>
+<p>The value of the Meta-Persistence: header is a comma separated list of locations where JPA persistence 
+descriptors can be found. If the header value is empty then a default of META-INF/persistence.xml is used.
+(This behaviour is taken from the JPA service specification).</p>
+<p>For example:</p>
+<div class="codehilite"><pre><span class="n">Meta</span><span class="o">-</span><span class="n">Persistence:</span>
+</pre></div>
+
+
+<p>means that META-INF/persistence.xml will be searched for. For non standard locations:</p>
+<div class="codehilite"><pre><span class="n">Meta</span><span class="o">-</span><span class="n">Persistence:</span> <span class="n">persistence</span><span class="sr">/myPu.xml, pUnit.jar!/som</span><span class="n">eFolder</span><span class="o">/</span><span class="n">anotherPu</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+
+
+<p>means that the locations "persistence/myPu.xml" (relative to the root of the bundle), and 
+"someFolder/anotherPu.xml" (relative to the root of pUnit.jar, which is in the root of
+the bundle) will be searched.</p>
+<h2 id="the_aries_jpa_container">The Aries JPA container</h2>
+<p>The Aries JPA container consists of four main pieces, the two most important of which are the API bundle
+and the container bundle.</p>
+<h3 id="the_aries_jpa_api_bundle">The Aries JPA API bundle</h3>
+<p>The Aries JPA container API bundle is <strong>not</strong> the JPA API, it is a set of interfaces for interacting with
+the Aries JPA container. Clients are unlikely to use this API, but you may need it if you are building
+your own runtime. This bundle also defines the interfaces that the Aries JPA container bundles use to
+talk to each other, as a result it is a mandatory dependency of all of the other Aries JPA container bundles.</p>
+<h3 id="the_aries_jpa_container_bundle">The Aries JPA container bundle</h3>
+<p>The Aries JPA container bundle provides basic support for application managed JPA. It is responsible for
+locating and parsing persistence descriptors. Any persistence units found will be processed and used to
+create EntityManagerFactory services, which will be registered on behalf of the persistence bundle when
+it starts.</p>
+<p>The EntityManagerFactory services will be registered with the following properties: </p>
+<div class="codehilite"><pre><span class="n">osgi</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">name</span> <span class="o">-</span> <span class="n">this</span> <span class="n">is</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">persistence</span> <span class="n">unit</span>
+<span class="n">osgi</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">provider</span> <span class="o">-</span> <span class="n">this</span> <span class="n">is</span> <span class="n">the</span> <span class="n">class</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">JPA</span> <span class="n">PersistenceProvider</span> <span class="n">that</span> <span class="n">was</span> <span class="n">used</span> <span class="n">to</span> <span class="n">create</span> <span class="n">the</span> <span class="n">EntityManagerFactory</span>
+<span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">aries</span><span class="o">.</span><span class="n">jpa</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">managed</span> <span class="o">-</span> <span class="n">this</span> <span class="n">property</span> <span class="n">will</span> <span class="n">be</span> <span class="n">set</span> <span class="n">to</span> <span class="n">true</span><span class="p">,</span> <span class="n">indicating</span> <span class="n">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">managed</span> <span class="n">EntityManagerFactory</span><span class="o">.</span>
+</pre></div>
+
+
+<p>Useful notes: </p>
+<ul>
+<li>
+<p>Older versions of the Aries JPA container (below 0.4) do not support classpath scanning or load-time weaving, 
+this means that you must list all of your entity classes in your persistence descriptor, and that you must 
+pre-enhance your entities. This restriction does not apply to versions newer than 0.4 when running on OSGi
+frameworks implementing version 4.3 of the OSGi specification.</p>
+</li>
+<li>
+<p>You should never call close on the EntityManagerFactory service. This call will be made by the container when
+the persistence bundle is removed or refreshed. If you do close the EntityManagerFactory service then it will be 
+closed for <strong>all</strong> users of the service.</p>
+</li>
+</ul>
+<h3 id="the_aries_jpa_container_context_bundle">The Aries JPA container context bundle</h3>
+<p>This bundle provides managed persistence context support. In order to function it requires the Aries JPA container
+bundle to be running as it makes use of the managed EntityManagerFactory services.</p>
+<p>This bundle also depends on the presence of a JTA service specification implementation, as it makes use of the
+TransactionSynchronizationRegistry service.</p>
+<p>It is unlikely that clients will use this bundle directly. To actually use managed persistence contexts a client
+should use blueprint to inject one.</p>
+<h2 id="the_aries_jpa_container_blueprint_integration_bundle">The Aries JPA container blueprint integration bundle</h2>
+<p>This bundle provides a blueprint custom namespace for persistence unit and persistence context injection. To
+inject persistence units the Aries JPA container bundle is required. To inject persistence contexts the Aries
+JPA container context bundle is also required.</p>
+<p>Example blueprint follows showing the full breadth of allowable injection syntax:</p>
+<div class="codehilite"><pre><span class="nt">&lt;blueprint</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.osgi.org/xmlns/blueprint/v1.0.0&quot;</span> 
+  <span class="na">xmlns:jpa=</span><span class="s">&quot;http://aries.apache.org/xmlns/jpa/v1.1.0&quot;</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!-- Inject a persistence unit called &quot;myUnit&quot; using the bean property &quot;setEmf&quot; --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;unit&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jpa:unit</span> <span class="na">property=</span><span class="s">&quot;emf&quot;</span> <span class="na">unitname=</span><span class="s">&quot;myUnit&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="c">&lt;!-- Inject an unnamed persistence unit using the bean property &quot;setEmf2&quot; --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;unitNoName&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jpa:unit</span> <span class="na">property=</span><span class="s">&quot;emf2&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="c">&lt;!-- Inject a persistence unit with name &quot;&quot; using the bean property &quot;setEmf3&quot; --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;emptyUnitName&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jpa:unit</span> <span class="na">property=</span><span class="s">&quot;emf3&quot;</span> <span class="na">unitname=</span><span class="s">&quot;&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="c">&lt;!-- Inject a persistence context for the unit called &quot;myUnit&quot; using the bean property &quot;setEm&quot; --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;context&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jpa:context</span> <span class="na">property=</span><span class="s">&quot;em&quot;</span> <span class="na">unitname=</span><span class="s">&quot;myUnit&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="c">&lt;!-- </span>
+<span class="c">      Inject an Extended persistence context for an unnamed persistence unit that is constructed</span>
+<span class="c">      passing in the supplied properties and injected using the bean property &quot;setEm&quot; </span>
+<span class="c">  --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;contextWithProps&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jpa:context</span> <span class="na">property=</span><span class="s">&quot;em&quot;</span> <span class="na">type=</span><span class="s">&quot;EXTENDED&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;map&gt;</span>
+        <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;one&quot;</span> <span class="na">value=</span><span class="s">&quot;eins&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;two&quot;</span> <span class="na">value=</span><span class="s">&quot;zwo&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/map&gt;</span>
+    <span class="nt">&lt;/jpa:context&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="c">&lt;!-- Inject a persistence unit called &quot;myUnit&quot; using constructor injection --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;withUnitArg&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jpa:unit</span> <span class="na">unitname=</span><span class="s">&quot;myUnit&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="c">&lt;!-- Inject a persistence context using the unit called &quot;myUnit&quot; using constructor injection --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;withContextArg&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jpa:context</span> <span class="na">unitname=</span><span class="s">&quot;myUnit&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="c">&lt;!-- Inject a persistence unit called &quot;myUnit&quot; using constructor injection and argument index 0 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;withIndexedUnitArg&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jpa:unit</span> <span class="na">index=</span><span class="s">&quot;0&quot;</span> <span class="na">unitname=</span><span class="s">&quot;myUnit&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="c">&lt;!-- Inject a persistence context using the unit called &quot;myUnit&quot; using constructor injection and argument index 1 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;withIndexedContextArg&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;jpa:context</span> <span class="na">index=</span><span class="s">&quot;1&quot;</span> <span class="na">unitname=</span><span class="s">&quot;myUnit&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+<span class="nt">&lt;/blueprint&gt;</span>
+</pre></div>
+
+
+<p>This blueprint namespace can be used by any blueprint bundle (not just the persistence bundle), and as the injection
+occurs via the service registry your blueprint will not start until the relevant JPA resources are available there.</p>
 <h1 id="creation_of_a_jpa_project_using_maven">Creation of a JPA project using Maven</h1>
 <p>The first step consist in to create a maven module and make the following modifications to allow to deploy
  it as OSGI bundle on the platform and reference where the persistence XML file must loaded by the classpath to
