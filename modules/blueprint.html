@@ -279,14 +279,13 @@ explicitly in the Bundle-Blueprint manifest header.</p>
 <p>Once the extender determines that a bundle is a Blueprint bundle, it
 creates a Blueprint Container on behalf of that bundle. The Blueprint
 Container is responsible for:</p>
-<div class="codehilite"><pre><span class="o">*</span> <span class="n">Parsing</span> <span class="n">the</span> <span class="n">Blueprint</span> <span class="n">XML</span> <span class="n">files</span>
-<span class="o">*</span> <span class="n">Instantiating</span> <span class="n">the</span> <span class="n">components</span>
-<span class="o">*</span> <span class="n">Wiring</span> <span class="n">the</span> <span class="n">components</span> <span class="n">together</span>
-<span class="o">*</span> <span class="n">Registering</span> <span class="n">services</span>
-<span class="o">*</span> <span class="n">Looking</span> <span class="n">up</span> <span class="n">service</span> <span class="n">references</span>
-</pre></div>
-
-
+<ul>
+<li>Parsing the Blueprint XML files</li>
+<li>Instantiating the components</li>
+<li>Wiring the components together</li>
+<li>Registering services</li>
+<li>Looking up service references</li>
+</ul>
 <p>During initialization, the Blueprint Container ensures that mandatory
 service references are satisfied, registers all the services into the
 service registry, and creates initial component instances. The Blueprint
@@ -338,15 +337,16 @@ the exact type. </p>
 example, the <em>class</em> attribute specifies the name of the Java class to
 instantiate. The Blueprint Container will create the <em>Account</em> object by
 passing <em>1</em> as the argument to the constructor. </p>
-<p>public class Account {    <br />
-       public Account(long number) {
-      ...
-       }
-       ...
-   }</p>
-<div class="codehilite"><pre>   <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;accountOne&quot;</span> <span class="na">class=</span><span class="s">&quot;org.apache.aries.simple.Account&quot;</span><span class="nt">&gt;</span>
-       <span class="nt">&lt;argument</span> <span class="na">value=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
-   <span class="nt">&lt;/bean&gt;</span>
+<div class="codehilite"><pre>   <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Account</span> <span class="o">{</span>      
+       <span class="kd">public</span> <span class="nf">Account</span><span class="o">(</span><span class="kt">long</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+          <span class="o">...</span>
+       <span class="o">}</span>
+       <span class="o">...</span>
+   <span class="o">}</span>
+
+   <span class="o">&lt;</span><span class="n">bean</span> <span class="n">id</span><span class="o">=</span><span class="s">&quot;accountOne&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s">&quot;org.apache.aries.simple.Account&quot;</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="n">argument</span> <span class="n">value</span><span class="o">=</span><span class="s">&quot;1&quot;</span><span class="o">/&gt;</span>
+   <span class="o">&lt;/</span><span class="n">bean</span><span class="o">&gt;</span>
 </pre></div>
 
 
