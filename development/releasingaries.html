@@ -552,9 +552,9 @@ there they will be automatically moved to the Maven repository.</p>
 /www/www.apache.org/dist/aries on minotaur. Don't forget to changes the file permissions to '664' so that other 
 members of the group can access them. The distributions are
 archived here /www/archive.apache.org/dist/aries.</p>
-<p>First, delete the previous distribution from the distribution directory.
-Download the release artifacts This is best done using a script, the script can be generated uing
-the perl script download_release_artifacts.pl. </p>
+<p>First, delete the artifacts of the previous release from the distribution directory. You don't need to worry about putting the previous release artifacts in the archive as they will already have been rsync'd from the distribution directory.</p>
+<p>Then, put new release artifacts in the distribution directory. This is best done using a script, the script can be generated uing
+the perl script <a href="http://svn.apache.org/repos/asf/aries/scripts/download_release_artifacts.pl">download_release_artifacts.pl</a>. </p>
 <p>Next, update the Aries Downloads pages to refer to the new artifacts.</p>
 <h3 id="tidying_up_tasks">Tidying up tasks</h3>
 <ul>
