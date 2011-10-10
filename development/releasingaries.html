@@ -491,7 +491,7 @@ trunk.</p>
 <li>What is SCM release tag or label for "Aries :: Top Parent POM"? (org.apache.aries:parent) parent-0.5: :</li>
 <li>What is the new development version for "Aries :: Top Parent POM"? (org.apache.aries:parent) 0.6-SNAPSHOT: : 0.5</li>
 </ol>
-<p>i.e. take the default for the first two questions, and set the new development version to be the same as the one you are releasing! This is because you don't know whether the next version released from the trunk will have a major, minor or micro version number change - you won't know until those changes are made! - so leave it for the person making those changes to make the decision and move to <new version>-SNAPSHOT.</p>
+<p>i.e. take the default for the first two questions, and set the new development version to be the same as the one you are releasing! This is because you don't know whether the next version released from the trunk will have a major, minor or micro version number change - you won't know until those changes are made! - so leave it for the person making those changes to make the decision and move to <em>module</em>-<em>new version</em>-SNAPSHOT.</p>
 </li>
 <li>
 <p>Note 3: mvn release:clean will do <em>most</em> of the cleaning up in the event of failures.</p>
