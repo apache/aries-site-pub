@@ -484,15 +484,17 @@ trunk.</p>
 <ul>
 <li>Note 1: Use the -DdryRun option to check that release-prepare works.</li>
 <li>
+<p>Note 2: mvn release:prepare makes and commits changes in SVN. You'll be asked three questions. Here they are with answers for the 'parent' module release: </p>
 <ol>
 <li>What is the release version for "Aries :: Top Parent POM"? (org.apache.aries:parent) 0.5: :  <br />
 </li>
 <li>What is SCM release tag or label for "Aries :: Top Parent POM"? (org.apache.aries:parent) parent-0.5: :</li>
 <li>What is the new development version for "Aries :: Top Parent POM"? (org.apache.aries:parent) 0.6-SNAPSHOT: : 0.5</li>
 </ol>
-<p>Note 2: mvn release:prepare makes and commits changes in SVN. You'll be asked three questions. Here they are with answers for the 'parent' module release: </p>
-<p>i.e. take the default for the first two questions, and set the new development version to be the same as the one you are releasing! This is because you don't know whether the next version released from the trunk will have a major, minor or micro version number change - you won't know until those changes are made! - so leave it for the person making those changes to make the decision and move to <new version>-SNAPSHOT.
-  * Note 3: mvn release:clean will do <em>most</em> of the cleaning up in the event of failures.</p>
+<p>i.e. take the default for the first two questions, and set the new development version to be the same as the one you are releasing! This is because you don't know whether the next version released from the trunk will have a major, minor or micro version number change - you won't know until those changes are made! - so leave it for the person making those changes to make the decision and move to <new version>-SNAPSHOT.</p>
+</li>
+<li>
+<p>Note 3: mvn release:clean will do <em>most</em> of the cleaning up in the event of failures.</p>
 </li>
 </ul>
 <p>This will put release artifacts into an Apache <a href="https://repository.apache.org/index.html#view-repositories;staging.html">staging repository </a>. You will need to log in to see it.
