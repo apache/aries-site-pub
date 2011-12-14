@@ -283,13 +283,16 @@ to have the ThreadContextClassLoader set to have visibility of the right bundles
 can use the static weaving approach.</p>
 <h2 id="use_with_dynamic_weaving">Use with Dynamic Weaving</h2>
 <p>Install and start the <tt>org.apache.aries.spifly.dynamic.bundle</tt> into the system. This bundle 
-has a dependency on <tt>org.objectweb.asm</tt> version 3.2 or newer.</p>
+has a dependency on <tt><a href="http://search.maven.org/#artifactdetails|asm|asm-all|3.2|jar">org.objectweb.asm</a></tt> version 3.2 or newer and on the Aries 
+Util bundle.</p>
 <pre>osgi> ss    
 Framework is launched.    
 id  State       Bundle
-0   ACTIVE      org.eclipse.osgi_3.7.0.v20110304
-1   ACTIVE      org.objectweb.asm_3.2.0.v200909071300
-2   ACTIVE      org.apache.aries.spifly.dynamic.bundle_0.4.0.SNAPSHOT</pre>
+0   ACTIVE      org.eclipse.osgi_3.7.1.R37x_v20110808-1106
+1   ACTIVE      org.objectweb.asm.all_3.2.0
+2   ACTIVE      org.apache.aries.util_0.5.0.SNAPSHOT
+3   ACTIVE      org.apache.aries.spifly.dynamic.bundle_0.4.0.SNAPSHOT
+</pre>
 
 <h2 id="use_with_static_weaving">Use with Static Weaving</h2>
 <p>For static use, you need to modify the client bundle before installing it into the system. 
@@ -305,13 +308,15 @@ java -jar org.apache.aries.spifly.static.tool-0.4-with-dependencies.jar mybundle
 </pre></p>
 <p>This will produce a second bundle with the same name with the _spifly suffix appended, so 
 in this case the generated bundle will be called mybundle_spifly.jar.</p>
-<p>At runtime, install the <tt>org.apache.aries.spifly.static.bundle</tt> into the system:
+<p>At runtime, install the <tt>org.apache.aries.spifly.static.bundle</tt> into the system, like
+the dynamic weaving bundle it has a dependency on the Aries Util bundle:
 <pre>osgi&gt; ss
 Framework is launched.
 id  State       Bundle
-0   ACTIVE      org.eclipse.osgi_3.6.1.R36x_v20100806
+0   ACTIVE      org.eclipse.osgi_3.6.2.R36x_v20110210
 1   ACTIVE      org.eclipse.osgi.services_3.2.100.v20100503
-2   ACTIVE      org.apache.aries.spifly.static.bundle_0.4.0.SNAPSHOT</pre></p>
+2   ACTIVE      org.apache.aries.util_0.5.0.SNAPSHOT
+3   ACTIVE      org.apache.aries.spifly.static.bundle_0.4.0.SNAPSHOT</pre></p>
 <p>Then install and start the statically woven bundle into the system.</p>
 <h2 id="examples">Examples</h2>
 <p>The <tt>spi-fly-examples</tt> directory contains a number of example bundles that can be 
