@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -203,7 +212,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +244,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,7 +264,7 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="BuildingAries-ExtractingandbuildingAries"></a></p>
-<h1 id="extracting_and_building_aries">Extracting and building Aries</h1>
+<h1 id="extracting-and-building-aries">Extracting and building Aries</h1>
 <p>There are two ways to do this. The first avoids using the command line but
 can leave you with some fixing up to do on the projects.</p>
 <p><a name="BuildingAries-Prereqs"></a></p>
@@ -262,11 +275,11 @@ can leave you with some fixing up to do on the projects.</p>
 the 3.4 version)</li>
 <li>Install Subversion client http://subclipse.tigris.org/update_1.6.x (Just
 the Subclipse and Core)</li>
-<li>Install m2eclipse http://m2eclipse.sonatype.org/update/ (Maven
+<li>Install m2eclipse http://download.eclipse.org/technology/m2e/releases (Maven
 Integration and Maven optional components)</li>
 </ul>
 <p><a name="BuildingAries-BuildatthecommandlinethenimportintoEclipseifyouneedEclipse."></a></p>
-<h2 id="build_at_the_command_line_then_import_into_eclipse_if_you_need_eclipse">Build at the command line then import into Eclipse if you need Eclipse.</h2>
+<h2 id="build-at-the-command-line-then-import-into-eclipse-if-you-need-eclipse">Build at the command line then import into Eclipse if you need Eclipse.</h2>
 <p>This is the easiest way to build Aries and then work on the modules using
 Eclipse. If you don't care about Eclipse go to the next section.</p>
 <ul>
@@ -288,8 +301,7 @@ workspace. Import 'blueprint, 'jndi', 'testsupport' and 'transaction'</li>
 jars to your local repository) or 'package' (just creates jars in your
 workspace). Hit F5 in the package explorer view to refresh and you should
 see packaged jar files under the <em>target</em> directories in the projects.</p>
-<br>
-
+<p><br></p>
 <hr />
 <p><strong>Note:</strong>
 Note: There is currently (September 2010) what appears to be a timing issue
@@ -297,7 +309,7 @@ that is causing unpredictable test failures during a full build. If you see
 test failures, try 'mvn install -fae'</p>
 <hr />
 <p><a name="BuildingAries-Justbuildit-noEclipse"></a></p>
-<h2 id="just_build_it_-_no_eclipse">Just build it - no Eclipse</h2>
+<h2 id="just-build-it-no-eclipse">Just build it - no Eclipse</h2>
 <ul>
 <li>check out from the command line: svn co
 https://svn.apache.org/repos/asf/aries/trunk aries</li>
@@ -314,7 +326,7 @@ package}} (alternatively, you can disable the tests with {{mvn
 process much faster)</li>
 </ul>
 <p><a name="BuildingAries-Eclipseonly"></a></p>
-<h2 id="eclipse_only">Eclipse only</h2>
+<h2 id="eclipse-only">Eclipse only</h2>
 <p>This should work if you are command-line averse. On the other hand it seems
 to be the best way to get into a mess with the M2Eclipse plugin.</p>
 <ul>
@@ -336,9 +348,9 @@ your workspace). Hit F5 in the package explorer view to refresh and you
 should see packaged jar files under the <em>target</em> directories in the
 projects.</p>
 <p><a name="BuildingAries-Fixingfailures"></a></p>
-<h2 id="fixing_failures">Fixing failures</h2>
+<h2 id="fixing-failures">Fixing failures</h2>
 <p><a name="BuildingAries-InEclipse"></a></p>
-<h5 id="in_eclipse">In Eclipse</h5>
+<h5 id="in-eclipse">In Eclipse</h5>
 <p>You will see some of the blueprint projects don't build. To fix this you
 need to comment out the following line:</p>
 <div class="codehilite"><pre><span class="o">&lt;!--</span> <span class="o">&lt;</span><span class="n">classpathentry</span> <span class="n">kind</span><span class="o">=</span><span class="s">&quot;src&quot;</span>
@@ -359,7 +371,7 @@ then remove this jar:</p>
 project's build path to add the JRE System Library to Java Build Path.</p>
 <p>There should be no outstanding errors.</p>
 <p><a name="BuildingAries-Outofmemoryerrors"></a></p>
-<h5 id="out_of_memory_errors">Out of memory errors</h5>
+<h5 id="out-of-memory-errors">Out of memory errors</h5>
 <p>You may find that building Aries fails with out of memory exceptions on
 some systems (eg Mac)  if you use the standard Java settings. Setting the
 two environment variables as shown below may help.</p>
