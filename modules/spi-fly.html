@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -203,7 +212,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +244,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -250,12 +263,12 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><h1 id="spi_fly">SPI Fly</h1>
+            <div class="wiki-content"><h1 id="spi-fly">SPI Fly</h1>
 <p>This page describes the SPI Fly component.
 The SPI Fly component is aimed at providing general support for the JRE SPI
 mechanism, including the usage of <tt>java.util.ServiceLoader</tt>, 
 <tt>META-INF/services</tt> and similar methods in OSGi.</p>
-<h2 id="the_problem">The Problem</h2>
+<h2 id="the-problem">The Problem</h2>
 <p><tt>java.util.ServiceLoader.load()</tt> and other similar methods such as 
 <tt>sun.misc.Service.providers()</tt>, but also other static finder methods such as the 
 <tt>FactoryFinder.find()</tt> methods try to locate 'service' implementations by looking for 
@@ -271,7 +284,7 @@ resources in the META-INF/services directory of all the jars visible to the
 </ol>
 <p>The SPI Fly project makes it possible to use existing code that uses 
 <tt>ServiceLoader.load()</tt> and similar mechanisms under OSGi.</p>
-<h2 id="making_it_work">Making it Work</h2>
+<h2 id="making-it-work">Making it Work</h2>
 <p>In order to make the ServiceLoader approach work under OSGi, calling code can be woven
 to set the TCCL to the appropriate providers very briefly, only for the duration of the
 call. The SPI Fly component does precisely this.</p>
@@ -314,12 +327,12 @@ For more information, see RFC 167 in the OSGi Enterprise 5 EA draft:
 <a href="http://www.osgi.org/download/osgi-early-draft-2011-09.pdf">http://www.osgi.org/download/osgi-early-draft-2011-09.pdf</a></p>
 <p>The code can be found in
 <a href="http://svn.apache.org/repos/asf/aries/trunk/spi-fly">http://svn.apache.org/repos/asf/aries/trunk/spi-fly</a>.</p>
-<h2 id="how_to_use">How to use</h2>
+<h2 id="how-to-use">How to use</h2>
 <p>There are currently two ways to use the SPI Fly component. If you have an OSGi 
 4.3 compliant framework that supports WeavingHooks you can use the dynamic weaving approach. </p>
 <p>If you have an pre-4.3 OSGi framework or don't want to use bytecode weaving at runtime you 
 can use the static weaving approach.</p>
-<h2 id="use_with_dynamic_weaving">Use with Dynamic Weaving</h2>
+<h2 id="use-with-dynamic-weaving">Use with Dynamic Weaving</h2>
 <p>Install and start the <tt>org.apache.aries.spifly.dynamic.bundle</tt> into the system. This bundle 
 has a dependency on <tt><a href="http://search.maven.org/#artifactdetails|asm|asm-all|3.2|jar">org.objectweb.asm</a></tt> version 3.2 or newer and on the Aries 
 Util bundle.</p>
@@ -336,12 +349,12 @@ id  State       Bundle
 bundle (<tt>org.apache.aries.spifly.dynamic.bundle</tt> in the SPI Fly case) needs to 
 be active before any bundles that need to be dynamically woven. OSGi Start Levels can
 provide a mechanism to control this.</p>
-<h2 id="use_with_static_weaving">Use with Static Weaving</h2>
+<h2 id="use-with-static-weaving">Use with Static Weaving</h2>
 <p>For static use, you need to weave the client bundle before installing it into the system. 
 The modification changes the byte code around java.util.ServiceLoader.load() calls in the 
 bundle and inserts calls to set the correct ThreadContextClassLoader around it.
 Provider bundles are still handled dynamically.</p>
-<h3 id="to_statically_weave_a_bundle">To statically weave a bundle</h3>
+<h3 id="to-statically-weave-a-bundle">To statically weave a bundle</h3>
 <p>The easiest way to invoke the static weaver is to take the <tt>org.apache.aries.spifly.static.tool</tt>
 jar with dependencies. This jar can be created by running <tt>mvn assembly:single</tt> in this maven module.</p>
 <p>Then run the static tool on any bundle that needs processing:
@@ -360,6 +373,28 @@ id  State       Bundle
 2   ACTIVE      org.apache.aries.util_0.5.0.SNAPSHOT
 3   ACTIVE      org.apache.aries.spifly.static.bundle_0.4.0.SNAPSHOT</pre></p>
 <p>Then install and start the statically woven bundle into the system.</p>
+<h2 id="special-cases">Special Cases</h2>
+<p>SPI Fly can be used for most SPI provider/lookup systems that use the TCCL pattern to obtain
+implementations. However, some cases some <em>special treatment</em> is needed. This special treatment is often needed when the API itself does not 
+match the name of the resources in META-INF/services, java.util.ServiceLoader is such a case, however SPI-Fly has built-in knowledge of ServiceLoader.
+Other APIs that require special treatment are listed below:</p>
+<ul>
+<li><strong>javax.imageio.spi.ServiceRegistry</strong>: This class is very much like
+java.util.ServiceLoader in that it can load any kind of API implementation.
+While SPI Fly knows about ServiceLoader and treats it specially, the ServiceRegistry
+class currently does not have special treatment. It can still be made to work
+but this requires the following header in the provider bundle:
+<tt>SPI-Provider:&nbsp;javax.imageio.spi.ServiceRegistry</tt> on the client
+side you can use <tt>SPI-Consumer:&nbsp;javax.imageio.spi.ServiceRegistry#lookupProviders(java.lang.Class)</tt>
+ or <tt>SPI-Consumer:&nbsp;javax.imageio.spi.ServiceRegistry#lookupProviders</tt></li>
+<li><strong>javax.sound.sampled.AudioSystem</strong>: This class uses sun.misc.Service under the covers (via com.sun.media.sound.JDK13Services) 
+which is a predecessor to java.util.ServiceLoader. There is no special treatment for sun.misc.Service
+in SPI Fly (yet), but the AudioSystem.getAudioInputStream() API can be made to work by explicitly listing it in the provider bundle 
+(the one that contains the relevant META-INF/services resources):
+<tt>SPI-Provider:&nbsp;javax.sound.sampled.AudioSystem</tt> on the consumer side you can use
+<tt>SPI-Consumer:&nbsp;javax.sound.sampled.AudioSystem#getAudioInputStream
+</tt></li>
+</ul>
 <h2 id="examples">Examples</h2>
 <p>The <tt>spi-fly-examples</tt> directory contains a number of example bundles that can be 
 used for testing or experimenting.</p>
