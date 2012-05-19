@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,9 +267,9 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="ReleaseNotes-ReleaseNotes"></a></p>
-<h1 id="release_notes">Release Notes</h1>
+<h1 id="release-notes">Release Notes</h1>
 <p><a name="ReleaseNotes-NewandNoteworthy"></a></p>
-<h3 id="new_and_noteworthy">New and Noteworthy</h3>
+<h3 id="new-and-noteworthy">New and Noteworthy</h3>
 <p>Welcome to the 0.2-incubating release. For this release we started running
 the OSGi Enterprise Compliance tests for relevant components. </p>
 <ul>
@@ -261,14 +277,14 @@ the OSGi Enterprise Compliance tests for relevant components. </p>
 <li><a href="https://issues.apache.org/jira/secure/releasenote.jspa?projectid=12310981&amp;stylename=html&amp;version=12314941.html">JIRA Release Notes </a></li>
 </ul>
 <p><a name="ReleaseNotes-NewComponents"></a></p>
-<h3 id="new_components">New Components</h3>
+<h3 id="new-components">New Components</h3>
 <p>Quiesce.
 The Quiesce component co-ordinates a graceful shutdown across a number of
 bundles. Quiesce participants respond to quiesce operations and clean up
 resources. In this release, only the JPA component implements a quiesce
 participant.</p>
 <p><a name="ReleaseNotes-Modulesinthisrelease"></a></p>
-<h3 id="modules_in_this_release">Modules in this release</h3>
+<h3 id="modules-in-this-release">Modules in this release</h3>
 <table>
 <tr><th> Module </th><th> Version </th><th> Depends (build)  on Aries module </th><th> Version</th></tr>
 <tr><td> Application </td><td> 0.2-incubating </td><td> Util </td><td>  0.2-incubating</td></tr>
@@ -293,20 +309,20 @@ participant.</p>
 </table>
 
 <p><a name="ReleaseNotes-Newsamples"></a></p>
-<h3 id="new_samples">New samples</h3>
+<h3 id="new-samples">New samples</h3>
 <p>No new samples but we changed the Blog Sample and Aries Trader samples so
 that no database initialisation is required prior to running the sample.</p>
 <p><a name="ReleaseNotes-NewTutorials"></a></p>
-<h3 id="new_tutorials">New Tutorials</h3>
+<h3 id="new-tutorials">New Tutorials</h3>
 <p>None</p>
 <p><a name="ReleaseNotes-APIbreaking"></a></p>
-<h3 id="api_breaking">API breaking</h3>
+<h3 id="api-breaking">API breaking</h3>
 <p>None.</p>
 <p><a name="ReleaseNotes-KnownIssues"></a></p>
-<h3 id="known_issues">Known Issues</h3>
+<h3 id="known-issues">Known Issues</h3>
 <p><a href="-https://issues.apache.org/jira/secure/issuenavigator.jspa?mode=hide&amp;requestid=12314569.html">JIRA query for known issues in the 0.2-incubating release </a></p>
 <p><a name="ReleaseNotes-Importantchangestoconsiderwhenupgrading"></a></p>
-<h3 id="important_changes_to_consider_when_upgrading">Important changes to consider when upgrading</h3></div>
+<h3 id="important-changes-to-consider-when-upgrading">Important changes to consider when upgrading</h3></div>
             <!-- Content -->
           </td>
         </tr>

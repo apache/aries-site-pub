@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,7 +267,7 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="ReleasingAries-HowtodoanAriesRelease"></a></p>
-<h1 id="how_to_do_an_aries_release">How to do an Aries Release</h1>
+<h1 id="how-to-do-an-aries-release">How to do an Aries Release</h1>
 <p>There are three types of Aries release:</p>
 <ol>
 <li>Releasing a single Aries bundle (or group of bundles)</li>
@@ -262,8 +278,8 @@
 Apache release process works and how to get set up to run it, read those sections first if this is 
 your first release. If you are already familiar with the Apache process just use the high level descriptions in the
 next few paragraphs to perform releases.</p>
-<h2 id="releasing_a_single_bundle_or_group_of_bundles">Releasing a single bundle or group of bundles.</h2>
-<h3 id="what_to_release_make_a_list">What to release? Make a list</h3>
+<h2 id="releasing-a-single-bundle-or-group-of-bundles">Releasing a single bundle or group of bundles.</h2>
+<h3 id="what-to-release-make-a-list">What to release? Make a list</h3>
 <p>The Apache release process will not release any bundle that has dependencies on -SNAPSHOTS. If, for example,
 a release of the blueprint API bundle is required the first step is to find and release any of
 its -SNAPSHOT dependencies. Because Aries bundles are quite interdependent (see <a href="moduledependencies">here</a> 
@@ -277,13 +293,13 @@ using the perl script list_bundles_in_aries.pl, checked into SVN under the scrip
 is used for later steps in the release process, so by the end of the process it will have been updated to have
 a complete list
 of all Aries modules and their most recent version numbers after the release.</p></p>
-<h3 id="how_to_deal_with_jira">How to deal with JIRA</h3>
+<h3 id="how-to-deal-with-jira">How to deal with JIRA</h3>
 <p>Before actually doing any releasing work through the list of bundles and understand what defects have been fixed
 (add more about JIRA versions here)</p>
-<h3 id="what_version_will_be_released">What version will be released?</h3>
+<h3 id="what-version-will-be-released">What version will be released?</h3>
 <p>For each bundle on the list check how its package versions have changed since the last release.
 Based on this, use the <a href="versionpolicy">versioning policy</a> to determine the version of the bundle that should be released.</p>
-<h3 id="releasing_bundles">Releasing bundles</h3>
+<h3 id="releasing-bundles">Releasing bundles</h3>
 <p>For each bundle:</p>
 <ul>
 <li>Deploy a SNAPSHOT to the maven snapshot repository (mvn deploy)</li>
@@ -291,10 +307,10 @@ Based on this, use the <a href="versionpolicy">versioning policy</a> to determin
 <li>Create the release artifacts (mvn release:prepare)</li>
 <li>Upload release artifacts to a staging repository (mvn release:perform)</li>
 </ul>
-<h3 id="complete_the_process">Complete the process</h3>
+<h3 id="complete-the-process">Complete the process</h3>
 <p>Once the bundles are in the staging repository, start a vote on the release. After 72 hours close the vote. To complete
 the release process it is necessary to copy the new bundles to the dist dir and update table on the web pages.</p>
-<h2 id="releasing_a_distribution">Releasing a distribution</h2>
+<h2 id="releasing-a-distribution">Releasing a distribution</h2>
 <p>A distribution is just a collection of Aries bundles which have already been released.
 The distribution is just a convenient way for consumers to download aries bundles and all
 of the Aries bundles that they depend on.
@@ -307,7 +323,7 @@ There are three distributions:</p>
 <p>The release process is just the same as for everything else, again, the right time to release these is
 immediately after a bundle(s) release when you have a collection of artifacts that 
 work together.</p>
-<h2 id="releasing_the_samples">Releasing the samples</h2>
+<h2 id="releasing-the-samples">Releasing the samples</h2>
 <p>The Aries samples are designed to work across all the Aries modules. Samples are released as a single
 module. All of the Aries dependencies are listed in the top level samples pom. In 
 trunk, the version of all the dependencies should always point the SNAPSHOT versions 
@@ -322,7 +338,7 @@ all of the bundle version information is up to date in aries_release_versions.tx
 but others (blueprint) are only tested manually. In fact it's wise to run through
 a quick manual check for the blog and aries trader samples as the itests do not catch everything.</p>
 
-<h1 id="background_information_on_the_apache_release_process">Background information on the Apache Release process</h1>
+<h1 id="background-information-on-the-apache-release-process">Background information on the Apache Release process</h1>
 <p>To create a release you will need to create the release artifacts and move
 then to various places (ultimately the Maven central repository). The Maven
 commands and general outline of the process looks like this:</p>
@@ -353,20 +369,20 @@ release:perform)</li>
 these pages we will only add things which are specific to the Apache Aries
 release.</p>
 <p><a name="ReleasingAries-Discussionofthereleaseandit'scontentontheAriesmailinglist"></a></p>
-<h3 id="discussion_of_the_release_and_its_content_on_the_aries_mailing_list">Discussion of the release and its content on the Aries mailing list</h3>
+<h3 id="discussion-of-the-release-and-its-content-on-the-aries-mailing-list">Discussion of the release and its content on the Aries mailing list</h3>
 <p>Before starting off the release process it is essential to gain consensus
 on the dev@aries list that this is the right time for a release and to
 agree its content. Allow at least a week for this discussion. </p>
 <p><a name="ReleasingAries-CreatingandstoringGPGkeys"></a></p>
-<h3 id="creating_and_storing_gpg_keys">Creating and storing GPG keys</h3>
+<h3 id="creating-and-storing-gpg-keys">Creating and storing GPG keys</h3>
 <p>For Aries your GPG key will need to be in this file:
 https://svn.apache.org/repos/asf/aries/KEYS (follow the
 instructions in the file) and checkin</p>
 <p><a name="ReleasingAries-Settingupyourenvironment"></a></p>
-<h3 id="setting_up_your_environment">Setting up your environment</h3>
+<h3 id="setting-up-your-environment">Setting up your environment</h3>
 <p>Follow the general instructions linked to above. </p>
 <p><a name="ReleasingAries-Creatingabranchtoreleasefrom"></a></p>
-<h3 id="creating_a_branch_to_release_from">Creating a branch to release from</h3>
+<h3 id="creating-a-branch-to-release-from">Creating a branch to release from</h3>
 <p>It is strongly recomended that releases are made from trunk and NEVER from a branch. But, if you have to release from a branch this is what 
 you will need to do:</p>
 <div class="codehilite"><pre><span class="n">svn</span> <span class="n">copy</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">trunk</span> <span class="o">\</span>
@@ -401,7 +417,7 @@ repository :-/.</p>
 <p>After taking the branch, change the pom versions in trunk to, say,
 0.3-incubating or whatever you want to call the next development version.</p>
 <p><a name="ReleasingAries-Checkingbundleversion"></a></p>
-<h3 id="checking_which_version_of_the_bundle_to_release">Checking which version of the bundle to release</h3>
+<h3 id="checking-which-version-of-the-bundle-to-release">Checking which version of the bundle to release</h3>
 <p>If the Maven version of the bundle ends -SNAPSHOT then some change has been made which may require a release.
 To get a summary of the changes, use svn to compare with the most recently released tag, 
 for example:</p>
@@ -413,7 +429,7 @@ for example:</p>
 code has changed it is important to check the packageinfo files to see whether package versions have changed. If so
 these might lead to the requirement to increment the major or minor versions the bundle.</p>
 <p><a name="ReleasingAries-Checkingreleaseartifacts"></a></p>
-<h3 id="checking_release_artifacts">Checking release artifacts</h3>
+<h3 id="checking-release-artifacts">Checking release artifacts</h3>
 <p>Delete everything under ...org/apache/aries in your local
 Maven repo. For linux/Mac users you will find this under ~/.m2/repository/.</p>
 <p>Check that the code builds using the usual <a href="buildingaries.html">sequence</a>
@@ -442,20 +458,20 @@ failures, use:</p>
 do not require an Apache license, eg MANIFEST.MF, but any <em>.java or </em>.js
 file does need one. As an alternative you can use 'mvn -Prat install'.</p>
 <p><a name="ReleasingAries-Creatingasnapshotrelease"></a></p>
-<h3 id="creating_a_snapshot_release">Creating a snapshot release</h3>
+<h3 id="creating-a-snapshot-release">Creating a snapshot release</h3>
 <p>This is important to do when releasing from trunk as other bundles may want
 to continue to depend on the -SNAPSHOT version while the release is voted through.</p>
 <p>mvn deploy (check exact format)</p>
-<h3 id="jira_preparation">JIRA preparation</h3>
+<h3 id="jira-preparation">JIRA preparation</h3>
 <ul>
 <li>After initial release discussion on the mailing list you should have a list of JIRA issues that are required in the release. If not, the default assumption is 'everything that has been fixed since the last release'.</li>
 <li>Make sure that there is a JIRA version that matches the name of the release, if not, create one.</li>
 <li>Check through defects, make sure that anything that is included in the release has been closed. If there are open issues move them to the next release.</li>
 </ul>
 <p><a name="ReleasingAries-Creatingtherelease"></a></p>
-<h3 id="creating_the_release">Creating the release</h3>
+<h3 id="creating-the-release">Creating the release</h3>
 <p><a name="ReleasingAries-Creatingthereleaseartifactsinastagingrepository"></a></p>
-<h5 id="creating_the_release_artifacts_in_a_staging_repository">Creating the release artifacts in a staging repository</h5>
+<h5 id="creating-the-release-artifacts-in-a-staging-repository">Creating the release artifacts in a staging repository</h5>
 <p>The release is
 created by releasing each bundle separately and in a specific order. It is
 also desirable to maintain the same IP address for the entire process (the
@@ -524,12 +540,12 @@ the US. When you make a commit, it isn't immediately available in Europe to
 svn up to. Just wait 10 secs and repeat the mvn release:prepare command for
 it to restart where it left off.</p>
 <p><a name="ReleasingAries-Closingthestagingrepository"></a></p>
-<h5 id="closing_the_staging_repository">Closing the staging repository</h5>
+<h5 id="closing-the-staging-repository">Closing the staging repository</h5>
 <p>After checking that the staging repository contains the artifacts that you
 expect you should close the staging repository. This will make it available
 so that people can check the release.</p>
 <p><a name="ReleasingAries-Runningthevote(s)"></a></p>
-<h3 id="running_the_vote">Running the vote.</h3>
+<h3 id="running-the-vote">Running the vote.</h3>
 <p>At this
 point you should write two notes to the dev@aries.apache.org mailing list.</p>
 <ul>
@@ -553,13 +569,13 @@ the dev@aries vote can be summarised and closed. Note that at least three
 <p>Finally - ensure that the file aries_release_version.txt is completely up to date and accurate. 
 You will use this file in the following steps to help build the release web pages.</p>
 <p><a name="ReleasingAries-Promotingthereleaseartifacts"></a></p>
-<h3 id="promoting_the_release_artifacts">Promoting the release artifacts</h3>
+<h3 id="promoting-the-release-artifacts">Promoting the release artifacts</h3>
 <p>From the <a href="https://repository.apache.org/index.html#stagingRepositories">Nexus pages</a>
 , select the staging repository and select 'release' from the top menu.
 This moves the release artifacts into an Apache releases repository, from
 there they will be automatically moved to the Maven repository.</p>
 <p><a name="ReleasingAries-MakingthereleaseartifactsavailablefromtheArieswebpages."></a></p>
-<h3 id="making_the_release_artifacts_available_from_the_aries_web_pages">Making the release artifacts available from the Aries web pages.</h3>
+<h3 id="making-the-release-artifacts-available-from-the-aries-web-pages">Making the release artifacts available from the Aries web pages.</h3>
 <p>Anything that is to be downloaded must be put in
 /www/www.apache.org/dist/aries on minotaur. Don't forget to changes the file permissions to '664' so that other 
 members of the group can access them. The distributions are
@@ -568,14 +584,14 @@ archived here /www/archive.apache.org/dist/aries.</p>
 <p>Then, put new release artifacts in the distribution directory. This is best done using a script, the script can be generated uing
 the perl script <a href="http://svn.apache.org/repos/asf/aries/scripts/download_release_artifacts.pl">download_release_artifacts.pl</a>. </p>
 <p>Next, update the Aries Downloads pages to refer to the new artifacts.</p>
-<h3 id="tidying_up_tasks">Tidying up tasks</h3>
+<h3 id="tidying-up-tasks">Tidying up tasks</h3>
 <ul>
 <li>Get the compliance tests run</li>
 <li>Release notes</li>
 <li>Release the component in JIRA (manage components), check the JIRA release notes.</li>
 </ul>
 <p><a name="ReleasingAries-Whattodowhenpeoplefindproblemswiththerelease"></a></p>
-<h3 id="what_to_do_when_people_find_problems_with_the_release">What to do when people find problems with the release</h3>
+<h3 id="what-to-do-when-people-find-problems-with-the-release">What to do when people find problems with the release</h3>
 <ul>
 <li>Cancel the vote [CANCELLED] [VOTE]</li>
 <li>Clean up, fix and re-release.

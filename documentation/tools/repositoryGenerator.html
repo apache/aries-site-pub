@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -250,7 +266,7 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><h2 id="repository_generation_tool">Repository Generation Tool</h2>
+            <div class="wiki-content"><h2 id="repository-generation-tool">Repository Generation Tool</h2>
 <p>It is a command line tool to generate a repository xml for a list of bundles. The instruction is as follows.</p>
 <ol>
 <li>
@@ -269,10 +285,10 @@ to the  '<em>application-&gt;application-tooling-repository-generator</em>', and
 <p>Note: The text under the [] is optional. If [repository xml loaction] is absent, the repository.xml file will be generated under the current directory. </p>
 <p>The xxx is the maven version of bundle org.apache.aries.application.tooling.repository.generator, e.g. 0.1.0-SNAPSHOT. <br/>
 The file: protocol - url can be a file or a directory, all valid bundles under that directory or subdirectory will be included in the repository xml (no need to list every single jar).<br/><br/>
-Following is an example of generating a repository xml for all the bundles under the directory of  c:temptestjars recursively and a bundle located under http://aaa.com/public/Aries/obr/test.b1/test.b1_1.0.0.jar. 
-The repository xml is saved under c:temptest with the file name of repo.xml.</p>
+Following is an example of generating a repository xml for all the bundles under the directory of  c:\temp\test\jars recursively and a bundle located under http://aaa.com/public/Aries/obr/test.b1/test.b1_1.0.0.jar. 
+The repository xml is saved under c:\temp\test with the file name of repo.xml.</p>
 <blockquote>
-<p><em>java -jar org.apache.aries.application.tooling.repository.generator-0.1.0-SNAPSHOT.jar c:temptestrepo.xml file:///C:/temp/test/jars http://aaa.com/public/Aries/obr/test.b1/test.b1_1.0.0.jar</em> </p>
+<p><em>java -jar org.apache.aries.application.tooling.repository.generator-0.1.0-SNAPSHOT.jar c:\temp\test\repo.xml file:///C:/temp/test/jars http://aaa.com/public/Aries/obr/test.b1/test.b1_1.0.0.jar</em> </p>
 </blockquote></div>
             <!-- Content -->
           </td>

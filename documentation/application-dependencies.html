@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,10 +267,10 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="Applications-AriesApplicationModules"></a></p>
-<h1 id="aries_application_modules">Aries Application Modules</h1>
+<h1 id="aries-application-modules">Aries Application Modules</h1>
 <p>Below are the list of bundles in the format of mavenBundle(groupId, artifactId) required if using Apache Aries application module.</p>
 <p><a name="Applications-CoreBundles"></a></p>
-<h2 id="core_runtime_bundles">Core Runtime bundles</h2>
+<h2 id="core-runtime-bundles">Core Runtime bundles</h2>
 <p>mavenBundle("org.apache.aries.blueprint", "org.apache.aries.blueprint" ),<br/>
 mavenBundle("org.apache.aries", "org.apache.aries.util" ),<br/>
 mavenBundle("org.apache.felix", "org.apache.felix.bundlerepository"),<br/>
@@ -270,16 +286,16 @@ mavenBundle("org.apache.aries.application","org.apache.aries.application.noop.po
 mavenBundle("org.apache.aries.application","org.apache.aries.application.deployment.management"),<br/></p>
 <p>Besides the above bundles, either the non-isolated runtime or isolated runtime is also required.
 <a name="Applications-NonIsoloatedAriesapplication"></a></p>
-<h2 id="non-isolated_runtime">Non-isolated Runtime</h2>
+<h2 id="non-isolated-runtime">Non-isolated Runtime</h2>
 <p>mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime" ),<br/>
 <a name="Applications-IsoloatedAriesapplication"></a></p>
-<h2 id="isolated_runtime">Isolated Runtime</h2>
+<h2 id="isolated-runtime">Isolated Runtime</h2>
 <p>mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.isolated"),<br/>
 mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.framework"),<br/>
 mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.framework.management"),<br/>
 mavenBundle("org.apache.aries.application","org.apache.aries.application.runtime.repository"),<br/></p>
 <p><a name="Applications-ReplacableBundles"></a></p>
-<h2 id="replacable_bundles">Replacable bundles</h2>
+<h2 id="replacable-bundles">Replacable bundles</h2>
 <p>If the application modules are used in a application server, the following bundles should/can be replaced and the services should/can be implemented by the application server.</p>
 <h4 id="orgapacheariesapplicationdefaultlocalplatform">org.apache.aries.application.default.local.platform</h4>
 <p>This bundle should be replaced with an alternative bundle by the application server. This bundle provides the temp directory location.</p>

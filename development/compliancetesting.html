@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,7 +267,7 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="ComplianceTesting-Runningthetests"></a></p>
-<h2 id="enterprise_osgi_compliance_tests">Enterprise OSGi Compliance Tests</h2>
+<h2 id="enterprise-osgi-compliance-tests">Enterprise OSGi Compliance Tests</h2>
 <p>The Enterprise OSGi compliance tests are provided byt the <a href="http://www.osgi.org">OSGi Alliance</a>
  to Apache committers who have signed the appropriate Non Disclosure
 Agreement.</p>
@@ -262,15 +278,15 @@ Aries components.</p>
 <p>Instructions for obtaining and running the tests are given <a href="how-to-run-the-osgi-enterprise-ct.html">here</a>
 .</p>
 <p><a name="ComplianceTesting-Testresults"></a></p>
-<h2 id="test_results">Test results</h2>
+<h2 id="test-results">Test results</h2>
 <p>At each Aries release the tests are run against Aries components. The
 results for the most recent release can be found <a href="/downloads/testresults.html">here</a>
 .
 <a name="ComplianceTesting-Runningthetests"></a></p>
-<h2 id="how_to_run_the_tests_for_aries_components">How to run the tests for Aries components</h2>
+<h2 id="how-to-run-the-tests-for-aries-components">How to run the tests for Aries components</h2>
 <p><a name="HowtoruntheOSGiEnterpriseCT-Legalstuff"></a></p>
-<h3 id="legal_stuff">Legal stuff</h3>
-<p>Complete an Apache <a href="-http://apache.org/jcp/apachenda.pdf.html">Non Disclosure Agreement</a>
+<h3 id="legal-stuff">Legal stuff</h3>
+<p>Complete an Apache <a href="http://apache.org/jcp/ApacheNDA.pdf">Non Disclosure Agreement</a>
  and email it to secretary@apache.org</p>
 <p>Write a note to jcp-open@apache.org with the subject "OSGi CT access" which
 contains (something like) the following text:</p>
@@ -279,14 +295,14 @@ the OSGi CT. I've submitted an NDA."</p>
 <p>Note: You should subscribe to jcp-open@apache.org first. If you don't your
 note will languish in 'moderation' forever :-)</p>
 <p><a name="HowtoruntheOSGiEnterpriseCT-Getthetests"></a></p>
-<h3 id="get_the_tests">Get the tests</h3>
+<h3 id="get-the-tests">Get the tests</h3>
 <p>Anyone with an NDA on file should be able to get access to the tests <a href="-https://svn.apache.org/repos/tck/osgi-cts.html">here </a>
 .</p>
 <p>The group of tests that are required for Aries is called
 osgi.enterprise.tests. Download the jar for the appropriate level -
 currently 4.2.0.</p>
 <p><a name="HowtoruntheOSGiEnterpriseCT-Runningthetests"></a></p>
-<h3 id="running_the_tests">Running the tests</h3>
+<h3 id="running-the-tests">Running the tests</h3>
 <p>Extract the jar into a test directory, say ~/AriesTests. After you have
 extracted the file you will find:
  * A subdirectory call 'jar' which contains all the tests
@@ -304,7 +320,7 @@ bnd files, to download some additional pre-reqs and to assemble the aries
 components to be tested. The <a href="http://felix.apache.org/site/using-the-osgi-compliance-tests.html">Felix</a>
  pages give a good indication of what is necessary.</p>
 <p><a name="HowtoruntheOSGiEnterpriseCT-Debuggingthetests"></a></p>
-<h3 id="debugging_the_tests">Debugging the tests</h3>
+<h3 id="debugging-the-tests">Debugging the tests</h3>
 <p>If you want to debug the code then you need to add the following line to
 the .bnd file:</p>
 <div class="codehilite"><pre><span class="o">-</span><span class="n">runvm</span><span class="o">=-</span><span class="n">Xdebug</span><span class="p">,</span><span class="s">&quot;-Xrunjdwp:transport=dt_socket,server=y,address=localhost:7777&quot;</span>
@@ -313,7 +329,7 @@ the .bnd file:</p>
 
 <p>You can change 7777 to any number you want.</p>
 <p><a name="HowtoruntheOSGiEnterpriseCT-Modifyingthebndfiles"></a></p>
-<h3 id="modifying_the_bnd_files">Modifying the bnd files</h3>
+<h3 id="modifying-the-bnd-files">Modifying the bnd files</h3>
 <p><a name="HowtoruntheOSGiEnterpriseCT-General"></a></p>
 <h4 id="general">General</h4>
 <p>First, it is necessary to add a couple of lines, like this:</p>

@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -267,7 +283,7 @@ wired together to form a running module. </p>
 <p>The following documentation covers the 80:20 usage of Blueprint.  For
 further details, please refer to the OSGi Compendium R4.2 specification.</p>
 <p><a name="Blueprint-BlueprintBundles"></a></p>
-<h2 id="blueprint_bundles">Blueprint Bundles</h2>
+<h2 id="blueprint-bundles">Blueprint Bundles</h2>
 <p>The Blueprint Container specification uses an extender pattern, whereby an
 extender bundle monitors the state of bundles in the framework and performs
 actions on behalf of those bundles based on their state. The Blueprint
@@ -292,7 +308,7 @@ service registry, and creates initial component instances. The Blueprint
 extender bundle also destroys the Blueprint Container for a bundle when the
 bundle is stopped. </p>
 <p><a name="Blueprint-BlueprintXML"></a></p>
-<h2 id="blueprint_xml">Blueprint XML</h2>
+<h2 id="blueprint-xml">Blueprint XML</h2>
 <p>The Blueprint XML file is identified by a top-level blueprint element, as
 shown below:</p>
 <div class="codehilite"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
@@ -319,7 +335,7 @@ bean called <em>accountOne</em> implemented by the POJO
 
 
 <p><a name="Blueprint-BeanConstruction"></a></p>
-<h3 id="bean_construction">Bean Construction</h3>
+<h3 id="bean-construction">Bean Construction</h3>
 <p>During object construction, the Blueprint Container must first find the
 right constructor or a factory method with a compatible set of parameters
 that matches the arguments specified in the XML. By default, the Blueprint
@@ -399,7 +415,7 @@ the argument to create the Account object.</p>
 
 
 <p><a name="Blueprint-BeanProperties"></a></p>
-<h3 id="bean_properties">Bean Properties</h3>
+<h3 id="bean-properties">Bean Properties</h3>
 <p>Beans can have property values injected.  Injection is performed
 immediately after the bean is constructed.  The following example creates
 the Account bean and then sets the description property using the Java
@@ -420,7 +436,7 @@ Beans naming convention.</p>
 
 
 <p><a name="Blueprint-BeanWiring"></a></p>
-<h4 id="bean_wiring">Bean Wiring</h4>
+<h4 id="bean-wiring">Bean Wiring</h4>
 <p>Property injection is used for wiring beans together.  In the following
 example <em>accountOne</em> is injected with a <em>Currency</em> bean.</p>
 <div class="codehilite"><pre>   public class Account {      
@@ -489,7 +505,7 @@ all the bean's interfaces:</p>
 <p>Other values for <em>auto-export</em> are <em>disabled</em> (the default)
 <em>class-hierarchy</em> and <em>all-classes</em>.</p>
 <p><a name="Blueprint-ServiceProperties"></a></p>
-<h3 id="service_properties">Service Properties</h3>
+<h3 id="service-properties">Service Properties</h3>
 <p>A service can also be registered with a set of properties that can be
 specified using the <em>service-properties</em>  sub-element. The
 <em>service-properties</em> element contains multiple <em>entry</em> sub-elements
@@ -515,7 +531,7 @@ properties. The <em>active</em> service property has type of
 
 
 <p><a name="Blueprint-ServiceRanking"></a></p>
-<h3 id="service_ranking">Service Ranking</h3>
+<h3 id="service-ranking">Service Ranking</h3>
 <p>Service ranking can be used to affect the choice of service when there are
 multiple matches.  When choosing between two services, the higher ranked
 service will be returned ahead of the lower.  The default ranking value is
@@ -542,7 +558,7 @@ it is set on the <em>accountClient</em> bean through the <em>account</em> proper
 
 
 <p><a name="Blueprint-ReferenceDynamism"></a></p>
-<h3 id="reference_dynamism">Reference Dynamism</h3>
+<h3 id="reference-dynamism">Reference Dynamism</h3>
 <p>The object that is injected for a reference is actually a proxy to the
 service registered in the service registry. A proxy enables the injected
 object to remain the same while the backing service can come and go or be
@@ -583,7 +599,7 @@ reference to 20000 milliseconds (20 seconds).</p>
 <p>In all cases, a value of 0 means wait indefinitely for the reference to
 become satisfied.</p>
 <p><a name="Blueprint-ReferenceLists"></a></p>
-<h3 id="reference_lists">Reference Lists</h3>
+<h3 id="reference-lists">Reference Lists</h3>
 <p>Multiple matching services can be found using the <em>reference-list</em>
 element.  The <em>reference-list</em> provides a <em>List</em> object that contains
 the service proxy objects or <em>ServiceReference</em> objects, depending on the
@@ -613,7 +629,7 @@ ServiceReferences:</p>
 <p>Example showing mandatory or optional references (availability)</p>
 <p>Example showing use of filter</p>
 <p><a name="Blueprint-BeanProperties"></a></p>
-<h2 id="bean_properties_1">Bean Properties</h2>
+<h2 id="bean-properties_1">Bean Properties</h2>
 <p>Example showing use of bean properties</p>
 <p><a name="Blueprint-Scopes"></a></p>
 <h2 id="scopes">Scopes</h2>
@@ -621,7 +637,7 @@ ServiceReferences:</p>
 <p>Example showing prototype scope for beans</p>
 <p>Example showing prototype scope for services</p>
 <p><a name="Blueprint-ObjectValues"></a></p>
-<h2 id="object_values">Object Values</h2>
+<h2 id="object-values">Object Values</h2>
 <p>Intro to Object Values</p>
 <p>Examples showing the use of the various different object value types - ref,
 map, props collection (list, array, set).</p>
@@ -629,7 +645,7 @@ map, props collection (list, array, set).</p>
 <h2 id="lifecycle">Lifecycle</h2>
 <p>Example showing use of init/destroy-method</p>
 <p><a name="Blueprint-LazyandEagerActiviation"></a></p>
-<h2 id="lazy_and_eager_activiation">Lazy and Eager Activiation</h2>
+<h2 id="lazy-and-eager-activiation">Lazy and Eager Activiation</h2>
 <p>Example showing lazy activiation.</p>
 <p>Example showing eager activation.</p>
 <p><a name="Blueprint-Dynamism"></a></p>
@@ -637,7 +653,7 @@ map, props collection (list, array, set).</p>
 <p>Example showing service-listener</p>
 <p>Example showing reference-listener</p>
 <p><a name="Blueprint-TypeConverters"></a></p>
-<h2 id="type_converters">Type Converters</h2></div>
+<h2 id="type-converters">Type Converters</h2></div>
             <!-- Content -->
           </td>
         </tr>

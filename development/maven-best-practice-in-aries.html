@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,9 +267,9 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="MavenbestpracticeinAries-Assembledbestpracticenotes"></a></p>
-<h1 id="maven_best_practice_in_aries_development">Maven best practice in Aries development</h1>
+<h1 id="maven-best-practice-in-aries-development">Maven best practice in Aries development</h1>
 <p><a name="MavenbestpracticeinAries-Overallstructure"></a></p>
-<h3 id="overall_structure">Overall structure</h3>
+<h3 id="overall-structure">Overall structure</h3>
 <p>The Aries project is a collection of loosely couple bundles, therefore
 it must be possible to build each bundle on its own. This implies:</p>
 <ol>
@@ -268,7 +284,7 @@ testing).</li>
 <li>Bundles do not (except samples) have sub-modules.</li>
 </ol>
 <p><a name="MavenbestpracticeinAries-Goodpracticeinthepom"></a></p>
-<h3 id="good_practice_in_the_pom">Good practice in the pom</h3>
+<h3 id="good-practice-in-the-pom">Good practice in the pom</h3>
 <ol>
 <li>Alphabetic ordering in dependency management is helpful</li>
 <li>Include a brief description of the project</li>
@@ -276,7 +292,7 @@ testing).</li>
 <li>Use ${project.version} <em>not</em> ${version} for Maven 3 compatibility.</li>
 </ol>
 <p><a name="MavenbestpracticeinAries-GroupandArtifactnames"></a></p>
-<h3 id="group_and_artifact_names">Group and Artifact names</h3>
+<h3 id="group-and-artifact-names">Group and Artifact names</h3>
 <ol>
 <li>The Bundle Symbolic Name is explicitly set to the Maven artifactId. For
 projects which deliver bundles, the artifactID will therefore completely

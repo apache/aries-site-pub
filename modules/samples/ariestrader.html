@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,11 +267,10 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="AriesTrader-TheAriesTraderSample"></a></p>
-<h1 id="the_ariestrader_sample">The AriesTrader Sample</h1>
+<h1 id="the-ariestrader-sample">The AriesTrader Sample</h1>
 <p><a name="AriesTrader-Prereqs"></a></p>
 <h3 id="prereqs">Prereqs</h3>
-<br>
-
+<p><br></p>
 <hr />
 <p><strong>Note:</strong> </p>
 <p>These instructions are for the 0.2-incubating release of Aries.
@@ -269,7 +284,7 @@ the sample itself (see instructions below).<br />
 </p>
 <hr />
 <p><a name="AriesTrader-CreatingtheOSGiplatform(equinox-test-harness)forAriesTrader"></a></p>
-<h3 id="creating_the_osgi_platform_equinox-test-harness_for_ariestrader">Creating the OSGi platform (equinox-test-harness) for AriesTrader</h3>
+<h3 id="creating-the-osgi-platform-equinox-test-harness-for-ariestrader">Creating the OSGi platform (equinox-test-harness) for AriesTrader</h3>
 <p>Download and unzip the source zip for the <a href="aries:downloads.html">latest release</a>
  of Aries Samples and build the equinox-test-harness module under
 ariestrader:</p>
@@ -281,14 +296,14 @@ ariestrader:</p>
 <p>This procedure will pull in the binaries from the latest release and its
 dependencies.</p>
 <p><a name="AriesTrader-AlternativebuildusingApacheAriestrunk."></a></p>
-<h3 id="alternative_build_using_apache_aries_trunk">Alternative build using Apache Aries trunk.</h3>
+<h3 id="alternative-build-using-apache-aries-trunk">Alternative build using Apache Aries trunk.</h3>
 <p>As an alternative to using the released version you can also choose to work
 with the latest, unreleased code.  This will require the use of subversion
 to checkout the code followed by building the entire Apache Aries project. 
 Directions are provided here:  <a href="aries:buildingaries.html">Building Aries instructions</a>
 .</p>
 <p><a name="AriesTrader-StartingtheEquinoxTestHarnesstoruntheAriesTradersample"></a></p>
-<h3 id="starting_the_equinox_test_harness_to_run_the_ariestrader_sample">Starting the Equinox Test Harness to run the AriesTrader sample</h3>
+<h3 id="starting-the-equinox-test-harness-to-run-the-ariestrader-sample">Starting the Equinox Test Harness to run the AriesTrader sample</h3>
 <p>AriesTrader needs a test harness to run in.  For this purpose we are using
 an Equinox assembly that pulls in all of the necessary dependencies.<br />
 </p>
@@ -305,7 +320,7 @@ exception of the ariestrader derby datasource which is started with the
 test harness for convenience).<br />
 </p>
 <p><a name="AriesTrader-InstallingAriesTraderintheEquinoxTestHarness"></a></p>
-<h3 id="installing_ariestrader_in_the_equinox_test_harness">Installing AriesTrader in the Equinox Test Harness</h3>
+<h3 id="installing-ariestrader-in-the-equinox-test-harness">Installing AriesTrader in the Equinox Test Harness</h3>
 <p>To install the AriesTrader application simply copy the eba for AriesTrader
 into the target/load directory, you will need to create this directory first.<br />
 For convenience the AriesTraders EBAs are
@@ -329,7 +344,7 @@ available persistence modes:</p>
 or org.apache.aries.samples.ariestrader.all-</em>.eba from the target/load
 directory the application will be uninstalled.</p>
 <p><a name="AriesTrader-AccessingandusingtheAriesTradersample"></a></p>
-<h3 id="accessing_and_using_the_ariestrader_sample">Accessing and using the AriesTrader sample</h3>
+<h3 id="accessing-and-using-the-ariestrader-sample">Accessing and using the AriesTrader sample</h3>
 <p>Point your browser at <a href="http://localhost:8080/ariestrader/">http://localhost:8080/ariestrader/</a></p>
 <p>Select the "Configuration" tab and the "Configure AriesTrader run-time
 parameters" choice.  Then select from among the available runtime modes
@@ -359,7 +374,7 @@ not currently working).  You can also run the "Test AriesTrader Scenario"
 from the "Configuration" tab which will launch a new browser window and
 step through a trading scenario with each reload of the page.</p>
 <p><a name="AriesTrader-AbouttheAriesTraderSample"></a></p>
-<h3 id="about_the_ariestrader_sample">About the AriesTrader Sample</h3>
+<h3 id="about-the-ariestrader-sample">About the AriesTrader Sample</h3>
 <p>The AriesTrader sample is a modified version of the Apache Geronimo
 DayTrader sample.  It has been somewhat simplified and reorganized to
 support the Apache Aries programming model.<br />

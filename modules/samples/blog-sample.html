@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,11 +267,10 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="BlogSample-TheBlogSample"></a></p>
-<h1 id="the_blog_sample">The Blog Sample</h1>
+<h1 id="the-blog-sample">The Blog Sample</h1>
 <p><a name="BlogSample-RunningtheBlogSample"></a></p>
-<h2 id="running_the_blog_sample">Running the Blog Sample</h2>
-<br>
-
+<h2 id="running-the-blog-sample">Running the Blog Sample</h2>
+<p><br></p>
 <hr />
 <p><strong>Note:</strong>
 These instructions are for the current development stream of Aries.
@@ -263,7 +278,7 @@ Instructions for older releases can be found <a href="/downloads/archived-releas
 Instructions for the current release of Aries can be found <a href="/downloads/blogsample-0.3.html">here</a></p>
 <hr />
 <p><a name="BlogSample-CreatetheOSGiplatformfortheBlogsample"></a></p>
-<h3 id="create_the_osgi_platform_for_the_blog_sample">Create the OSGi platform for the Blog sample</h3>
+<h3 id="create-the-osgi-platform-for-the-blog-sample">Create the OSGi platform for the Blog sample</h3>
 <p>Download and build the development stream of Aries, see <a href="/development/buildingaries.html">here</a></p>
 <div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span><span class="o">/</span><span class="n">target</span>
 <span class="nb">mkdir</span> <span class="n">load</span>
@@ -274,7 +289,7 @@ Instructions for the current release of Aries can be found <a href="/downloads/b
 Create the load directory. This used to be done automatically by Felix file install, but in more recent
 versions yo have to create your own.
 <a name="BlogSample-RunningtheBlogsample"></a></p>
-<h3 id="running_the_blog_sample_1">Running the Blog sample</h3>
+<h3 id="running-the-blog-sample_1">Running the Blog sample</h3>
 <p>Start Aries in an OSGi framework (we're using Eclipse Equinox in this
 case)</p>
 <div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span><span class="mf">3.5.0</span><span class="o">.</span><span class="n">v20090520</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
@@ -293,7 +308,7 @@ platform bundles in state 'ACTIVE'.</p>
 <p>If you subsequently delete the .eba from the load directory the application
 will be uninstalled.</p>
 <p><a name="BlogSample-RunningthesampleusingaJPApersistencelayer"></a></p>
-<h3 id="running_the_sample_using_a_jpa_persistence_layer">Running the sample using a JPA persistence layer</h3>
+<h3 id="running-the-sample-using-a-jpa-persistence-layer">Running the sample using a JPA persistence layer</h3>
 <p>The first blog sample application was written to use a JDBC persistence
 layer. There is a second application implemented to demonstrate the JPA
 capability</p>
@@ -310,7 +325,7 @@ target/load directory, then copy </p>
 running with the JDBC persistence layer, but this time running using the
 JPA persistence layer.</p>
 <p><a name="BlogSample-AbouttheBlogsample"></a></p>
-<h2 id="about_the_blog_sample">About the Blog sample</h2>
+<h2 id="about-the-blog-sample">About the Blog sample</h2>
 <p>The blog sample components can be visualised like this:</p>
 <p><img alt="bs" src="BlogSample.png" /></p></div>
             <!-- Content -->

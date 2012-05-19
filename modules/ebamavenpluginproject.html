@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,7 +267,7 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="EBAMavenPluginProject-EBAMavenPlugin"></a></p>
-<h1 id="eba_maven_plugin">EBA Maven Plugin</h1>
+<h1 id="eba-maven-plugin">EBA Maven Plugin</h1>
 <p>The EBA Maven Plugin provides the ability to generate EBA archives using
 Maven.  The EBA archive format is described in <a href="applications.html">Applications</a>
 .  An EBA archive can optionally contain an Application manifest
@@ -261,7 +277,7 @@ Maven.  The EBA archive format is described in <a href="applications.html">Appli
 <li>Generated based on pom configuration.</li>
 </ol>
 <p><a name="EBAMavenPluginProject-UsingthePlugin"></a></p>
-<h2 id="using_the_plugin">Using the Plugin</h2>
+<h2 id="using-the-plugin">Using the Plugin</h2>
 <p>The plugin is included by as follows:</p>
 <div class="codehilite"><pre>    <span class="nt">&lt;build&gt;</span>
     <span class="nt">&lt;plugins&gt;</span>
@@ -279,7 +295,7 @@ attempt to copy a pre-defined APPLICATION.MF from
 src/main/resources/META-INF.  If that file does not exist, then no
 application manifest will be included.</p>
 <p><a name="EBAMavenPluginProject-GeneratinganAPPLICATION.MF"></a></p>
-<h2 id="generating_an_applicationmf">Generating an APPLICATION.MF</h2>
+<h2 id="generating-an-applicationmf">Generating an APPLICATION.MF</h2>
 <p>The following example shows how to get the plugin to generate an
 APPLICATION.MF based on the pom configuration:</p>
 <div class="codehilite"><pre>    <span class="nt">&lt;build&gt;</span>
@@ -303,7 +319,7 @@ APPLICATION.MF based on the pom configuration:</p>
 </em> Pom <description/> -&gt; Application-Description
 * Pom <dependencies/> -&gt; Application-Content</p>
 <p><a name="EBAMavenPluginProject-OverridingApplication-SymbolicName"></a></p>
-<h2 id="overriding_application-symbolicname">Overriding Application-SymbolicName</h2>
+<h2 id="overriding-application-symbolicname">Overriding Application-SymbolicName</h2>
 <p>The application symbolic name defaults to the
 ${project.groupId}.${project.artifaceId}.  The following shows how to override
 this:</p>
@@ -316,7 +332,7 @@ this:</p>
 
 
 <p><a name="EBAMavenPluginProject-AddingApplication-ExportServiceandApplication-ImportServiceheaders"></a></p>
-<h2 id="adding_application-exportservice_and_application-importservice_headers">Adding Application-ExportService and Application-ImportService headers</h2>
+<h2 id="adding-application-exportservice-and-application-importservice-headers">Adding Application-ExportService and Application-ImportService headers</h2>
 <p>The application import service and export service headers can be set as
 follows.  The text inside the elements is included as-is.</p>
 <div class="codehilite"><pre><span class="nt">&lt;configuration&gt;</span>
@@ -329,7 +345,7 @@ follows.  The text inside the elements is included as-is.</p>
 
 
 <p><a name="EBAMavenPluginProject-AddingUseBundleheader"></a></p>
-<h2 id="adding_the_use-bundle_header">Adding the Use-Bundle header</h2>
+<h2 id="adding-the-use-bundle-header">Adding the Use-Bundle header</h2>
 <p>The application Use-Bundle header can be set as
 follows.  The text inside the elements is included as-is.</p>
 <div class="codehilite"><pre><span class="nt">&lt;configuration&gt;</span>
@@ -341,7 +357,7 @@ follows.  The text inside the elements is included as-is.</p>
 
 
 <p><a name="EBAMavenPluginProject-Includingtransitivedependencies"></a></p>
-<h2 id="including_transitive_dependencies_deprecated">Including transitive dependencies (deprecated)</h2>
+<h2 id="including-transitive-dependencies-deprecated">Including transitive dependencies (deprecated)</h2>
 <p>This configuration option is deprecated in favor of <archiveContent />.</p>
 <p>By default, the archive will only include the direct dependencies of the
 project.  Transitive dependencies can be includes as follows:</p>
@@ -352,7 +368,7 @@ project.  Transitive dependencies can be includes as follows:</p>
 
 
 <p><a name="EBAMavenPluginProject-Archivecontent"></a></p>
-<h2 id="including_bundles_in_the_archive">Including bundles in the archive</h2>
+<h2 id="including-bundles-in-the-archive">Including bundles in the archive</h2>
 <p>By default, the archive will only include the direct dependencies of the project.  The <code>&lt;archiveContent/&gt;</code> element can be used to control the archive artifact contents.  The following shows how to include all direct and transitive dependencies.</p>
 <div class="codehilite"><pre><span class="nt">&lt;configuration&gt;</span>
   <span class="nt">&lt;archiveContent&gt;</span>all<span class="nt">&lt;/archiveContent&gt;</span>

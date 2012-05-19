@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,7 +267,7 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="BlueprintHelloWorldTutorial-Blueprinttutorial"></a></p>
-<h1 id="blueprint_tutorial">Blueprint tutorial</h1>
+<h1 id="blueprint-tutorial">Blueprint tutorial</h1>
 <p><a name="BlueprintHelloWorldTutorial-Introduction"></a></p>
 <h3 id="introduction">Introduction</h3>
 <p>This tutorial is designed for people who are starting to use the Apache
@@ -266,7 +282,7 @@ build copy of Aries, the instructions are <a href="/development/buildingaries.ht
 . This tutorial assumes that you have built Aries and imported the
 samples/helloworld projects into Eclipse. </p>
 <p><a name="BlueprintHelloWorldTutorial-TheAPI,ServerandClientprojects"></a></p>
-<h3 id="the_api_server_and_client_projects">The API, Server and Client projects</h3>
+<h3 id="the-api-server-and-client-projects">The API, Server and Client projects</h3>
 <p>When you have checked out and built the Aries code your workspace will
 contain the four projects highlighted in the picture below. This is a
 screen shot taken from my Eclipse package explorer: <br>
@@ -314,7 +330,7 @@ this
 The client implementation is in HelloWorldClient.java. The file config.xml
 contains the Blueprint for the client.</p>
 <p><a name="BlueprintHelloWorldTutorial-TheBlueprintXML"></a></p>
-<h3 id="the_blueprint_xml">The Blueprint XML</h3>
+<h3 id="the-blueprint-xml">The Blueprint XML</h3>
 <p>Blueprint xml files contain all the information that the Blueprint runtime
 needs to internally wire a bundle's components. They also contain the
 information that the Blueprint runtime needs to register and locate
@@ -349,7 +365,7 @@ bean.
 <br>
 <br></p>
 <p><a name="BlueprintHelloWorldTutorial-TheJavaclasses"></a></p>
-<h3 id="the_java_classes">The Java classes</h3>
+<h3 id="the-java-classes">The Java classes</h3>
 <p>Both the Java classes are very simple, there are just a couple of minor
 points to make about each one. The HelloWorldClient class looks like
 this:
@@ -381,7 +397,7 @@ started </li>
 <li>A hello() method which writes a 'hello' message</li>
 </ol>
 <p><a name="BlueprintHelloWorldTutorial-Runningthecode"></a></p>
-<h3 id="running_the_code">Running the code</h3>
+<h3 id="running-the-code">Running the code</h3>
 <p>The code can be run on an Equinox (or Felix) framework. The
 org.apache.aries.samples.helloworld.blueprint.assembly package assembles an
 Equinox based platform that contains all of the OSGi bundles you need. To

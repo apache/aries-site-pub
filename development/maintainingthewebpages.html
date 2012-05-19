@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,7 +267,7 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="MaintainingTheWebPages-HowtheArieswebsiteworks"></a></p>
-<h1 id="how_the_aries_web_site_works">How the Aries web site works</h1>
+<h1 id="how-the-aries-web-site-works">How the Aries web site works</h1>
 <p>The Aries site is built using CMS. To edit the site you must be an Aries committer, the 
 ID and password are the same ones as you use for Aries SVN.</p>
 <p>The easiest way to edit pages is to install the CMS bookmarklet as described <a href="https://cms.apache.org/#bookmark">here</a></p>
@@ -268,7 +284,7 @@ ID and password are the same ones as you use for Aries SVN.</p>
 the CMS system (eg tables, syntax highlighting). </p>
 <p>More information on CMS is 
 available <a href="http://wiki.apache.org/general/ApacheCms2010">here</a></p>
-<h1 id="making_major_changes">Making major changes</h1>
+<h1 id="making-major-changes">Making major changes</h1>
 <p>Because the site is all in SVN its possible to check it out, make and test changes locally and then check in again much as you woudl with code changes.
 To do this you will need:</p>
 <ul>
@@ -280,7 +296,7 @@ To do this you will need:</p>
 </pre></div>
 
 
-<h2 id="to_build_the_site_using_the_build_tools">To build the site using the build tools.</h2>
+<h2 id="to-build-the-site-using-the-build-tools">To build the site using the build tools.</h2>
 <p>First check the cms build tools out of SVN: </p>
 <div class="codehilite"><pre><span class="n">svn</span> <span class="n">co</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/i</span><span class="n">nfra</span><span class="sr">/websites/cms/build/</span> <span class="n">buildtools</span>
 </pre></div>
@@ -291,7 +307,7 @@ of Markup. The instructions for finding and installing Python pre-reqs are given
 <p>Then to build the site use this command:</p>
 <p>perl build_site.pl --source-base /path/to/newsite/trunk/ --target-base /path/to/output/</p>
 <p>which will create *.html in /path/to/output/content</p>
-<h2 id="check_the_site_on_a_local_server">Check the site on a local server.</h2>
+<h2 id="check-the-site-on-a-local-server">Check the site on a local server.</h2>
 <p>Use a vhost to check the site. On a Mac this means adding the following stanza to /etc/apache2/extra/httpd-vhosts.conf</p>
 <p><VirtualHost *:80>
     DocumentRoot "/Users/zoe/Sites/zaries/www"
@@ -302,12 +318,11 @@ of Markup. The instructions for finding and installing Python pre-reqs are given
 </pre></div>
 
 
-</VirtualHost>
-
+<p></VirtualHost></p>
 <p>To test the site,  move it like this:</p>
 <p>mv /path/to/output/content /Users/zoe/Sites/zaries/www</p>
 <p>Then navigate to http://zaries in a browser.</p>
-<h1 id="add_menuitem">Add menuitem</h1>
+<h1 id="add-menuitem">Add menuitem</h1>
 <p>Check out the site by using 
 svn co https://svn.apache.org/repos/asf/aries/site/trunk/ site</p>
 <p>update the file under templates/navigation.mdtext</p>

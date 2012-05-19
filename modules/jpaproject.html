@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -263,7 +279,7 @@ Release 4, Version 4.2" available for public download from the <a href="http://w
 <p>Developing an Aries JPA project is very easy and can be achieved with simple steps described in the 
 "Creation of a JPA project using Maven" section. First, however it is useful to understand some of
 the basic concepts.</p>
-<h2 id="persistence_bundles">Persistence bundles</h2>
+<h2 id="persistence-bundles">Persistence bundles</h2>
 <p>The Aries JPA container provides managed JPA support in an OSGi framework for OSGi persistence bundles.
 A persistence bundle is an OSGi bundle with three special characteristics:</p>
 <ul>
@@ -287,15 +303,15 @@ descriptors can be found. If the header value is empty then a default of META-IN
 <p>means that the locations "persistence/myPu.xml" (relative to the root of the bundle), and 
 "someFolder/anotherPu.xml" (relative to the root of pUnit.jar, which is in the root of
 the bundle) will be searched.</p>
-<h2 id="the_aries_jpa_container">The Aries JPA container</h2>
+<h2 id="the-aries-jpa-container">The Aries JPA container</h2>
 <p>The Aries JPA container consists of four main pieces, the two most important of which are the API bundle
 and the container bundle.</p>
-<h3 id="the_aries_jpa_api_bundle">The Aries JPA API bundle</h3>
+<h3 id="the-aries-jpa-api-bundle">The Aries JPA API bundle</h3>
 <p>The Aries JPA container API bundle is <strong>not</strong> the JPA API, it is a set of interfaces for interacting with
 the Aries JPA container. Clients are unlikely to use this API, but you may need it if you are building
 your own runtime. This bundle also defines the interfaces that the Aries JPA container bundles use to
 talk to each other, as a result it is a mandatory dependency of all of the other Aries JPA container bundles.</p>
-<h3 id="the_aries_jpa_container_bundle">The Aries JPA container bundle</h3>
+<h3 id="the-aries-jpa-container-bundle">The Aries JPA container bundle</h3>
 <p>The Aries JPA container bundle provides basic support for application managed JPA. It is responsible for
 locating and parsing persistence descriptors. Any persistence units found will be processed and used to
 create EntityManagerFactory services, which will be registered on behalf of the persistence bundle when
@@ -321,14 +337,14 @@ the persistence bundle is removed or refreshed. If you do close the EntityManage
 closed for <strong>all</strong> users of the service.</p>
 </li>
 </ul>
-<h3 id="the_aries_jpa_container_context_bundle">The Aries JPA container context bundle</h3>
+<h3 id="the-aries-jpa-container-context-bundle">The Aries JPA container context bundle</h3>
 <p>This bundle provides managed persistence context support. In order to function it requires the Aries JPA container
 bundle to be running as it makes use of the managed EntityManagerFactory services.</p>
 <p>This bundle also depends on the presence of a JTA service specification implementation, as it makes use of the
 TransactionSynchronizationRegistry service.</p>
 <p>It is unlikely that clients will use this bundle directly. To actually use managed persistence contexts a client
 should use blueprint to inject one.</p>
-<h2 id="the_aries_jpa_container_blueprint_integration_bundle">The Aries JPA container blueprint integration bundle</h2>
+<h2 id="the-aries-jpa-container-blueprint-integration-bundle">The Aries JPA container blueprint integration bundle</h2>
 <p>This bundle provides a blueprint custom namespace for persistence unit and persistence context injection. To
 inject persistence units the Aries JPA container bundle is required. To inject persistence contexts the Aries
 JPA container context bundle is also required.</p>
@@ -394,7 +410,7 @@ JPA container context bundle is also required.</p>
 
 <p>This blueprint namespace can be used by any blueprint bundle (not just the persistence bundle), and as the injection
 occurs via the service registry your blueprint will not start until the relevant JPA resources are available there.</p>
-<h1 id="creation_of_a_jpa_project_using_maven">Creation of a JPA project using Maven</h1>
+<h1 id="creation-of-a-jpa-project-using-maven">Creation of a JPA project using Maven</h1>
 <p>The first step consist in to create a maven module and make the following modifications to allow to deploy
  it as OSGI bundle on the platform and reference where the persistence XML file must loaded by the classpath to
  allow to the JPA container to configure the project accordingly.</p>
@@ -467,12 +483,11 @@ transaction manager or not.</p>
 with the classes of your DAO layer and add Transactional aspect into the methods. This way of work allows to complety
 embed existing projects into ARIES sphere without modifications</p>
 <p>Here are the modifications to do in the blueprint xml file located under OSGI-INF/blueprint</p>
-<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+<p><blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.0.0"
     xmlns:jpa="http://aries.apache.org/xmlns/jpa/v1.0.0"
-    default-activation="lazy">
-
+    default-activation="lazy"></p>
 <div class="codehilite"><pre><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;incidentDAO&quot;</span>
     <span class="na">class=</span><span class="s">&quot;org.apache.camel.example.reportincident.dao.impl.IncidentDAOImpl&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;tx:transaction</span> <span class="na">method=</span><span class="s">&quot;*&quot;</span> <span class="na">value=</span><span class="s">&quot;Required&quot;</span> <span class="nt">/&gt;</span> (1)
@@ -500,8 +515,7 @@ embed existing projects into ARIES sphere without modifications</p>
 </pre></div>
 
 
-</blueprint>
-
+<p></blueprint></p>
 <p>(1) The &lt;tx:transaction&gt; tag allows to inject in your DAO layer the transactional aspect and using the following symbol
 "*", Aries Transaction manager will create for each method a session to begin / commit or rollback a transaction in your class
 The scope of the transaction can be defined using the attribute value.<br />

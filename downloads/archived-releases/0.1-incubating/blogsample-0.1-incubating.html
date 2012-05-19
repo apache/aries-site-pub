@@ -99,6 +99,7 @@
                   <div id="menu-page">
                     <!-- NavigationBar -->
           <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
+
 <div id="overview" class="menuitemgroup">
     <div class="menuitem">
         <a href="/overview/boardreports.html">Board Reports</a> 
@@ -107,7 +108,9 @@
         <a href="/overview/news.html">News</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
+
 <div id="documentation" class="menuitemgroup">
     <div class="menuitem">
         <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
@@ -134,7 +137,9 @@
         <a href="/documentation/tools.html">Tools</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
 <div id="downloads" class="menuitemgroup">
     <div class="menuitem">
         <a href="/downloads/currentrelease.html">Current Release</a> 
@@ -149,7 +154,9 @@
         <a href="/downloads/archived-releases.html">Archived Releases</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
 <div id="community" class="menuitemgroup">
     <div class="menuitem">
         <a href="/community/overview.html">Community</a> 
@@ -170,7 +177,9 @@
                 <a href="/community/logos.html">Logos for Users</a>
         </div>
 </div>
+
 <div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
 <div id="development" class="menuitemgroup">
     <div class="menuitem">
         <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
@@ -191,6 +200,9 @@
         <a href="/development/releasingaries.html">Releasing Aries </a> 
     </div>
     <div class="menuitem">
+        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
+    </div>
+    <div class="menuitem">
         <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
     </div>
     <div class="menuitem">
@@ -203,7 +215,9 @@
         <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('modules')" id="modulesTitle" class="menutitle">Modules</div>
+
 <div id="modules" class="menuitemgroup">
     <div class="menuitem">
         <a href="/modules/samples.html">Samples</a> 
@@ -233,7 +247,9 @@
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
+
 <div id="sponsorship" class="menuitemgroup">
     <div class="menuitem">
         <a href="http://www.apache.org/foundation/thanks.html">Thanks</a> 
@@ -251,16 +267,15 @@
           <td height="100%" width="100%">
             <!-- Content -->
             <div class="wiki-content"><p><a name="BlogSample-0.1-incubating-TheBlogSample-version0.1-incubating."></a></p>
-<h1 id="the_blog_sample_-_version_01-incubating">The Blog Sample - version 0.1-incubating.</h1>
+<h1 id="the-blog-sample-version-01-incubating">The Blog Sample - version 0.1-incubating.</h1>
 <p><a name="BlogSample-0.1-incubating-RunningtheBlogSample"></a></p>
-<h2 id="running_the_blog_sample">Running the Blog Sample</h2>
+<h2 id="running-the-blog-sample">Running the Blog Sample</h2>
 <p><a name="BlogSample-0.1-incubating-Prereqs"></a></p>
 <h3 id="prereqs">Prereqs</h3>
 <p>Follow the instructions <a href="http://db.apache.org/derby/papers/DerbyTut/install_software.html#derby">here</a>
  to complete the following actions: Download Derby, Install Derby, Set
 DERBY_INSTALL, Configure Embedded Derby and then Verify Derby. </p>
-<br>
-
+<p><br></p>
 <hr />
 <p><strong>Note:</strong>
 The version of Derby used by the current release and development versions
@@ -270,7 +285,7 @@ will not work. See <a href="https://issues.apache.org/jira/browse/ARIES-317">ARI
 . For the present the best solution is to install Derby 10.5.3.</p>
 <hr />
 <p><a name="BlogSample-0.1-incubating-CreatetheOSGiplatformfortheBlogsample"></a></p>
-<h3 id="create_the_osgi_platform_for_the_blog_sample">Create the OSGi platform for the Blog sample</h3>
+<h3 id="create-the-osgi-platform-for-the-blog-sample">Create the OSGi platform for the Blog sample</h3>
 <p>Download and unzip the source zip for the <a href="aries:downloads.html">latest release</a>
  of Aries Samples and build the blog-assembly module:</p>
 <div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="n">incubating</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span>
@@ -281,7 +296,7 @@ will not work. See <a href="https://issues.apache.org/jira/browse/ARIES-317">ARI
 <p>This procedure will pull in the binaries from the latest release and its
 dependencies.</p>
 <p><a name="BlogSample-0.1-incubating-RunningtheBlogsample"></a></p>
-<h3 id="running_the_blog_sample_1">Running the Blog sample</h3>
+<h3 id="running-the-blog-sample_1">Running the Blog sample</h3>
 <p>Download the JDBC based Blog sample application (.eba file) from the <a href="aries:downloads.html">latest release</a>
 .</p>
 <p>Create the database</p>
@@ -306,7 +321,7 @@ copying it into the load directory which was created when Aries started.</p>
 <p>If you subsequently delete the .eba from the load directory the application
 will be uninstalled.</p>
 <p><a name="BlogSample-0.1-incubating-RunningthesampleusingaJPApersistencelayer"></a></p>
-<h3 id="running_the_sample_using_a_jpa_persistence_layer">Running the sample using a JPA persistence layer</h3>
+<h3 id="running-the-sample-using-a-jpa-persistence-layer">Running the sample using a JPA persistence layer</h3>
 <p>The first blog sample application was written to use a JDBC persistence
 layer. There is a second application implemented to demonstrate the JPA
 capability</p>
@@ -319,12 +334,12 @@ load directory.</p>
 running with the JDBC persistence layer, but this time running using the
 JPA persistence layer.</p>
 <p><a name="BlogSample-0.1-incubating-Usingthelatest,unreleasedcode"></a></p>
-<h2 id="using_the_latest_unreleased_code">Using the latest, unreleased code</h2>
+<h2 id="using-the-latest-unreleased-code">Using the latest, unreleased code</h2>
 <p>If you prefer to use the very latest code from subversion, checkout and
 build the Aries trunk by following the <a href="aries:buildingaries.html">Building Aries instructions</a>
 .</p>
 <p><a name="BlogSample-0.1-incubating-AbouttheBlogsample"></a></p>
-<h2 id="about_the_blog_sample">About the Blog sample</h2>
+<h2 id="about-the-blog-sample">About the Blog sample</h2>
 <p>The blog sample components can be visualised like this:</p>
 <p><img alt="bs" src="BlogSample.png" /></p></div>
             <!-- Content -->
