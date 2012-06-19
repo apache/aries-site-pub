@@ -275,8 +275,7 @@ Agreement.</p>
 tests against the OSGi implementation of the Enterprise Specification. The
 configuration files require some modification to run the tests against
 Aries components.</p>
-<p>Instructions for obtaining and running the tests are given <a href="how-to-run-the-osgi-enterprise-ct.html">here</a>
-.</p>
+<p>Instructions for obtaining and running the tests are given <a href="http://felix.apache.org/site/using-the-osgi-compliance-tests.html">here</a>, or see below.</p>
 <p><a name="ComplianceTesting-Testresults"></a></p>
 <h2 id="test-results">Test results</h2>
 <p>At each Aries release the tests are run against Aries components. The
@@ -296,7 +295,7 @@ the OSGi CT. I've submitted an NDA."</p>
 note will languish in 'moderation' forever :-)</p>
 <p><a name="HowtoruntheOSGiEnterpriseCT-Getthetests"></a></p>
 <h3 id="get-the-tests">Get the tests</h3>
-<p>Anyone with an NDA on file should be able to get access to the tests <a href="-https://svn.apache.org/repos/tck/osgi-cts.html">here </a>
+<p>Anyone with an NDA on file should be able to get access to the tests <a href="https://svn.apache.org/repos/tck/osgi-cts/">here </a>
 .</p>
 <p>The group of tests that are required for Aries is called
 osgi.enterprise.tests. Download the jar for the appropriate level -
@@ -359,10 +358,8 @@ ariesjars and every non-aries jar from the same directory into
 running the tests has access to org.osgi.impl</em> jars. In general this is not
 the case - so wherever an org.osgi.impl* jar has been used it must be
 replaced with an equivalent implementation. Such implementations can
-usually be found in either <a href="http://felix.apache.org/site/downloads.cgi">Felix</a>
-, [Equinox|http://download.eclipse.org/equinox/]
- or [Knopflerfish|http://www.knopflerfish.org/releases/3.0.0/osgi/jars/]
-.</p>
+usually be found in either <a href="http://felix.apache.org/site/downloads.cgi">Felix</a>, <a href="http://download.eclipse.org/equinox/">Equinox</a>
+ or <a href="http://www.knopflerfish.org/releases/3.0.0/osgi/jars/">Knopflerfish</a>.</p>
 <p><a name="HowtoruntheOSGiEnterpriseCT-Blueprint"></a></p>
 <h4 id="blueprint">Blueprint</h4>
 <p>There are four other dependencies needed to run the tests, download these:</p>
