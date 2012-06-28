@@ -377,12 +377,13 @@ agree its content. Allow at least a week for this discussion. </p>
 <h3 id="creating-and-storing-gpg-keys">Creating and storing GPG keys</h3>
 <p>For Aries your GPG key will need to be in this file:
 https://svn.apache.org/repos/asf/aries/KEYS (follow the
-instructions in the file) and checkin</p>
+instructions in the file) and checkin. Then ensure the file is mirrored to
+http://www.apache.org/dist/aries/KEYS by following the instructions <a href="http://www.apache.org/dev/release.html#upload-scp">here</a>.</p>
 <p><a name="ReleasingAries-Settingupyourenvironment"></a></p>
 <h3 id="setting-up-your-environment">Setting up your environment</h3>
 <p>Follow the general instructions linked to above. </p>
 <p><a name="ReleasingAries-Creatingabranchtoreleasefrom"></a></p>
-<h3 id="creating-a-branch-to-release-from">Creating a branch to release from</h3>
+<h3 id="creating-a-branch-to-release-from-if-needed">Creating a branch to release from (if needed)</h3>
 <p>It is strongly recomended that releases are made from trunk and NEVER from a branch. But, if you have to release from a branch this is what 
 you will need to do:</p>
 <div class="codehilite"><pre><span class="n">svn</span> <span class="n">copy</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">trunk</span> <span class="o">\</span>
@@ -492,7 +493,7 @@ trunk.</p>
 <p>For each bundle that needs to be release perform the following commands:</p>
 <div class="codehilite"><pre><span class="n">Check</span> <span class="n">that</span> <span class="n">there</span> <span class="n">are</span> <span class="nb">no</span> <span class="n">depndencies</span> <span class="n">on</span> <span class="o">-</span><span class="n">SNAPSHOT</span> <span class="n">versions</span><span class="o">.</span>
 <span class="n">Ensure</span> <span class="n">that</span> <span class="n">everything</span> <span class="n">is</span> <span class="n">committed</span> <span class="n">in</span> <span class="n">SVN</span>
-<span class="n">mvn</span> <span class="n">release:prepare</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span> <span class="o">-</span><span class="n">DpreparationGoals</span><span class="o">=</span><span class="s">&quot;clean install&quot;</span> 
+<span class="n">mvn</span> <span class="n">release:prepare</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span> <span class="o">-</span><span class="n">DpreparationGoals</span><span class="o">=</span><span class="s">&quot;clean install&quot;</span> <span class="o">-</span><span class="n">DwaitBeforeTagging</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="o">-</span><span class="n">DscmCommentPrefix</span><span class="o">=</span><span class="s">&quot;[ARIES-xxx][maven-release-plugin]&quot;</span>
 <span class="n">mvn</span> <span class="n">release:perform</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span>
 </pre></div>
 
@@ -505,14 +506,17 @@ trunk.</p>
 <li>What is the release version for "Aries :: Top Parent POM"? (org.apache.aries:parent) 0.5: :  <br />
 </li>
 <li>What is SCM release tag or label for "Aries :: Top Parent POM"? (org.apache.aries:parent) parent-0.5: :</li>
-<li>What is the new development version for "Aries :: Top Parent POM"? (org.apache.aries:parent) 0.6-SNAPSHOT: : 0.5</li>
+<li>What is the new development version for "Aries :: Top Parent POM"? (org.apache.aries:parent) 0.6-SNAPSHOT: : 0.5.1</li>
 </ol>
-<p>i.e. take the default for the first two questions, and set the new development version to be the same as the one you are releasing! This is because you don't know whether the next version released from the trunk will have a major, minor or micro version number change - you won't know until those changes are made! - so leave it for the person making those changes to make the decision and move to <em>module</em>-<em>new version</em>-SNAPSHOT.</p>
+<p>i.e. take the defaults for the last two questions, but change the release version if required. The last person doing a release didn't know whether the next version released from the trunk would have a major, minor or micro version number change - they couldn't know until those changes were made! - but they had to make a guess. Now is the time 
+to correct their guess. Similarly, you won't know what the next release number should be, but you need to use <em>something</em>, so accept the default. </p>
 </li>
 <li>
-<p>Note 3: mvn release:clean will do <em>most</em> of the cleaning up in the event of failures.</p>
+<p>Note 3: Since the release plugin makes changes in SCM, use a JIRA for the release (ARIES-XXX here) in the commit comment to make it easier to see what's changed.</p>
 </li>
-<li>Note 4: If on mvn release:prepare you get an error from SVN similar to https://svn.apache.org/repos/asf/!svn/bc/1182408/aries/tags/parent-0.5/default-parent/java5-parent/org.apache.aries.bundle.i.am.releasing does not exist then it's because there's no scm element in the pom.xml for the module you're releasing.</li>
+<li>Note 4: The task will appear to hang at the end. It's waiting ten seconds to do the tagging, to ensure everything works in Europe, where svn is mirrored from a US master.</li>
+<li>Note 5: mvn release:clean will do <em>most</em> of the cleaning up in the event of failures.</li>
+<li>Note 6: If on mvn release:prepare you get an error from SVN similar to https://svn.apache.org/repos/asf/!svn/bc/1182408/aries/tags/parent-0.5/default-parent/java5-parent/org.apache.aries.bundle.i.am.releasing does not exist then it's because there's no scm element in the pom.xml for the module you're releasing.</li>
 </ul>
 <p>This will put release artifacts into an Apache <a href="https://repository.apache.org/index.html#view-repositories;staging.html">staging repository </a>. You will need to log in to see it.
 If nothing appears in a staging repo you should stop here and work out why. 
@@ -520,25 +524,6 @@ If you have made a mistake it's quite easy to revert. The release
 commands make and commit changes to the project's pom.xml files and they
 create a tag in SVN. To revert the changes you will need to revert the
 pom.xml files and delete the tag from svn.</p>
-<p>If you are in Europe the mvn release:prepare command almost always fails at
-the last step, with a message like:</p>
-<div class="codehilite"><pre><span class="k">[ERROR]</span>
- <span class="err">BUILD</span> <span class="err">FAILURE</span>
-<span class="k">[INFO]</span>
- <span class="err">------------------------------------------------------------------------</span>
-<span class="k">[INFO]</span>
- <span class="err">Unable</span> <span class="err">to</span> <span class="err">tag</span> <span class="err">SCM</span>
-<span class="err">Provider</span> <span class="err">message:</span>
-<span class="err">The</span> <span class="err">svn</span> <span class="err">tag</span> <span class="err">command</span> <span class="err">failed.</span>
-<span class="err">Command</span> <span class="err">output:</span>
-<span class="err">svn:</span> <span class="err">No</span> <span class="err">such</span> <span class="err">revision</span> <span class="err">936951</span>
-</pre></div>
-
-
-<p>This is due to the SVN mirroring in place between Europe and the master in
-the US. When you make a commit, it isn't immediately available in Europe to
-svn up to. Just wait 10 secs and repeat the mvn release:prepare command for
-it to restart where it left off.</p>
 <p><a name="ReleasingAries-Closingthestagingrepository"></a></p>
 <h5 id="closing-the-staging-repository">Closing the staging repository</h5>
 <p>After checking that the staging repository contains the artifacts that you
@@ -547,7 +532,7 @@ so that people can check the release.</p>
 <p><a name="ReleasingAries-Runningthevote(s)"></a></p>
 <h3 id="running-the-vote">Running the vote.</h3>
 <p>At this
-point you should write two notes to the dev@aries.apache.org mailing list.</p>
+point you should write two notes to the dev@aries.apache.org mailing list. You may wish to ensure they have slightly different subjects, since googlemail seems to ignore anything in brackets when threading. </p>
 <ul>
 <li>Subject [VOTE]
  Apache Aries release candidate 0N</li>
@@ -584,9 +569,12 @@ archived here /www/archive.apache.org/dist/aries.</p>
 <p>Then, put new release artifacts in the distribution directory. This is best done using a script, the script can be generated uing
 the perl script <a href="http://svn.apache.org/repos/asf/aries/scripts/download_release_artifacts.pl">download_release_artifacts.pl</a>. </p>
 <p>Next, update the Aries Downloads pages to refer to the new artifacts.</p>
+<h3 id="updating-dependencies">Updating dependencies</h3>
+<p>Once the release is promoted, change all the bundles which depend on the SNAPSHOT to depend on the released version. Deployed snapshots get regularly cleaned from the repositories if there's a released version available, so building against them isn't reliable. </p>
+<p>Don't move bundles which depend on earlier releases to depend on the new release, or they won't be able to run in an environment with the older bundles. </p>
 <h3 id="tidying-up-tasks">Tidying up tasks</h3>
 <ul>
-<li>Get the compliance tests run</li>
+<li>Get the <a href="http://aries.apache.org/development/compliancetesting.html">compliance tests</a> run</li>
 <li>Release notes</li>
 <li>Release the component in JIRA (manage components), check the JIRA release notes.</li>
 </ul>

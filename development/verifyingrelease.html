@@ -269,6 +269,14 @@
             <div class="wiki-content"><h1 id="verifying-release-artifacts">Verifying Release Artifacts</h1>
 <p>This page provides some help for anyone who wants to verify release candidate artifacts so they feel they can genuinely vote on the related vote thread on the dev list. It is not intended to be exhaustive instructions. It's a list of things people have generally found to be useful to do when checking the artifacts.</p>
 <p>It is essential that the signatures and hashsums are good. Please do read <a href="http://httpd.apache.org/dev/verification.html">Verifying Apache HTTP Server Releases</a> for information on why you should verify releases.. </p>
+<p>These instructions have been rolled up into a script, which you can run instead. Cut and paste the following:</p>
+<div class="codehilite"><pre><span class="n">wget</span> <span class="o">--</span><span class="nb">no</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">certificate</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/sc</span><span class="n">ripts</span><span class="o">/</span><span class="n">verify_staged_release</span><span class="o">.</span><span class="n">sh</span>
+<span class="nb">chmod</span> <span class="n">a</span><span class="o">+</span><span class="n">x</span> <span class="n">verify_staged_release</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">verify_staged_release</span><span class="o">.</span><span class="n">sh</span> <span class="p">[</span><span class="n">RELEASE</span><span class="o">-</span><span class="n">NUM</span><span class="p">]</span> <span class="n">mytempdirectory</span> <span class="o">&amp;&gt;</span> <span class="n">verifyresults</span><span class="o">.</span><span class="n">txt</span>
+<span class="nb">grep</span> <span class="n">FAIL</span> <span class="n">verifyresults</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+
+
 <h2 id="have-i-got-the-keys">Have I got the KEYS?</h2>
 <p>To verify Aries release artifacts you need the public keys for the Aries committers.
 The master KEYS file is in Subversion. The easiest way of getting it from the command line is to non-recursively check-out the files in the top level of the Aries location using:</p>
@@ -277,7 +285,7 @@ The master KEYS file is in Subversion. The easiest way of getting it from the co
 
 
 <p>You then need to import the keys into PGP:</p>
-<div class="codehilite"><pre><span class="n">pgp</span> <span class="o">--</span><span class="nb">import</span> <span class="n">KEYS</span>
+<div class="codehilite"><pre><span class="n">gpg</span> <span class="o">--</span><span class="nb">import</span> <span class="n">KEYS</span>
 </pre></div>
 
 
@@ -305,6 +313,7 @@ The master KEYS file is in Subversion. The easiest way of getting it from the co
 </pre></div>
 
 
+<p>(On the Mac, use <code>md5 -q</code> instead of <code>md5sum</code> and the cut.)</p>
 <p>Do something similar for sha1:</p>
 <div class="codehilite"><pre><span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="sb">`find content -type f | egrep -v &#39;.md5$|.sha1$|index.html|maven-metadata.xml&#39;`</span>
 <span class="k">do</span>
@@ -320,6 +329,7 @@ The master KEYS file is in Subversion. The easiest way of getting it from the co
 </pre></div>
 
 
+<p>(On the Mac, use <code>openssl sha1</code> instead of <code>sha1sum</code>.)</p>
 <p>Ensure the PGP signature files are good. See the <a href="http://httpd.apache.org/dev/verification.html#Validating">Validating section of Verifying Apache HTTP Server Releases</a> for background on validating the authenticity of a key.</p>
 <div class="codehilite"><pre><span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="sb">`find content -type f | egrep &#39;.asc$&#39;`</span>
 <span class="k">do</span>
@@ -346,7 +356,9 @@ The master KEYS file is in Subversion. The easiest way of getting it from the co
 </pre></div>
 
 
-<p>Note: currently RAT fails due to the generated DEPENDENCIES file not containing a license. It's safe to ignore this as the file is generated. So in order to ensure RAT checks all subdirectories, use the -fn.</p></div>
+<p>Note: currently RAT fails due to the generated DEPENDENCIES file not containing a license. It's safe to ignore this as the file is generated. So in order to ensure RAT checks all subdirectories, use the -fn. Then check any failures with</p>
+<div class="codehilite"><pre><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="o">\*.</span><span class="n">rat</span> <span class="o">|</span> <span class="n">xargs</span> <span class="nb">grep</span> <span class="o">\!\</span><span class="p">?</span><span class="o">\</span><span class="p">?</span>
+</pre></div></div>
             <!-- Content -->
           </td>
         </tr>
