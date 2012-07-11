@@ -266,100 +266,40 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><h1 id="verifying-release-artifacts">Verifying Release Artifacts</h1>
-<p>This page provides some help for anyone who wants to verify release candidate artifacts so they feel they can genuinely vote on the related vote thread on the dev list. It is not intended to be exhaustive instructions. It's a list of things people have generally found to be useful to do when checking the artifacts.</p>
-<p>It is essential that the signatures and hashsums are good. Please do read <a href="http://httpd.apache.org/dev/verification.html">Verifying Apache HTTP Server Releases</a> for information on why you should verify releases.. </p>
-<p>These instructions have been rolled up into a script, which you can run instead. Cut and paste the following:</p>
-<div class="codehilite"><pre><span class="n">wget</span> <span class="o">--</span><span class="nb">no</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">certificate</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/sc</span><span class="n">ripts</span><span class="o">/</span><span class="n">verify_staged_release</span><span class="o">.</span><span class="n">sh</span>
-<span class="nb">chmod</span> <span class="n">a</span><span class="o">+</span><span class="n">x</span> <span class="n">verify_staged_release</span><span class="o">.</span><span class="n">sh</span>
-<span class="o">./</span><span class="n">verify_staged_release</span><span class="o">.</span><span class="n">sh</span> <span class="p">[</span><span class="n">RELEASE</span><span class="o">-</span><span class="n">NUM</span><span class="p">]</span> <span class="n">mytempdirectory</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">tee</span> <span class="n">verifyresults</span><span class="o">.</span><span class="n">txt</span>
-<span class="nb">grep</span> <span class="n">FAIL</span> <span class="n">verifyresults</span><span class="o">.</span><span class="n">txt</span>
-<span class="nb">grep</span> <span class="n">ERROR</span> <span class="n">verifyresults</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-
-
-<h2 id="have-i-got-the-keys">Have I got the KEYS?</h2>
-<p>To verify Aries release artifacts you need the public keys for the Aries committers.
-The master KEYS file is in Subversion. The easiest way of getting it from the command line is to non-recursively check-out the files in the top level of the Aries location using:</p>
-<div class="codehilite"><pre><span class="n">svn</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">N</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="o">/</span><span class="n">aries</span>
-</pre></div>
-
-
-<p>You then need to import the keys into PGP:</p>
-<div class="codehilite"><pre><span class="n">gpg</span> <span class="o">--</span><span class="nb">import</span> <span class="n">KEYS</span>
-</pre></div>
-
-
-<h2 id="download-artifacts">Download artifacts</h2>
-<p>For each 'useful' file there are several others created to help you determine whether it's genuine. The PGP signature .asc file shows who created the 'useful' file. Then there are checksum files (.md5 and .sha1) for both the 'useful' file and the .asc file. To download the content for the repository you're verifying try this:</p>
-<div class="codehilite"><pre><span class="n">wget</span> <span class="o">-</span><span class="n">e</span> <span class="n">robots</span><span class="o">=</span><span class="n">off</span> <span class="o">--</span><span class="nb">no</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">certificate</span> <span class="o">-</span><span class="n">np</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">nH</span> <span class="n">https:</span><span class="sr">//</span><span class="n">repository</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/content/</span><span class="n">repositories</span><span class="sr">/orgapachearies-xxx/o</span><span class="n">rg</span><span class="sr">/apache/</span><span class="n">aries</span><span class="o">/</span>
-</pre></div>
-
-
-<p>where xxx is the number of the repository you're verifying.</p>
-<p>wget will download the files into a directory called content. The following use of the 'find' command assumes the downloads are in the 'content' directory.</p>
-<h2 id="verify-the-artifacts">Verify the artifacts</h2>
-<p>Ensure the checksums are right for the released files. Copy/paste this into the command line:</p>
-<div class="codehilite"><pre><span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="sb">`find content -type f | egrep -v &#39;.md5$|.sha1$|index.html|maven-metadata.xml&#39;`</span>
-<span class="k">do</span>
-    <span class="n">mymd5</span><span class="o">=</span><span class="sb">`md5sum $i|cut -c1-32`</span>
-    <span class="n">repomd5</span><span class="o">=</span><span class="sb">`cat $i.md5`</span>
-    <span class="k">if</span> <span class="p">[</span> <span class="s">&quot;$mymd5&quot;</span> <span class="o">==</span> <span class="s">&quot;$repomd5&quot;</span> <span class="p">]</span>
-    <span class="k">then</span>
-        <span class="n">echo</span> <span class="s">&quot;GOOD MD5 for $i&quot;</span>
-    <span class="k">else</span>
-        <span class="n">echo</span> <span class="s">&quot;*BAD MD5 for $i *****&quot;</span>
-    <span class="n">fi</span>
-<span class="n">done</span>
-</pre></div>
-
-
-<p>(On the Mac, use <code>md5 -q</code> instead of <code>md5sum</code> and the cut.)</p>
-<p>Do something similar for sha1:</p>
-<div class="codehilite"><pre><span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="sb">`find content -type f | egrep -v &#39;.md5$|.sha1$|index.html|maven-metadata.xml&#39;`</span>
-<span class="k">do</span>
-    <span class="n">mysha1</span><span class="o">=</span><span class="sb">`sha1sum $i|cut -c1-40`</span>
-    <span class="n">reposha1</span><span class="o">=</span><span class="sb">`cat $i.sha1`</span>
-    <span class="k">if</span> <span class="p">[</span> <span class="s">&quot;$mysha1&quot;</span> <span class="o">==</span> <span class="s">&quot;$reposha1&quot;</span> <span class="p">]</span>
-    <span class="k">then</span>
-        <span class="n">echo</span> <span class="s">&quot;GOOD SHA1 for $i&quot;</span>
-    <span class="k">else</span>
-        <span class="n">echo</span> <span class="s">&quot;*BAD SHA1 for $i *****&quot;</span>
-    <span class="n">fi</span>
-<span class="n">done</span>
-</pre></div>
-
-
-<p>(On the Mac, use <code>openssl sha1</code> instead of <code>sha1sum</code>.)</p>
-<p>Ensure the PGP signature files are good. See the <a href="http://httpd.apache.org/dev/verification.html#Validating">Validating section of Verifying Apache HTTP Server Releases</a> for background on validating the authenticity of a key.</p>
-<div class="codehilite"><pre><span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="sb">`find content -type f | egrep &#39;.asc$&#39;`</span>
-<span class="k">do</span>
-    <span class="n">gpg</span> <span class="nv">$i</span>
-<span class="n">done</span>
-</pre></div>
-
-
-<p>You shouldn't get any errors.</p>
-<h2 id="build-the-code">Build the code</h2>
-<p>It's a good idea to check the source release zip builds. Unzip it first:</p>
-<div class="codehilite"><pre><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="o">*-</span><span class="n">source</span><span class="o">-</span><span class="n">release</span><span class="o">.</span><span class="n">zip</span> <span class="o">|</span><span class="n">xargs</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="n">unzip</span>
-</pre></div>
-
-
-<p>Go into each subdir created and run:</p>
-<div class="codehilite"><pre><span class="n">mvn</span> <span class="n">clean</span> <span class="n">install</span>
-</pre></div>
-
-
-<h2 id="rat-check">RAT check</h2>
-<p>It's also a good idea to run the <a href="http://incubator.apache.org/rat/">Apache RAT (Release Audit Tool)</a>. The Aries POMs are set up so you can do:</p>
-<div class="codehilite"><pre><span class="n">mvn</span> <span class="o">-</span><span class="n">fn</span> <span class="o">-</span><span class="n">Prat</span>
-</pre></div>
-
-
-<p>Note: currently RAT fails due to the generated DEPENDENCIES file not containing a license. It's safe to ignore this as the file is generated. So in order to ensure RAT checks all subdirectories, use the -fn. Then check any failures with</p>
-<div class="codehilite"><pre><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="o">\*.</span><span class="n">rat</span> <span class="o">|</span> <span class="n">xargs</span> <span class="nb">grep</span> <span class="o">\!\</span><span class="p">?</span><span class="o">\</span><span class="p">?</span>
-</pre></div></div>
+            <div class="wiki-content"><h1 id="july-2012-board-report">July 2012 Board report</h1>
+<p>Apache Aries delivers a set of pluggable Java components enabling an enterprise OSGi application programming model.</p>
+<h2 id="releases">Releases</h2>
+<p>The following bug fix releases:</p>
+<ul>
+<li>
+<p>Apache Aries Proxy 0.3.1</p>
+</li>
+<li>
+<p>Apache Aries Proxy 0.4.1</p>
+</li>
+</ul>
+<p>As indicated in the last report, bundles and packages are now being  brought up from 0.x to 1.0 to better reflect the stability and level of confidence we have in them. This will also bring our versioning policy inline with that described in the OSGi Alliance semantic versioning whitepaper.
+The 1.0 releases have started. We have approx 118 OSGi bundles so these are being done in logical phases. These have completed:</p>
+<ul>
+<li>Apache Aries Test Support 1.0.0</li>
+<li>Apache Aries JNDI API 1.0.0</li>
+<li>Apache Aries JMX API 1.0.0</li>
+<li>Apache Aries JPA Container API 1.0.0</li>
+<li>Apache Aries Quiesce API 1.0.0</li>
+</ul>
+<p>In addition there has been significant activity in the Aries Subsystems module which will be an implementation of the OSGi Subsystem Service Specification.</p>
+<h2 id="project-branding-board-report-checklist">Project Branding Board Report Checklist</h2>
+<ul>
+<li>Project Website Basics : homepage is aries.apache.org (done)</li>
+<li>Project Naming And Descriptions : use proper Apache forms, describe product, etc. (pending)</li>
+<li>Website Navigation Links : navbar links included, link to www.apache.org included (pending - feather link done)</li>
+<li>Trademark Attributions : attribution for all ASF marks included in footers, etc. (pending)</li>
+<li>Logos and Graphics : include TM, use consistent product logo on your site (pending)</li>
+<li>Project Metadata : DOAP file checkedin and up to date (done)</li>
+</ul>
+<h2 id="community-update">Community update</h2>
+<p>No new committers since the last report. The user/dev lists and JIRAs continue to be moderately active, with new patches being posted by contributors.</p>
+<p>There are no board level issues.</p></div>
             <!-- Content -->
           </td>
         </tr>
