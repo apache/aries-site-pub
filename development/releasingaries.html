@@ -295,26 +295,42 @@ a complete list
 of all Aries modules and their most recent version numbers after the release.</p></p>
 <h3 id="choosing-a-strategy-for-the-release">Choosing a strategy for the release</h3>
 <p>Even when releasing a large number of bundles, in Aries we release bundles individually. If there are dependencies
-between the bundles you want to release, you have three strategies for how to release them.
-<em> <strong>Release incrementally.</strong> 
-   * Release bundles in dependency order, updating dependencies only after releases are promoted.
-   * This has the advantage that trunk always builds cleanly.
-   * The disadvantage is that each release needs to be open for voting for at least 72 hours, so the elapsed time for a large release can be very long.
-   * The list may get fed up of voting on multiple vote threads, although the <a href="http://aries.apache.org/development/verifyingrelease.html">verification script</a> may help.
-</em> <strong>Release all at once, then patch up trunk, then fix trunk</strong>
-   * Release api bundles release and have them
+between the bundles you want to release, you have four strategies for how to release them.</p>
+<ul>
+<li><strong>Release incrementally.</strong> <ul>
+<li>Release bundles in dependency order, updating dependencies only after releases are promoted.</li>
+<li>This has the advantage that trunk always builds cleanly.</li>
+<li>The disadvantage is that each release needs to be open for voting for at least 72 hours, so the elapsed time for a large release can be very long.</li>
+<li>The list may get fed up of voting on multiple vote threads, although the <a href="http://aries.apache.org/development/verifyingrelease.html">verification script</a> may help.</li>
+</ul>
+</li>
+<li><strong>Release all at once, then patch up trunk, then fix trunk</strong><ul>
+<li>Release api bundles release and have them
 uploaded to nexus, then upgrade the implementations  and all other
 components to use those releases, commit,  release those other
-projects, then close the staging repo and call for a vote.
-   * Bundles in the staging repo will need to compiled in a set order, which makes the verification script less useful.
-   * Trunk will be broken, unless you back out everything which you changed to use the released version back to using the old snapshot (<em>not</em> the new snapshot created by the release plugin). Then once the release has been promoted, change everything using the old snapshot back to using the released version.
-   * Doing a release this way can really reduce the amount of time spent waiting for votes.
-   * However, getting everything right without breaking trunk can be complex.
-* <strong>Release from a branch</strong>
-   * This is similar to the second procedure, except there's no need to patch trunk up to keep it compiling
-   * You will need to merge the branch across once the release has been promoted, which is extra complexity
-   * Doing mainline releases from branches plays havoc with git mirroring, so we promised to try and avoid doing it 
-   * See below for extra instructions on releasing from a branch</p>
+projects, then close the staging repo and call for a vote.</li>
+<li>Bundles in the staging repo will need to compiled in a set order, which makes the verification script less useful.</li>
+<li>Trunk will be broken, unless you back out everything which you changed to use the released version back to using the old snapshot (<em>not</em> the new snapshot created by the release plugin). Then once the release has been promoted, change everything using the old snapshot back to using the released version.</li>
+<li>Doing a release this way can really reduce the amount of time spent waiting for votes.</li>
+<li>However, getting everything right without breaking trunk can be complex.</li>
+</ul>
+</li>
+<li><strong>Release all at once, and use profiles to keep trunk building</strong><ul>
+<li>This is similar to the second procedure, except instead of backing everything out, you just provide a maven profile which people can use until the release is promoted</li>
+<li>Once the release is promoted, cleaning up is easy - just delete the profile</li>
+<li>You will also need to temporarily change the Jenkins build instructions</li>
+<li>If people don't notice they need to build using a profile, they may be confused about why things are broken</li>
+</ul>
+</li>
+<li><strong>Release from a branch</strong><ul>
+<li>This is similar to the second procedure, except there's no need to patch trunk up to keep it compiling</li>
+<li>You will need to merge the branch across once the release has been promoted, which is extra complexity</li>
+<li>Doing mainline releases from branches plays havoc with git mirroring, so we promised to try and avoid doing it </li>
+<li>See below for extra instructions on releasing from a branch</li>
+</ul>
+</li>
+</ul>
+<p>In many cases with semantically versioned bundles there won't be dependencies on the latest and greatest snapshots, which makes everything much easier. </p>
 <h3 id="how-to-deal-with-jira">How to deal with JIRA</h3>
 <p>Before actually doing any releasing work through the list of bundles and understand what defects have been fixed
 (add more about JIRA versions here)</p>
