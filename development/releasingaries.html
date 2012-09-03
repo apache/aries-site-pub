@@ -285,14 +285,8 @@ a release of the blueprint API bundle is required the first step is to find and 
 its -SNAPSHOT dependencies. Because Aries bundles are quite interdependent (see <a href="moduledependencies">here</a> 
 for an idea
 of how the modules relate to each other, it may be necessary to release quite a large number of bundles. So,
-step one is to make a list. 
-<p>To help with this, there is a file called aries_release_versions.txt in the top level
-aries directory - this contains a list of all the Aries modules and their current release versions. The file
-can be recreated (if necessary)
-using the perl script list_bundles_in_aries.pl, checked into SVN under the scripts directory. The text file
-is used for later steps in the release process, so by the end of the process it will have been updated to have
-a complete list
-of all Aries modules and their most recent version numbers after the release.</p></p>
+step one is to make a list.<br />
+</p>
 <h3 id="choosing-a-strategy-for-the-release">Choosing a strategy for the release</h3>
 <p>Even when releasing a large number of bundles, in Aries we release bundles individually. If there are dependencies
 between the bundles you want to release, you have four strategies for how to release them.</p>
@@ -363,14 +357,11 @@ immediately after a bundle(s) release when you have a collection of artifacts th
 work together.</p>
 <h2 id="releasing-the-samples">Releasing the samples</h2>
 <p>The Aries samples are designed to work across all the Aries modules. Samples are released as a single
-module. All of the Aries dependencies are listed in the top level samples pom. In 
-trunk, the version of all the dependencies should always point the SNAPSHOT versions 
-in trunk. At release time these must all be modified to the latest released version of 
-each bundle. <em>It is very important the versions are set <strong>only</strong> in the top level 
+module. All of the Aries dependencies are listed in the top level samples pom. 
+<em>It is very important the versions are set <strong>only</strong> in the top level 
 sample pom</em>. Both sub-modules and filtered resources need the version information, setting it in
 one place is the only way to avoid a mess.</p>
-<p>The best time to do a samples release is usually at the end of a bundle release when 
-all of the bundle version information is up to date in aries_release_versions.txt. </p>
+<p>The best time to do a samples release is usually at the end of a bundle release. </p>
 
 <p>It is critically important that the samples are all tested before making release. Some have itests
 but others (blueprint) are only tested manually. In fact it's wise to run through
@@ -589,8 +580,6 @@ the Aries release.</p>
 <p>After 72 hours, if no problems have been found in the release artifacts,
 the dev@aries vote can be summarised and closed. Note that at least three
 +1 votes from Aries PMC members are required. </p>
-<p>Finally - ensure that the file aries_release_version.txt is completely up to date and accurate. 
-You will use this file in the following steps to help build the release web pages.</p>
 <p><a name="ReleasingAries-Promotingthereleaseartifacts"></a></p>
 <h3 id="promoting-the-release-artifacts">Promoting the release artifacts</h3>
 <p>From the <a href="https://repository.apache.org/index.html#stagingRepositories">Nexus pages</a>
@@ -604,9 +593,9 @@ there they will be automatically moved to the Maven repository.</p>
 members of the group can access them. The distributions are
 archived here /www/archive.apache.org/dist/aries.</p>
 <p>First, delete the artifacts of the previous release from the distribution directory. You don't need to worry about putting the previous release artifacts in the archive as they will already have been rsync'd from the distribution directory.</p>
-<p>Then, put new release artifacts in the distribution directory. This is best done using a script, the script can be generated uing
+<p>Then, put new release artifacts in the distribution directory. This is best done using a script, the script can be generated using
 the perl script <a href="http://svn.apache.org/repos/asf/aries/scripts/download_release_artifacts.pl">download_release_artifacts.pl</a>. </p>
-<p>Next, update the Aries Downloads pages to refer to the new artifacts.</p>
+<p>Next, update the Aries Downloads pages to refer to the new artifacts. The the perl script <a href="http://svn.apache.org/repos/asf/aries/scripts/create_modules_table.pl">create_modules_table.pl</a> can do this automatically.</p>
 <h3 id="updating-dependencies">Updating dependencies</h3>
 <p>Once the release is promoted, change all the bundles which depend on the SNAPSHOT to depend on the released version. Deployed snapshots get regularly cleaned from the repositories if there's a released version available, so building against them isn't reliable. </p>
 <p>Don't move bundles which depend on earlier releases to depend on the new release, or they won't be able to run in an environment with the older bundles. </p>
