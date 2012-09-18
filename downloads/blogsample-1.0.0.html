@@ -23,7 +23,7 @@
   <meta name="keywords" content="..."/>
   <meta name="description" content="..." />
     <title>
-    Apache Aries - ReleaseNotes
+    Apache Aries - Blog Sample
     </title>
   </head>
 <body onload="SetMenu()">
@@ -266,55 +266,79 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="ReleaseNotes-ReleaseNotes"></a></p>
-<h1 id="release-notes">Release Notes</h1>
-<p><a name="ReleaseNotes-NewandNoteworthy"></a></p>
-<h3 id="new-and-noteworthy">New and Noteworthy</h3>
-<p>Welcome to the 1.0.0 release. </p>
-<ul>
-<li>
-<p><a href="testresults.html">Compliance tests</a></p>
-</li>
-<li>
-<p>JIRA Release Notes (TBD)</p>
-</li>
-</ul>
-<p>The main change in this version is the move to proper semantic versions for all packages and bundle versions. </p>
-<p><a name="ReleaseNotes-NewComponents"></a></p>
-<h3 id="new-components">New Components</h3>
-<h3 id="major-updates">Major updates</h3>
-<p><a name="ReleaseNotes-Modulesinthisrelease"></a></p>
-<h3 id="modules-in-this-release">Modules in this release</h3>
-<ul>
-<li>testsupport</li>
-<li>util</li>
-<li>proxy</li>
-<li>quiesce</li>
-<li>application</li>
-<li>blueprint</li>
-<li>transaction</li>
-<li>jpa</li>
-<li>jndi</li>
-<li>jmx</li>
-<li>web</li>
-<li>samples</li>
-</ul>
-<p><a name="ReleaseNotes-Newsamples"></a></p>
-<h3 id="new-samples">New samples</h3>
-<p>None</p>
-<p><a name="ReleaseNotes-NewTutorials"></a></p>
-<h3 id="new-tutorials">New Tutorials</h3>
-<p>None</p>
-<p><a name="ReleaseNotes-APIbreaking"></a></p>
-<h3 id="api-breaking">API breaking</h3>
-<p>None.</p>
-<p><a name="ReleaseNotes-KnownIssues"></a></p>
-<h3 id="known-issues">Known Issues</h3>
-<p>None.</p>
-<p><a name="ReleaseNotes-Importantchangestoconsiderwhenupgrading"></a></p>
-<h3 id="important-changes-to-consider-when-upgrading">Important changes to consider when upgrading</h3>
-<p>Aries bundles with version 1.0.0 and higher will not in general be compatible with 0.4.x and 0.3.x bundles, so all
-Aries bundles in a system should be upgraded at the same time to avoid the need to include multiple versions of the same bundle in a system. However, inter-release compatibility should be significantly improved from this release on.</p></div>
+            <div class="wiki-content"><p><a name="BlogSample-TheBlogSample"></a></p>
+<h1 id="the-blog-sample">The Blog Sample</h1>
+<p><a name="BlogSample-RunningtheBlogSample"></a></p>
+<h2 id="running-the-blog-sample">Running the Blog Sample</h2>
+<p><br></p>
+<hr />
+<p><strong>Note:</strong>
+These instructions are for the 1.0.0 release of Aries.
+Instructions for older releases can be found <a href="/downloads/archivedrelease.html">here</a>
+. In the 0.2-incubating release the sample was changed to use an in-memory
+database to avoid dependency on an explicit version of Derby. If you would
+prefer to use a database on disk check the instructions for the
+0.1-incubating release. You will also need to modify datasource.xml (under
+blog-datasource) as indicated in the comments and then rebuild the sample.</p>
+<hr />
+<p><a name="BlogSample-CreatetheOSGiplatformfortheBlogsample"></a></p>
+<h3 id="create-the-osgi-platform-for-the-blog-sample">Create the OSGi platform for the Blog sample</h3>
+<p>Download and unzip the source zip for the <a href="/downloads/currentrelease.html">latest release</a>
+ of Aries Samples and build the blog-assembly module:</p>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">1.0.0</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span>
+<span class="n">mvn</span> <span class="n">install</span>
+</pre></div>
+
+
+<p>This procedure will pull in the binaries from the latest release and its
+dependencies.</p>
+<p><a name="BlogSample-RunningtheBlogsample"></a></p>
+<h3 id="running-the-blog-sample_1">Running the Blog sample</h3>
+<p>Build the JPA based Blog sample application (.eba file) from the <a href="/downloads/currentrelrease.html">latest release</a></p>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">1.0.0</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">jpa</span><span class="o">-</span><span class="n">eba</span>
+<span class="n">mvn</span> <span class="n">install</span>
+</pre></div>
+
+
+<p>. Change directory to the blog-assembly target directory:</p>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">1.0.0</span><span class="sr">/blog-sample/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span><span class="o">/</span><span class="n">target</span>
+</pre></div>
+
+
+<p>now start Aries in an OSGi framework (we're using Eclipse Equinox in this
+case)</p>
+<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">org</span><span class="o">.</span><span class="n">eclipse</span><span class="o">.</span><span class="n">osgi</span><span class="o">-</span><span class="mf">3.7.0</span><span class="o">.</span><span class="n">v20110613</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
+</pre></div>
+
+
+<p>The OSGi console should start up, the 'ss' command should show all of the
+Blog bundles in state 'ACTIVE'.</p>
+<p>To start the blog application (.eba file) you built earlier, create a directory
+call load and copying it into the load directory.</p>
+<p>Point your browser to <a href="http://localhost:8080/blog/">http://localhost:8080/blog/</a></p>
+<p>If you subsequently delete the .eba from the load directory the application
+will be uninstalled.</p>
+<p><a name="BlogSample-RunningthesampleusingaJPApersistencelayer"></a></p>
+<h3 id="running-the-sample-using-a-jpa-persistence-layer">Running the sample using a JPA persistence layer</h3>
+<p>The first blog sample application is written to use a JPA persistence layer. There is an earlier application implemented to demonstrate the JDBC
+capability</p>
+<p>To run the blog sample which uses the JDBC persistence layer, start the OSGi
+framework, remove any previous copies of the blog sample from the
+target/load directory, then build and copy the Blog sample JDBC .eba file into the
+load directory.</p>
+<p>Finally, after typing 'refresh' at the OSGi console, point your browser at <a href="http://localhost:8080/blog/">http://localhost:8080/blog/</a>
+. You should see something that looks precisely the same as the blog sample
+running with the JPA persistence layer, but this time running using the
+JDBC layer.</p>
+<p><a name="BlogSample-Usingthelatest,unreleasedcode"></a></p>
+<h2 id="using-the-latest-unreleased-code">Using the latest, unreleased code</h2>
+<p>If you prefer to use the very latest code from subversion, checkout and
+build the Aries trunk by following the <a href="aries:buildingaries.html">Building Aries instructions</a>
+.</p>
+<p><a name="BlogSample-AbouttheBlogsample"></a></p>
+<h2 id="about-the-blog-sample">About the Blog sample</h2>
+<p>The blog sample components can be visualised like this:</p>
+<p><img alt="bs" src="BlogSample.png" /></p></div>
             <!-- Content -->
           </td>
         </tr>
