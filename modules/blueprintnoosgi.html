@@ -23,7 +23,7 @@
   <meta name="keywords" content="..."/>
   <meta name="description" content="..." />
     <title>
-    Apache Aries - December 2009
+    Apache Aries - BlueprintNoOSGi
     </title>
   </head>
 <body onload="SetMenu()">
@@ -272,27 +272,53 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p>Aries will deliver a set of pluggable Java components enabling an
-enterprise OSGi application programming model.</p>
-<p>Aries entered incubation on September 22, 2009.</p>
-<p>There are currently no issues requiring IPMC or Board attention .</p>
-<p>The svn area has been organized with a single trunk for now, though we
-still need to settle the discussion about components lifecycle and the svn
-layout.</p>
-<p>The following sub-components are actively being developed:</p>
-<ul>
-<li>Application</li>
-<li>Blueprint</li>
-<li>JMX</li>
-</ul>
-<p>There has been a lot of activity on the mailing list this month indicating
-a vibrant community is being built.</p>
-<p>Top 2 or 3 things to resolve before graduation:</p>
-<ul>
-<li>Build community</li>
-<li>Create a release</li>
-<li>Address project scope concerns raised during acceptance vote</li>
-</ul></div>
+            <div class="wiki-content"><p><a name="BlueprintNoOSGi"></a></p>
+<h1 id="blueprint-no-osgi">Blueprint No-OSGi</h1>
+<p>The Blueprint No-OSGi module makes it easy to use OSGi Blueprint as a dependency injection framework outside of OSGi containers such as inside any Servlet Engine. </p>
+<p>You can then use Blueprint as a small standards base alternative to the Spring Framework's XML dependency injection files.</p>
+<p><a name="BlueprintNoOSGi-HowToUse"></a></p>
+<h2 id="how-to-use-blueprint-no-osgi">How to use Blueprint No-OSGi</h2>
+<p>Just create the blueprint container giving the urls of the xml descriptors</p>
+<div class="codehilite"><pre><span class="n">BlueprintContainerImpl</span> <span class="n">container</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BlueprintContainerImpl</span><span class="p">(</span><span class="n">classLoader</span><span class="p">,</span> <span class="n">resourcePaths</span><span class="p">);</span>
+</pre></div>
+
+
+<p>You can then access the instantiated beans using the blueprint api</p>
+<div class="codehilite"><pre><span class="n">Foo</span> <span class="n">foo</span> <span class="o">=</span> <span class="p">(</span><span class="n">Foo</span><span class="p">)</span> <span class="n">container</span><span class="o">.</span><span class="n">getComponentInstance</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>When you're done with the container, you need to destroy it</p>
+<div class="codehilite"><pre><span class="n">container</span><span class="o">.</span><span class="n">destroy</span><span class="p">();</span>
+</pre></div>
+
+
+<p><a name="BlueprintNoOSGi-Limitations"></a></p>
+<h2 id="limitations">Limitations</h2>
+<p>The Blueprint No-OSGi module has limitations due to the fact that OSGi is not available.
+The use of <reference/> and <reference-list/> and <service/> elements are not supported.</p>
+<p><a name="BlueprintNoOSGi-Configuraiton"></a>  <br />
+</p>
+<h2 id="configuring-blueprint-through-properties">Configuring blueprint through properties</h2>
+<p>Blueprint beans can be configured using the variable substitutions.
+You need to declare the ext namespace and add the property placeholder bean in your blueprint xml</p>
+<div class="codehilite"><pre><span class="nt">&lt;blueprint</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.osgi.org/xmlns/blueprint/v1.0.0&quot;</span>
+           <span class="na">xmlns:ext=</span><span class="s">&quot;http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.2.0&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ext:property</span><span class="err">-placeholder</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ext:default</span><span class="err">-properties</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ext:property</span> <span class="na">name=</span><span class="s">&quot;myProperty&quot;</span> <span class="na">value=</span><span class="s">&quot;defaultValue&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ext:default-properties&gt;</span>
+    <span class="nt">&lt;/ext:property-placeholder&gt;</span>
+    ...
+    <span class="nt">&lt;bean</span> <span class="err">...</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;myProperty&quot;</span> <span class="na">value=</span><span class="s">&quot;</span><span class="cp">${</span><span class="n">myProperty</span><span class="cp">}</span><span class="s">&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+<span class="nt">&lt;/blueprint&gt;</span>
+</pre></div>
+
+
+<p>Default values can be specified by passing a <strong>Map<String,String></strong> object at container creation time.
+Note that the default values for system override (compared to standard blueprint use in OSGi) has been changed so that the properties passed to the container and system properties will override default values.</p></div>
             <!-- Content -->
           </td>
         </tr>

@@ -23,7 +23,7 @@
   <meta name="keywords" content="..."/>
   <meta name="description" content="..." />
     <title>
-    Apache Aries - December 2009
+    Apache Aries - BlueprintWeb
     </title>
   </head>
 <body onload="SetMenu()">
@@ -272,27 +272,59 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p>Aries will deliver a set of pluggable Java components enabling an
-enterprise OSGi application programming model.</p>
-<p>Aries entered incubation on September 22, 2009.</p>
-<p>There are currently no issues requiring IPMC or Board attention .</p>
-<p>The svn area has been organized with a single trunk for now, though we
-still need to settle the discussion about components lifecycle and the svn
-layout.</p>
-<p>The following sub-components are actively being developed:</p>
-<ul>
-<li>Application</li>
-<li>Blueprint</li>
-<li>JMX</li>
-</ul>
-<p>There has been a lot of activity on the mailing list this month indicating
-a vibrant community is being built.</p>
-<p>Top 2 or 3 things to resolve before graduation:</p>
-<ul>
-<li>Build community</li>
-<li>Create a release</li>
-<li>Address project scope concerns raised during acceptance vote</li>
-</ul></div>
+            <div class="wiki-content"><p><a name="BlueprintWeb"></a></p>
+<h1 id="blueprintweb">BlueprintWeb</h1>
+<p>The Blueprint Web module makes it easy to use OSGi Blueprint as a dependency injection framework outside of OSGi containers such as inside any Servlet Engine. </p>
+<p>You can then use Blueprint as a small standards base alternative to the Spring Framework's XML dependency injection files.</p>
+<p><a name="BlueprintWeb-HowToUse"></a></p>
+<h2 id="how-to-use-blueprint-web">How to use Blueprint Web</h2>
+<p>Just add the following to your web.xml</p>
+<div class="codehilite"><pre>  <span class="nt">&lt;listener&gt;</span>
+      <span class="nt">&lt;listener-class&gt;</span>org.apache.aries.blueprint.web.BlueprintContextListener<span class="nt">&lt;/listener-class&gt;</span>
+  <span class="nt">&lt;/listener&gt;</span>
+</pre></div>
+
+
+<p>This will then make your web application look in the classpath for all files called <strong>META-INF/blueprint.xml</strong>. Each one will then be loaded and created in a single BlueprintContainer for your web application.</p>
+<p>Then in each jar or in the web application itself, just create a file called <strong>src/main/resources/META-INF/blueprint.xml</strong> which will then get included into jars or into your WAR.</p>
+<p>If you wish to use a different name for the location of the blueprint files you can specify the <strong>blueprintLocation</strong> property as a context parameter as follows:</p>
+<div class="codehilite"><pre>  <span class="nt">&lt;context-param&gt;</span>
+      <span class="nt">&lt;param-name&gt;</span>blueprintLocation<span class="nt">&lt;/param-name&gt;</span>
+      <span class="nt">&lt;param-value&gt;</span>META-INF/myName.xml<span class="nt">&lt;/param-value&gt;</span>
+  <span class="nt">&lt;/context-param&gt;</span>
+</pre></div>
+
+
+<p><a name="BlueprintWeb-Configuraiton"></a> <br />
+</p>
+<h2 id="configuring-blueprint-through-properties">Configuring blueprint through properties</h2>
+<p>Blueprint beans can be configured using the variable substitutions.
+You need to declare the ext namespace and add the property placeholder bean in your blueprint xml</p>
+<div class="codehilite"><pre><span class="nt">&lt;blueprint</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.osgi.org/xmlns/blueprint/v1.0.0&quot;</span>
+           <span class="na">xmlns:ext=</span><span class="s">&quot;http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.2.0&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ext:property</span><span class="err">-placeholder</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ext:default</span><span class="err">-properties</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ext:property</span> <span class="na">name=</span><span class="s">&quot;myProperty&quot;</span> <span class="na">value=</span><span class="s">&quot;defaultValue&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ext:default-properties&gt;</span>
+    <span class="nt">&lt;/ext:property-placeholder&gt;</span>
+    ...
+    <span class="nt">&lt;bean</span> <span class="err">...</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;myProperty&quot;</span> <span class="na">value=</span><span class="s">&quot;</span><span class="cp">${</span><span class="n">myProperty</span><span class="cp">}</span><span class="s">&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+<span class="nt">&lt;/blueprint&gt;</span>
+</pre></div>
+
+
+<p>The default value can be overriden by specifying an the blueprintProperties property as a context parameter in the web.xml:</p>
+<div class="codehilite"><pre><span class="nt">&lt;context-param&gt;</span>
+    <span class="nt">&lt;param-name&gt;</span>blueprintProperties<span class="nt">&lt;/param-name&gt;</span>
+    <span class="nt">&lt;param-value&gt;</span>myConfigFile.properties<span class="nt">&lt;/param-value&gt;</span>
+<span class="nt">&lt;/context-param&gt;</span>
+</pre></div>
+
+
+<p>The value of this parameter is a comma separated list of properties file loaded from the class loader.
+In this case, adding a file called <strong>src/main/resources/myConfigFile.properties</strong> will do the trick.</p></div>
             <!-- Content -->
           </td>
         </tr>
