@@ -244,6 +244,9 @@
         <a href="/modules/ebamavenpluginproject.html">EBA Maven Plugin </a> 
     </div>
     <div class="menuitem">
+        <a href="/modules/esamavenpluginproject.html">ESA Maven Plugin </a> 
+    </div>
+    <div class="menuitem">
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
@@ -385,17 +388,17 @@ instructions in the file) and checkin</p>
 <h3 id="creating-a-branch-to-release-from">Creating a branch to release from</h3>
 <p>It is strongly recomended that releases are made from trunk and NEVER from a branch. But, if you have to release from a branch this is what 
 you will need to do:</p>
-<div class="codehilite"><pre><span class="n">svn</span> <span class="n">copy</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">trunk</span> <span class="o">\</span>
+<div class="codehilite"><pre><span class="n">svn</span> <span class="n">copy</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">asf</span><span class="o">/</span><span class="n">aries</span><span class="o">/</span><span class="n">trunk</span> <span class="o">\</span>
 
-<span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">branches</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="n">RCx</span> <span class="o">\</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">asf</span><span class="o">/</span><span class="n">aries</span><span class="o">/</span><span class="n">branches</span><span class="o">/</span>0<span class="p">.</span><span class="n">X</span><span class="o">-</span><span class="n">RCx</span> <span class="o">\</span>
 
-  <span class="o">-</span><span class="n">m</span> <span class="s">&quot;Creating a release branch of /aries/trunk.&quot;</span>
+  <span class="o">-</span><span class="n">m</span> &quot;<span class="n">Creating</span> <span class="n">a</span> <span class="n">release</span> <span class="n">branch</span> <span class="n">of</span> <span class="o">/</span><span class="n">aries</span><span class="o">/</span><span class="n">trunk</span><span class="p">.</span>&quot;
 </pre></div>
 
 
 <p>Where '0.X' is the number of the release.</p>
 <p>Checkout the new branch, for example, for the 0.2-incubating  release:</p>
-<div class="codehilite"><pre><span class="n">svn</span> <span class="n">co</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">branches</span><span class="o">/</span><span class="mf">0.2</span><span class="o">-</span><span class="n">RCx</span> <span class="n">aries</span><span class="o">-</span><span class="mf">0.2</span><span class="o">-</span><span class="n">candidate</span>
+<div class="codehilite"><pre><span class="n">svn</span> <span class="n">co</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">asf</span><span class="o">/</span><span class="n">aries</span><span class="o">/</span><span class="n">branches</span><span class="o">/</span>0<span class="p">.</span>2<span class="o">-</span><span class="n">RCx</span> <span class="n">aries</span><span class="o">-</span>0<span class="p">.</span>2<span class="o">-</span><span class="n">candidate</span>
 </pre></div>
 
 
@@ -421,7 +424,7 @@ repository :-/.</p>
 <p>If the Maven version of the bundle ends -SNAPSHOT then some change has been made which may require a release.
 To get a summary of the changes, use svn to compare with the most recently released tag, 
 for example:</p>
-<div class="codehilite"><pre> <span class="n">svn</span> <span class="n">diff</span> <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">tags</span><span class="sr">/testsupport-0.3/</span>  <span class="n">https:</span><span class="sr">//s</span><span class="n">vn</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="sr">/repos/</span><span class="n">asf</span><span class="sr">/aries/</span><span class="n">trunk</span><span class="sr">/testsupport/</span> <span class="o">--</span><span class="n">summarize</span>
+<div class="codehilite"><pre> <span class="n">svn</span> <span class="n">diff</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">asf</span><span class="o">/</span><span class="n">aries</span><span class="o">/</span><span class="n">tags</span><span class="o">/</span><span class="n">testsupport</span><span class="o">-</span>0<span class="p">.</span>3<span class="o">/</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">asf</span><span class="o">/</span><span class="n">aries</span><span class="o">/</span><span class="n">trunk</span><span class="o">/</span><span class="n">testsupport</span><span class="o">/</span> <span class="o">--</span><span class="n">summarize</span>
 </pre></div>
 
 
@@ -434,7 +437,7 @@ these might lead to the requirement to increment the major or minor versions the
 Maven repo. For linux/Mac users you will find this under ~/.m2/repository/.</p>
 <p>Check that the code builds using the usual <a href="buildingaries.html">sequence</a>
  of commands, but add the following arguments to the 'mvn install' command:</p>
-<div class="codehilite"><pre><span class="n">mvn</span> <span class="n">install</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span> <span class="o">-</span><span class="n">DcreateChecksum</span><span class="o">=</span><span class="n">true</span>
+<div class="codehilite"><pre><span class="n">mvn</span> <span class="n">install</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span> <span class="o">-</span><span class="n">DcreateChecksum</span><span class="p">=</span><span class="n">true</span>
 </pre></div>
 
 
@@ -442,7 +445,7 @@ Maven repo. For linux/Mac users you will find this under ~/.m2/repository/.</p>
 <p>Check the <a href="https://repository.apache.org/content/repositories/releases/org/apache/aries/parent/0.1-incubating/">0.1 release</a>
  to understand what files should be created.</p>
 <p>To perform legal checks, in each subproject, run:</p>
-<div class="codehilite"><pre><span class="n">mvn</span> <span class="n">rat:check</span> <span class="o">-</span><span class="n">fn</span>
+<div class="codehilite"><pre><span class="n">mvn</span> <span class="nb">rat</span><span class="p">:</span><span class="n">check</span> <span class="o">-</span><span class="n">fn</span>
 </pre></div>
 
 
@@ -450,7 +453,7 @@ Maven repo. For linux/Mac users you will find this under ~/.m2/repository/.</p>
 called rat.txt in each target directory.
 The 'fn' means it will carry on even if it find a failure. To inspect the
 failures, use:</p>
-<div class="codehilite"><pre><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="n">rat</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">xargs</span> <span class="nb">grep</span> <span class="o">\!\</span><span class="p">?</span><span class="o">\</span><span class="p">?</span>
+<div class="codehilite"><pre><span class="nb">find</span> <span class="p">.</span> <span class="o">-</span><span class="n">name</span> <span class="nb">rat</span><span class="p">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">xargs</span> <span class="n">grep</span> <span class="o">\</span>!<span class="o">\</span>?<span class="o">\</span>?
 </pre></div>
 
 
@@ -490,10 +493,10 @@ releasing from a branch it may not be a good idea to accept the default for
 this, it will very likely conflict with the development version in use in
 trunk.</p>
 <p>For each bundle that needs to be release perform the following commands:</p>
-<div class="codehilite"><pre><span class="n">Check</span> <span class="n">that</span> <span class="n">there</span> <span class="n">are</span> <span class="nb">no</span> <span class="n">depndencies</span> <span class="n">on</span> <span class="o">-</span><span class="n">SNAPSHOT</span> <span class="n">versions</span><span class="o">.</span>
+<div class="codehilite"><pre><span class="n">Check</span> <span class="n">that</span> <span class="n">there</span> <span class="n">are</span> <span class="n">no</span> <span class="n">depndencies</span> <span class="n">on</span> <span class="o">-</span><span class="n">SNAPSHOT</span> <span class="n">versions</span><span class="p">.</span>
 <span class="n">Ensure</span> <span class="n">that</span> <span class="n">everything</span> <span class="n">is</span> <span class="n">committed</span> <span class="n">in</span> <span class="n">SVN</span>
-<span class="n">mvn</span> <span class="n">release:prepare</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span> <span class="o">-</span><span class="n">DpreparationGoals</span><span class="o">=</span><span class="s">&quot;clean install&quot;</span> 
-<span class="n">mvn</span> <span class="n">release:perform</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span>
+<span class="n">mvn</span> <span class="n">release</span><span class="p">:</span><span class="n">prepare</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span> <span class="o">-</span><span class="n">DpreparationGoals</span><span class="p">=</span>&quot;<span class="n">clean</span> <span class="n">install</span>&quot; 
+<span class="n">mvn</span> <span class="n">release</span><span class="p">:</span><span class="n">perform</span> <span class="o">-</span><span class="n">Papache</span><span class="o">-</span><span class="n">release</span>
 </pre></div>
 
 
@@ -502,8 +505,7 @@ trunk.</p>
 <li>
 <p>Note 2: mvn release:prepare makes and commits changes in SVN. You'll be asked three questions. Here they are with answers for the 'parent' module release: </p>
 <ol>
-<li>What is the release version for "Aries :: Top Parent POM"? (org.apache.aries:parent) 0.5: :  <br />
-</li>
+<li>What is the release version for "Aries :: Top Parent POM"? (org.apache.aries:parent) 0.5: :    </li>
 <li>What is SCM release tag or label for "Aries :: Top Parent POM"? (org.apache.aries:parent) parent-0.5: :</li>
 <li>What is the new development version for "Aries :: Top Parent POM"? (org.apache.aries:parent) 0.6-SNAPSHOT: : 0.5</li>
 </ol>

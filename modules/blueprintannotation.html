@@ -244,6 +244,9 @@
         <a href="/modules/ebamavenpluginproject.html">EBA Maven Plugin </a> 
     </div>
     <div class="menuitem">
+        <a href="/modules/esamavenpluginproject.html">ESA Maven Plugin </a> 
+    </div>
+    <div class="menuitem">
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
@@ -286,15 +289,15 @@ sample is also provided in trunk/blueprint/blueprint-sample-annotation.</p>
 <p><a name="BlueprintAnnotation-@InjectAnnotation"></a></p>
 <h3 id="inject-annotation">@Inject Annotation</h3>
 <p>@Inject annotation can be used to inject fields or methods.</p>
-<div class="codehilite"><pre><span class="nv">@Bean</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;bar&quot;</span><span class="p">)</span>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">Bean</span><span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">bar</span>&quot;<span class="p">)</span>
 <span class="n">public</span> <span class="n">class</span> <span class="n">Bar</span> <span class="p">{</span>
 
-    <span class="nv">@Inject</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s">&quot;Hello FooBar&quot;</span><span class="p">)</span>
+    <span class="p">@</span><span class="n">Inject</span><span class="p">(</span><span class="n">value</span><span class="p">=</span>&quot;<span class="n">Hello</span> <span class="n">FooBar</span>&quot;<span class="p">)</span>
     <span class="n">private</span> <span class="n">String</span> <span class="n">value</span><span class="p">;</span>
 
-    <span class="nv">@Inject</span><span class="p">(</span><span class="nb">ref</span><span class="o">=</span><span class="s">&quot;blueprintBundleContext&quot;</span><span class="p">)</span>
+    <span class="p">@</span><span class="n">Inject</span><span class="p">(</span><span class="n">ref</span><span class="p">=</span>&quot;<span class="n">blueprintBundleContext</span>&quot;<span class="p">)</span>
     <span class="n">private</span> <span class="n">BundleContext</span> <span class="n">context</span><span class="p">;</span>
-    <span class="o">...</span>
+    <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -307,13 +310,13 @@ auto generate one in the future.  Optionally, you can also specify
 activation, dependsOn, description, scope, factoryRef, factoryMethod and
 args of the bean.</p>
 <p>* Example of using args property for the @Bean annotation.</p>
-<div class="codehilite"><pre><span class="nv">@Bean</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;accountOne&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="nv">@Arg</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s">&quot;1&quot;</span><span class="p">))</span>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">Bean</span><span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">accountOne</span>&quot;<span class="p">,</span> <span class="n">args</span><span class="p">=@</span><span class="n">Arg</span><span class="p">(</span><span class="n">value</span><span class="p">=</span>&quot;1&quot;<span class="p">))</span>
 <span class="n">public</span> <span class="n">class</span> <span class="n">Account</span> <span class="p">{</span>
 
     <span class="n">private</span> <span class="n">long</span> <span class="n">accountNumber</span><span class="p">;</span>
 
     <span class="n">public</span> <span class="n">Account</span><span class="p">(</span><span class="n">long</span> <span class="n">number</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">this</span><span class="o">.</span><span class="n">accountNumber</span> <span class="o">=</span> <span class="n">number</span><span class="p">;</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">accountNumber</span> <span class="p">=</span> <span class="n">number</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -321,13 +324,13 @@ args of the bean.</p>
 
 <p>* Example of using factoryMethod and args properties for the @Bean
 annotation</p>
-<div class="codehilite"><pre><span class="nv">@Bean</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;accountTwo&quot;</span><span class="p">,</span>
-      <span class="n">factoryMethod</span><span class="o">=</span><span class="s">&quot;createAccount&quot;</span><span class="p">,</span>
-      <span class="n">args</span> <span class="o">=</span> <span class="nv">@Arg</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s">&quot;2&quot;</span><span class="p">))</span>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">Bean</span><span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">accountTwo</span>&quot;<span class="p">,</span>
+      <span class="n">factoryMethod</span><span class="p">=</span>&quot;<span class="n">createAccount</span>&quot;<span class="p">,</span>
+      <span class="n">args</span> <span class="p">=</span> <span class="p">@</span><span class="n">Arg</span><span class="p">(</span><span class="n">value</span><span class="p">=</span>&quot;2&quot;<span class="p">))</span>
 <span class="n">public</span> <span class="n">class</span> <span class="n">StaticAccountFactory</span> <span class="p">{</span>
 
     <span class="n">public</span> <span class="n">static</span> <span class="n">Account</span> <span class="n">createAccount</span><span class="p">(</span><span class="n">long</span> <span class="n">number</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="n">Account</span><span class="p">(</span><span class="n">number</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">new</span> <span class="n">Account</span><span class="p">(</span><span class="n">number</span><span class="p">);</span>
      <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -335,18 +338,18 @@ annotation</p>
 
 <p>* Example of using factoryRef, factoryMethod, and args properties for the
 @Bean annotation</p>
-<div class="codehilite"><pre><span class="nv">@Bean</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;accountThree&quot;</span><span class="p">,</span>
-      <span class="n">factoryRef</span><span class="o">=</span><span class="s">&quot;accountFactory&quot;</span><span class="p">,</span>
-      <span class="n">factoryMethod</span><span class="o">=</span><span class="s">&quot;createAccount&quot;</span><span class="p">,</span>
-      <span class="n">args</span><span class="o">=</span><span class="nv">@Arg</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s">&quot;3&quot;</span><span class="p">))</span>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">Bean</span><span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">accountThree</span>&quot;<span class="p">,</span>
+      <span class="n">factoryRef</span><span class="p">=</span>&quot;<span class="n">accountFactory</span>&quot;<span class="p">,</span>
+      <span class="n">factoryMethod</span><span class="p">=</span>&quot;<span class="n">createAccount</span>&quot;<span class="p">,</span>
+      <span class="n">args</span><span class="p">=@</span><span class="n">Arg</span><span class="p">(</span><span class="n">value</span><span class="p">=</span>&quot;3&quot;<span class="p">))</span>
 <span class="n">public</span> <span class="n">class</span> <span class="n">NewAccount</span> <span class="p">{</span>
 
     <span class="n">private</span> <span class="n">long</span> <span class="n">accountNumber</span><span class="p">;</span>
 
     <span class="n">public</span> <span class="n">NewAccount</span><span class="p">(</span><span class="n">long</span> <span class="n">number</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">this</span><span class="o">.</span><span class="n">accountNumber</span> <span class="o">=</span> <span class="n">number</span><span class="p">;</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">accountNumber</span> <span class="p">=</span> <span class="n">number</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="o">...</span>
+    <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -356,15 +359,15 @@ annotation</p>
 <p>If you want to register a bean as a service, you can use @Service
 annotation to do so.  You can specify ranking, autoExport, interfaces,
 serviceProperties and registrationListeners for the service.</p>
-<div class="codehilite"><pre><span class="nv">@Bean</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
-<span class="nv">@Service</span><span class="p">(</span><span class="n">autoExport</span><span class="o">=</span><span class="s">&quot;all-classes&quot;</span><span class="p">,</span>
-    <span class="n">serviceProperties</span> <span class="o">=</span>
-<span class="nv">@ServiceProperty</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s">&quot;blueprint.annotation.sample&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">),</span>
-    <span class="n">registerationListeners</span> <span class="o">=</span>
-<span class="nv">@RegistrationListener</span><span class="p">(</span><span class="nb">ref</span><span class="o">=</span><span class="s">&quot;fooRegistrationListener&quot;</span><span class="p">),</span> 
-    <span class="n">ranking</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">Bean</span><span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">foo</span>&quot;<span class="p">)</span>
+<span class="p">@</span><span class="n">Service</span><span class="p">(</span><span class="n">autoExport</span><span class="p">=</span>&quot;<span class="n">all</span><span class="o">-</span><span class="n">classes</span>&quot;<span class="p">,</span>
+    <span class="n">serviceProperties</span> <span class="p">=</span>
+<span class="p">@</span><span class="n">ServiceProperty</span><span class="p">(</span><span class="n">key</span><span class="p">=</span>&quot;<span class="n">blueprint</span><span class="p">.</span><span class="n">annotation</span><span class="p">.</span><span class="n">sample</span>&quot;<span class="p">,</span> <span class="n">value</span><span class="p">=</span>&quot;<span class="n">true</span>&quot;<span class="p">),</span>
+    <span class="n">registerationListeners</span> <span class="p">=</span>
+<span class="p">@</span><span class="n">RegistrationListener</span><span class="p">(</span><span class="n">ref</span><span class="p">=</span>&quot;<span class="n">fooRegistrationListener</span>&quot;<span class="p">),</span> 
+    <span class="n">ranking</span><span class="p">=</span>0<span class="p">)</span>
 <span class="n">public</span> <span class="n">class</span> <span class="n">Foo</span> <span class="n">implements</span> <span class="n">Serializable</span> <span class="p">{</span>
-   <span class="o">...</span>
+   <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -373,20 +376,20 @@ serviceProperties and registrationListeners for the service.</p>
 @RegistrationListener annotation.  @Register can be used to annotate the
 register-method for the registration listener and @Unregister annotation
 can be used on the unregister-method for the registration listener.</p>
-<div class="codehilite"><pre><span class="nv">@Bean</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;fooRegistrationListener&quot;</span><span class="p">)</span>
-<span class="nv">@RegistrationListener</span>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">Bean</span><span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">fooRegistrationListener</span>&quot;<span class="p">)</span>
+<span class="p">@</span><span class="n">RegistrationListener</span>
 <span class="n">public</span> <span class="n">class</span> <span class="n">FooRegistrationListener</span> <span class="p">{</span>
 
-    <span class="nv">@Register</span>
+    <span class="p">@</span><span class="n">Register</span>
     <span class="n">public</span> <span class="n">void</span> <span class="n">serviceRegistered</span><span class="p">(</span><span class="n">Serializable</span> <span class="n">foo</span><span class="p">,</span> <span class="n">Map</span> <span class="n">props</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Service registration notification: &quot;</span> <span class="o">+</span> <span class="n">foo</span> <span class="o">+</span> <span class="s">&quot;</span>
-<span class="s">    &quot;</span> <span class="o">+</span> <span class="n">props</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span>&quot;<span class="n">Service</span> <span class="n">registration</span> <span class="n">notification</span><span class="p">:</span> &quot; <span class="o">+</span> <span class="n">foo</span> <span class="o">+</span> &quot;
+    &quot; <span class="o">+</span> <span class="n">props</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="nv">@Unregister</span>
+    <span class="p">@</span><span class="n">Unregister</span>
     <span class="n">public</span> <span class="n">void</span> <span class="n">serviceUnregistered</span><span class="p">(</span><span class="n">Foo</span> <span class="n">foo</span><span class="p">,</span> <span class="n">Map</span> <span class="n">props</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Service unregistration notification: &quot;</span> <span class="o">+</span> <span class="n">foo</span> <span class="o">+</span>
-    <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">props</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span>&quot;<span class="n">Service</span> <span class="n">unregistration</span> <span class="n">notification</span><span class="p">:</span> &quot; <span class="o">+</span> <span class="n">foo</span> <span class="o">+</span>
+    &quot; &quot; <span class="o">+</span> <span class="n">props</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -396,36 +399,34 @@ can be used on the unregister-method for the registration listener.</p>
 <p><a name="BlueprintAnnotation-@Reference,@ReferenceList,@ReferenceListenerAnnotations"></a></p>
 <h3 id="reference-referencelist-referencelistener-annotations">@Reference, @ReferenceList, @ReferenceListener Annotations</h3>
 <p>For a bean that you want to act as a ReferenceListener, you can use
-@ReferenceListener to annotate the bean class. <br />
-</p>
+@ReferenceListener to annotate the bean class.   </p>
 <p>For the service that you want to inject the reference, you can use the
 @Inject and @Reference annotation, with the id, serviceInterface, timeout
-and referenceListeners properties specified for the reference. <br />
-</p>
-<div class="codehilite"><pre><span class="nv">@Bean</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;bindingListener&quot;</span><span class="p">)</span>
-<span class="nv">@ReferenceListener</span>
+and referenceListeners properties specified for the reference.   </p>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">Bean</span><span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">bindingListener</span>&quot;<span class="p">)</span>
+<span class="p">@</span><span class="n">ReferenceListener</span>
 <span class="n">public</span> <span class="n">class</span> <span class="n">BindingListener</span> <span class="p">{</span>
 
-    <span class="nv">@Inject</span> <span class="nv">@Reference</span> <span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;ref2&quot;</span><span class="p">,</span> 
-        <span class="n">serviceInterface</span> <span class="o">=</span> <span class="n">InterfaceA</span><span class="o">.</span><span class="n">class</span><span class="p">,</span>
-        <span class="n">timeout</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="n">referenceListeners</span><span class="o">=</span><span class="nv">@ReferenceListener</span><span class="p">(</span><span class="nb">ref</span><span class="o">=</span><span class="s">&quot;bindingListener&quot;</span><span class="p">))</span>
+    <span class="p">@</span><span class="n">Inject</span> <span class="p">@</span><span class="n">Reference</span> <span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">ref2</span>&quot;<span class="p">,</span> 
+        <span class="n">serviceInterface</span> <span class="p">=</span> <span class="n">InterfaceA</span><span class="p">.</span><span class="n">class</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">=</span>100<span class="p">,</span>
+<span class="n">referenceListeners</span><span class="p">=@</span><span class="n">ReferenceListener</span><span class="p">(</span><span class="n">ref</span><span class="p">=</span>&quot;<span class="n">bindingListener</span>&quot;<span class="p">))</span>
     <span class="n">private</span> <span class="n">InterfaceA</span> <span class="n">a</span><span class="p">;</span>
-    <span class="o">...</span>
-    <span class="nv">@Init</span>
+    <span class="p">...</span>
+    <span class="p">@</span><span class="n">Init</span>
     <span class="n">public</span> <span class="n">void</span> <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
     <span class="p">}</span>
 
-    <span class="nv">@Bind</span>
-    <span class="n">public</span> <span class="n">void</span> <span class="nb">bind</span><span class="p">(</span><span class="n">InterfaceA</span> <span class="n">a</span><span class="p">,</span> <span class="n">Map</span> <span class="n">props</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">this</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
-    <span class="n">this</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">props</span><span class="p">;</span>
+    <span class="p">@</span><span class="n">Bind</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">bind</span><span class="p">(</span><span class="n">InterfaceA</span> <span class="n">a</span><span class="p">,</span> <span class="n">Map</span> <span class="n">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">a</span> <span class="p">=</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">props</span> <span class="p">=</span> <span class="n">props</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="nv">@Unbind</span>
+    <span class="p">@</span><span class="n">Unbind</span>
     <span class="n">public</span> <span class="n">void</span> <span class="n">unbind</span><span class="p">(</span><span class="n">InterfaceA</span> <span class="n">a</span><span class="p">,</span> <span class="n">Map</span> <span class="n">props</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">this</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
-    <span class="n">this</span><span class="o">.</span><span class="n">props</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">a</span> <span class="p">=</span> <span class="n">null</span><span class="p">;</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">props</span> <span class="p">=</span> <span class="n">null</span><span class="p">;</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -435,16 +436,16 @@ and referenceListeners properties specified for the reference. <br />
 <p>@ReferenceList is very similar as @Reference, except that the timeout
 property is not supported in @ReferenceList, while the memberType property
 is supported in @ReferenceList.  This is same as the blueprint XML schema.</p>
-<div class="codehilite"><pre><span class="nv">@Bean</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;listBindingListener&quot;</span><span class="p">)</span>
-<span class="nv">@ReferenceListener</span>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">Bean</span><span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">listBindingListener</span>&quot;<span class="p">)</span>
+<span class="p">@</span><span class="n">ReferenceListener</span>
 <span class="n">public</span> <span class="n">class</span> <span class="n">ListBindingListener</span> <span class="p">{</span>
 
-    <span class="nv">@Inject</span> <span class="nv">@ReferenceList</span> <span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;ref-list&quot;</span><span class="p">,</span> 
-        <span class="n">serviceInterface</span> <span class="o">=</span> <span class="n">InterfaceA</span><span class="o">.</span><span class="n">class</span><span class="p">,</span>
+    <span class="p">@</span><span class="n">Inject</span> <span class="p">@</span><span class="n">ReferenceList</span> <span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">ref</span><span class="o">-</span><span class="n">list</span>&quot;<span class="p">,</span> 
+        <span class="n">serviceInterface</span> <span class="p">=</span> <span class="n">InterfaceA</span><span class="p">.</span><span class="n">class</span><span class="p">,</span>
 
-<span class="n">referenceListeners</span><span class="o">=</span><span class="nv">@ReferenceListener</span><span class="p">(</span><span class="nb">ref</span><span class="o">=</span><span class="s">&quot;listBindingListener&quot;</span><span class="p">))</span>
+<span class="n">referenceListeners</span><span class="p">=@</span><span class="n">ReferenceListener</span><span class="p">(</span><span class="n">ref</span><span class="p">=</span>&quot;<span class="n">listBindingListener</span>&quot;<span class="p">))</span>
     <span class="n">private</span> <span class="n">InterfaceA</span> <span class="n">a</span><span class="p">;</span>
-    <span class="o">...</span>
+    <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -454,11 +455,11 @@ is supported in @ReferenceList.  This is same as the blueprint XML schema.</p>
 <p>@Blueprint annotation can be used on any class to annotate the global
 property of the blueprint bundle, such as defaultActivation,
 defaultTimeout, defaultAvailability.</p>
-<div class="codehilite"><pre><span class="nv">@Blueprint</span><span class="p">(</span><span class="n">defaultActivation</span><span class="o">=</span><span class="s">&quot;eager&quot;</span><span class="p">,</span> <span class="n">defaultTimeout</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
-<span class="n">defaultAvailability</span><span class="o">=</span><span class="s">&quot;optional&quot;</span><span class="p">)</span>
-<span class="nv">@Bean</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;bar&quot;</span><span class="p">)</span>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">Blueprint</span><span class="p">(</span><span class="n">defaultActivation</span><span class="p">=</span>&quot;<span class="n">eager</span>&quot;<span class="p">,</span> <span class="n">defaultTimeout</span><span class="p">=</span>300<span class="p">,</span>
+<span class="n">defaultAvailability</span><span class="p">=</span>&quot;<span class="n">optional</span>&quot;<span class="p">)</span>
+<span class="p">@</span><span class="n">Bean</span><span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">bar</span>&quot;<span class="p">)</span>
 <span class="n">public</span> <span class="n">class</span> <span class="n">Bar</span> <span class="p">{</span>
-    <span class="o">...</span>
+    <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -469,12 +470,12 @@ defaultTimeout, defaultAvailability.</p>
 The blueprint annotation service will recognize it as a type converter if
 it implements the <em>org.osgi.service.blueprint.container.Converter</em>
 interface</p>
-<div class="codehilite"><pre><span class="nv">@Bean</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;converter1&quot;</span><span class="p">)</span>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">Bean</span><span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">converter1</span>&quot;<span class="p">)</span>
 <span class="n">public</span> <span class="n">class</span> <span class="n">DateTypeConverter</span> <span class="n">implements</span> <span class="n">Converter</span> <span class="p">{</span>
 
-    <span class="nv">@Inject</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;format&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s">&quot;yyyy.MM.dd&quot;</span><span class="p">)</span>
+    <span class="p">@</span><span class="n">Inject</span><span class="p">(</span><span class="n">name</span><span class="p">=</span>&quot;<span class="n">format</span>&quot;<span class="p">,</span> <span class="n">value</span><span class="p">=</span>&quot;<span class="n">yyyy</span><span class="p">.</span><span class="n">MM</span><span class="p">.</span><span class="n">dd</span>&quot;<span class="p">)</span>
     <span class="n">DateFormat</span> <span class="n">dateFormat</span><span class="p">;</span>
-    <span class="o">...</span>
+    <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
 

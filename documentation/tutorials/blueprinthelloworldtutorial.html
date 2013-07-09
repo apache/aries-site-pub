@@ -244,6 +244,9 @@
         <a href="/modules/ebamavenpluginproject.html">EBA Maven Plugin </a> 
     </div>
     <div class="menuitem">
+        <a href="/modules/esamavenpluginproject.html">ESA Maven Plugin </a> 
+    </div>
+    <div class="menuitem">
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
@@ -404,7 +407,7 @@ Equinox based platform that contains all of the OSGi bundles you need. To
 start it up go to the target directory in 
 org.apache.aries.samples.helloworld.blueprint.assembly, and from command
 line, type:</p>
-<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span><span class="mf">3.5.0</span><span class="o">.</span><span class="n">v20090520</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
+<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span>3<span class="p">.</span>5<span class="p">.</span>0<span class="p">.</span><span class="n">v20090520</span><span class="p">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
 </pre></div>
 
 
@@ -434,7 +437,7 @@ the startUp() method if the HelloWorldServiceImpl class:</p>
 
 <p>At this point it is possible to see if the HelloWorldService is registered,
 like this:</p>
-<div class="codehilite"><pre><span class="n">osgi</span><span class="o">&gt;</span> <span class="n">services</span> <span class="p">(</span><span class="n">objectClass</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">aries</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">blueprint</span><span class="o">.</span><span class="n">helloworld</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">HelloWorldService</span><span class="p">)</span>
+<div class="codehilite"><pre><span class="n">osgi</span><span class="o">&gt;</span> <span class="n">services</span> <span class="p">(</span><span class="n">objectClass</span><span class="p">=</span><span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">samples</span><span class="p">.</span><span class="n">blueprint</span><span class="p">.</span><span class="n">helloworld</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">HelloWorldService</span><span class="p">)</span>
 </pre></div>
 
 
@@ -444,9 +447,9 @@ nothing is using it.</p>
 according to plan you should see a sequence of 3 messages from the
 startUp() method, the second message will be a 'hello' from
 HelloWorldService:</p>
-<div class="codehilite"><pre><span class="o">========&gt;&gt;&gt;&gt;</span><span class="n">Client</span> <span class="n">HelloWorld:</span> <span class="n">About</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">a</span> <span class="n">method</span> <span class="n">from</span> <span class="n">the</span> <span class="n">Hello</span> <span class="n">World</span> <span class="n">server</span>
-<span class="o">======&gt;&gt;&gt;</span> <span class="n">A</span> <span class="n">message</span> <span class="n">from</span> <span class="n">the</span> <span class="n">server:</span> <span class="n">Hello</span> <span class="n">World</span><span class="o">!</span>
-<span class="o">========&gt;&gt;&gt;&gt;</span><span class="n">Client</span> <span class="n">HelloWorld:</span> <span class="o">...</span> <span class="k">if</span> <span class="n">you</span> <span class="n">didn</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">just</span> <span class="n">see</span> <span class="n">a</span> <span class="n">Hello</span> <span class="n">World</span> <span class="n">message</span> <span class="n">something</span> <span class="n">went</span> <span class="n">wrong</span>
+<div class="codehilite"><pre><span class="o">========&gt;&gt;&gt;&gt;</span><span class="n">Client</span> <span class="n">HelloWorld</span><span class="p">:</span> <span class="n">About</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">a</span> <span class="n">method</span> <span class="n">from</span> <span class="n">the</span> <span class="n">Hello</span> <span class="n">World</span> <span class="n">server</span>
+<span class="o">======&gt;&gt;&gt;</span> <span class="n">A</span> <span class="n">message</span> <span class="n">from</span> <span class="n">the</span> <span class="n">server</span><span class="p">:</span> <span class="n">Hello</span> <span class="n">World</span>!
+<span class="o">========&gt;&gt;&gt;&gt;</span><span class="n">Client</span> <span class="n">HelloWorld</span><span class="p">:</span> <span class="p">...</span> <span class="k">if</span> <span class="n">you</span> <span class="n">didn</span><span class="o">&#39;</span><span class="n">t</span> <span class="n">just</span> <span class="n">see</span> <span class="n">a</span> <span class="n">Hello</span> <span class="n">World</span> <span class="n">message</span> <span class="n">something</span> <span class="n">went</span> <span class="n">wrong</span>
 </pre></div>
 
 

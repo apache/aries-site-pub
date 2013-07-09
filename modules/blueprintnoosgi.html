@@ -244,6 +244,9 @@
         <a href="/modules/ebamavenpluginproject.html">EBA Maven Plugin </a> 
     </div>
     <div class="menuitem">
+        <a href="/modules/esamavenpluginproject.html">ESA Maven Plugin </a> 
+    </div>
+    <div class="menuitem">
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
@@ -273,17 +276,17 @@
 <p><a name="BlueprintNoOSGi-HowToUse"></a></p>
 <h2 id="how-to-use-blueprint-no-osgi">How to use Blueprint No-OSGi</h2>
 <p>Just create the blueprint container giving the urls of the xml descriptors</p>
-<div class="codehilite"><pre><span class="n">BlueprintContainerImpl</span> <span class="n">container</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BlueprintContainerImpl</span><span class="p">(</span><span class="n">classLoader</span><span class="p">,</span> <span class="n">resourcePaths</span><span class="p">);</span>
+<div class="codehilite"><pre><span class="n">BlueprintContainerImpl</span> <span class="n">container</span> <span class="p">=</span> <span class="n">new</span> <span class="n">BlueprintContainerImpl</span><span class="p">(</span><span class="n">classLoader</span><span class="p">,</span> <span class="n">resourcePaths</span><span class="p">);</span>
 </pre></div>
 
 
 <p>You can then access the instantiated beans using the blueprint api</p>
-<div class="codehilite"><pre><span class="n">Foo</span> <span class="n">foo</span> <span class="o">=</span> <span class="p">(</span><span class="n">Foo</span><span class="p">)</span> <span class="n">container</span><span class="o">.</span><span class="n">getComponentInstance</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
+<div class="codehilite"><pre><span class="n">Foo</span> <span class="n">foo</span> <span class="p">=</span> <span class="p">(</span><span class="n">Foo</span><span class="p">)</span> <span class="n">container</span><span class="p">.</span><span class="n">getComponentInstance</span><span class="p">(</span>&quot;<span class="n">foo</span>&quot;<span class="p">);</span>
 </pre></div>
 
 
 <p>When you're done with the container, you need to destroy it</p>
-<div class="codehilite"><pre><span class="n">container</span><span class="o">.</span><span class="n">destroy</span><span class="p">();</span>
+<div class="codehilite"><pre><span class="n">container</span><span class="p">.</span><span class="n">destroy</span><span class="p">();</span>
 </pre></div>
 
 
@@ -291,8 +294,7 @@
 <h2 id="limitations">Limitations</h2>
 <p>The Blueprint No-OSGi module has limitations due to the fact that OSGi is not available.
 The use of <reference/> and <reference-list/> and <service/> elements are not supported.</p>
-<p><a name="BlueprintNoOSGi-Configuraiton"></a>  <br />
-</p>
+<p><a name="BlueprintNoOSGi-Configuraiton"></a>    </p>
 <h2 id="configuring-blueprint-through-properties">Configuring blueprint through properties</h2>
 <p>Blueprint beans can be configured using the variable substitutions.
 You need to declare the ext namespace and add the property placeholder bean in your blueprint xml</p>

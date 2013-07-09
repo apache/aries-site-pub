@@ -244,6 +244,9 @@
         <a href="/modules/ebamavenpluginproject.html">EBA Maven Plugin </a> 
     </div>
     <div class="menuitem">
+        <a href="/modules/esamavenpluginproject.html">ESA Maven Plugin </a> 
+    </div>
+    <div class="menuitem">
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
@@ -280,8 +283,8 @@ Instructions for the current release of Aries can be found <a href="/downloads/b
 <p><a name="BlogSample-CreatetheOSGiplatformfortheBlogsample"></a></p>
 <h3 id="create-the-osgi-platform-for-the-blog-sample">Create the OSGi platform for the Blog sample</h3>
 <p>Download and build the development stream of Aries, see <a href="/development/buildingaries.html">here</a></p>
-<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span><span class="o">/</span><span class="n">target</span>
-<span class="nb">mkdir</span> <span class="n">load</span>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span><span class="o">/</span><span class="n">target</span>
+<span class="n">mkdir</span> <span class="n">load</span>
 </pre></div>
 
 
@@ -292,14 +295,14 @@ versions yo have to create your own.
 <h3 id="running-the-blog-sample_1">Running the Blog sample</h3>
 <p>Start Aries in an OSGi framework (we're using Eclipse Equinox in this
 case)</p>
-<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span><span class="mf">3.5.0</span><span class="o">.</span><span class="n">v20090520</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
+<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span>3<span class="p">.</span>5<span class="p">.</span>0<span class="p">.</span><span class="n">v20090520</span><span class="p">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
 </pre></div>
 
 
 <p>The OSGi console should start up, the 'ss' command should show all of the
 platform bundles in state 'ACTIVE'.</p>
 <p>To run the blog application (.eba file) copy </p>
-<div class="codehilite"><pre><span class="n">samples</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">jdbc</span><span class="o">-</span><span class="n">eba</span><span class="sr">/target/</span><span class="o">*.</span><span class="n">eba</span>
+<div class="codehilite"><pre><span class="n">samples</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="n">blog</span><span class="o">-</span><span class="n">jdbc</span><span class="o">-</span><span class="n">eba</span><span class="o">/</span><span class="n">target</span><span class="o">/*</span><span class="p">.</span><span class="n">eba</span>
 </pre></div>
 
 
@@ -315,7 +318,7 @@ capability</p>
 <p>To run the blog sample which uses the JPA persistence layer, start the OSGi
 framework as before, remove any previous copies of the blog sample from the
 target/load directory, then copy </p>
-<div class="codehilite"><pre><span class="n">samples</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">jpa</span><span class="o">-</span><span class="n">eba</span><span class="sr">/target/</span><span class="o">*.</span><span class="n">eba</span>
+<div class="codehilite"><pre><span class="n">samples</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="n">blog</span><span class="o">-</span><span class="n">jpa</span><span class="o">-</span><span class="n">eba</span><span class="o">/</span><span class="n">target</span><span class="o">/*</span><span class="p">.</span><span class="n">eba</span>
 </pre></div>
 
 

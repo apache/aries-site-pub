@@ -244,6 +244,9 @@
         <a href="/modules/ebamavenpluginproject.html">EBA Maven Plugin </a> 
     </div>
     <div class="menuitem">
+        <a href="/modules/esamavenpluginproject.html">ESA Maven Plugin </a> 
+    </div>
+    <div class="menuitem">
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
@@ -353,16 +356,19 @@ the exact type. </p>
 example, the <em>class</em> attribute specifies the name of the Java class to
 instantiate. The Blueprint Container will create the <em>Account</em> object by
 passing <em>1</em> as the argument to the constructor. </p>
-<div class="codehilite"><pre>   <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Account</span> <span class="o">{</span>      
-       <span class="kd">public</span> <span class="nf">Account</span><span class="o">(</span><span class="kt">long</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
-          <span class="o">...</span>
-       <span class="o">}</span>
-       <span class="o">...</span>
-   <span class="o">}</span>
+<div class="codehilite"><pre>   :::java
+   public class Account {      
+       public Account(long number) {
+          ...
+       }
+       ...
+   }
 
-   <span class="o">&lt;</span><span class="n">bean</span> <span class="n">id</span><span class="o">=</span><span class="s">&quot;accountOne&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s">&quot;org.apache.aries.simple.Account&quot;</span><span class="o">&gt;</span>
-       <span class="o">&lt;</span><span class="n">argument</span> <span class="n">value</span><span class="o">=</span><span class="s">&quot;1&quot;</span><span class="o">/&gt;</span>
-   <span class="o">&lt;/</span><span class="n">bean</span><span class="o">&gt;</span>
+
+
+   <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;accountOne&quot;</span> <span class="na">class=</span><span class="s">&quot;org.apache.aries.simple.Account&quot;</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;argument</span> <span class="na">value=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/bean&gt;</span>
 </pre></div>
 
 
@@ -377,6 +383,8 @@ pass 2 as the argument to create the Account object. </p>
       return new Account(number);
        }
    }
+
+
 
    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;accountTwo&quot;</span>
     <span class="na">class=</span><span class="s">&quot;org.apache.aries.simple.StaticAccountFactory&quot;</span> 
@@ -448,11 +456,15 @@ example <em>accountOne</em> is injected with a <em>Currency</em> bean.</p>
        }
    }
 
+
+
    public class Currency {  
        public Currency() {
       ...
        }
    }
+
+
 
    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;accountOne&quot;</span> <span class="na">class=</span><span class="s">&quot;org.apache.aries.simple.Account&quot;</span><span class="nt">&gt;</span>
        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;currency&quot;</span> <span class="na">ref=</span><span class="s">&quot;currency&quot;</span> <span class="nt">/&gt;</span>
@@ -471,17 +483,19 @@ in the OSGi service registry. </p>
 can be specified using the <em>interface</em> attribute:</p>
 <div class="codehilite"><pre>   <span class="n">public</span> <span class="n">class</span> <span class="n">AccountImpl</span> <span class="n">implements</span> <span class="n">Account</span> <span class="p">{</span>      
        <span class="n">public</span> <span class="n">Account</span><span class="p">()</span> <span class="p">{</span>
-      <span class="o">...</span>
+      <span class="p">...</span>
        <span class="p">}</span>
        <span class="n">public</span> <span class="n">void</span> <span class="n">setCurrency</span><span class="p">(</span><span class="n">Currency</span> <span class="n">currency</span><span class="p">)</span> <span class="p">{</span>
-      <span class="o">...</span>
+      <span class="p">...</span>
        <span class="p">}</span>
    <span class="p">}</span>
 
-   <span class="o">&lt;</span><span class="n">service</span> <span class="n">id</span><span class="o">=</span><span class="s">&quot;serviceOne&quot;</span> <span class="nb">ref</span><span class="o">=</span><span class="s">&quot;account&quot;</span>
-    <span class="n">interface</span><span class="o">=</span><span class="s">&quot;org.apache.aries.simple.Account&quot;</span> <span class="o">/&gt;</span>
 
-   <span class="o">&lt;</span><span class="n">bean</span> <span class="n">id</span><span class="o">=</span><span class="s">&quot;account&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s">&quot;org.apache.aries.simple.AccountImpl&quot;</span> <span class="o">/&gt;</span>
+
+   <span class="o">&lt;</span><span class="n">service</span> <span class="n">id</span><span class="p">=</span>&quot;<span class="n">serviceOne</span>&quot; <span class="n">ref</span><span class="p">=</span>&quot;<span class="n">account</span>&quot;
+    <span class="n">interface</span><span class="p">=</span>&quot;<span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">simple</span><span class="p">.</span><span class="n">Account</span>&quot; <span class="o">/&gt;</span>
+
+   <span class="o">&lt;</span><span class="n">bean</span> <span class="n">id</span><span class="p">=</span>&quot;<span class="n">account</span>&quot; <span class="n">class</span><span class="p">=</span>&quot;<span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">simple</span><span class="p">.</span><span class="n">AccountImpl</span>&quot; <span class="o">/&gt;</span>
 </pre></div>
 
 
@@ -496,9 +510,9 @@ element as follows:</p>
 <p>The interfaces under which a service is registered can be determined by
 Blueprint using <em>auto-export</em>.  The following registers the service under
 all the bean's interfaces:</p>
-<div class="codehilite"><pre>   <span class="o">&lt;</span><span class="n">service</span> <span class="n">id</span><span class="o">=</span><span class="s">&quot;serviceOne&quot;</span> <span class="nb">ref</span><span class="o">=</span><span class="s">&quot;account&quot;</span> <span class="n">auto</span><span class="o">-</span><span class="n">export</span><span class="o">=</span><span class="s">&quot;interfaces&quot;</span> <span class="o">/&gt;</span>
+<div class="codehilite"><pre>   <span class="o">&lt;</span><span class="n">service</span> <span class="n">id</span><span class="p">=</span>&quot;<span class="n">serviceOne</span>&quot; <span class="n">ref</span><span class="p">=</span>&quot;<span class="n">account</span>&quot; <span class="n">auto</span><span class="o">-</span><span class="n">export</span><span class="p">=</span>&quot;<span class="n">interfaces</span>&quot; <span class="o">/&gt;</span>
 
-   <span class="o">&lt;</span><span class="n">bean</span> <span class="n">id</span><span class="o">=</span><span class="s">&quot;account&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s">&quot;org.apache.aries.simple.AccountImpl&quot;</span> <span class="o">/&gt;</span>
+   <span class="o">&lt;</span><span class="n">bean</span> <span class="n">id</span><span class="p">=</span>&quot;<span class="n">account</span>&quot; <span class="n">class</span><span class="p">=</span>&quot;<span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">simple</span><span class="p">.</span><span class="n">AccountImpl</span>&quot; <span class="o">/&gt;</span>
 </pre></div>
 
 
@@ -537,8 +551,8 @@ multiple matches.  When choosing between two services, the higher ranked
 service will be returned ahead of the lower.  The default ranking value is
 0. Service ranking is specified using the <em>ranking</em> attributes as
 follows:</p>
-<div class="codehilite"><pre>   <span class="o">&lt;</span><span class="n">service</span> <span class="n">id</span><span class="o">=</span><span class="s">&quot;serviceFive&quot;</span> <span class="nb">ref</span><span class="o">=</span><span class="s">&quot;account&quot;</span> <span class="n">auto</span><span class="o">-</span><span class="n">export</span><span class="o">=</span><span class="s">&quot;all-classes&quot;</span>
-    <span class="n">ranking</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="o">/&gt;</span>
+<div class="codehilite"><pre>   <span class="o">&lt;</span><span class="n">service</span> <span class="n">id</span><span class="p">=</span>&quot;<span class="n">serviceFive</span>&quot; <span class="n">ref</span><span class="p">=</span>&quot;<span class="n">account</span>&quot; <span class="n">auto</span><span class="o">-</span><span class="n">export</span><span class="p">=</span>&quot;<span class="n">all</span><span class="o">-</span><span class="n">classes</span>&quot;
+    <span class="n">ranking</span><span class="p">=</span>&quot;3&quot; <span class="o">/&gt;</span>
 </pre></div>
 
 
@@ -565,10 +579,10 @@ object to remain the same while the backing service can come and go or be
 replaced with another service. Calls on a proxy that does not have a
 backing service will block until a service becomes available or a timeout
 occurs at which point a ServiceUnavailableException will be thrown.</p>
-<div class="codehilite"><pre>   <span class="n">try</span> <span class="p">{</span>
-      <span class="n">balance</span> <span class="o">=</span> <span class="n">account</span><span class="o">.</span><span class="n">getBalance</span><span class="p">();</span>
-   <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">ServiceUnavailableException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="o">...</span>
+<div class="codehilite"><pre>   <span class="k">try</span> <span class="p">{</span>
+      <span class="n">balance</span> <span class="p">=</span> <span class="n">account</span><span class="p">.</span><span class="n">getBalance</span><span class="p">();</span>
+   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ServiceUnavailableException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">...</span>
    <span class="p">}</span>
 </pre></div>
 
@@ -577,22 +591,22 @@ occurs at which point a ServiceUnavailableException will be thrown.</p>
 minutes).  This value can be changed on a per bundle basis using directives
 on the Bundle-SymbolicName.  The following switches the timeout off
 completely (the default is true):</p>
-<div class="codehilite"><pre>   <span class="n">Bundle</span><span class="o">-</span><span class="n">SymbolicName:</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">aries</span><span class="o">.</span><span class="n">simple</span><span class="o">.</span><span class="n">account</span><span class="p">;</span>
-    <span class="n">blueprint</span><span class="o">.</span><span class="n">graceperiod:</span><span class="o">=</span><span class="n">false</span>
+<div class="codehilite"><pre>   <span class="n">Bundle</span><span class="o">-</span><span class="n">SymbolicName</span><span class="p">:</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">simple</span><span class="p">.</span><span class="n">account</span><span class="p">;</span>
+    <span class="n">blueprint</span><span class="p">.</span><span class="n">graceperiod</span><span class="p">:=</span><span class="n">false</span>
 </pre></div>
 
 
 <p>The following sets the timeout to 10000 milliseconds (10 seconds):</p>
-<div class="codehilite"><pre>   <span class="n">Bundle</span><span class="o">-</span><span class="n">SymbolicName:</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">aries</span><span class="o">.</span><span class="n">simple</span><span class="o">.</span><span class="n">account</span><span class="p">;</span>
-    <span class="n">blueprint</span><span class="o">.</span><span class="n">graceperiod:</span><span class="o">=</span><span class="n">false</span><span class="p">;</span> <span class="n">blueprint</span><span class="o">.</span><span class="n">timeout</span><span class="o">=</span><span class="mi">10000</span><span class="p">;</span>
+<div class="codehilite"><pre>   <span class="n">Bundle</span><span class="o">-</span><span class="n">SymbolicName</span><span class="p">:</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">simple</span><span class="p">.</span><span class="n">account</span><span class="p">;</span>
+    <span class="n">blueprint</span><span class="p">.</span><span class="n">graceperiod</span><span class="p">:=</span><span class="n">false</span><span class="p">;</span> <span class="n">blueprint</span><span class="p">.</span><span class="n">timeout</span><span class="p">=</span>10000<span class="p">;</span>
 </pre></div>
 
 
 <p>The timeout can also be set on an individual reference using the
 <em>timeout</em> attribute.    The following sets the timeout for the account
 reference to 20000 milliseconds (20 seconds).</p>
-<div class="codehilite"><pre>   <span class="o">&lt;</span><span class="n">reference</span> <span class="n">id</span><span class="o">=</span><span class="s">&quot;accountRef&quot;</span> <span class="n">timeout</span><span class="o">=</span><span class="s">&quot;20000&quot;</span>
-    <span class="n">interface</span><span class="o">=</span><span class="s">&quot;org.apache.aries.simple.Account&quot;</span> <span class="o">/&gt;</span>
+<div class="codehilite"><pre>   <span class="o">&lt;</span><span class="n">reference</span> <span class="n">id</span><span class="p">=</span>&quot;<span class="n">accountRef</span>&quot; <span class="n">timeout</span><span class="p">=</span>&quot;20000&quot;
+    <span class="n">interface</span><span class="p">=</span>&quot;<span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">simple</span><span class="p">.</span><span class="n">Account</span>&quot; <span class="o">/&gt;</span>
 </pre></div>
 
 
@@ -614,15 +628,15 @@ if their service becomes unavailable.</p>
 <p>The following example shows a reference-list that returns a list of service
 objects (proxies).  This is the default value for the <em>member-type</em>
 attribute</p>
-<div class="codehilite"><pre>   <span class="o">&lt;</span><span class="n">reference</span><span class="o">-</span><span class="n">list</span> <span class="n">id</span><span class="o">=</span><span class="s">&quot;accountRefs&quot;</span> <span class="n">member</span><span class="o">-</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;service-object&quot;</span>
-    <span class="n">interface</span><span class="o">=</span><span class="s">&quot;org.apache.aries.simple.Account&quot;</span> <span class="o">/&gt;</span>
+<div class="codehilite"><pre>   <span class="o">&lt;</span><span class="n">reference</span><span class="o">-</span><span class="n">list</span> <span class="n">id</span><span class="p">=</span>&quot;<span class="n">accountRefs</span>&quot; <span class="n">member</span><span class="o">-</span><span class="n">type</span><span class="p">=</span>&quot;<span class="n">service</span><span class="o">-</span><span class="n">object</span>&quot;
+    <span class="n">interface</span><span class="p">=</span>&quot;<span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">simple</span><span class="p">.</span><span class="n">Account</span>&quot; <span class="o">/&gt;</span>
 </pre></div>
 
 
 <p>The following shows an example of a reference-list that returns a list of
 ServiceReferences:</p>
-<div class="codehilite"><pre>   <span class="o">&lt;</span><span class="n">reference</span><span class="o">-</span><span class="n">list</span> <span class="n">id</span><span class="o">=</span><span class="s">&quot;accountRefs&quot;</span> <span class="n">member</span><span class="o">-</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;service-reference&quot;</span>
-    <span class="n">interface</span><span class="o">=</span><span class="s">&quot;org.apache.aries.simple.Account&quot;</span> <span class="o">/&gt;</span>
+<div class="codehilite"><pre>   <span class="o">&lt;</span><span class="n">reference</span><span class="o">-</span><span class="n">list</span> <span class="n">id</span><span class="p">=</span>&quot;<span class="n">accountRefs</span>&quot; <span class="n">member</span><span class="o">-</span><span class="n">type</span><span class="p">=</span>&quot;<span class="n">service</span><span class="o">-</span><span class="n">reference</span>&quot;
+    <span class="n">interface</span><span class="p">=</span>&quot;<span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">simple</span><span class="p">.</span><span class="n">Account</span>&quot; <span class="o">/&gt;</span>
 </pre></div>
 
 

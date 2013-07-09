@@ -244,6 +244,9 @@
         <a href="/modules/ebamavenpluginproject.html">EBA Maven Plugin </a> 
     </div>
     <div class="menuitem">
+        <a href="/modules/esamavenpluginproject.html">ESA Maven Plugin </a> 
+    </div>
+    <div class="menuitem">
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
@@ -285,7 +288,7 @@ blog-datasource) as indicated in the comments and then rebuild the sample.</p>
 <h3 id="create-the-osgi-platform-for-the-blog-sample">Create the OSGi platform for the Blog sample</h3>
 <p>Download and unzip the source zip for the <a href="/downloads/currentrelease.html">latest release</a>
  of Aries Samples and build the blog-assembly module:</p>
-<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">0.3</span><span class="sr">/blog/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span>0<span class="p">.</span>3<span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span>
 <span class="n">mvn</span> <span class="n">install</span>
 </pre></div>
 
@@ -296,13 +299,13 @@ dependencies.</p>
 <h3 id="running-the-blog-sample_1">Running the Blog sample</h3>
 <p>Download the JDBC based Blog sample application (.eba file) from the <a href="/downloads/currentrelrease.html">latest release</a>
 . Change directory to the blog-assembly target directory:</p>
-<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">0.3</span><span class="sr">/blog-sample/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span><span class="o">/</span><span class="n">target</span>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span>0<span class="p">.</span>3<span class="o">/</span><span class="n">blog</span><span class="o">-</span><span class="n">sample</span><span class="o">/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span><span class="o">/</span><span class="n">target</span>
 </pre></div>
 
 
 <p>now start Aries in an OSGi framework (we're using Eclipse Equinox in this
 case)</p>
-<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span><span class="mf">3.5.0</span><span class="o">.</span><span class="n">v20090520</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
+<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span>3<span class="p">.</span>5<span class="p">.</span>0<span class="p">.</span><span class="n">v20090520</span><span class="p">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
 </pre></div>
 
 

@@ -244,6 +244,9 @@
         <a href="/modules/ebamavenpluginproject.html">EBA Maven Plugin </a> 
     </div>
     <div class="menuitem">
+        <a href="/modules/esamavenpluginproject.html">ESA Maven Plugin </a> 
+    </div>
+    <div class="menuitem">
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
@@ -275,8 +278,7 @@
 <p><strong>Note</strong>:
 The Derby installation prereq is only required when using the
 0.1-incubating released version of the sample.  Subsequent releases will
-not require the installation of Derby.<br />
-</p>
+not require the installation of Derby.  </p>
 <p>Also note that the version of Derby used by the 0.1-incubating release and
 development versions of the AriesTrader Sample is 10.5.3.0. Since May 2010
 the Derby tutorial points to the latest Derby release (10.6.x) - if this is
@@ -291,7 +293,7 @@ DERBY_INSTALL, Configure Embedded Derby and then Verify Derby.</p>
 <p>Download and unzip the source zip for the <a href="aries:downloads.html">latest release</a>
  of Aries Samples and build the equinox-test-harness module under
 ariestrader:</p>
-<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span><span class="mf">0.1</span><span class="o">-</span><span class="n">incubating</span><span class="sr">/ariestrader/</span><span class="n">assemblies</span><span class="o">/</span><span class="n">equinox</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">harness</span>
+<div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span>0<span class="p">.</span>1<span class="o">-</span><span class="n">incubating</span><span class="o">/</span><span class="n">ariestrader</span><span class="o">/</span><span class="n">assemblies</span><span class="o">/</span><span class="n">equinox</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">harness</span>
 <span class="n">mvn</span> <span class="n">install</span>
 </pre></div>
 
@@ -308,8 +310,7 @@ Directions are provided here:  <a href="aries:buildingaries.html">Building Aries
 <p><a name="AriesTrader-0.1-incubating-StartingtheEquinoxTestHarnesstoruntheAriesTradersample"></a></p>
 <h3 id="starting-the-equinox-test-harness-to-run-the-ariestrader-sample">Starting the Equinox Test Harness to run the AriesTrader sample</h3>
 <p>AriesTrader needs a test harness to run in.  For this purpose we are using
-an Equinox assembly that pulls in all of the necessary dependencies.<br />
-</p>
+an Equinox assembly that pulls in all of the necessary dependencies.  </p>
 <p>The first task is to create the database necessary for AriesTrader:</p>
 <div class="codehilite"><pre><span class="n">cd</span> <span class="p">[</span><span class="n">your_aries_installation</span><span class="p">]</span>
 </pre></div>
@@ -321,15 +322,14 @@ CLASSPATH=$DERBY_INSTALL/lib/derby.jar:$DERBY_INSTALL/lib/derbytools.jar:.
     java org.apache.derby.tools.ij tradeDB.sql</p>
 <p>Next, start Aries in an OSGi framework using the Eclipse Equinox test
 harness</p>
-<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span><span class="mf">3.5.0</span><span class="o">.</span><span class="n">v20090520</span><span class="o">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
+<div class="codehilite"><pre><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">osgi</span><span class="o">-</span>3<span class="p">.</span>5<span class="p">.</span>0<span class="p">.</span><span class="n">v20090520</span><span class="p">.</span><span class="n">jar</span> <span class="o">-</span><span class="n">console</span>
 </pre></div>
 
 
 <p>The OSGi console should start up, the 'ss' command should show the active
 bundles but the AriesTrader application is not yet installed (with the
 exception of the ariestrader derby datasource which is started with the
-test harness for convenience).<br />
-</p>
+test harness for convenience).  </p>
 <p><a name="AriesTrader-0.1-incubating-InstallingAriesTraderintheEquinoxTestHarness"></a></p>
 <h3 id="installing-ariestrader-in-the-equinox-test-harness">Installing AriesTrader in the Equinox Test Harness</h3>
 <p>To install the AriesTrader application simply copy the eba for AriesTrader
@@ -339,13 +339,13 @@ copied into the target directory as part of creating the OSGi Equinox test
 harness. </p>
 <p>When using the "JDBC" only AriesTrader configuration which supports only
 jdbc persistence:</p>
-<div class="codehilite"><pre><span class="n">cp</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">aries</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">ariestrader</span><span class="o">.</span><span class="n">jdbc</span><span class="o">-*.</span><span class="n">eba</span> <span class="n">load</span><span class="o">/</span>
+<div class="codehilite"><pre><span class="n">cp</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">samples</span><span class="p">.</span><span class="n">ariestrader</span><span class="p">.</span><span class="n">jdbc</span><span class="o">-*</span><span class="p">.</span><span class="n">eba</span> <span class="n">load</span><span class="o">/</span>
 </pre></div>
 
 
 <p>When using the "All" AriesTrader configuration which supports all currently
 available persistence modes:</p>
-<div class="codehilite"><pre><span class="n">cp</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">aries</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">ariestrader</span><span class="o">.</span><span class="n">all</span><span class="o">-*.</span><span class="n">eba</span> <span class="n">load</span><span class="o">/</span>
+<div class="codehilite"><pre><span class="n">cp</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">samples</span><span class="p">.</span><span class="n">ariestrader</span><span class="p">.</span><span class="n">all</span><span class="o">-*</span><span class="p">.</span><span class="n">eba</span> <span class="n">load</span><span class="o">/</span>
 </pre></div>
 
 
@@ -366,8 +366,7 @@ selection.</p>
 <em> JDBC persistence
 </em> JPA application managed entity manager persistence
 * JPA container managed entity managers using declarative transaction
-support<br />
-</p>
+support  </p>
 <p>By default, the sample starts with JDBC persistence.  To select another
 persistence mechanism see the directions under "Accessing and using the
 AriesTrader sample. </p>
@@ -388,8 +387,7 @@ step through a trading scenario with each reload of the page.</p>
 <h3 id="about-the-ariestrader-sample">About the AriesTrader Sample</h3>
 <p>The AriesTrader sample is a modified version of the Apache Geronimo
 DayTrader sample.  It has been somewhat simplified and reorganized to
-support the Apache Aries programming model.<br />
-</p>
+support the Apache Aries programming model.  </p>
 <p>The AriesTrader sample bundles are organized like this:</p>
 <p><img alt="at1" src="ariesTraderOverview2.png" /></p></div>
             <!-- Content -->

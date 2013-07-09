@@ -244,6 +244,9 @@
         <a href="/modules/ebamavenpluginproject.html">EBA Maven Plugin </a> 
     </div>
     <div class="menuitem">
+        <a href="/modules/esamavenpluginproject.html">ESA Maven Plugin </a> 
+    </div>
+    <div class="menuitem">
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
@@ -356,16 +359,16 @@ projects.</p>
 <h5 id="in-eclipse">In Eclipse</h5>
 <p>You will see some of the blueprint projects don't build. To fix this you
 need to comment out the following line:</p>
-<div class="codehilite"><pre><span class="o">&lt;!--</span> <span class="o">&lt;</span><span class="n">classpathentry</span> <span class="n">kind</span><span class="o">=</span><span class="s">&quot;src&quot;</span>
-<span class="n">path</span><span class="o">=</span><span class="s">&quot;/Users/linsun/aries/blueprint/blueprint-api/src/main/resources/org/osgi/service/blueprint&quot;</span>
-<span class="n">including</span><span class="o">=</span><span class="s">&quot;blueprint.xsd&quot;</span> <span class="n">excluding</span><span class="o">=</span><span class="s">&quot;**/*.java&quot;</span><span class="o">/&gt;</span> <span class="o">--&gt;</span>
+<div class="codehilite"><pre><span class="o">&lt;</span>!<span class="o">--</span> <span class="o">&lt;</span><span class="n">classpathentry</span> <span class="n">kind</span><span class="p">=</span>&quot;<span class="n">src</span>&quot;
+<span class="n">path</span><span class="p">=</span>&quot;<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">linsun</span><span class="o">/</span><span class="n">aries</span><span class="o">/</span><span class="n">blueprint</span><span class="o">/</span><span class="n">blueprint</span><span class="o">-</span><span class="n">api</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">org</span><span class="o">/</span><span class="n">osgi</span><span class="o">/</span><span class="n">service</span><span class="o">/</span><span class="n">blueprint</span>&quot;
+<span class="n">including</span><span class="p">=</span>&quot;<span class="n">blueprint</span><span class="p">.</span><span class="n">xsd</span>&quot; <span class="n">excluding</span><span class="p">=</span>&quot;<span class="o">**/*</span><span class="p">.</span><span class="n">java</span>&quot;<span class="o">/&gt;</span> <span class="o">--&gt;</span>
 </pre></div>
 
 
 <p>in the .classpath file in the aries-blueprint-core project.</p>
 <p>If there is a build error in the org.apache.aries.blueprint.itests project
 then remove this jar:</p>
-<div class="codehilite"><pre><span class="n">org</span><span class="sr">/apache/</span><span class="n">felix</span><span class="sr">/org.osgi.foundation/</span><span class="mf">1.2.0</span><span class="o">.</span><span class="n">jar</span>
+<div class="codehilite"><pre><span class="n">org</span><span class="o">/</span><span class="n">apache</span><span class="o">/</span><span class="n">felix</span><span class="o">/</span><span class="n">org</span><span class="p">.</span><span class="n">osgi</span><span class="p">.</span><span class="n">foundation</span><span class="o">/</span>1<span class="p">.</span>2<span class="p">.</span>0<span class="p">.</span><span class="n">jar</span>
 </pre></div>
 
 
@@ -378,10 +381,10 @@ project's build path to add the JRE System Library to Java Build Path.</p>
 <p>You may find that building Aries fails with out of memory exceptions on
 some systems (eg Mac)  if you use the standard Java settings. Setting the
 two environment variables as shown below may help.</p>
-<div class="codehilite"><pre><span class="n">export</span> <span class="n">MAVEN_OPTS</span><span class="o">=</span><span class="s">&quot;-XX:MaxPermSize=128m -Xms512m -Xmx512m</span>
-<span class="s">-XX:+HeapDumpOnOutOfMemoryError&quot;</span>
-<span class="n">export</span> <span class="n">JAVA_OPTS</span><span class="o">=</span><span class="s">&quot;-Xmx1024m -XX:MaxPermSize=128m</span>
-<span class="s">-XX:+HeapDumpOnOutOfMemoryError&quot;</span>
+<div class="codehilite"><pre><span class="n">export</span> <span class="n">MAVEN_OPTS</span><span class="p">=</span>&quot;<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="n">MaxPermSize</span><span class="p">=</span>128<span class="n">m</span> <span class="o">-</span><span class="n">Xms512m</span> <span class="o">-</span><span class="n">Xmx512m</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="o">+</span><span class="n">HeapDumpOnOutOfMemoryError</span>&quot;
+<span class="n">export</span> <span class="n">JAVA_OPTS</span><span class="p">=</span>&quot;<span class="o">-</span><span class="n">Xmx1024m</span> <span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="n">MaxPermSize</span><span class="p">=</span>128<span class="n">m</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="o">+</span><span class="n">HeapDumpOnOutOfMemoryError</span>&quot;
 </pre></div></div>
             <!-- Content -->
           </td>

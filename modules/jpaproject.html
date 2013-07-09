@@ -244,6 +244,9 @@
         <a href="/modules/ebamavenpluginproject.html">EBA Maven Plugin </a> 
     </div>
     <div class="menuitem">
+        <a href="/modules/esamavenpluginproject.html">ESA Maven Plugin </a> 
+    </div>
+    <div class="menuitem">
         <a href="/modules/spi-fly.html">SPI Fly</a> 
     </div>
 </div>
@@ -291,12 +294,12 @@ A persistence bundle is an OSGi bundle with three special characteristics:</p>
 descriptors can be found. If the header value is empty then a default of META-INF/persistence.xml is used.
 (This behaviour is taken from the JPA service specification).</p>
 <p>For example:</p>
-<div class="codehilite"><pre><span class="n">Meta</span><span class="o">-</span><span class="n">Persistence:</span>
+<div class="codehilite"><pre><span class="n">Meta</span><span class="o">-</span><span class="n">Persistence</span><span class="p">:</span>
 </pre></div>
 
 
 <p>means that META-INF/persistence.xml will be searched for. For non standard locations:</p>
-<div class="codehilite"><pre><span class="n">Meta</span><span class="o">-</span><span class="n">Persistence:</span> <span class="n">persistence</span><span class="sr">/myPu.xml, pUnit.jar!/som</span><span class="n">eFolder</span><span class="o">/</span><span class="n">anotherPu</span><span class="o">.</span><span class="n">xml</span>
+<div class="codehilite"><pre><span class="n">Meta</span><span class="o">-</span><span class="n">Persistence</span><span class="p">:</span> <span class="n">persistence</span><span class="o">/</span><span class="n">myPu</span><span class="p">.</span><span class="n">xml</span><span class="p">,</span> <span class="n">pUnit</span><span class="p">.</span><span class="n">jar</span>!<span class="o">/</span><span class="n">someFolder</span><span class="o">/</span><span class="n">anotherPu</span><span class="p">.</span><span class="n">xml</span>
 </pre></div>
 
 
@@ -317,9 +320,9 @@ locating and parsing persistence descriptors. Any persistence units found will b
 create EntityManagerFactory services, which will be registered on behalf of the persistence bundle when
 it starts.</p>
 <p>The EntityManagerFactory services will be registered with the following properties: </p>
-<div class="codehilite"><pre><span class="n">osgi</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">name</span> <span class="o">-</span> <span class="n">this</span> <span class="n">is</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">persistence</span> <span class="n">unit</span>
-<span class="n">osgi</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">provider</span> <span class="o">-</span> <span class="n">this</span> <span class="n">is</span> <span class="n">the</span> <span class="n">class</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">JPA</span> <span class="n">PersistenceProvider</span> <span class="n">that</span> <span class="n">was</span> <span class="n">used</span> <span class="n">to</span> <span class="n">create</span> <span class="n">the</span> <span class="n">EntityManagerFactory</span>
-<span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">aries</span><span class="o">.</span><span class="n">jpa</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">managed</span> <span class="o">-</span> <span class="n">this</span> <span class="n">property</span> <span class="n">will</span> <span class="n">be</span> <span class="n">set</span> <span class="n">to</span> <span class="n">true</span><span class="p">,</span> <span class="n">indicating</span> <span class="n">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">managed</span> <span class="n">EntityManagerFactory</span><span class="o">.</span>
+<div class="codehilite"><pre><span class="n">osgi</span><span class="p">.</span><span class="n">unit</span><span class="p">.</span><span class="n">name</span> <span class="o">-</span> <span class="n">this</span> <span class="n">is</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">persistence</span> <span class="n">unit</span>
+<span class="n">osgi</span><span class="p">.</span><span class="n">unit</span><span class="p">.</span><span class="n">provider</span> <span class="o">-</span> <span class="n">this</span> <span class="n">is</span> <span class="n">the</span> <span class="n">class</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">JPA</span> <span class="n">PersistenceProvider</span> <span class="n">that</span> <span class="n">was</span> <span class="n">used</span> <span class="n">to</span> <span class="n">create</span> <span class="n">the</span> <span class="n">EntityManagerFactory</span>
+<span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">aries</span><span class="p">.</span><span class="n">jpa</span><span class="p">.</span><span class="n">container</span><span class="p">.</span><span class="n">managed</span> <span class="o">-</span> <span class="n">this</span> <span class="n">property</span> <span class="n">will</span> <span class="n">be</span> <span class="n">set</span> <span class="n">to</span> <span class="n">true</span><span class="p">,</span> <span class="n">indicating</span> <span class="n">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">managed</span> <span class="n">EntityManagerFactory</span><span class="p">.</span>
 </pre></div>
 
 
