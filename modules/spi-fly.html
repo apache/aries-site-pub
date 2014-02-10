@@ -309,7 +309,7 @@ Registry so that OSGi-aware consumers can simply find them there. This is suppor
 well as the proprietary configuration modes. Each such service is registered in the OSGi Service Registry with 
 the <em>serviceloader.mediator</em> service registration property set.</p>
 <h2 id="getting-spi-fly">Getting SPI Fly</h2>
-<h3 id="wzxhzdk13releases"><a id="releases"/>Releases</h3>
+<h3 id="wzxhzdk13wzxhzdk14releases"><a id="releases"></a>Releases</h3>
 <p>The latest release of the SPI-Fly components is 1.0.0. It can be obtained from Maven 
 Central using the links below.</p>
 <p>To use SPI Fly you need to decide whether to use the dynamic or static weaving version. 
@@ -336,7 +336,7 @@ More information about this can be found in the <a href="#usage">usage section</
 <p>The code can be found in
 <a href="http://svn.apache.org/repos/asf/aries/trunk/spi-fly">http://svn.apache.org/repos/asf/aries/trunk/spi-fly</a>.</p>
 <p>To build, use Maven 3.x and run <tt>mvn install</tt></p>
-<h1 id="wzxhzdk16configuration-osgi-spec-compliant"><a id="specconf"/>Configuration: OSGi Spec-compliant</h1>
+<h1 id="wzxhzdk17wzxhzdk18configuration-osgi-spec-compliant"><a id="specconf"></a>Configuration: OSGi Spec-compliant</h1>
 <p>All the details surrounding this type of configuration are covered in the 
 <a href="http://www.osgi.org/Download/Release5" title="OSGi Enterprise Specification">OSGi Enterprise Specification</a> (from version 5) chapter 133. This section provides a short overview.</p>
 <h2 id="providers">Providers</h2>
@@ -363,7 +363,7 @@ provided services to come from more than one provider bundle.</li>
 <p>All requirements are combined into a single Require-Capability header:</p>
 <p><tt>&nbsp;&nbsp;Require-Capability: osgi.serviceloader; filter:="(osgi.serviceloader=org.apache.aries.spifly.mysvc.MySPIProvider)";cardinality:=multiple,osgi.extender; filter:="(osgi.extender=osgi.serviceloader.processor)"</tt></p>
 <p>See the <a href="#examples"><tt>spi-fly-example-client2-bundle</tt></a> for an example of a spec-compliant consumer.</p>
-<h1 id="wzxhzdk39configuration-spi-fly-specific"><a id="specificconf"/>Configuration: SPI Fly-specific</h1>
+<h1 id="wzxhzdk41wzxhzdk42configuration-spi-fly-specific"><a id="specificconf"></a>Configuration: SPI Fly-specific</h1>
 <p>This section describes how to use SPI Fly's proprietary configuration
 mechanism. It provides more features, but doesn't provide the 
 portability that spec-compliance configuration gives. If you 
@@ -427,7 +427,7 @@ in SPI Fly (yet), but the AudioSystem.getAudioInputStream() API can be made to w
 <tt>SPI-Consumer:&nbsp;javax.sound.sampled.AudioSystem#getAudioInputStream
 </tt></li>
 </ul>
-<h1 id="wzxhzdk56usage"><a id="usage"/>Usage</h1>
+<h1 id="wzxhzdk59wzxhzdk60usage"><a id="usage"></a>Usage</h1>
 <p>There are currently two ways to use the SPI Fly component. If you have an OSGi 
 4.3 (or higher) compliant framework that supports WeavingHooks you can use the dynamic weaving approach. </p>
 <p>If you have an pre-4.3 OSGi framework or don't want to use bytecode weaving at runtime you 
@@ -474,7 +474,7 @@ START LEVEL 1
     5|Active     |    1|Apache Aries Util (1.1.0)
     6|Active     |    1|Apache Aries SPI Fly Static Weaving Bundle (1.0.0)</pre></p>
 <p>Then install and start the statically woven bundle into the system.</p>
-<h2 id="wzxhzdk73examples"><a id="examples"/>Examples</h2>
+<h2 id="wzxhzdk77wzxhzdk78examples"><a id="examples"></a>Examples</h2>
 <p>The <tt>spi-fly-examples</tt> directory contains a number of example bundles that can be 
 used for testing or experimenting.</p>
 <p>The following modules can be found in this directory:</p>
