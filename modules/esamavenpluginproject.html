@@ -271,10 +271,10 @@
             <!-- Content -->
             <div class="wiki-content"><p><a name="ESAMavenPluginProject-ESAMavenPlugin"></a></p>
 <h1 id="esa-maven-plugin">ESA Maven Plugin</h1>
-<p>Note: the esa-maven-plugin has yet to be released and so to use it you must first extract and build it from the Aries svn.</p>
+<p>This page describes the <code>esa-maven-plugin</code> version 1.0.0 which is available from Maven Central.</p>
 <p>The ESA Maven Plugin provides the ability to generate ESA archives using
 Maven.  The ESA archive format is defined in the Subsystems Service Specification which was part of <a href="http://www.osgi.org/Specifications/HomePage">OSGi Enterprise R5</a>.  An ESA archive can optionally contain an Subsystem manifest
-(SUBSYSTEM.MF).  This can be added in one of two ways</p>
+(<code>SUBSYSTEM.MF</code>).  This can be added in one of two ways</p>
 <ol>
 <li>Hand written and added into the archive.</li>
 <li>Generated based on pom configuration.</li>
@@ -282,49 +282,73 @@ Maven.  The ESA archive format is defined in the Subsystems Service Specificatio
 <p><a name="ESAMavenPluginProject-UsingthePlugin"></a></p>
 <h2 id="using-the-plugin">Using the Plugin</h2>
 <p>The plugin is included by as follows:</p>
-<div class="codehilite"><pre>    <span class="nt">&lt;build&gt;</span>
+<div class="codehilite"><pre><span class="nt">&lt;project&gt;</span>
+  ...
+  <span class="nt">&lt;packaging&gt;</span>esa<span class="nt">&lt;/packaging&gt;</span> <span class="c">&lt;!-- set packaging type to esa --&gt;</span>
+
+  <span class="nt">&lt;build&gt;</span>
     <span class="nt">&lt;plugins&gt;</span>
-        <span class="nt">&lt;plugin&gt;</span>
+      <span class="nt">&lt;plugin&gt;</span>
         <span class="nt">&lt;groupId&gt;</span>org.apache.aries<span class="nt">&lt;/groupId&gt;</span>
         <span class="nt">&lt;artifactId&gt;</span>esa-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-        <span class="nt">&lt;/plugin&gt;</span>
+        <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;extensions&gt;</span>true<span class="nt">&lt;/extensions&gt;</span>
+      <span class="nt">&lt;/plugin&gt;</span>
     <span class="nt">&lt;/plugins&gt;</span>
-    <span class="nt">&lt;/build&gt;</span>
+  <span class="nt">&lt;/build&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
 </pre></div>
 
 
 <p>By default it will not generate a manifest, so in the above example it will
-attempt to copy a pre-defined SUBSYSTEM.MF from
-src/main/resources/META-INF.  If that file does not exist, then no
+attempt to copy a pre-defined <code>SUBSYSTEM.MF</code> from
+<code>src/main/resources/META-INF</code>.  If that file does not exist, then no
 Subsystem manifest will be included.</p>
 <p><a name="ESAMavenPluginProject-GeneratinganSUBSYSTEM.MF"></a></p>
 <h2 id="generating-an-subsystemmf">Generating an SUBSYSTEM.MF</h2>
-<p>The following example shows how to get the plugin to generate an
-SUBSYSTEM.MF based on the pom configuration:</p>
-<div class="codehilite"><pre>    <span class="nt">&lt;build&gt;</span>
+<p>The following example <code>pom.xml</code> shows how to get the plugin to generate an
+<code>SUBSYSTEM.MF</code> based on the pom configuration:</p>
+<div class="codehilite"><pre><span class="nt">&lt;project&gt;</span>
+  <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+
+  <span class="nt">&lt;groupId&gt;</span>org.something<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>esa-maven-plugin-test<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;packaging&gt;</span>esa<span class="nt">&lt;/packaging&gt;</span>
+
+  <span class="nt">&lt;dependencies&gt;</span>
+    <span class="c">&lt;!-- Put some dependencies in here --&gt;</span>
+  <span class="nt">&lt;/dependencies&gt;</span>
+
+  <span class="nt">&lt;build&gt;</span>
     <span class="nt">&lt;plugins&gt;</span>
-        <span class="nt">&lt;plugin&gt;</span>
+      <span class="nt">&lt;plugin&gt;</span>
         <span class="nt">&lt;groupId&gt;</span>org.apache.aries<span class="nt">&lt;/groupId&gt;</span>
         <span class="nt">&lt;artifactId&gt;</span>esa-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;extensions&gt;</span>true<span class="nt">&lt;/extensions&gt;</span>
         <span class="nt">&lt;configuration&gt;</span>
-            <span class="nt">&lt;generateManifest&gt;</span>true<span class="nt">&lt;/generateManifest&gt;</span>
+          <span class="nt">&lt;generateManifest&gt;</span>true<span class="nt">&lt;/generateManifest&gt;</span>
         <span class="nt">&lt;/configuration&gt;</span>
-        <span class="nt">&lt;/plugin&gt;</span>
+      <span class="nt">&lt;/plugin&gt;</span>
     <span class="nt">&lt;/plugins&gt;</span>
-    <span class="nt">&lt;/build&gt;</span>
+  <span class="nt">&lt;/build&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
 </pre></div>
 
 
-<p>The pom to subsystem manfiest header mapping is as follows:
-<em> Pom <groupId/>.<artifactId/> -&gt; Subsystem-SymbolicName
-</em> Pom <name/> -&gt; Subsystem-Name
-<em> Pom <version/> -&gt; Subsystem-Version (cleaned up for OSGi)
-</em> Pom <description/> -&gt; Subsystem-Description
-* Pom <dependencies/> -&gt; Subsystem-Content</p>
+<p>The pom to subsystem manfiest header mapping is as follows:</p>
+<ul>
+<li>Pom &lt;groupId/&gt;.&lt;artifactId/&gt; -&gt; Subsystem-SymbolicName</li>
+<li>Pom &lt;name/&gt; -&gt; Subsystem-Name</li>
+<li>Pom &lt;version/&gt; -&gt; Subsystem-Version (cleaned up for OSGi)</li>
+<li>Pom &lt;description/&gt; -&gt; Subsystem-Description</li>
+<li>Pom &lt;dependencies/&gt; -&gt; Subsystem-Content</li>
+</ul>
 <p><a name="ESAMavenPluginProject-OverridingSubsystem-SymbolicName"></a></p>
 <h2 id="overriding-subsystem-symbolicname">Overriding Subsystem-SymbolicName</h2>
 <p>The subsystem symbolic name defaults to the
-${project.groupId}.${project.artifaceId}.  The following shows how to override
+${project.groupId}.${project.artifactId}.  The following shows how to override
 this:</p>
 <div class="codehilite"><pre><span class="nt">&lt;configuration&gt;</span>
   <span class="nt">&lt;instructions&gt;</span>
@@ -352,14 +376,14 @@ this:</p>
 
 <p>The following specifies the default of including only the direct dependencies (assumes the subsystem contents and direct dependencies are the same).</p>
 <div class="codehilite"><pre><span class="nt">&lt;configuration&gt;</span>
-  <span class="nt">&lt;archiveContent&gt;</span>subsystemContent<span class="nt">&lt;/archiveContent&gt;</span>
+  <span class="nt">&lt;archiveContent&gt;</span>content<span class="nt">&lt;/archiveContent&gt;</span>
 <span class="nt">&lt;/configuration&gt;</span>
 </pre></div>
 
 
 <p><a name="ESAMavenPluginProject-StartOrder"></a></p>
 <h2 id="content-bundle-start-ordering">Content Bundle Start Ordering</h2>
-<p>By default, the Subsystem runtime can start content bundles in any order.  The OSGi start level service is not applicable to subsystems.  You can therefore specify the start order of the bundles based on the order in which they're expressed as dependencies in the maven pom using the following:</p>
+<p>By default, the Subsystem runtime can start content bundles in any order.  The OSGi start level service is not applicable to subsystems.  You can specify the start order of the bundles based on the order in which they're expressed as dependencies in the maven pom using the following:</p>
 <div class="codehilite"><pre><span class="nt">&lt;configuration&gt;</span>
   <span class="nt">&lt;startOrder&gt;</span>dependencies<span class="nt">&lt;/startOrder&gt;</span>
 <span class="nt">&lt;/configuration&gt;</span>
