@@ -23,7 +23,7 @@
   <meta name="keywords" content="..."/>
   <meta name="description" content="..." />
     <title>
-    Apache Aries - 
+    Apache Aries - blueprint-maven-plugin
     </title>
   </head>
 <body onload="SetMenu()">
@@ -272,23 +272,90 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><h1 id="april-2012-board-report">April 2012 Board report</h1>
-<p>Apache Aries delivers a set of pluggable Java components enabling an enterprise OSGi application programming model.</p>
-<h2 id="releases">Releases</h2>
-<p>After the significant number of releases last quarter there were no new releases this quarter. Work is going on in a branch in preparation for a 1.0 release. Bundles and packages will be brought up from 0.x to 1.0 to better reflect the stability and level of confidence we have in them. This will also bring our versioning policy inline with that described in the OSGi Alliance semantic versioning whitepaper.</p>
-<h2 id="project-branding-board-report-checklist">Project Branding Board Report Checklist</h2>
-<p>Little progress:</p>
+            <div class="wiki-content"><p>Writing blueprint xml is quite verbose and large blueprint xmls are difficult to keep in sync with code changes and especially refactorings.
+So you would like to do most declarations using annoations and ideally these annotations should be standardized.</p>
+<h2 id="blueprint-maven-plugin">blueprint-maven-plugin</h2>
+<p>The blueprint-maven-plugin allows to configure blueprint using annotations. It scans one or more paths for annotated classes and creates a blueprint.xml in target/generated-resources. So at runtime the bundle behaves like a normal blueprint bundle.
+The generated blueprint can also be used together with a manually created blueprint file. So for example property placeholder configurations
+or cxf services can be created in xml while most of the beans are automatically generated.</p>
+<p>Usage:</p>
+<div class="codehilite"><pre><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.1.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;scanPaths&gt;</span>
+            <span class="nt">&lt;scanPath&gt;</span>org.my.package<span class="nt">&lt;/scanPath&gt;</span>
+        <span class="nt">&lt;/scanPaths&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+    <span class="nt">&lt;executions&gt;</span>
+        <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+                <span class="nt">&lt;goal&gt;</span>blueprint-generate<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>process-classes<span class="nt">&lt;/phase&gt;</span>
+        <span class="nt">&lt;/execution&gt;</span>
+    <span class="nt">&lt;/executions&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</pre></div>
+
+
+<h2 id="annotations">Annotations</h2>
+<h3 id="javaxinject-jsr-330">javax.inject (JSR 330)</h3>
 <ul>
-<li>Project Website Basics : homepage is aries.apache.org (done)</li>
-<li>Project Naming And Descriptions : use proper Apache forms, describe product, etc. (pending)</li>
-<li>Website Navigation Links : navbar links included, link to www.apache.org included (pending - feather link done)</li>
-<li>Trademark Attributions : attribution for all ASF marks included in footers, etc. (pending)</li>
-<li>Logos and Graphics : include TM, use consistent product logo on your site (pending)</li>
-<li>Project Metadata : DOAP file checkedin and up to date (done)</li>
+<li>@Inject Inject a bean by type and optionally further qualifiers</li>
+<li>@Singleton Mark a class as being a bean</li>
+<li>@Named("Myname") Names a @Singleton and qualifies an @Inject to limit it to matches with the same bean id</li>
 </ul>
-<h2 id="community-update">Community update</h2>
-<p>No new committers since the last report. The user/dev lists and JIRAs continue to be moderately active.</p>
-<p>There are no board level issues.</p></div>
+<h3 id="javaxannotation-jsr-250">javax.annotation (JSR 250)</h3>
+<ul>
+<li>@PostConstruct Marks a method to be called after DI is finished (init-method)</li>
+<li>@PreDestroy Marks a method to be called before the bean is destroyed (destroy-method)</li>
+</ul>
+<h3 id="pax-cdi">pax-cdi</h3>
+<ul>
+<li>@OsgiServiceProvider(classes={TaskService.class}) Publishes a bean as an OSGi service with the given interfaces</li>
+<li>@OsgiService creates a reference to an OSGi service. On optional filter is also possible</li>
+<li>@Properties Defines service properties for OSGiServiceProvider</li>
+<li>@Property Defines a service property</li>
+</ul>
+<h3 id="javaxpersistence">javax.persistence</h3>
+<ul>
+<li>@PersistenceContext(unitName="tasklist") inject a managed EntityManager for the given persistence unit into a field</li>
+<li>@PersistenceUnit(unitName="tasklist") inject an unmanaged EntityManagerFactory for the given persistence unit into a field</li>
+</ul>
+<h3 id="javaxtransaction">javax.transaction</h3>
+<ul>
+<li>@Transactional mark the class as transactional. Individual methods are not yet supported</li>
+</ul>
+<h2 id="dependencies-for-annotations">Dependencies for annotations</h2>
+<div class="codehilite"><pre><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>javax.inject<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>javax.inject<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.ops4j.pax.cdi<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>pax-cdi-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.5.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.hibernate.javax.persistence<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>hibernate-jpa-2.1-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0.0.Final<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>javax.transaction<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>javax.transaction-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.2<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+
+
+<h2 id="example">Example</h2>
+<p>For a complete example see <a href="https://github.com/cschneider/Karaf-Tutorial/tree/master/tasklist-blueprint-cdi">tasklist-blueprint-cdi</a> on github.</p></div>
             <!-- Content -->
           </td>
         </tr>
