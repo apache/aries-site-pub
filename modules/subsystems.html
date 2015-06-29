@@ -284,7 +284,7 @@
             <div class="wiki-content"><h1 id="osgi-subsystems">OSGi Subsystems</h1>
 <h2 id="introduction">Introduction</h2>
 <p>Apache Aries Subsystems is the Reference Implementation of the OSGi Subsystems Specification, chapter 134 of the 
-<a href="http://www.osgi.org/Specifications/HomePage" title="OSGi Enterprise specifications">OSGi Enterprise specifications</a>. </p>
+<a href="http://www.osgi.org/Specifications/HomePage" title="OSGi Enterprise specifications">OSGi Enterprise specifications</a>. The Aries 1.x components implement the 1.0 version of the Subsystem spec. Aries 2.x and newer implement the 1.1 version of the OSGi Subsystems.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>This section shows the bundles to install to get the Subsystems implementation running in your favourite OSGi Framework.</p>
 <p>The Aries Subsystem implementation uses the OSGi Coordination service, the OSGi
@@ -292,16 +292,15 @@ Resolver service, the OSGi Repository service and integrates with the OSGi Confi
 dependencies are the Aries Util bundle, the Equinox Region bundle and SLF4J for logging.</p>
 <p>The following are downloadable links (from Maven central) that 
 provide all the required components to get subsystems up and running with Apache
-Felix. Note that the Felix distribution comes with and OSGi Repository implementation
-so this does not need to be added. (When running Aries Subsystems with another OSGi Framework an OSGi Repository
-may need to be added.)</p>
+Felix. Note that the Felix distribution comes with OSGi Repository and Resolver implementations so these 
+do not need to be added. (When running Aries Subsystems with another OSGi Framework these
+must be provided.)</p>
 <ul>
-<li><a href="http://repo1.maven.org/maven2/org/apache/aries/subsystem/org.apache.aries.subsystem.api/1.1.0/org.apache.aries.subsystem.api-1.1.0.jar">org.apache.aries.subsystem.api</a></li>
-<li><a href="http://repo1.maven.org/maven2/org/apache/aries/subsystem/org.apache.aries.subsystem.core/1.2.0/org.apache.aries.subsystem.core-1.2.0.jar">org.apache.aries.subsystem.core</a></li>
+<li><a href="https://repo1.maven.org/maven2/org/apache/aries/subsystem/org.apache.aries.subsystem.api/2.0.1/org.apache.aries.subsystem.api-2.0.1.jar">org.apache.aries.subsystem.api</a></li>
+<li><a href="https://repo1.maven.org/maven2/org/apache/aries/subsystem/org.apache.aries.subsystem.core/2.0.1/org.apache.aries.subsystem.core-2.0.1.jar">org.apache.aries.subsystem.core</a></li>
 <li><a href="http://repo1.maven.org/maven2/org/apache/aries/org.apache.aries.util/1.1.0/org.apache.aries.util-1.1.0.jar">org.apache.aries.util</a></li>
-<li><a href="http://repo1.maven.org/maven2/org/apache/felix/org.apache.felix.configadmin/1.8.2/org.apache.felix.configadmin-1.8.2.jar">org.apache.felix.configadmin</a></li>
+<li><a href="https://repo1.maven.org/maven2/org/apache/felix/org.apache.felix.configadmin/1.8.6/org.apache.felix.configadmin-1.8.6.jar">org.apache.felix.configadmin</a></li>
 <li><a href="http://repo1.maven.org/maven2/org/apache/felix/org.apache.felix.coordinator/1.0.0/org.apache.felix.coordinator-1.0.0.jar">org.apache.felix.coordinator</a></li>
-<li><a href="http://repo1.maven.org/maven2/org/apache/felix/org.apache.felix.resolver/1.0.0/org.apache.felix.resolver-1.0.0.jar">org.apache.felix.resolver</a></li>
 <li><a href="http://repo1.maven.org/maven2/org/eclipse/equinox/org.eclipse.equinox.region/1.1.0.v20120522-1841/org.eclipse.equinox.region-1.1.0.v20120522-1841.jar">org.eclipse.equinox.region</a></li>
 <li><a href="http://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar">slf4j-api</a></li>
 <li><a href="http://repo1.maven.org/maven2/org/slf4j/slf4j-simple/1.7.12/slf4j-simple-1.7.12.jar">slf4j-simple</a> (or another slf4j binding)</li>
@@ -310,27 +309,26 @@ may need to be added.)</p>
 <div class="codehilite"><pre><span class="n">g</span>! <span class="n">lb</span>
 <span class="n">START</span> <span class="n">LEVEL</span> 1
    <span class="n">ID</span><span class="o">|</span><span class="n">State</span>      <span class="o">|</span><span class="n">Level</span><span class="o">|</span><span class="n">Name</span>
-    0<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    0<span class="o">|</span><span class="n">System</span> <span class="n">Bundle</span> <span class="p">(</span>4<span class="p">.</span>6<span class="p">.</span>1<span class="p">)</span>
-    1<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Felix</span> <span class="n">Bundle</span> <span class="n">Repository</span> <span class="p">(</span>2<span class="p">.</span>0<span class="p">.</span>2<span class="p">)</span>
+    0<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    0<span class="o">|</span><span class="n">System</span> <span class="n">Bundle</span> <span class="p">(</span>5<span class="p">.</span>0<span class="p">.</span>1<span class="p">)</span>
+    1<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Felix</span> <span class="n">Bundle</span> <span class="n">Repository</span> <span class="p">(</span>2<span class="p">.</span>0<span class="p">.</span>4<span class="p">)</span>
     2<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Felix</span> <span class="n">Gogo</span> <span class="n">Command</span> <span class="p">(</span>0<span class="p">.</span>14<span class="p">.</span>0<span class="p">)</span>
-    3<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Felix</span> <span class="n">Gogo</span> <span class="n">Runtime</span> <span class="p">(</span>0<span class="p">.</span>12<span class="p">.</span>1<span class="p">)</span>
+    3<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Felix</span> <span class="n">Gogo</span> <span class="n">Runtime</span> <span class="p">(</span>0<span class="p">.</span>16<span class="p">.</span>2<span class="p">)</span>
     4<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Felix</span> <span class="n">Gogo</span> <span class="n">Shell</span> <span class="p">(</span>0<span class="p">.</span>10<span class="p">.</span>0<span class="p">)</span>
-    5<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Aries</span> <span class="n">Subsystem</span> <span class="n">API</span> <span class="p">(</span>1<span class="p">.</span>1<span class="p">.</span>0<span class="p">)</span>
-    6<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Aries</span> <span class="n">Subsystem</span> <span class="n">Core</span> <span class="p">(</span>1<span class="p">.</span>2<span class="p">.</span>0<span class="p">)</span>
+    5<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Aries</span> <span class="n">Subsystem</span> <span class="n">API</span> <span class="p">(</span>2<span class="p">.</span>0<span class="p">.</span>1<span class="p">)</span>
+    6<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Aries</span> <span class="n">Subsystem</span> <span class="n">Core</span> <span class="p">(</span>2<span class="p">.</span>0<span class="p">.</span>1<span class="p">)</span>
     7<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Aries</span> <span class="n">Util</span> <span class="p">(</span>1<span class="p">.</span>1<span class="p">.</span>0<span class="p">)</span>
-    8<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Felix</span> <span class="n">Configuration</span> <span class="n">Admin</span> <span class="n">Service</span> <span class="p">(</span>1<span class="p">.</span>8<span class="p">.</span>2<span class="p">)</span>
+    8<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Felix</span> <span class="n">Configuration</span> <span class="n">Admin</span> <span class="n">Service</span> <span class="p">(</span>1<span class="p">.</span>8<span class="p">.</span>6<span class="p">)</span>
     9<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Felix</span> <span class="n">Coordinator</span> <span class="n">Service</span> <span class="p">(</span>1<span class="p">.</span>0<span class="p">.</span>0<span class="p">)</span>
-   10<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Apache</span> <span class="n">Felix</span> <span class="n">Resolver</span> <span class="p">(</span>1<span class="p">.</span>0<span class="p">.</span>0<span class="p">)</span>
-   11<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Region</span> <span class="n">Digraph</span> <span class="p">(</span>1<span class="p">.</span>1<span class="p">.</span>0<span class="p">.</span><span class="n">v20120522</span><span class="o">-</span>1841<span class="p">)</span>
-   12<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">slf4j</span><span class="o">-</span><span class="n">api</span> <span class="p">(</span>1<span class="p">.</span>7<span class="p">.</span>12<span class="p">)</span>
-   13<span class="o">|</span><span class="n">Resolved</span>   <span class="o">|</span>    1<span class="o">|</span><span class="n">slf4j</span><span class="o">-</span><span class="n">simple</span> <span class="p">(</span>1<span class="p">.</span>7<span class="p">.</span>12<span class="p">)</span>
-   14<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">org</span><span class="p">.</span><span class="n">osgi</span><span class="p">.</span><span class="n">service</span><span class="p">.</span><span class="n">subsystem</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">context</span><span class="p">.</span>0 <span class="p">(</span>1<span class="p">.</span>0<span class="p">.</span>0<span class="p">)</span>
+   10<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">Region</span> <span class="n">Digraph</span> <span class="p">(</span>1<span class="p">.</span>1<span class="p">.</span>0<span class="p">.</span><span class="n">v20120522</span><span class="o">-</span>1841<span class="p">)</span>
+   11<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">slf4j</span><span class="o">-</span><span class="n">api</span> <span class="p">(</span>1<span class="p">.</span>7<span class="p">.</span>12<span class="p">)</span>
+   12<span class="o">|</span><span class="n">Resolved</span>   <span class="o">|</span>    1<span class="o">|</span><span class="n">slf4j</span><span class="o">-</span><span class="n">simple</span> <span class="p">(</span>1<span class="p">.</span>7<span class="p">.</span>12<span class="p">)</span>
+   13<span class="o">|</span><span class="n">Active</span>     <span class="o">|</span>    1<span class="o">|</span><span class="n">org</span><span class="p">.</span><span class="n">osgi</span><span class="p">.</span><span class="n">service</span><span class="p">.</span><span class="n">subsystem</span><span class="p">.</span><span class="n">region</span><span class="p">.</span><span class="n">context</span><span class="p">.</span>0 <span class="p">(</span>1<span class="p">.</span>0<span class="p">.</span>0<span class="p">)</span>
 </pre></div>
 
 
 <p>The slf4j-simple bundle is a fragment, so it can not be started.
 You can see that the Subsystems implementation is operational as it created a synthesized
-bundle (14) to represent the root context. The subsystems implementation sometimes
+bundle (13) to represent the root context. The subsystems implementation sometimes
 synthesizes a bundle to represent a subsystem. Whether or not this happens depends on 
 the isolation model of a subsystem.</p>
 <p>You can also see that the Subsystem service for the root subsystem has been registered
