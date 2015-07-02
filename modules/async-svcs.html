@@ -23,7 +23,7 @@
   <meta name="keywords" content="..."/>
   <meta name="description" content="..." />
     <title>
-    Apache Aries - Asynchronous Services
+    Apache Aries - 
     </title>
   </head>
 <body onload="SetMenu()">
@@ -281,9 +281,135 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><h1 id="osgi-asynchronous-services">OSGi Asynchronous Services</h1>
-<h2 id="introduction">Introduction</h2>
-<p>... tbd ...</p></div>
+            <div class="wiki-content"><p>Title: Asynchronous Services</p>
+<h1 id="introduction">Introduction</h1>
+<p>The R6 OSGi specifications include support for Asynchronous programming using OSGi services. 
+Apache Aries aims to provide small, compliant implementations of these specifications to enable asynchronous
+programming in enterprise applications. The two key specifications are OSGi Promises and the Async service.</p>
+<h1 id="osgi-promises">OSGi Promises</h1>
+<p>One of the fundamental pieces of an asynchronous programming system is the <em>Promise</em>. A Promise is a holder type that 
+represents an asynchronous calcluation. Since Java 5 the JDK has contained <em>java.util.concurrent.Future</em> to perform this 
+function. Java's Future type is, however, fatally flawed as it has no callback to notify the user when it resolves. Instead the
+user must make a blocking call to <em>get()</em>.</p>
+<p>OSGi promises fix this problem by defining a Promise interface which allows the user to register callbacks which will be
+called when the promise <em>resolves</em>. These callbacks are lambda friendly SAM types, but the Promise API itself has no
+dependencies on Java 8. The Aries version (org.apache.aries.async.promise.api) has a minimum requirement of JDK 6.</p>
+<h2 id="creating-osgi-promises">Creating OSGi Promises</h2>
+<p>Creating a Promise is easy. The <em>org.osgi.util.promise.Deferred</em> type is a factory for a single promise, and can also be used to
+resolve or fail the promise:</p>
+<div class="codehilite"><pre><span class="n">Deferred</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">deferred</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Deferred</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="n">new</span> <span class="n">Thread</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+        <span class="n">int</span> <span class="n">result</span> <span class="p">=</span> <span class="n">calculateReallyHardSum</span><span class="p">();</span>
+        <span class="n">deferred</span><span class="p">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+    <span class="p">}).</span><span class="n">start</span><span class="p">();</span>
+
+<span class="n">Promise</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">p</span> <span class="p">=</span> <span class="n">deferred</span><span class="p">.</span><span class="n">getPromise</span><span class="p">();</span>
+<span class="p">...</span>
+</pre></div>
+
+
+<p>But wait - what if something goes wrong? How do we signal to the user that there was a problem and the result is never coming?
+The answer is very easy - Promises have the concept of <em>failure</em>. A promise will <em>either</em> resolve <em>or</em> fail at most once. For well 
+written code this rule is usually the same as "A promise will either resolve or fail <em>exactly</em> once". Promises are thread safe and
+effectively immutable, meaning they can be shared with other code.</p>
+<div class="codehilite"><pre><span class="n">Deferred</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">deferred</span> <span class="p">=</span> <span class="n">new</span> <span class="n">Deferred</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="n">new</span> <span class="n">Thread</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">int</span> <span class="n">result</span> <span class="p">=</span> <span class="n">calculateErrorProneSum</span><span class="p">();</span>
+            <span class="n">deferred</span><span class="p">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">deferred</span><span class="p">.</span><span class="n">fail</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}).</span><span class="n">start</span><span class="p">();</span>
+
+<span class="n">Promise</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">p</span> <span class="p">=</span> <span class="n">deferred</span><span class="p">.</span><span class="n">getPromise</span><span class="p">();</span>
+<span class="p">...</span>
+</pre></div>
+
+
+<h2 id="using-osgi-promises">Using OSGi Promises</h2>
+<p>Once you have a promise, what do you do with it? It's easy to get the value from a promise using the <em>getValue()</em> method,
+or you can use the <em>getFailure()</em> method to get the failure cause. Unfortunately both of these methods block until the promise
+resolves, and whilst the <em>isDone()</em> method does tell you if the Promise has completed they really aren't the right way to use a
+Promise.</p>
+<p>Promises work best when you register callbacks and/or transformations. The Promise API has a variety of useful methods for
+doing work with the Promise when it resolves. For example we can run a task after the promise completes successfully:</p>
+<div class="codehilite"><pre><span class="n">Promise</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">promise</span> <span class="p">=</span> <span class="p">...</span>
+<span class="n">promise</span><span class="p">.</span><span class="n">then</span><span class="p">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span>&quot;<span class="n">The</span> <span class="n">calculator</span> <span class="n">returned</span> &quot; <span class="o">+</span> <span class="n">p</span><span class="p">.</span><span class="n">getValue</span><span class="p">());</span>
+        <span class="k">return</span> <span class="n">null</span><span class="p">;</span>
+    <span class="p">});</span>
+</pre></div>
+
+
+<p>We can also register callbacks to handle failures:</p>
+<div class="codehilite"><pre><span class="n">Promise</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">promise</span> <span class="p">=</span> <span class="p">...</span>
+<span class="n">promise</span><span class="p">.</span><span class="n">then</span><span class="p">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span>&quot;<span class="n">The</span> <span class="n">calculator</span> <span class="n">returned</span> &quot; <span class="o">+</span> <span class="n">p</span><span class="p">.</span><span class="n">getValue</span><span class="p">());</span>
+        <span class="k">return</span> <span class="n">null</span><span class="p">;</span>
+    <span class="p">},</span> <span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">getFailure</span><span class="p">().</span><span class="n">printStackTrace</span><span class="p">());</span>
+</pre></div>
+
+
+<h3 id="chaining-osgi-promises">Chaining OSGi Promises</h3>
+<p>In the previous examples our success callback returned <em>null</em> - why? Well the return value from a success callback is always
+a promise (null is a shortcut for a promise resolved with null). The promise returned by the callback represents an asynchronous 
+execution flow in a process known as "chaining". The overall completion of this chain is represented by a third promise, returned
+to the caller of the <em>then()</em> method.</p>
+<ol>
+<li>The caller registers a success callback, and receives a "chained" promise</li>
+<li>The original promise completes successfully</li>
+<li>The success callback runs and returns a promise representing another piece of asynchronous work</li>
+<li>The promise returned by the success callback completes successfully</li>
+<li>The "chained" promise completes with the same value as the promise from step 4.</li>
+</ol>
+<h2 id="other-promise-behaviours">Other Promise behaviours</h2>
+<p>As well as simple callbacks Promises also provide advanced mapping and recovery features. For example a promise can be
+wrapped so that if the original work fails then a new value can be supplied using a recovery function.</p>
+<p>The <em>org.osgi.util.promise.Promises</em> utility class also provides useful functions for working with promises. For example helper
+methods to wrap an existing value or failure in a Promise, or a way of aggregating a group of promises into a single promise.</p>
+<h1 id="the-async-service">The Async service</h1>
+<p>Most OSGi services have a synchronous API. This is usually the easiest way to think about, write, and use services. The main
+problem with this is that long running service calls can cause applications to run slowly, and making the calls asynchronous is
+both verbose and error-prone.</p>
+<p>The Async service is designed to take away the boilerplate code needed to invoke a service asynchronously, and to convert any
+synchronous API into an asynchronous API, returning promises instead of values.</p>
+<h2 id="using-the-async-service">Using the Async service</h2>
+<p>The Async service is available in the service registry and is very easy to use - first we need to mediate the service. 
+Mediating is a bit like creating a mock object, the mediator records method calls made against it so that they can be 
+transformed into asynchronous calls. Mediating can apply to a concrete object, or to a ServiceReference. It is better to 
+use a ServiceReference when one is available, as the Async service can track the availability of the backing service.</p>
+<div class="codehilite"><pre><span class="n">Async</span> <span class="n">async</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">ServiceReference</span><span class="o">&lt;</span><span class="n">MyService</span><span class="o">&gt;</span> <span class="n">ref</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">MyService</span> <span class="n">mediator</span> <span class="p">=</span> <span class="n">async</span><span class="p">.</span><span class="n">mediate</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">MyService</span><span class="p">.</span><span class="n">class</span><span class="p">);</span>
+</pre></div>
+
+
+<p><em>or</em></p>
+<div class="codehilite"><pre><span class="n">Async</span> <span class="n">async</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">MyService</span> <span class="n">svc</span> <span class="p">=</span> <span class="p">...;</span>
+<span class="n">MyService</span> <span class="n">mediator</span> <span class="p">=</span> <span class="n">async</span><span class="p">.</span><span class="n">mediate</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span> <span class="n">MyService</span><span class="p">.</span><span class="n">class</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Once a service has been mediated the mediator should be called just like the real service object, and the return value passed to
+the Async service's <em>call()</em> method. This returns a promise representing the asynchronous work.</p>
+<div class="codehilite"><pre><span class="n">Promise</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">promise</span> <span class="p">=</span>  <span class="n">async</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">mediator</span><span class="p">.</span><span class="n">calculateReallyHardSum</span><span class="p">());</span>
+</pre></div>
+
+
+<h3 id="void-methods">Void methods</h3>
+<p>Void methods don't have a return value to pass to the async service, and should use the no-args version of call instead.</p>
+<div class="codehilite"><pre><span class="nx">mediator</span><span class="p">.</span><span class="nx">longRunningVoidMethod</span><span class="p">()</span>
+<span class="nx">Promise</span><span class="cp">&lt;?</span><span class="o">&gt;</span> <span class="nx">promise</span> <span class="o">=</span>  <span class="nx">async</span><span class="o">.</span><span class="nx">call</span><span class="p">();</span>
+</pre></div>
+
+
+<h3 id="fire-and-forget-calls">Fire and Forget calls</h3>
+<p>Sometimes the user does not care when a piece of work finishes, or what value it returns, or even whether it was successful.
+These sorts of calls are called "fire and forget" calls, and are also supported by the async service using the <em>execute()</em> method.</p>
+<p>The execute method still returns a promise, however this promise represents whether the fire and forget call successfully started
+or not, not whether it has completed.</p></div>
             <!-- Content -->
           </td>
         </tr>
