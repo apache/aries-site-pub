@@ -288,7 +288,7 @@ Apache Aries aims to provide small, compliant implementations of these specifica
 programming in enterprise applications. The two key specifications are OSGi Promises and the Async service.</p>
 <h1 id="osgi-promises">OSGi Promises</h1>
 <p>One of the fundamental pieces of an asynchronous programming system is the <em>Promise</em>. A Promise is a holder type that 
-represents an asynchronous calcluation. Since Java 5 the JDK has contained <em>java.util.concurrent.Future</em> to perform this 
+represents an asynchronous calculation or computation. Since Java 5 the JDK has contained <em>java.util.concurrent.Future</em> to perform this 
 function. Java's Future type is, however, fatally flawed as it has no callback to notify the user when it resolves. Instead the
 user must make a blocking call to <em>get()</em>.</p>
 <p>OSGi promises fix this problem by defining a Promise interface which allows the user to register callbacks which will be
@@ -409,7 +409,10 @@ the Async service's <em>call()</em> method. This returns a promise representing 
 <p>Sometimes the user does not care when a piece of work finishes, or what value it returns, or even whether it was successful.
 These sorts of calls are called "fire and forget" calls, and are also supported by the async service using the <em>execute()</em> method.</p>
 <p>The execute method still returns a promise, however this promise represents whether the fire and forget call successfully started
-or not, not whether it has completed.</p></div>
+or not, not whether it has completed.</p>
+<h1 id="getting-started">Getting Started</h1>
+<p>The Asynchronous Services implementation can be found in the Apache Aries codebase in the <code>async</code> directory: <a href="https://svn.apache.org/repos/asf/aries/trunk/async">https://svn.apache.org/repos/asf/aries/trunk/async</a></p>
+<p>In this location a convenient all-in-one bundle can also be found with no dependencies: the <code>async-all</code> module.</p></div>
             <!-- Content -->
           </td>
         </tr>
