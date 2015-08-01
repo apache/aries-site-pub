@@ -98,26 +98,20 @@
                 <div id="wrapper-menu-page-bottom">
                   <div id="menu-page">
                     <!-- NavigationBar -->
-          <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
-
-<div id="overview" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/overview/boardreports.html">Board Reports</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/overview/news.html">News</a> 
-    </div>
-</div>
-
+          <style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
 
 <div id="documentation" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/documentation/pointerstoosgispecifications.html">Pointers to OSGi specs</a> 
-    </div>
     <div class="menuitem">
         <a href="/documentation/integrators-guide.html">Integrators Guide</a> 
     </div>
@@ -132,78 +126,6 @@
     </div>
     <div class="menuitem">
         <a href="/documentation/tools.html">Tools</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
-
-<div id="downloads" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/downloads/currentrelease.html">Current Release</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/testresults.html">Compliance Tests</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/archived-releases.html">Archived Releases</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
-
-<div id="community" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/community/overview.html">Community</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/gettinginvolved.html">Getting Involved</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/people.html">Who we are</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/mailinglists.html">Mailing lists</a> 
-    </div>
-        <div class="menuitem">
-                <a href="/community/logos.html">Logos for Users</a>
-        </div>
-</div>
-
-<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
-
-<div id="development" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://issues.apache.org/jira/browse/ARIES">Bug Tracking</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/buildingaries.html">Building Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maven-best-practice-in-aries.html">Maven best practice</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/moduledependencies.html">Module Dependencies</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/releasingaries.html">Releasing Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://builds.apache.org/hudson/">Build System</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
-    </div>
-        <div class="menuitem">
-        <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
 
@@ -263,6 +185,63 @@
     </div>
 </div>
 
+<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
+<div id="downloads" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/downloads/currentreleases.html">Current Releases</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/testresults.html">Compliance Tests</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/archived-releases.html">Archived Releases</a> 
+    </div>
+</div>
+
+<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
+<div id="community" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/community/resources.html">Community Resources</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/gettinginvolved.html">Getting Involved</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/people.html">Who we are</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/boardreports.html">Board Reports</a> 
+    </div>
+        <div class="menuitem">
+                <a href="/community/logos.html">Logos for Users</a>
+        </div>
+</div>
+
+<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
+<div id="development" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/development/buildingaries.html">Building Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/guidelines.html">Cording Guidelines</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/architecture.html">Architecture</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/releasingaries.html">Releasing Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
+    </div>
+</div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
 
 <div id="sponsorship" class="menuitemgroup">
@@ -281,9 +260,20 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p>Writing blueprint xml is quite verbose and large blueprint xmls are difficult to keep in sync with code changes and especially refactorings.
+            <div class="wiki-content"><style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
+<p>Writing blueprint xml is quite verbose and large blueprint xmls are difficult to keep in sync with code changes and especially refactorings.
 So you would like to do most declarations using annoations and ideally these annotations should be standardized.</p>
-<h2 id="blueprint-maven-plugin">blueprint-maven-plugin</h2>
+<h2 id="blueprint-maven-plugin">blueprint-maven-plugin<a class="headerlink" href="#blueprint-maven-plugin" title="Permanent link">&para;</a></h2>
 <p>The blueprint-maven-plugin allows to configure blueprint using annotations. It scans one or more paths for annotated classes and creates a blueprint.xml in target/generated-resources. So at runtime the bundle behaves like a normal blueprint bundle.
 The generated blueprint can also be used together with a manually created blueprint file. So for example property placeholder configurations
 or cxf services can be created in xml while most of the beans are automatically generated.</p>
@@ -309,35 +299,35 @@ or cxf services can be created in xml while most of the beans are automatically 
 </pre></div>
 
 
-<h2 id="annotations">Annotations</h2>
-<h3 id="javaxinject-jsr-330">javax.inject (JSR 330)</h3>
+<h2 id="annotations">Annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h2>
+<h3 id="javaxinject-jsr-330">javax.inject (JSR 330)<a class="headerlink" href="#javaxinject-jsr-330" title="Permanent link">&para;</a></h3>
 <ul>
 <li>@Inject Inject a bean by type and optionally further qualifiers</li>
 <li>@Singleton Mark a class as being a bean</li>
 <li>@Named("Myname") Names a @Singleton and qualifies an @Inject to limit it to matches with the same bean id</li>
 </ul>
-<h3 id="javaxannotation-jsr-250">javax.annotation (JSR 250)</h3>
+<h3 id="javaxannotation-jsr-250">javax.annotation (JSR 250)<a class="headerlink" href="#javaxannotation-jsr-250" title="Permanent link">&para;</a></h3>
 <ul>
 <li>@PostConstruct Marks a method to be called after DI is finished (init-method)</li>
 <li>@PreDestroy Marks a method to be called before the bean is destroyed (destroy-method)</li>
 </ul>
-<h3 id="pax-cdi">pax-cdi</h3>
+<h3 id="pax-cdi">pax-cdi<a class="headerlink" href="#pax-cdi" title="Permanent link">&para;</a></h3>
 <ul>
 <li>@OsgiServiceProvider(classes={TaskService.class}) Publishes a bean as an OSGi service with the given interfaces</li>
 <li>@OsgiService creates a reference to an OSGi service. On optional filter is also possible</li>
 <li>@Properties Defines service properties for OSGiServiceProvider</li>
 <li>@Property Defines a service property</li>
 </ul>
-<h3 id="javaxpersistence">javax.persistence</h3>
+<h3 id="javaxpersistence">javax.persistence<a class="headerlink" href="#javaxpersistence" title="Permanent link">&para;</a></h3>
 <ul>
 <li>@PersistenceContext(unitName="tasklist") inject a managed EntityManager for the given persistence unit into a field</li>
 <li>@PersistenceUnit(unitName="tasklist") inject an unmanaged EntityManagerFactory for the given persistence unit into a field</li>
 </ul>
-<h3 id="javaxtransaction">javax.transaction</h3>
+<h3 id="javaxtransaction">javax.transaction<a class="headerlink" href="#javaxtransaction" title="Permanent link">&para;</a></h3>
 <ul>
 <li>@Transactional mark the class as transactional. Individual methods are not yet supported</li>
 </ul>
-<h2 id="dependencies-for-annotations">Dependencies for annotations</h2>
+<h2 id="dependencies-for-annotations">Dependencies for annotations<a class="headerlink" href="#dependencies-for-annotations" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>javax.inject<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>javax.inject<span class="nt">&lt;/artifactId&gt;</span>
@@ -363,7 +353,7 @@ or cxf services can be created in xml while most of the beans are automatically 
 </pre></div>
 
 
-<h2 id="example">Example</h2>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p>For a complete example see <a href="https://github.com/cschneider/Karaf-Tutorial/tree/master/tasklist-blueprint-cdi">tasklist-blueprint-cdi</a> on github.</p></div>
             <!-- Content -->
           </td>

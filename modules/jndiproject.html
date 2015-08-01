@@ -98,26 +98,20 @@
                 <div id="wrapper-menu-page-bottom">
                   <div id="menu-page">
                     <!-- NavigationBar -->
-          <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
-
-<div id="overview" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/overview/boardreports.html">Board Reports</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/overview/news.html">News</a> 
-    </div>
-</div>
-
+          <style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
 
 <div id="documentation" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/documentation/pointerstoosgispecifications.html">Pointers to OSGi specs</a> 
-    </div>
     <div class="menuitem">
         <a href="/documentation/integrators-guide.html">Integrators Guide</a> 
     </div>
@@ -132,78 +126,6 @@
     </div>
     <div class="menuitem">
         <a href="/documentation/tools.html">Tools</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
-
-<div id="downloads" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/downloads/currentrelease.html">Current Release</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/testresults.html">Compliance Tests</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/archived-releases.html">Archived Releases</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
-
-<div id="community" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/community/overview.html">Community</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/gettinginvolved.html">Getting Involved</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/people.html">Who we are</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/mailinglists.html">Mailing lists</a> 
-    </div>
-        <div class="menuitem">
-                <a href="/community/logos.html">Logos for Users</a>
-        </div>
-</div>
-
-<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
-
-<div id="development" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://issues.apache.org/jira/browse/ARIES">Bug Tracking</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/buildingaries.html">Building Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maven-best-practice-in-aries.html">Maven best practice</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/moduledependencies.html">Module Dependencies</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/releasingaries.html">Releasing Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://builds.apache.org/hudson/">Build System</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
-    </div>
-        <div class="menuitem">
-        <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
 
@@ -263,6 +185,63 @@
     </div>
 </div>
 
+<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
+<div id="downloads" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/downloads/currentreleases.html">Current Releases</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/testresults.html">Compliance Tests</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/archived-releases.html">Archived Releases</a> 
+    </div>
+</div>
+
+<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
+<div id="community" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/community/resources.html">Community Resources</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/gettinginvolved.html">Getting Involved</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/people.html">Who we are</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/boardreports.html">Board Reports</a> 
+    </div>
+        <div class="menuitem">
+                <a href="/community/logos.html">Logos for Users</a>
+        </div>
+</div>
+
+<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
+<div id="development" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/development/buildingaries.html">Building Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/guidelines.html">Cording Guidelines</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/architecture.html">Architecture</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/releasingaries.html">Releasing Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
+    </div>
+</div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
 
 <div id="sponsorship" class="menuitemgroup">
@@ -281,15 +260,26 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="JNDIProject-Overview"></a></p>
-<h1 id="jndi">JNDI</h1>
+            <div class="wiki-content"><style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
+<p><a name="JNDIProject-Overview"></a></p>
+<h1 id="jndi">JNDI<a class="headerlink" href="#jndi" title="Permanent link">&para;</a></h1>
 <p>The Aries JNDI project aims to provide a fully compliant implementation of
 the OSGi Alliance JNDI Service Specification. This specification details
 how to advertise InitialContextFactory and ObjectFactories in an OSGi
 environment. It also defines how to obtain services from the service
 registry via JNDI.</p>
 <p><a name="JNDIProject-ServiceRegistryaccessfromJNDI"></a></p>
-<h2 id="service-registry-access-from-jndi">Service Registry access from JNDI</h2>
+<h2 id="service-registry-access-from-jndi">Service Registry access from JNDI<a class="headerlink" href="#service-registry-access-from-jndi" title="Permanent link">&para;</a></h2>
 <p>The OSGi service registry provides a centralised register/query capability
 for OSGi services. A common pattern outside of OSGi is to make use of the
 JNDI API to access services from a directory system. The OSGi service
@@ -297,7 +287,7 @@ registry can be viewed as an example of such a system. The Aries JNDI
 project provides two URL lookup mechanisms via JNDI that can be used to
 access the service registry.</p>
 <p><a name="JNDIProject-osgi:service"></a></p>
-<h2 id="osgiservice">osgi:service</h2>
+<h2 id="osgiservice">osgi:service<a class="headerlink" href="#osgiservice" title="Permanent link">&para;</a></h2>
 <p>The osgi:service lookup scheme is defined by the JNDI Service Specification
 and follows the scheme:</p>
 <div class="codehilite"><pre><span class="n">osgi</span><span class="o">:</span><span class="n">service</span><span class="sr">/&lt;interface&gt;[/&lt;filter&gt;](/</span><span class="o">&lt;</span><span class="n">filter</span><span class="o">&gt;.</span><span class="n">html</span><span class="o">)</span>
@@ -348,12 +338,12 @@ unregistered the proxy would switch to an equivalent alternative. If no
 such alternative exists then an org.osgi.framework.ServiceException with a
 type of ServiceException.UNREGISTERED.</p>
 <p><a name="JNDIProject-osgi:servicelist"></a></p>
-<h2 id="osgiservicelist">osgi:servicelist</h2>
+<h2 id="osgiservicelist">osgi:servicelist<a class="headerlink" href="#osgiservicelist" title="Permanent link">&para;</a></h2>
 <p>It is possible that there are multiple services in the registry that match.
 In this case the osgi:servicelist lookup scheme can be used. It has the
 same format as osgi:service, but it is designed to return multiple.</p>
 <p><a name="JNDIProject-aries:services"></a></p>
-<h2 id="ariesservices">aries:services</h2>
+<h2 id="ariesservices">aries:services<a class="headerlink" href="#ariesservices" title="Permanent link">&para;</a></h2>
 <p>The aries:services scheme works in the same way as the osgi:service scheme,
 but does not perform proxying. You get the actual object back. Care must be
 taken with this approach as the service could be unregistered, but the
@@ -362,7 +352,7 @@ the service is to be used for a short period of time. In addition their is
 no way to indicate that the client is no longer using the service, so clean
 up cannot occur.</p>
 <p><a name="JNDIProject-MoreInformation"></a></p>
-<h2 id="more-information">More Information</h2>
+<h2 id="more-information">More Information<a class="headerlink" href="#more-information" title="Permanent link">&para;</a></h2>
 <p>For more information, check out section "126 JNDI Services Specification
 Version 1.0" in the "OSGi Service Platform Enterprise Specification,
 Release 4, Version 4.2" available for public download from the <a href="http://www.osgi.org/Download/Release4V42">OSGi Alliance</a>

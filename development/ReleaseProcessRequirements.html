@@ -98,26 +98,20 @@
                 <div id="wrapper-menu-page-bottom">
                   <div id="menu-page">
                     <!-- NavigationBar -->
-          <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
-
-<div id="overview" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/overview/boardreports.html">Board Reports</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/overview/news.html">News</a> 
-    </div>
-</div>
-
+          <style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
 
 <div id="documentation" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/documentation/pointerstoosgispecifications.html">Pointers to OSGi specs</a> 
-    </div>
     <div class="menuitem">
         <a href="/documentation/integrators-guide.html">Integrators Guide</a> 
     </div>
@@ -132,78 +126,6 @@
     </div>
     <div class="menuitem">
         <a href="/documentation/tools.html">Tools</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
-
-<div id="downloads" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/downloads/currentrelease.html">Current Release</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/testresults.html">Compliance Tests</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/archived-releases.html">Archived Releases</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
-
-<div id="community" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/community/overview.html">Community</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/gettinginvolved.html">Getting Involved</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/people.html">Who we are</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/mailinglists.html">Mailing lists</a> 
-    </div>
-        <div class="menuitem">
-                <a href="/community/logos.html">Logos for Users</a>
-        </div>
-</div>
-
-<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
-
-<div id="development" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://issues.apache.org/jira/browse/ARIES">Bug Tracking</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/buildingaries.html">Building Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maven-best-practice-in-aries.html">Maven best practice</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/moduledependencies.html">Module Dependencies</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/releasingaries.html">Releasing Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://builds.apache.org/hudson/">Build System</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
-    </div>
-        <div class="menuitem">
-        <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
 
@@ -263,6 +185,63 @@
     </div>
 </div>
 
+<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
+<div id="downloads" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/downloads/currentreleases.html">Current Releases</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/testresults.html">Compliance Tests</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/archived-releases.html">Archived Releases</a> 
+    </div>
+</div>
+
+<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
+<div id="community" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/community/resources.html">Community Resources</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/gettinginvolved.html">Getting Involved</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/people.html">Who we are</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/boardreports.html">Board Reports</a> 
+    </div>
+        <div class="menuitem">
+                <a href="/community/logos.html">Logos for Users</a>
+        </div>
+</div>
+
+<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
+<div id="development" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/development/buildingaries.html">Building Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/guidelines.html">Cording Guidelines</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/architecture.html">Architecture</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/releasingaries.html">Releasing Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
+    </div>
+</div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
 
 <div id="sponsorship" class="menuitemgroup">
@@ -281,7 +260,18 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><h1 id="release-process-requirements">Release process requirements</h1>
+            <div class="wiki-content"><style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
+<h1 id="release-process-requirements">Release process requirements<a class="headerlink" href="#release-process-requirements" title="Permanent link">&para;</a></h1>
 <p>Up to release 0.3 of Aries we released all of the modules at once, along with a set of samples which demonstrated how the Aries components could be used together.</p>
 
 <p>After release 0.3 we wanted to rexamine the release process, the primary motivation for this was the observation that our 
@@ -301,35 +291,35 @@ current process did not use semantic versioning, and, as an OSGi project we shou
 <tr><td class="confluenceTd">  8 </td><td class="confluenceTd"> A way to ensure that a given component doesn't have conflicting dependencies </td><td class="confluenceTd"> ?  </td></tr>
 </table>
 
-<h2 id="release-all-aries-components-at-once">Release all Aries components at once.</h2>
-<h3 id="advantages-of-releasing-everything-at-once-and-at-the-same-level">Advantages of releasing everything at once and at the same level</h3>
+<h2 id="release-all-aries-components-at-once">Release all Aries components at once.<a class="headerlink" href="#release-all-aries-components-at-once" title="Permanent link">&para;</a></h2>
+<h3 id="advantages-of-releasing-everything-at-once-and-at-the-same-level">Advantages of releasing everything at once and at the same level<a class="headerlink" href="#advantages-of-releasing-everything-at-once-and-at-the-same-level" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Conceptually very simple of consumers. For example, if as a consumer I pick up something called Blueprint version 0.4 I know that I
 will need to get Util version 0.4 to go with it.</li>
 <li>A relatively simple release process, one JIRA component, one set of release notes.</li>
 <li>We can release a set of samples at the same version with some guarentee that the samples all work with the release.</li>
 </ol>
-<h3 id="disadvantages-of-releasing-everything-at-once">Disadvantages of releasing everything at once</h3>
+<h3 id="disadvantages-of-releasing-everything-at-once">Disadvantages of releasing everything at once<a class="headerlink" href="#disadvantages-of-releasing-everything-at-once" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Not using of OSGi semantic versioning of bundles. After every we release we bump the major versions of all bundles in trunk.</li>
 </ol>
 <p>Package versions are managed separately (correctly) and the Maven bundle plugin will ensure packages are imported in the correct range based of
  the projects dependencies. Implementers need to use "provide:=true" to get the correct range. Package export version should be maintained 
 either using package.info or in the pom.xml.</p>
-<h2 id="releasing-by-module">Releasing by module</h2>
+<h2 id="releasing-by-module">Releasing by module<a class="headerlink" href="#releasing-by-module" title="Permanent link">&para;</a></h2>
 <p><p>Our ideal for a release process would involve to release by module, this is 
 really just an evolution of the process that we already use but it would involve 
 using semantic versioning of bundles. One might visualise the process like this: </p></p>
 <p><img alt="rel" src="release_by_module.png" /></p>
 <p>In this case, we have a module version (independent of the version of its sub-modules) and a set of sub-modules which may each be independently versioned.</p>
 
-<h3 id="advantages-of-release-by-module">Advantages of release by module</h3>
+<h3 id="advantages-of-release-by-module">Advantages of release by module<a class="headerlink" href="#advantages-of-release-by-module" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Releasing a coherent set of bundles that have been built and run together</li>
 <li>Releasing a buildable set of source for all constituent bundles in one zip file</li>
 <li>A more consumable unit than a set of single bundles - easier for Aries consumers. A smaller number of discrete downloads.</li>
 </ol>
-<h3 id="disadvantages-of-the-release-by-module-process">Disadvantages of the release by module process</h3>
+<h3 id="disadvantages-of-the-release-by-module-process">Disadvantages of the release by module process<a class="headerlink" href="#disadvantages-of-the-release-by-module-process" title="Permanent link">&para;</a></h3>
 <ol>
 <li>We would have to release a whole module at once, this would mean re-releasing bundles at the same level 
  (and with the same content) as a previous release. This is not a major issue but we would probably not want them in the 
@@ -349,15 +339,15 @@ the major version. Another release of blueprint (version 1.6) is made containing
 at version 1.5.1 with blueprint-cm at 1.0.3. Unfortunately this is impossible because we have already released blueprint-cm at 1.0.3
 and it works with blueprint-core 1.1.0. So, we have no way to meet the requirement </p></li>
 </ol>
-<h2 id="releasing-by-bundle">Releasing by bundle</h2>
+<h2 id="releasing-by-bundle">Releasing by bundle<a class="headerlink" href="#releasing-by-bundle" title="Permanent link">&para;</a></h2>
 <p>Other OSGi projects, for example Sling and Felix, release by bundle.</p>
-<h3 id="advantages-of-releasing-by-bundle">Advantages of releasing by bundle</h3>
+<h3 id="advantages-of-releasing-by-bundle">Advantages of releasing by bundle<a class="headerlink" href="#advantages-of-releasing-by-bundle" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Other projects already do it so there is a well understood model</li>
 <li>All the existing tools work</li>
 <li>OSGi semantic versioning can be used properly</li>
 </ol>
-<h3 id="disadvantages-of-releasing-by-bundle">Disadvantages of releasing by bundle</h3>
+<h3 id="disadvantages-of-releasing-by-bundle">Disadvantages of releasing by bundle<a class="headerlink" href="#disadvantages-of-releasing-by-bundle" title="Permanent link">&para;</a></h3>
 <ol>
 <li>It is more difficult for a consumer of Aries modules to understand which bundles form a logical grouping</li>
 <li>There are a lot of bundles to manage independently. This has implications:<br/><ul>

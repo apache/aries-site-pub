@@ -109,26 +109,9 @@
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
-<div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
-
-<div id="overview" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/overview/boardreports.html">Board Reports</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/overview/news.html">News</a> 
-    </div>
-</div>
-
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
 
 <div id="documentation" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/documentation/pointerstoosgispecifications.html">Pointers to OSGi specs</a> 
-    </div>
     <div class="menuitem">
         <a href="/documentation/integrators-guide.html">Integrators Guide</a> 
     </div>
@@ -143,78 +126,6 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     </div>
     <div class="menuitem">
         <a href="/documentation/tools.html">Tools</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
-
-<div id="downloads" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/downloads/currentrelease.html">Current Release</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/testresults.html">Compliance Tests</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/archived-releases.html">Archived Releases</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
-
-<div id="community" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/community/overview.html">Community</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/gettinginvolved.html">Getting Involved</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/people.html">Who we are</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/mailinglists.html">Mailing lists</a> 
-    </div>
-        <div class="menuitem">
-                <a href="/community/logos.html">Logos for Users</a>
-        </div>
-</div>
-
-<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
-
-<div id="development" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://issues.apache.org/jira/browse/ARIES">Bug Tracking</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/buildingaries.html">Building Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maven-best-practice-in-aries.html">Maven best practice</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/moduledependencies.html">Module Dependencies</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/releasingaries.html">Releasing Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://builds.apache.org/hudson/">Build System</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
-    </div>
-        <div class="menuitem">
-        <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
 
@@ -271,6 +182,63 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
     </div>
     <div class="menuitem">
         <a href="/modules/applications.html">Applications (obsolete)</a> 
+    </div>
+</div>
+
+<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
+<div id="downloads" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/downloads/currentreleases.html">Current Releases</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/testresults.html">Compliance Tests</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/archived-releases.html">Archived Releases</a> 
+    </div>
+</div>
+
+<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
+<div id="community" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/community/resources.html">Community Resources</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/gettinginvolved.html">Getting Involved</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/people.html">Who we are</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/boardreports.html">Board Reports</a> 
+    </div>
+        <div class="menuitem">
+                <a href="/community/logos.html">Logos for Users</a>
+        </div>
+</div>
+
+<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
+<div id="development" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/development/buildingaries.html">Building Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/guidelines.html">Cording Guidelines</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/architecture.html">Architecture</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/releasingaries.html">Releasing Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
     </div>
 </div>
 
@@ -331,15 +299,8 @@ As a next step you can run the tests too.</p>
 <li>At some projects you might see some markers that m2e does not know how to work with certain maven plugins. Use the Ctrl-1 shortcut on these markers and set them to be ignored and let eclipse store this in the eclipse preferences. Do not select to add the ignore to the maven poms.</li>
 </ul>
 <p>After these steps you should have imported your selected aries projects into eclipse. </p>
-<p><a name="BuildingAries-CodeStyle"></a></p>
-<h1 id="code-styles">Code Styles<a class="headerlink" href="#code-styles" title="Permanent link">&para;</a></h1>
-<p>There are not yet complete code formatters and checkstyle rules for aries. In the mean time you can set these rules.</p>
-<ul>
-<li>4 spaces instead of tabs</li>
-<li>Line width 130 characters</li>
-</ul>
 <p><a name="BuildingAries-Outofmemoryerrors"></a></p>
-<h5 id="out-of-memory-errors">Out of memory errors<a class="headerlink" href="#out-of-memory-errors" title="Permanent link">&para;</a></h5>
+<h1 id="out-of-memory-errors">Out of memory errors<a class="headerlink" href="#out-of-memory-errors" title="Permanent link">&para;</a></h1>
 <p>You may find that building Aries fails with out of memory exceptions on
 some systems (eg Mac)  if you use the standard Java settings. Setting the
 two environment variables as shown below may help.</p>

@@ -98,26 +98,20 @@
                 <div id="wrapper-menu-page-bottom">
                   <div id="menu-page">
                     <!-- NavigationBar -->
-          <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
-
-<div id="overview" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/overview/boardreports.html">Board Reports</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/overview/news.html">News</a> 
-    </div>
-</div>
-
+          <style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
 
 <div id="documentation" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/documentation/pointerstoosgispecifications.html">Pointers to OSGi specs</a> 
-    </div>
     <div class="menuitem">
         <a href="/documentation/integrators-guide.html">Integrators Guide</a> 
     </div>
@@ -132,78 +126,6 @@
     </div>
     <div class="menuitem">
         <a href="/documentation/tools.html">Tools</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
-
-<div id="downloads" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/downloads/currentrelease.html">Current Release</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/testresults.html">Compliance Tests</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/archived-releases.html">Archived Releases</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
-
-<div id="community" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/community/overview.html">Community</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/gettinginvolved.html">Getting Involved</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/people.html">Who we are</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/mailinglists.html">Mailing lists</a> 
-    </div>
-        <div class="menuitem">
-                <a href="/community/logos.html">Logos for Users</a>
-        </div>
-</div>
-
-<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
-
-<div id="development" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://issues.apache.org/jira/browse/ARIES">Bug Tracking</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/buildingaries.html">Building Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maven-best-practice-in-aries.html">Maven best practice</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/moduledependencies.html">Module Dependencies</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/releasingaries.html">Releasing Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://builds.apache.org/hudson/">Build System</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
-    </div>
-        <div class="menuitem">
-        <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
 
@@ -263,6 +185,63 @@
     </div>
 </div>
 
+<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
+<div id="downloads" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/downloads/currentreleases.html">Current Releases</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/testresults.html">Compliance Tests</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/archived-releases.html">Archived Releases</a> 
+    </div>
+</div>
+
+<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
+<div id="community" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/community/resources.html">Community Resources</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/gettinginvolved.html">Getting Involved</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/people.html">Who we are</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/boardreports.html">Board Reports</a> 
+    </div>
+        <div class="menuitem">
+                <a href="/community/logos.html">Logos for Users</a>
+        </div>
+</div>
+
+<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
+<div id="development" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/development/buildingaries.html">Building Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/guidelines.html">Cording Guidelines</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/architecture.html">Architecture</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/releasingaries.html">Releasing Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
+    </div>
+</div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
 
 <div id="sponsorship" class="menuitemgroup">
@@ -281,10 +260,21 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="Blueprint-Blueprint"></a></p>
-<h1 id="blueprint">Blueprint</h1>
+            <div class="wiki-content"><style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
+<p><a name="Blueprint-Blueprint"></a></p>
+<h1 id="blueprint">Blueprint<a class="headerlink" href="#blueprint" title="Permanent link">&para;</a></h1>
 <p><a name="Blueprint-Introduction"></a></p>
-<h2 id="introduction">Introduction</h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>Blueprint provides a dependency injection framework for OSGi and was
 standardized by the OSGi Alliance in OSGi Compendium R4.2. It is designed
 to deal with the dynamic nature of OSGi, where services can become
@@ -298,7 +288,7 @@ wired together to form a running module. </p>
 <p>The following documentation covers the 80:20 usage of Blueprint.  For
 further details, please refer to the OSGi Compendium R4.2 specification.</p>
 <p><a name="Blueprint-BlueprintBundles"></a></p>
-<h2 id="blueprint-bundles">Blueprint Bundles</h2>
+<h2 id="blueprint-bundles">Blueprint Bundles<a class="headerlink" href="#blueprint-bundles" title="Permanent link">&para;</a></h2>
 <p>The Blueprint Container specification uses an extender pattern, whereby an
 extender bundle monitors the state of bundles in the framework and performs
 actions on behalf of those bundles based on their state. The Blueprint
@@ -323,7 +313,7 @@ service registry, and creates initial component instances. The Blueprint
 extender bundle also destroys the Blueprint Container for a bundle when the
 bundle is stopped. </p>
 <p><a name="Blueprint-BlueprintXML"></a></p>
-<h2 id="blueprint-xml">Blueprint XML</h2>
+<h2 id="blueprint-xml">Blueprint XML<a class="headerlink" href="#blueprint-xml" title="Permanent link">&para;</a></h2>
 <p>The Blueprint XML file is identified by a top-level blueprint element, as
 shown below:</p>
 <div class="codehilite"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
@@ -338,7 +328,7 @@ version 1.0.0.  The top-level blueprint element identifies the document as
 a blueprint module definition.</p>
 <p><em>TODO:</em> ensure id, activation and dependsOn get documented somewhere.</p>
 <p><a name="Blueprint-Beans"></a></p>
-<h2 id="beans">Beans</h2>
+<h2 id="beans">Beans<a class="headerlink" href="#beans" title="Permanent link">&para;</a></h2>
 <p>Beans are declared using the bean element.  The following defines a single
 bean called <em>accountOne</em> implemented by the POJO
 <em>org.apache.aries.simple.Account</em>.</p>
@@ -350,7 +340,7 @@ bean called <em>accountOne</em> implemented by the POJO
 
 
 <p><a name="Blueprint-BeanConstruction"></a></p>
-<h3 id="bean-construction">Bean Construction</h3>
+<h3 id="bean-construction">Bean Construction<a class="headerlink" href="#bean-construction" title="Permanent link">&para;</a></h3>
 <p>During object construction, the Blueprint Container must first find the
 right constructor or a factory method with a compatible set of parameters
 that matches the arguments specified in the XML. By default, the Blueprint
@@ -435,7 +425,7 @@ the argument to create the Account object.</p>
 
 
 <p><a name="Blueprint-BeanProperties"></a></p>
-<h3 id="bean-properties">Bean Properties</h3>
+<h3 id="bean-properties">Bean Properties<a class="headerlink" href="#bean-properties" title="Permanent link">&para;</a></h3>
 <p>Beans can have property values injected.  Injection is performed
 immediately after the bean is constructed.  The following example creates
 the Account bean and then sets the description property using the Java
@@ -456,7 +446,7 @@ Beans naming convention.</p>
 
 
 <p><a name="Blueprint-BeanWiring"></a></p>
-<h4 id="bean-wiring">Bean Wiring</h4>
+<h4 id="bean-wiring">Bean Wiring<a class="headerlink" href="#bean-wiring" title="Permanent link">&para;</a></h4>
 <p>Property injection is used for wiring beans together.  In the following
 example <em>accountOne</em> is injected with a <em>Currency</em> bean.</p>
 <div class="codehilite"><pre>   public class Account {      
@@ -487,7 +477,7 @@ example <em>accountOne</em> is injected with a <em>Currency</em> bean.</p>
 
 
 <p><a name="Blueprint-Services"></a></p>
-<h2 id="services">Services</h2>
+<h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h2>
 <p>In Blueprint XML, a service element defines the registration of a service
 in the OSGi service registry. </p>
 <p>The bean that provides the service object can be referenced using the
@@ -531,7 +521,7 @@ all the bean's interfaces:</p>
 <p>Other values for <em>auto-export</em> are <em>disabled</em> (the default)
 <em>class-hierarchy</em> and <em>all-classes</em>.</p>
 <p><a name="Blueprint-ServiceProperties"></a></p>
-<h3 id="service-properties">Service Properties</h3>
+<h3 id="service-properties">Service Properties<a class="headerlink" href="#service-properties" title="Permanent link">&para;</a></h3>
 <p>A service can also be registered with a set of properties that can be
 specified using the <em>service-properties</em>  sub-element. The
 <em>service-properties</em> element contains multiple <em>entry</em> sub-elements
@@ -557,7 +547,7 @@ properties. The <em>active</em> service property has type of
 
 
 <p><a name="Blueprint-ServiceRanking"></a></p>
-<h3 id="service-ranking">Service Ranking</h3>
+<h3 id="service-ranking">Service Ranking<a class="headerlink" href="#service-ranking" title="Permanent link">&para;</a></h3>
 <p>Service ranking can be used to affect the choice of service when there are
 multiple matches.  When choosing between two services, the higher ranked
 service will be returned ahead of the lower.  The default ranking value is
@@ -569,7 +559,7 @@ follows:</p>
 
 
 <p><a name="Blueprint-References"></a></p>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <p>Services are found in the service registry using the reference element. The
 following shows a reference named <em>accountRef</em> to an <em>Account</em> service.
  If a service matching this reference is found in the service registry then
@@ -584,7 +574,7 @@ it is set on the <em>accountClient</em> bean through the <em>account</em> proper
 
 
 <p><a name="Blueprint-ReferenceDynamism"></a></p>
-<h3 id="reference-dynamism">Reference Dynamism</h3>
+<h3 id="reference-dynamism">Reference Dynamism<a class="headerlink" href="#reference-dynamism" title="Permanent link">&para;</a></h3>
 <p>The object that is injected for a reference is actually a proxy to the
 service registered in the service registry. A proxy enables the injected
 object to remain the same while the backing service can come and go or be
@@ -625,7 +615,7 @@ reference to 20000 milliseconds (20 seconds).</p>
 <p>In all cases, a value of 0 means wait indefinitely for the reference to
 become satisfied.</p>
 <p><a name="Blueprint-ReferenceLists"></a></p>
-<h3 id="reference-lists">Reference Lists</h3>
+<h3 id="reference-lists">Reference Lists<a class="headerlink" href="#reference-lists" title="Permanent link">&para;</a></h3>
 <p>Multiple matching services can be found using the <em>reference-list</em>
 element.  The <em>reference-list</em> provides a <em>List</em> object that contains
 the service proxy objects or <em>ServiceReference</em> objects, depending on the
@@ -655,31 +645,31 @@ ServiceReferences:</p>
 <p>Example showing mandatory or optional references (availability)</p>
 <p>Example showing use of filter</p>
 <p><a name="Blueprint-BeanProperties"></a></p>
-<h2 id="bean-properties_1">Bean Properties</h2>
+<h2 id="bean-properties_1">Bean Properties<a class="headerlink" href="#bean-properties_1" title="Permanent link">&para;</a></h2>
 <p>Example showing use of bean properties</p>
 <p><a name="Blueprint-Scopes"></a></p>
-<h2 id="scopes">Scopes</h2>
+<h2 id="scopes">Scopes<a class="headerlink" href="#scopes" title="Permanent link">&para;</a></h2>
 <p>Example showing singleton scope</p>
 <p>Example showing prototype scope for beans</p>
 <p>Example showing prototype scope for services</p>
 <p><a name="Blueprint-ObjectValues"></a></p>
-<h2 id="object-values">Object Values</h2>
+<h2 id="object-values">Object Values<a class="headerlink" href="#object-values" title="Permanent link">&para;</a></h2>
 <p>Intro to Object Values</p>
 <p>Examples showing the use of the various different object value types - ref,
 map, props collection (list, array, set).</p>
 <p><a name="Blueprint-Lifecycle"></a></p>
-<h2 id="lifecycle">Lifecycle</h2>
+<h2 id="lifecycle">Lifecycle<a class="headerlink" href="#lifecycle" title="Permanent link">&para;</a></h2>
 <p>Example showing use of init/destroy-method</p>
 <p><a name="Blueprint-LazyandEagerActiviation"></a></p>
-<h2 id="lazy-and-eager-activiation">Lazy and Eager Activiation</h2>
+<h2 id="lazy-and-eager-activiation">Lazy and Eager Activiation<a class="headerlink" href="#lazy-and-eager-activiation" title="Permanent link">&para;</a></h2>
 <p>Example showing lazy activiation.</p>
 <p>Example showing eager activation.</p>
 <p><a name="Blueprint-Dynamism"></a></p>
-<h2 id="dynamism">Dynamism</h2>
+<h2 id="dynamism">Dynamism<a class="headerlink" href="#dynamism" title="Permanent link">&para;</a></h2>
 <p>Example showing service-listener</p>
 <p>Example showing reference-listener</p>
 <p><a name="Blueprint-TypeConverters"></a></p>
-<h2 id="type-converters">Type Converters</h2></div>
+<h2 id="type-converters">Type Converters<a class="headerlink" href="#type-converters" title="Permanent link">&para;</a></h2></div>
             <!-- Content -->
           </td>
         </tr>

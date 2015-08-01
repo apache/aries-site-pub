@@ -98,26 +98,20 @@
                 <div id="wrapper-menu-page-bottom">
                   <div id="menu-page">
                     <!-- NavigationBar -->
-          <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
-
-<div id="overview" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/overview/boardreports.html">Board Reports</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/overview/news.html">News</a> 
-    </div>
-</div>
-
+          <style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
 
 <div id="documentation" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/documentation/pointerstoosgispecifications.html">Pointers to OSGi specs</a> 
-    </div>
     <div class="menuitem">
         <a href="/documentation/integrators-guide.html">Integrators Guide</a> 
     </div>
@@ -132,78 +126,6 @@
     </div>
     <div class="menuitem">
         <a href="/documentation/tools.html">Tools</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
-
-<div id="downloads" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/downloads/currentrelease.html">Current Release</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/testresults.html">Compliance Tests</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/archived-releases.html">Archived Releases</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
-
-<div id="community" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/community/overview.html">Community</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/gettinginvolved.html">Getting Involved</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/people.html">Who we are</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/mailinglists.html">Mailing lists</a> 
-    </div>
-        <div class="menuitem">
-                <a href="/community/logos.html">Logos for Users</a>
-        </div>
-</div>
-
-<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
-
-<div id="development" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://issues.apache.org/jira/browse/ARIES">Bug Tracking</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/buildingaries.html">Building Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maven-best-practice-in-aries.html">Maven best practice</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/moduledependencies.html">Module Dependencies</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/releasingaries.html">Releasing Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://builds.apache.org/hudson/">Build System</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
-    </div>
-        <div class="menuitem">
-        <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
 
@@ -263,6 +185,63 @@
     </div>
 </div>
 
+<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
+<div id="downloads" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/downloads/currentreleases.html">Current Releases</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/testresults.html">Compliance Tests</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/archived-releases.html">Archived Releases</a> 
+    </div>
+</div>
+
+<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
+<div id="community" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/community/resources.html">Community Resources</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/gettinginvolved.html">Getting Involved</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/people.html">Who we are</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/boardreports.html">Board Reports</a> 
+    </div>
+        <div class="menuitem">
+                <a href="/community/logos.html">Logos for Users</a>
+        </div>
+</div>
+
+<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
+<div id="development" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/development/buildingaries.html">Building Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/guidelines.html">Cording Guidelines</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/architecture.html">Architecture</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/releasingaries.html">Releasing Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
+    </div>
+</div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
 
 <div id="sponsorship" class="menuitemgroup">
@@ -281,10 +260,21 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="AriesTrader-TheAriesTraderSample"></a></p>
-<h1 id="the-ariestrader-sample">The AriesTrader Sample</h1>
+            <div class="wiki-content"><style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
+<p><a name="AriesTrader-TheAriesTraderSample"></a></p>
+<h1 id="the-ariestrader-sample">The AriesTrader Sample<a class="headerlink" href="#the-ariestrader-sample" title="Permanent link">&para;</a></h1>
 <p><a name="AriesTrader-Prereqs"></a></p>
-<h3 id="prereqs">Prereqs</h3>
+<h3 id="prereqs">Prereqs<a class="headerlink" href="#prereqs" title="Permanent link">&para;</a></h3>
 <p><br></p>
 <hr />
 <p><strong>Note:</strong> </p>
@@ -298,7 +288,7 @@ However, there are steps required to initialize the Database from within
 the sample itself (see instructions below).  </p>
 <hr />
 <p><a name="AriesTrader-CreatingtheOSGiplatform(equinox-test-harness)forAriesTrader"></a></p>
-<h3 id="creating-the-osgi-platform-equinox-test-harness-for-ariestrader">Creating the OSGi platform (equinox-test-harness) for AriesTrader</h3>
+<h3 id="creating-the-osgi-platform-equinox-test-harness-for-ariestrader">Creating the OSGi platform (equinox-test-harness) for AriesTrader<a class="headerlink" href="#creating-the-osgi-platform-equinox-test-harness-for-ariestrader" title="Permanent link">&para;</a></h3>
 <p>Download and unzip the source zip for the <a href="aries:downloads.html">latest release</a>
  of Aries Samples and build the equinox-test-harness module under
 ariestrader:</p>
@@ -310,14 +300,14 @@ ariestrader:</p>
 <p>This procedure will pull in the binaries from the latest release and its
 dependencies.</p>
 <p><a name="AriesTrader-AlternativebuildusingApacheAriestrunk."></a></p>
-<h3 id="alternative-build-using-apache-aries-trunk">Alternative build using Apache Aries trunk.</h3>
+<h3 id="alternative-build-using-apache-aries-trunk">Alternative build using Apache Aries trunk.<a class="headerlink" href="#alternative-build-using-apache-aries-trunk" title="Permanent link">&para;</a></h3>
 <p>As an alternative to using the released version you can also choose to work
 with the latest, unreleased code.  This will require the use of subversion
 to checkout the code followed by building the entire Apache Aries project. 
 Directions are provided here:  <a href="aries:buildingaries.html">Building Aries instructions</a>
 .</p>
 <p><a name="AriesTrader-StartingtheEquinoxTestHarnesstoruntheAriesTradersample"></a></p>
-<h3 id="starting-the-equinox-test-harness-to-run-the-ariestrader-sample">Starting the Equinox Test Harness to run the AriesTrader sample</h3>
+<h3 id="starting-the-equinox-test-harness-to-run-the-ariestrader-sample">Starting the Equinox Test Harness to run the AriesTrader sample<a class="headerlink" href="#starting-the-equinox-test-harness-to-run-the-ariestrader-sample" title="Permanent link">&para;</a></h3>
 <p>AriesTrader needs a test harness to run in.  For this purpose we are using
 an Equinox assembly that pulls in all of the necessary dependencies.  </p>
 <p>The first task is to start the Apache Aries modules in an OSGi framework
@@ -332,7 +322,7 @@ bundles but the AriesTrader application is not yet installed (with the
 exception of the ariestrader derby datasource which is started with the
 test harness for convenience).  </p>
 <p><a name="AriesTrader-InstallingAriesTraderintheEquinoxTestHarness"></a></p>
-<h3 id="installing-ariestrader-in-the-equinox-test-harness">Installing AriesTrader in the Equinox Test Harness</h3>
+<h3 id="installing-ariestrader-in-the-equinox-test-harness">Installing AriesTrader in the Equinox Test Harness<a class="headerlink" href="#installing-ariestrader-in-the-equinox-test-harness" title="Permanent link">&para;</a></h3>
 <p>To install the AriesTrader application simply copy the eba for AriesTrader
 into the target/load directory, you will need to create this directory first.<br />
 For convenience the AriesTraders EBAs are
@@ -356,7 +346,7 @@ available persistence modes:</p>
 or org.apache.aries.samples.ariestrader.all-</em>.eba from the target/load
 directory the application will be uninstalled.</p>
 <p><a name="AriesTrader-AccessingandusingtheAriesTradersample"></a></p>
-<h3 id="accessing-and-using-the-ariestrader-sample">Accessing and using the AriesTrader sample</h3>
+<h3 id="accessing-and-using-the-ariestrader-sample">Accessing and using the AriesTrader sample<a class="headerlink" href="#accessing-and-using-the-ariestrader-sample" title="Permanent link">&para;</a></h3>
 <p>Point your browser at <a href="http://localhost:8080/ariestrader/">http://localhost:8080/ariestrader/</a></p>
 <p>Select the "Configuration" tab and the "Configure AriesTrader run-time
 parameters" choice.  Then select from among the available runtime modes
@@ -385,7 +375,7 @@ not currently working).  You can also run the "Test AriesTrader Scenario"
 from the "Configuration" tab which will launch a new browser window and
 step through a trading scenario with each reload of the page.</p>
 <p><a name="AriesTrader-AbouttheAriesTraderSample"></a></p>
-<h3 id="about-the-ariestrader-sample">About the AriesTrader Sample</h3>
+<h3 id="about-the-ariestrader-sample">About the AriesTrader Sample<a class="headerlink" href="#about-the-ariestrader-sample" title="Permanent link">&para;</a></h3>
 <p>The AriesTrader sample is a modified version of the Apache Geronimo
 DayTrader sample.  It has been somewhat simplified and reorganized to
 support the Apache Aries programming model.  </p>

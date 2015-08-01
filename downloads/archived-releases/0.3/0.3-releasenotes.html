@@ -98,26 +98,20 @@
                 <div id="wrapper-menu-page-bottom">
                   <div id="menu-page">
                     <!-- NavigationBar -->
-          <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
-
-<div id="overview" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/overview/boardreports.html">Board Reports</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/overview/news.html">News</a> 
-    </div>
-</div>
-
+          <style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
 
 <div id="documentation" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/documentation/pointerstoosgispecifications.html">Pointers to OSGi specs</a> 
-    </div>
     <div class="menuitem">
         <a href="/documentation/integrators-guide.html">Integrators Guide</a> 
     </div>
@@ -132,78 +126,6 @@
     </div>
     <div class="menuitem">
         <a href="/documentation/tools.html">Tools</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
-
-<div id="downloads" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/downloads/currentrelease.html">Current Release</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/testresults.html">Compliance Tests</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/archived-releases.html">Archived Releases</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
-
-<div id="community" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/community/overview.html">Community</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/gettinginvolved.html">Getting Involved</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/people.html">Who we are</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/mailinglists.html">Mailing lists</a> 
-    </div>
-        <div class="menuitem">
-                <a href="/community/logos.html">Logos for Users</a>
-        </div>
-</div>
-
-<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
-
-<div id="development" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://issues.apache.org/jira/browse/ARIES">Bug Tracking</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/buildingaries.html">Building Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maven-best-practice-in-aries.html">Maven best practice</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/moduledependencies.html">Module Dependencies</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/releasingaries.html">Releasing Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://builds.apache.org/hudson/">Build System</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
-    </div>
-        <div class="menuitem">
-        <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
 
@@ -263,6 +185,63 @@
     </div>
 </div>
 
+<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
+<div id="downloads" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/downloads/currentreleases.html">Current Releases</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/testresults.html">Compliance Tests</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/archived-releases.html">Archived Releases</a> 
+    </div>
+</div>
+
+<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
+<div id="community" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/community/resources.html">Community Resources</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/gettinginvolved.html">Getting Involved</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/people.html">Who we are</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/boardreports.html">Board Reports</a> 
+    </div>
+        <div class="menuitem">
+                <a href="/community/logos.html">Logos for Users</a>
+        </div>
+</div>
+
+<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
+<div id="development" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/development/buildingaries.html">Building Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/guidelines.html">Cording Guidelines</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/architecture.html">Architecture</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/releasingaries.html">Releasing Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
+    </div>
+</div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
 
 <div id="sponsorship" class="menuitemgroup">
@@ -281,31 +260,42 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="ReleaseNotes-ReleaseNotes"></a></p>
-<h1 id="release-notes">Release Notes</h1>
+            <div class="wiki-content"><style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
+<p><a name="ReleaseNotes-ReleaseNotes"></a></p>
+<h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h1>
 <p><a name="ReleaseNotes-NewandNoteworthy"></a></p>
-<h3 id="new-and-noteworthy">New and Noteworthy</h3>
+<h3 id="new-and-noteworthy">New and Noteworthy<a class="headerlink" href="#new-and-noteworthy" title="Permanent link">&para;</a></h3>
 <p>Welcome to the 0.3 release. </p>
 <ul>
 <li>Compliance tests (TBD)</li>
 <li><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310981&amp;version=12315310">JIRA Release Notes </a></li>
 </ul>
 <p><a name="ReleaseNotes-NewComponents"></a></p>
-<h3 id="new-components">New Components</h3>
-<h4 id="proxy">Proxy</h4>
+<h3 id="new-components">New Components<a class="headerlink" href="#new-components" title="Permanent link">&para;</a></h3>
+<h4 id="proxy">Proxy<a class="headerlink" href="#proxy" title="Permanent link">&para;</a></h4>
 <p>The proxy component was added in 0.3. Proxy allows you to generate proxyies based on interfaces or classes, eg object damping. Proxy
 provides a service to both blueprint and JNDI.</p>
-<h3 id="major-updates">Major updates</h3>
-<h4 id="application">Application.</h4>
+<h3 id="major-updates">Major updates<a class="headerlink" href="#major-updates" title="Permanent link">&para;</a></h3>
+<h4 id="application">Application.<a class="headerlink" href="#application" title="Permanent link">&para;</a></h4>
 <p>The application component in 0.3 provides a runtime in which OSGi applications are isolated from
 each other, and the provisioning support that it requires. These changes mean that the 0.3 release of aplication is significantly different 
 from the 0.2 release.
 <p>The resolver also supports external bundle repositories in 0.3.</p></p>
-<h4 id="blueprint">Blueprint</h4>
+<h4 id="blueprint">Blueprint<a class="headerlink" href="#blueprint" title="Permanent link">&para;</a></h4>
 <p>Blueprint namespace support has been added. This makes it possible to look up Blueprint components from Web or 
 Persistence bundles.</p>
 <p><a name="ReleaseNotes-Modulesinthisrelease"></a></p>
-<h3 id="modules-in-this-release">Modules in this release</h3>
+<h3 id="modules-in-this-release">Modules in this release<a class="headerlink" href="#modules-in-this-release" title="Permanent link">&para;</a></h3>
 <ul>
 <li>testsupport</li>
 <li>util</li>
@@ -321,20 +311,20 @@ Persistence bundles.</p>
 <li>samples</li>
 </ul>
 <p><a name="ReleaseNotes-Newsamples"></a></p>
-<h3 id="new-samples">New samples</h3>
+<h3 id="new-samples">New samples<a class="headerlink" href="#new-samples" title="Permanent link">&para;</a></h3>
 <p>No new samples but we changed the Blog Sample and Aries Trader samples so
 that no database initialisation is required prior to running the sample.</p>
 <p><a name="ReleaseNotes-NewTutorials"></a></p>
-<h3 id="new-tutorials">New Tutorials</h3>
+<h3 id="new-tutorials">New Tutorials<a class="headerlink" href="#new-tutorials" title="Permanent link">&para;</a></h3>
 <p>None</p>
 <p><a name="ReleaseNotes-APIbreaking"></a></p>
-<h3 id="api-breaking">API breaking</h3>
+<h3 id="api-breaking">API breaking<a class="headerlink" href="#api-breaking" title="Permanent link">&para;</a></h3>
 <p>None.</p>
 <p><a name="ReleaseNotes-KnownIssues"></a></p>
-<h3 id="known-issues">Known Issues</h3>
+<h3 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h3>
 <p>None.</p>
 <p><a name="ReleaseNotes-Importantchangestoconsiderwhenupgrading"></a></p>
-<h3 id="important-changes-to-consider-when-upgrading">Important changes to consider when upgrading</h3></div>
+<h3 id="important-changes-to-consider-when-upgrading">Important changes to consider when upgrading<a class="headerlink" href="#important-changes-to-consider-when-upgrading" title="Permanent link">&para;</a></h3></div>
             <!-- Content -->
           </td>
         </tr>

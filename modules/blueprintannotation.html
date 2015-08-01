@@ -98,26 +98,20 @@
                 <div id="wrapper-menu-page-bottom">
                   <div id="menu-page">
                     <!-- NavigationBar -->
-          <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
-
-<div id="overview" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/overview/boardreports.html">Board Reports</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/overview/news.html">News</a> 
-    </div>
-</div>
-
+          <style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
 
 <div id="documentation" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/documentation/pointerstoosgispecifications.html">Pointers to OSGi specs</a> 
-    </div>
     <div class="menuitem">
         <a href="/documentation/integrators-guide.html">Integrators Guide</a> 
     </div>
@@ -132,78 +126,6 @@
     </div>
     <div class="menuitem">
         <a href="/documentation/tools.html">Tools</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
-
-<div id="downloads" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/downloads/currentrelease.html">Current Release</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/testresults.html">Compliance Tests</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/archived-releases.html">Archived Releases</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
-
-<div id="community" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/community/overview.html">Community</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/gettinginvolved.html">Getting Involved</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/people.html">Who we are</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/mailinglists.html">Mailing lists</a> 
-    </div>
-        <div class="menuitem">
-                <a href="/community/logos.html">Logos for Users</a>
-        </div>
-</div>
-
-<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
-
-<div id="development" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://issues.apache.org/jira/browse/ARIES">Bug Tracking</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/buildingaries.html">Building Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maven-best-practice-in-aries.html">Maven best practice</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/moduledependencies.html">Module Dependencies</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/releasingaries.html">Releasing Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://builds.apache.org/hudson/">Build System</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
-    </div>
-        <div class="menuitem">
-        <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
 
@@ -263,6 +185,63 @@
     </div>
 </div>
 
+<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
+<div id="downloads" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/downloads/currentreleases.html">Current Releases</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/testresults.html">Compliance Tests</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/archived-releases.html">Archived Releases</a> 
+    </div>
+</div>
+
+<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
+<div id="community" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/community/resources.html">Community Resources</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/gettinginvolved.html">Getting Involved</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/people.html">Who we are</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/boardreports.html">Board Reports</a> 
+    </div>
+        <div class="menuitem">
+                <a href="/community/logos.html">Logos for Users</a>
+        </div>
+</div>
+
+<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
+<div id="development" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/development/buildingaries.html">Building Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/guidelines.html">Cording Guidelines</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/architecture.html">Architecture</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/releasingaries.html">Releasing Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
+    </div>
+</div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
 
 <div id="sponsorship" class="menuitemgroup">
@@ -281,8 +260,19 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="BlueprintAnnotation-Introduction"></a></p>
-<h1 id="introduction">Introduction</h1>
+            <div class="wiki-content"><style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
+<p><a name="BlueprintAnnotation-Introduction"></a></p>
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
 <p>Blueprint annotation is being prototyped in Apache Aries in
 trunk/blueprint.   The blueprint annotation service is an optional service
 to the blueprint core and should not affect the blueprint core if
@@ -297,9 +287,9 @@ blueprint implementation is available in
 trunk/blueprint/blueprint-annotatiom-impl module.  A blueprint annotated
 sample is also provided in trunk/blueprint/blueprint-sample-annotation.</p>
 <p><a name="BlueprintAnnotation-OverviewofAvailableblueprintAnnotations"></a></p>
-<h2 id="overview-of-available-blueprint-annotations">Overview of Available blueprint Annotations</h2>
+<h2 id="overview-of-available-blueprint-annotations">Overview of Available blueprint Annotations<a class="headerlink" href="#overview-of-available-blueprint-annotations" title="Permanent link">&para;</a></h2>
 <p><a name="BlueprintAnnotation-@InjectAnnotation"></a></p>
-<h3 id="inject-annotation">@Inject Annotation</h3>
+<h3 id="inject-annotation">@Inject Annotation<a class="headerlink" href="#inject-annotation" title="Permanent link">&para;</a></h3>
 <p>@Inject annotation can be used to inject fields or methods.</p>
 <div class="codehilite"><pre><span class="p">@</span><span class="n">Bean</span><span class="p">(</span><span class="n">id</span><span class="p">=</span>&quot;<span class="n">bar</span>&quot;<span class="p">)</span>
 <span class="n">public</span> <span class="n">class</span> <span class="n">Bar</span> <span class="p">{</span>
@@ -315,7 +305,7 @@ sample is also provided in trunk/blueprint/blueprint-sample-annotation.</p>
 
 
 <p><a name="BlueprintAnnotation-@BeanAnnotation"></a></p>
-<h3 id="bean-annotation">@Bean Annotation</h3>
+<h3 id="bean-annotation">@Bean Annotation<a class="headerlink" href="#bean-annotation" title="Permanent link">&para;</a></h3>
 <p>You can annotate a bean using @Bean annotation.  The bean id is currently
 required, even tho it is possible we may want to the annotation service to
 auto generate one in the future.  Optionally, you can also specify
@@ -367,7 +357,7 @@ annotation</p>
 
 
 <p><a name="BlueprintAnnotation-@Service,@RegistrationListener,@Register,@UnregisterAnnotations"></a></p>
-<h3 id="service-registrationlistener-register-unregister-annotations">@Service, @RegistrationListener, @Register, @Unregister Annotations</h3>
+<h3 id="service-registrationlistener-register-unregister-annotations">@Service, @RegistrationListener, @Register, @Unregister Annotations<a class="headerlink" href="#service-registrationlistener-register-unregister-annotations" title="Permanent link">&para;</a></h3>
 <p>If you want to register a bean as a service, you can use @Service
 annotation to do so.  You can specify ranking, autoExport, interfaces,
 serviceProperties and registrationListeners for the service.</p>
@@ -409,7 +399,7 @@ can be used on the unregister-method for the registration listener.</p>
 
 
 <p><a name="BlueprintAnnotation-@Reference,@ReferenceList,@ReferenceListenerAnnotations"></a></p>
-<h3 id="reference-referencelist-referencelistener-annotations">@Reference, @ReferenceList, @ReferenceListener Annotations</h3>
+<h3 id="reference-referencelist-referencelistener-annotations">@Reference, @ReferenceList, @ReferenceListener Annotations<a class="headerlink" href="#reference-referencelist-referencelistener-annotations" title="Permanent link">&para;</a></h3>
 <p>For a bean that you want to act as a ReferenceListener, you can use
 @ReferenceListener to annotate the bean class.   </p>
 <p>For the service that you want to inject the reference, you can use the
@@ -463,7 +453,7 @@ is supported in @ReferenceList.  This is same as the blueprint XML schema.</p>
 
 
 <p><a name="BlueprintAnnotation-@Blueprintannotation"></a></p>
-<h3 id="blueprint-annotation">@Blueprint annotation</h3>
+<h3 id="blueprint-annotation">@Blueprint annotation<a class="headerlink" href="#blueprint-annotation" title="Permanent link">&para;</a></h3>
 <p>@Blueprint annotation can be used on any class to annotate the global
 property of the blueprint bundle, such as defaultActivation,
 defaultTimeout, defaultAvailability.</p>
@@ -477,7 +467,7 @@ defaultTimeout, defaultAvailability.</p>
 
 
 <p><a name="BlueprintAnnotation-Typeconverters"></a></p>
-<h3 id="type-converters">Type converters</h3>
+<h3 id="type-converters">Type converters<a class="headerlink" href="#type-converters" title="Permanent link">&para;</a></h3>
 <p>If type converters are desired, you can use the @Bean annotation for it. 
 The blueprint annotation service will recognize it as a type converter if
 it implements the <em>org.osgi.service.blueprint.container.Converter</em>
@@ -493,7 +483,7 @@ interface</p>
 
 
 <p><a name="BlueprintAnnotation-Limitation"></a></p>
-<h3 id="limitation">Limitation</h3>
+<h3 id="limitation">Limitation<a class="headerlink" href="#limitation" title="Permanent link">&para;</a></h3>
 <p>Blueprint Annotation is still prototype work and currently only runtime
 annotation scanning is supported.  While it provides some basic useful
 functions, there are still many things that you cannot do using annotation,

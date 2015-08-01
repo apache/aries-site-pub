@@ -98,26 +98,20 @@
                 <div id="wrapper-menu-page-bottom">
                   <div id="menu-page">
                     <!-- NavigationBar -->
-          <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
-
-<div id="overview" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/overview/boardreports.html">Board Reports</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/overview/news.html">News</a> 
-    </div>
-</div>
-
+          <style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
 
 <div id="documentation" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/documentation/pointerstoosgispecifications.html">Pointers to OSGi specs</a> 
-    </div>
     <div class="menuitem">
         <a href="/documentation/integrators-guide.html">Integrators Guide</a> 
     </div>
@@ -132,78 +126,6 @@
     </div>
     <div class="menuitem">
         <a href="/documentation/tools.html">Tools</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
-
-<div id="downloads" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/downloads/currentrelease.html">Current Release</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/testresults.html">Compliance Tests</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/archived-releases.html">Archived Releases</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
-
-<div id="community" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/community/overview.html">Community</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/gettinginvolved.html">Getting Involved</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/people.html">Who we are</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/mailinglists.html">Mailing lists</a> 
-    </div>
-        <div class="menuitem">
-                <a href="/community/logos.html">Logos for Users</a>
-        </div>
-</div>
-
-<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
-
-<div id="development" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://issues.apache.org/jira/browse/ARIES">Bug Tracking</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/buildingaries.html">Building Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maven-best-practice-in-aries.html">Maven best practice</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/moduledependencies.html">Module Dependencies</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/releasingaries.html">Releasing Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://builds.apache.org/hudson/">Build System</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
-    </div>
-        <div class="menuitem">
-        <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
 
@@ -263,6 +185,63 @@
     </div>
 </div>
 
+<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
+<div id="downloads" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/downloads/currentreleases.html">Current Releases</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/testresults.html">Compliance Tests</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/archived-releases.html">Archived Releases</a> 
+    </div>
+</div>
+
+<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
+<div id="community" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/community/resources.html">Community Resources</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/gettinginvolved.html">Getting Involved</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/people.html">Who we are</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/boardreports.html">Board Reports</a> 
+    </div>
+        <div class="menuitem">
+                <a href="/community/logos.html">Logos for Users</a>
+        </div>
+</div>
+
+<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
+<div id="development" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/development/buildingaries.html">Building Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/guidelines.html">Cording Guidelines</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/architecture.html">Architecture</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/releasingaries.html">Releasing Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
+    </div>
+</div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
 
 <div id="sponsorship" class="menuitemgroup">
@@ -281,7 +260,18 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><h1 id="verifying-release-artifacts">Verifying Release Artifacts</h1>
+            <div class="wiki-content"><style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
+<h1 id="verifying-release-artifacts">Verifying Release Artifacts<a class="headerlink" href="#verifying-release-artifacts" title="Permanent link">&para;</a></h1>
 <p>This page provides some help for anyone who wants to verify release candidate artifacts so they feel they can genuinely vote on the related vote thread on the dev list. It is not intended to be exhaustive instructions. It's a list of things people have generally found to be useful to do when checking the artifacts.</p>
 <p>It is essential that the signatures and hashsums are good. Please do read <a href="http://httpd.apache.org/dev/verification.html">Verifying Apache HTTP Server Releases</a> for information on why you should verify releases.. </p>
 <p>These instructions have been rolled up into a script, which you can run instead. Cut and paste the following:</p>
@@ -293,7 +283,7 @@
 </pre></div>
 
 
-<h2 id="have-i-got-the-keys">Have I got the KEYS?</h2>
+<h2 id="have-i-got-the-keys">Have I got the KEYS?<a class="headerlink" href="#have-i-got-the-keys" title="Permanent link">&para;</a></h2>
 <p>To verify Aries release artifacts you need the public keys for the Aries committers.
 The master KEYS file is in Subversion. The easiest way of getting it from the command line is to non-recursively check-out the files in the top level of the Aries location using:</p>
 <div class="codehilite"><pre><span class="n">svn</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">N</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">asf</span><span class="o">/</span><span class="n">aries</span>
@@ -305,7 +295,7 @@ The master KEYS file is in Subversion. The easiest way of getting it from the co
 </pre></div>
 
 
-<h2 id="download-artifacts">Download artifacts</h2>
+<h2 id="download-artifacts">Download artifacts<a class="headerlink" href="#download-artifacts" title="Permanent link">&para;</a></h2>
 <p>For each 'useful' file there are several others created to help you determine whether it's genuine. The PGP signature .asc file shows who created the 'useful' file. Then there are checksum files (.md5 and .sha1) for both the 'useful' file and the .asc file. To download the content for the repository you're verifying try this:</p>
 <div class="codehilite"><pre><span class="n">wget</span> <span class="o">-</span><span class="n">e</span> <span class="n">robots</span><span class="p">=</span><span class="n">off</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">certificate</span> <span class="o">-</span><span class="n">np</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">nH</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repository</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">repositories</span><span class="o">/</span><span class="n">orgapachearies</span><span class="o">-</span><span class="n">xxx</span><span class="o">/</span><span class="n">org</span><span class="o">/</span><span class="n">apache</span><span class="o">/</span><span class="n">aries</span><span class="o">/</span>
 </pre></div>
@@ -313,7 +303,7 @@ The master KEYS file is in Subversion. The easiest way of getting it from the co
 
 <p>where xxx is the number of the repository you're verifying.</p>
 <p>wget will download the files into a directory called content. The following use of the 'find' command assumes the downloads are in the 'content' directory.</p>
-<h2 id="verify-the-artifacts">Verify the artifacts</h2>
+<h2 id="verify-the-artifacts">Verify the artifacts<a class="headerlink" href="#verify-the-artifacts" title="Permanent link">&para;</a></h2>
 <p>Ensure the checksums are right for the released files. Copy/paste this into the command line:</p>
 <div class="codehilite"><pre><span class="k">for</span> <span class="nb">i</span> <span class="n">in</span> `<span class="nb">find</span> <span class="n">content</span> <span class="o">-</span><span class="n">type</span> <span class="n">f</span> <span class="o">|</span> <span class="n">egrep</span> <span class="o">-</span><span class="n">v</span> <span class="s">&#39;.md5$|.sha1$|index.html|maven-metadata.xml&#39;</span>`
 <span class="n">do</span>
@@ -355,7 +345,7 @@ The master KEYS file is in Subversion. The easiest way of getting it from the co
 
 
 <p>You shouldn't get any errors.</p>
-<h2 id="build-the-code">Build the code</h2>
+<h2 id="build-the-code">Build the code<a class="headerlink" href="#build-the-code" title="Permanent link">&para;</a></h2>
 <p>It's a good idea to check the source release zip builds. Unzip it first:</p>
 <div class="codehilite"><pre><span class="nb">find</span> <span class="p">.</span> <span class="o">-</span><span class="n">name</span> <span class="o">*-</span><span class="n">source</span><span class="o">-</span><span class="n">release</span><span class="p">.</span><span class="n">zip</span> <span class="o">|</span><span class="n">xargs</span> <span class="o">-</span><span class="n">n</span> 1 <span class="n">unzip</span>
 </pre></div>
@@ -366,7 +356,7 @@ The master KEYS file is in Subversion. The easiest way of getting it from the co
 </pre></div>
 
 
-<h2 id="rat-check">RAT check</h2>
+<h2 id="rat-check">RAT check<a class="headerlink" href="#rat-check" title="Permanent link">&para;</a></h2>
 <p>It's also a good idea to run the <a href="http://incubator.apache.org/rat/">Apache RAT (Release Audit Tool)</a>. The Aries POMs are set up so you can do:</p>
 <div class="codehilite"><pre><span class="n">mvn</span> <span class="o">-</span><span class="n">fn</span> <span class="o">-</span><span class="n">Prat</span>
 </pre></div>

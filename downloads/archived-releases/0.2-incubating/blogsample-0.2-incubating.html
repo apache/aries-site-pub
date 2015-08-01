@@ -98,26 +98,20 @@
                 <div id="wrapper-menu-page-bottom">
                   <div id="menu-page">
                     <!-- NavigationBar -->
-          <div onclick="SwitchMenu('overview')" id="overviewTitle" class="menutitle">Overview</div>
-
-<div id="overview" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/overview/boardreports.html">Board Reports</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/overview/news.html">News</a> 
-    </div>
-</div>
-
+          <style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
 <div onclick="SwitchMenu('documentation')" id="documentationTitle" class="menutitle">Documentation</div>
 
 <div id="documentation" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/documentation/ariesprogrammingmodel.html">Programming Model</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/documentation/pointerstoosgispecifications.html">Pointers to OSGi specs</a> 
-    </div>
     <div class="menuitem">
         <a href="/documentation/integrators-guide.html">Integrators Guide</a> 
     </div>
@@ -132,78 +126,6 @@
     </div>
     <div class="menuitem">
         <a href="/documentation/tools.html">Tools</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
-
-<div id="downloads" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/downloads/currentrelease.html">Current Release</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/testresults.html">Compliance Tests</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/downloads/archived-releases.html">Archived Releases</a> 
-    </div>
-</div>
-
-<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
-
-<div id="community" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="/community/overview.html">Community</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/gettinginvolved.html">Getting Involved</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/people.html">Who we are</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/community/mailinglists.html">Mailing lists</a> 
-    </div>
-        <div class="menuitem">
-                <a href="/community/logos.html">Logos for Users</a>
-        </div>
-</div>
-
-<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
-
-<div id="development" class="menuitemgroup">
-    <div class="menuitem">
-        <a href="https://svn.apache.org/repos/asf/aries/">Source Control</a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://issues.apache.org/jira/browse/ARIES">Bug Tracking</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/buildingaries.html">Building Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maven-best-practice-in-aries.html">Maven best practice</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/moduledependencies.html">Module Dependencies</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/releasingaries.html">Releasing Aries </a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/verifyingrelease.html">Verifying Release artifacts</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
-    </div>
-    <div class="menuitem">
-        <a href="https://builds.apache.org/hudson/">Build System</a> 
-    </div>
-    <div class="menuitem">
-        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
-    </div>
-        <div class="menuitem">
-        <a href="/development/versionpolicy.html">OSGi Version Policy </a> 
     </div>
 </div>
 
@@ -263,6 +185,63 @@
     </div>
 </div>
 
+<div onclick="SwitchMenu('downloads')" id="downloadsTitle" class="menutitle">Downloads</div>
+
+<div id="downloads" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/downloads/currentreleases.html">Current Releases</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/testresults.html">Compliance Tests</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/downloads/archived-releases.html">Archived Releases</a> 
+    </div>
+</div>
+
+<div onclick="SwitchMenu('community')" id="communityTitle" class="menutitle">Community</div>
+
+<div id="community" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/community/resources.html">Community Resources</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/gettinginvolved.html">Getting Involved</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/people.html">Who we are</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/community/boardreports.html">Board Reports</a> 
+    </div>
+        <div class="menuitem">
+                <a href="/community/logos.html">Logos for Users</a>
+        </div>
+</div>
+
+<div onclick="SwitchMenu('development')" id="developmentTitle" class="menutitle">Development</div>
+
+<div id="development" class="menuitemgroup">
+    <div class="menuitem">
+        <a href="/development/buildingaries.html">Building Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/guidelines.html">Cording Guidelines</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/architecture.html">Architecture</a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/releasingaries.html">Releasing Aries </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/compliancetesting.html">OSGi Compliance Tests </a> 
+    </div>
+    <div class="menuitem">
+        <a href="/development/maintainingthewebpages.html">Web Site Maintenance </a> 
+    </div>
+</div>
+
 <div onclick="SwitchMenu('sponsorship')" id="sponsorshipTitle" class="menutitle">Sponsorship</div>
 
 <div id="sponsorship" class="menuitemgroup">
@@ -281,10 +260,21 @@
           </td>
           <td height="100%" width="100%">
             <!-- Content -->
-            <div class="wiki-content"><p><a name="BlogSample-TheBlogSample"></a></p>
-<h1 id="the-blog-sample">The Blog Sample</h1>
+            <div class="wiki-content"><style type="text/css">
+/* The following code is added by mdx_elementid.py
+   It was originally lifted from http://subversion.apache.org/style/site.css */
+/*
+ * Hide class="elementid-permalink", except when an enclosing heading
+ * has the :hover property.
+ */
+.headerlink, .elementid-permalink {
+  visibility: hidden;
+}
+h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
+<p><a name="BlogSample-TheBlogSample"></a></p>
+<h1 id="the-blog-sample">The Blog Sample<a class="headerlink" href="#the-blog-sample" title="Permanent link">&para;</a></h1>
 <p><a name="BlogSample-RunningtheBlogSample"></a></p>
-<h2 id="running-the-blog-sample">Running the Blog Sample</h2>
+<h2 id="running-the-blog-sample">Running the Blog Sample<a class="headerlink" href="#running-the-blog-sample" title="Permanent link">&para;</a></h2>
 <p><br></p>
 <hr />
 <p><strong>Note:</strong>
@@ -296,7 +286,7 @@ prefer to use a database on disk check the instructions for the
 blog-datasource) as indicated in the comments and then rebuild the sample.</p>
 <hr />
 <p><a name="BlogSample-CreatetheOSGiplatformfortheBlogsample"></a></p>
-<h3 id="create-the-osgi-platform-for-the-blog-sample">Create the OSGi platform for the Blog sample</h3>
+<h3 id="create-the-osgi-platform-for-the-blog-sample">Create the OSGi platform for the Blog sample<a class="headerlink" href="#create-the-osgi-platform-for-the-blog-sample" title="Permanent link">&para;</a></h3>
 <p>Download and unzip the source zip for the <a href="aries:downloads.html">latest release</a>
  of Aries Samples and build the blog-assembly module:</p>
 <div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span>0<span class="p">.</span>2<span class="o">-</span><span class="n">incubating</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span>
@@ -307,7 +297,7 @@ blog-datasource) as indicated in the comments and then rebuild the sample.</p>
 <p>This procedure will pull in the binaries from the latest release and its
 dependencies.</p>
 <p><a name="BlogSample-RunningtheBlogsample"></a></p>
-<h3 id="running-the-blog-sample_1">Running the Blog sample</h3>
+<h3 id="running-the-blog-sample_1">Running the Blog sample<a class="headerlink" href="#running-the-blog-sample_1" title="Permanent link">&para;</a></h3>
 <p>Download the JDBC based Blog sample application (.eba file) from the <a href="aries:downloads.html">latest release</a>
 . Change directory to the blog-assembly target directory:</p>
 <div class="codehilite"><pre><span class="n">cd</span> <span class="n">samples</span><span class="o">-</span>0<span class="p">.</span>2<span class="o">-</span><span class="n">incubating</span><span class="o">/</span><span class="n">blog</span><span class="o">-</span><span class="n">sample</span><span class="o">/</span><span class="n">blog</span><span class="o">-</span><span class="n">assembly</span><span class="o">/</span><span class="n">target</span>
@@ -328,7 +318,7 @@ copying it into the load directory which was created when Aries started.</p>
 <p>If you subsequently delete the .eba from the load directory the application
 will be uninstalled.</p>
 <p><a name="BlogSample-RunningthesampleusingaJPApersistencelayer"></a></p>
-<h3 id="running-the-sample-using-a-jpa-persistence-layer">Running the sample using a JPA persistence layer</h3>
+<h3 id="running-the-sample-using-a-jpa-persistence-layer">Running the sample using a JPA persistence layer<a class="headerlink" href="#running-the-sample-using-a-jpa-persistence-layer" title="Permanent link">&para;</a></h3>
 <p>The first blog sample application was written to use a JDBC persistence
 layer. There is a second application implemented to demonstrate the JPA
 capability</p>
@@ -341,12 +331,12 @@ load directory.</p>
 running with the JDBC persistence layer, but this time running using the
 JPA persistence layer.</p>
 <p><a name="BlogSample-Usingthelatest,unreleasedcode"></a></p>
-<h2 id="using-the-latest-unreleased-code">Using the latest, unreleased code</h2>
+<h2 id="using-the-latest-unreleased-code">Using the latest, unreleased code<a class="headerlink" href="#using-the-latest-unreleased-code" title="Permanent link">&para;</a></h2>
 <p>If you prefer to use the very latest code from subversion, checkout and
 build the Aries trunk by following the <a href="aries:buildingaries.html">Building Aries instructions</a>
 .</p>
 <p><a name="BlogSample-AbouttheBlogsample"></a></p>
-<h2 id="about-the-blog-sample">About the Blog sample</h2>
+<h2 id="about-the-blog-sample">About the Blog sample<a class="headerlink" href="#about-the-blog-sample" title="Permanent link">&para;</a></h2>
 <p>The blog sample components can be visualised like this:</p>
 <p>!BlogSample.png!</p></div>
             <!-- Content -->
