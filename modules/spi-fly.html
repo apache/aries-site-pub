@@ -312,27 +312,27 @@ well as the proprietary configuration modes. Each such service is registered in 
 the <em>serviceloader.mediator</em> service registration property set.</p>
 <h2 id="getting-spi-fly">Getting SPI Fly<a class="headerlink" href="#getting-spi-fly" title="Permanent link">&para;</a></h2>
 <h3 id="releases"><a id="releases"></a>Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h3>
-<p>The latest release of the SPI-Fly components is 1.0.0. It can be obtained from Maven 
+<p>The latest release of the SPI-Fly components is 1.0.2. It can be obtained from Maven 
 Central using the links below.</p>
 <p>To use SPI Fly you need to decide whether to use the dynamic or static weaving version. 
 More information about this can be found in the <a href="#usage">usage section</a>.</p>
 <p><strong>For use with dynamic weaving:</strong></p>
 <ul>
-<li><a href="http://search.maven.org/remotecontent?filepath=org/apache/aries/spifly/org.apache.aries.spifly.dynamic.bundle/1.0.0/org.apache.aries.spifly.dynamic.bundle-1.0.0.jar">SPI Fly Dynamic Weaving Bundle 1.0.0</a></li>
+<li><a href="http://repo1.maven.org/maven2/org/apache/aries/spifly/org.apache.aries.spifly.dynamic.bundle/1.0.2/org.apache.aries.spifly.dynamic.bundle-1.0.2.jar">SPI Fly Dynamic Weaving Bundle 1.0.2</a></li>
 </ul>
 <p>Dependencies:</p>
 <ul>
-<li><a href="http://search.maven.org/remotecontent?filepath=org/apache/aries/org.apache.aries.util/1.1.0/org.apache.aries.util-1.1.0.jar">Aries Util 1.1.0</a></li>
-<li><a href="http://search.maven.org/remotecontent?filepath=org/ow2/asm/asm-all/4.0/asm-all-4.0.jar">ASM 4.0.0</a></li>
+<li><a href="http://repo1.maven.org/maven2/org/apache/aries/org.apache.aries.util/1.1.1/org.apache.aries.util-1.1.1.jar">Aries Util 1.1.1</a></li>
+<li><a href="http://repo1.maven.org/maven2/org/ow2/asm/asm-all/5.0.4/asm-all-5.0.4.jar">ASM 5.0.4</a></li>
 </ul>
 <p><strong>For use with static weaving:</strong></p>
 <ul>
-<li><a href="http://search.maven.org/remotecontent?filepath=org/apache/aries/spifly/org.apache.aries.spifly.static.tool/1.0.0/org.apache.aries.spifly.static.tool-1.0.0-jar-with-dependencies.jar">SPI Fly Static Weaving command-line tool 1.0.0</a></li>
-<li><a href="http://search.maven.org/remotecontent?filepath=org/apache/aries/spifly/org.apache.aries.spifly.static.bundle/1.0.0/org.apache.aries.spifly.static.bundle-1.0.0.jar">SPI Fly Static Weaving Bundle 1.0.0</a></li>
+<li><a href="http://repo1.maven.org/maven2/org/apache/aries/spifly/org.apache.aries.spifly.static.tool/1.0.2/org.apache.aries.spifly.static.tool-1.0.2-jar-with-dependencies.jar">SPI Fly Static Weaving command-line tool 1.0.2</a></li>
+<li><a href="http://repo1.maven.org/maven2/org/apache/aries/spifly/org.apache.aries.spifly.static.bundle/1.0.2/org.apache.aries.spifly.static.bundle-1.0.2.jar">SPI Fly Static Weaving Bundle 1.0.2</a></li>
 </ul>
 <p>Dependencies:</p>
 <ul>
-<li><a href="http://search.maven.org/remotecontent?filepath=org/apache/aries/org.apache.aries.util/1.1.0/org.apache.aries.util-1.1.0.jar">Aries Util 1.1.0</a></li>
+<li><a href="http://repo1.maven.org/maven2/org/apache/aries/org.apache.aries.util/1.1.1/org.apache.aries.util-1.1.1.jar">Aries Util 1.1.1</a></li>
 </ul>
 <h3 id="building-the-code">Building the code<a class="headerlink" href="#building-the-code" title="Permanent link">&para;</a></h3>
 <p>The code can be found in
@@ -436,16 +436,16 @@ in SPI Fly (yet), but the AudioSystem.getAudioInputStream() API can be made to w
 can use the static weaving approach.</p>
 <h2 id="use-with-dynamic-weaving">Use with Dynamic Weaving<a class="headerlink" href="#use-with-dynamic-weaving" title="Permanent link">&para;</a></h2>
 <p>Install and start the <a href="#releases"><tt>org.apache.aries.spifly.dynamic.bundle</tt></a> into the system. This bundle 
-has a dependency on <tt><a href="http://search.maven.org/#artifactdetails|org.ow2.asm|asm-all|4.0|jar">org.objectweb.asm</a></tt> version 4.0 or newer and on the Aries 
+has a dependency on <tt><a href="http://search.maven.org/#artifactdetails%7Corg.ow2.asm%7Casm-all%7C5.0.4%7Cjar">org.objectweb.asm</a></tt> version 4.0 or newer and on the Aries 
 Util bundle.</p>
 <pre>g! lb
 START LEVEL 1
    ID|State      |Level|Name
-    0|Active     |    0|System Bundle (4.0.3)
+    0|Active     |    0|System Bundle (5.0.1)
 ... bundles 1-4 are framework/console internal ones ...
-    5|Active     |    1|ASM all classes (4.0.0)
-    6|Active     |    1|Apache Aries Util (1.1.0)
-    7|Active     |    1|Apache Aries SPI Fly Dynamic Weaving Bundle (1.0.0)
+    5|Active     |    1|ASM all classes (5.0.4)
+    6|Active     |    1|Apache Aries Util (1.1.1)
+    7|Active     |    1|Apache Aries SPI Fly Dynamic Weaving Bundle (1.0.2)
 </pre>
 
 <p>Note that, as with any OSGi Bundle that uses the OSGi 4.3 WeavingHooks, the weaver
@@ -462,7 +462,7 @@ Provider bundles are still handled dynamically.</p>
 jar with dependencies.</p>
 <p>Then run the static tool on any bundle that needs processing:
 <pre>
-java -jar org.apache.aries.spifly.static.tool-1.0.0-jar-with-dependencies.jar mybundle.jar
+java -jar org.apache.aries.spifly.static.tool-1.0.2-jar-with-dependencies.jar mybundle.jar
 </pre></p>
 <p>This will produce a second bundle with the same name with the _spifly suffix appended, so 
 in this case the generated bundle will be called mybundle_spifly.jar.</p>
@@ -471,10 +471,10 @@ the dynamic weaving bundle it has a dependency on the Aries Util bundle:
 <pre>g! lb
 START LEVEL 1
    ID|State      |Level|Name
-    0|Active     |    0|System Bundle (4.0.3)
+    0|Active     |    0|System Bundle (5.0.1)
 ... bundles 1-4 are framework/console internal ones ...
-    5|Active     |    1|Apache Aries Util (1.1.0)
-    6|Active     |    1|Apache Aries SPI Fly Static Weaving Bundle (1.0.0)</pre></p>
+    5|Active     |    1|Apache Aries Util (1.1.1)
+    6|Active     |    1|Apache Aries SPI Fly Static Weaving Bundle (1.0.2)</pre></p>
 <p>Then install and start the statically woven bundle into the system.</p>
 <h2 id="examples"><a id="examples"></a>Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <p>The <tt>spi-fly-examples</tt> directory contains a number of example bundles that can be 
