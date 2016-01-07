@@ -413,9 +413,8 @@ Instead simply enable standard @PesistenceContext and @PersistenceUnit annotatio
 all DAO methods. The scope of the transaction can be defined using the attribute value.</p>
 <p>Example blueprint follows showing the full breadth of allowable injection syntax:</p>
 <div class="codehilite"><pre><span class="nt">&lt;blueprint</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.osgi.org/xmlns/blueprint/v1.0.0&quot;</span> 
-  <span class="na">xmlns:jpa=</span><span class="s">&quot;http://aries.apache.org/xmlns/jpan/v1.0.0&quot;</span>
   <span class="na">xmlns:tx=</span><span class="s">&quot;http://aries.apache.org/xmlns/transactions/v1.2.0&quot;</span>
-  <span class="na">xmlns:jpa=</span><span class="s">&quot;http://aries.apache.org/xmlns/jpa/v1.1.0&quot;</span><span class="nt">&gt;</span>
+  <span class="na">xmlns:jpa=</span><span class="s">&quot;http://aries.apache.org/xmlns/jpa/v2.0.0&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;jpa:enable</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;service</span> <span class="na">ref=</span><span class="s">&quot;taskService&quot;</span> <span class="na">interface=</span><span class="s">&quot;org.apache.aries.jpa.example.tasklist.model.TaskService&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">&quot;org.apache.aries.jpa.example.tasklist.blueprint.impl.TaskServiceImpl&quot;</span><span class="nt">/&gt;</span>
