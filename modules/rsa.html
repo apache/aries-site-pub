@@ -23,7 +23,7 @@
   <meta name="keywords" content="..."/>
   <meta name="description" content="..." />
     <title>
-    Apache Aries - 
+    Apache Aries - Remote Service Admin
     </title>
   </head>
 <body onload="SetMenu()">
@@ -274,93 +274,71 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
-<h1 id="release-process-requirements">Release process requirements<a class="headerlink" href="#release-process-requirements" title="Permanent link">&para;</a></h1>
-<p>Up to release 0.3 of Aries we released all of the modules at once, along with a set of samples which demonstrated how the Aries components could be used together.</p>
+<h1 id="rsa-remote-service-admin">RSA (Remote Service Admin)<a class="headerlink" href="#rsa-remote-service-admin" title="Permanent link">&para;</a></h1>
+<p>The Aries Remote Service Admin (RSA) project allows to transparently use OSGi services for remote communication. 
+OSGi services can be marked for export by adding a service property <code>service.exported.interfaces=*</code>. Various other properties 
+can be used to customize how the service is to be exposed.</p>
+<p>For more information, check out section "122 JPA Service Specification
+Version 1.0" in the "OSGi Service Platform Enterprise Specification,
+Release 4, Version 4.2" available for public download from the <a href="http://www.osgi.org/Download/Release4V43">OSGi Alliance</a>.</p>
+<h2 id="source">Source<a class="headerlink" href="#source" title="Permanent link">&para;</a></h2>
+<p>The Aries RSA source is in a separate <a href="https://git-wip-us.apache.org/repos/asf/aries-rsa.git">git repository aries-rsa</a> there is also a <a href="https://github.com/apache/aries-rsa">mirror on github</a>.</p>
+<h2 id="build">Build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span class="n">mvn</span> <span class="n">clean</span> <span class="n">install</span>
+</pre></div>
 
-<p>After release 0.3 we wanted to rexamine the release process, the primary motivation for this was the observation that our 
-current process did not use semantic versioning, and, as an OSGi project we should be demonstrating best OSGi practice.</p>
 
-<p>We started with the following set of requirements for any Aries release: </p>
-
-<table class="confluenceTable">
-<tr><th class="confluenceTh"> No. </th><th class="confluenceTh"> Description </th><th class="confluenceTh"> Met currently </th></tr>
-<tr><td class="confluenceTd">  1 </td><td class="confluenceTd"> Follows OSGi semantic versioning</td><td class="confluenceTd"> No </td></tr>
-<tr><td class="confluenceTd">  2 </td><td class="confluenceTd"> Must have a buildable source distribution </td><td class="confluenceTd"> Yes </td></tr>
-<tr><td class="confluenceTd">  3 </td><td class="confluenceTd"> Must have release notes</td><td class="confluenceTd"> Yes </td></tr>
-<tr><td class="confluenceTd">  4 </td><td class="confluenceTd"> Must be publicly announced </td><td class="confluenceTd"> Yes </td></tr>
-<tr><td class="confluenceTd">  5 </td><td class="confluenceTd"> An easy way for users to download the bundles for a given component</td><td class="confluenceTd"> Yes </td></tr>
-<tr><td class="confluenceTd">  6 </td><td class="confluenceTd"> Easy tagging/branching mechanism</td><td class="confluenceTd"> Yes </td></tr>
-<tr><td class="confluenceTd">  7 </td><td class="confluenceTd"> A way to provide bug fixes</td><td class="confluenceTd"> Yes  </td></tr>
-<tr><td class="confluenceTd">  8 </td><td class="confluenceTd"> A way to ensure that a given component doesn't have conflicting dependencies </td><td class="confluenceTd"> ?  </td></tr>
-</table>
-
-<h2 id="release-all-aries-components-at-once">Release all Aries components at once.<a class="headerlink" href="#release-all-aries-components-at-once" title="Permanent link">&para;</a></h2>
-<h3 id="advantages-of-releasing-everything-at-once-and-at-the-same-level">Advantages of releasing everything at once and at the same level<a class="headerlink" href="#advantages-of-releasing-everything-at-once-and-at-the-same-level" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Conceptually very simple of consumers. For example, if as a consumer I pick up something called Blueprint version 0.4 I know that I
-will need to get Util version 0.4 to go with it.</li>
-<li>A relatively simple release process, one JIRA component, one set of release notes.</li>
-<li>We can release a set of samples at the same version with some guarentee that the samples all work with the release.</li>
-</ol>
-<h3 id="disadvantages-of-releasing-everything-at-once">Disadvantages of releasing everything at once<a class="headerlink" href="#disadvantages-of-releasing-everything-at-once" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Not using of OSGi semantic versioning of bundles. After every we release we bump the major versions of all bundles in trunk.</li>
-</ol>
-<p>Package versions are managed separately (correctly) and the Maven bundle plugin will ensure packages are imported in the correct range based of
- the projects dependencies. Implementers need to use "provide:=true" to get the correct range. Package export version should be maintained 
-either using package.info or in the pom.xml.</p>
-<h2 id="releasing-by-module">Releasing by module<a class="headerlink" href="#releasing-by-module" title="Permanent link">&para;</a></h2>
-<p><p>Our ideal for a release process would involve to release by module, this is 
-really just an evolution of the process that we already use but it would involve 
-using semantic versioning of bundles. One might visualise the process like this: </p></p>
-<p><img alt="rel" src="release_by_module.png" /></p>
-<p>In this case, we have a module version (independent of the version of its sub-modules) and a set of sub-modules which may each be independently versioned.</p>
-
-<h3 id="advantages-of-release-by-module">Advantages of release by module<a class="headerlink" href="#advantages-of-release-by-module" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Releasing a coherent set of bundles that have been built and run together</li>
-<li>Releasing a buildable set of source for all constituent bundles in one zip file</li>
-<li>A more consumable unit than a set of single bundles - easier for Aries consumers. A smaller number of discrete downloads.</li>
-</ol>
-<h3 id="disadvantages-of-the-release-by-module-process">Disadvantages of the release by module process<a class="headerlink" href="#disadvantages-of-the-release-by-module-process" title="Permanent link">&para;</a></h3>
-<ol>
-<li>We would have to release a whole module at once, this would mean re-releasing bundles at the same level 
- (and with the same content) as a previous release. This is not a major issue but we would probably not want them in the 
-www.apache.org/dist/aries directory.</li>
-<li>Developer would need to be careful to version submodules poms independently from the parent/reactor pom. Again, 
- not a major issue but a change from the way we work at the moment.</li>
-<li>The Maven release plugin will not cope with having different levels of snapshot in the same release. 
-Therefore we would either require changes in the Maven release plugin or we would have to stop using it 
-and maintain our own alternative, to allow us to release by module.</li>
-<li>It's not all clear what the strategy for branching would be. For example, consider the following scenario: 
-<img alt="rel" src="dual_component_module.png" />
-<p>In this case a release of the blueprint module at version 1.5 contains bundles blueprint-core at version 1.0.1 and blueprint-cm
-at version 1.0.2.</p>
-<p>Over a period of time, development in trunk continues and a change is made to blueprint-core which mandates an increase in
-the major version. Another release of blueprint (version 1.6) is made containing blueprint-cm at version 1.0i.3 and blueprint-core at version 1.1.0.</p>
-<p>Meanwhile a customer finds a problem in blueprint module version 1.5 in the blueprint-cm module. They would like a release of the blueprint module
-at version 1.5.1 with blueprint-cm at 1.0.3. Unfortunately this is impossible because we have already released blueprint-cm at 1.0.3
-and it works with blueprint-core 1.1.0. So, we have no way to meet the requirement </p></li>
-</ol>
-<h2 id="releasing-by-bundle">Releasing by bundle<a class="headerlink" href="#releasing-by-bundle" title="Permanent link">&para;</a></h2>
-<p>Other OSGi projects, for example Sling and Felix, release by bundle.</p>
-<h3 id="advantages-of-releasing-by-bundle">Advantages of releasing by bundle<a class="headerlink" href="#advantages-of-releasing-by-bundle" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Other projects already do it so there is a well understood model</li>
-<li>All the existing tools work</li>
-<li>OSGi semantic versioning can be used properly</li>
-</ol>
-<h3 id="disadvantages-of-releasing-by-bundle">Disadvantages of releasing by bundle<a class="headerlink" href="#disadvantages-of-releasing-by-bundle" title="Permanent link">&para;</a></h3>
-<ol>
-<li>It is more difficult for a consumer of Aries modules to understand which bundles form a logical grouping</li>
-<li>There are a lot of bundles to manage independently. This has implications:<br/><ul>
-<li>Releasing - mvn release:prepare, and so on,  needs to be run for each bundle separately. However, many bundles could be rolled up into one vote.</li>
-<li>Each bundle has to have its own JIRA component</li>
-<li>Our svn tree would need to be restructured - probably in a similar way to the Sling tree. Each bundle would have its own trunk &amp; branches.</li>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
+<p><img alt="Remote Service Admin Architecture overview" src="https://cwiki.apache.org/confluence/download/attachments/30739778/remote-service-admin-spec.png?version=2&amp;modificationDate=1362365400000&amp;api=v2" /></p>
+<h3 id="some-definitions">Some definitions<a class="headerlink" href="#some-definitions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>EndpointDescription Describes a remote service using service interfaces, remote url and all other properties to import the remote service.</li>
+<li>EndpointListener a service that is to be notified when remote Endpoints described by OSGi filters appear or disappear.</li>
 </ul>
-</li>
-<li>There are still some issues with branching and it is still possible to get into a situation similar to that described above. </li>
-</ol></div>
+<h3 id="topology-manager"><a href="https://github.com/apache/aries-rsa/tree/master/topology-manager">Topology Manager</a><a class="headerlink" href="#topology-manager" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Listens to local services and decides which to expose. It can also add properties to change the way services are exposed. 
+  For the services to be exported it calls RemoteServiceAdmin.exportService to do the actual export. Then notifies EndpointListeners
+  about the new Endpoint.</li>
+<li>Listens for service requests from consumers and creates EndpointListeners for these interests.</li>
+</ul>
+<p>The TopologyManager by default exposes all suitably marked local services for export and imports all service interests with matching 
+remote Endpoints.</p>
+<p>It is the best place to implement system wide governance rules. Some examples what can be done:</p>
+<ul>
+<li>Enhancing all exposed remote endpoints with SSL, basic auth, logging</li>
+<li>Exporting OSGi services with annotations for JAX-WS or JAX-RS even when not specially marked for export</li>
+</ul>
+<p>According to its role the TopologyManager of course does not directly implement the enhancements above. It simply creates the necessary
+calls to a suitable RemoteServiceAdmin.</p>
+<h3 id="remote-service-admin"><a href="https://github.com/apache/aries-rsa/tree/master/rsa">Remote Service Admin</a><a class="headerlink" href="#remote-service-admin" title="Permanent link">&para;</a></h3>
+<p>Is called by the Topology Manager to expose local services as remote endpoints and create local proxy services as clients for 
+remote endpoints.</p>
+<p>Aries RSA has a custom SPI <a href="https://github.com/apache/aries-rsa/blob/master/spi/src/main/java/org/apache/aries/rsa/spi/DistributionProvider.java">DistributionProvider</a> that allows to easily create new transports and serializations.
+Existing providers are:</p>
+<ul>
+<li><a href="http://cxf.apache.org/distributed-osgi.html">CXF</a> (JAXRS, JAXWS)</li>
+<li><a href="https://github.com/apache/aries-rsa/tree/master/provider/tcp">TCP</a> (Light weight Java Serialization over TCP)</li>
+</ul>
+<h3 id="discovery">Discovery<a class="headerlink" href="#discovery" title="Permanent link">&para;</a></h3>
+<p>A discovery implementation uses EndpointListeners to listen for local Endpoints and publishs them for other containers.
+It also listens to remote Endpoints and notifies EndpointListeners about their presence.</p>
+<p>Existing implementations:</p>
+<ul>
+<li><a href="https://github.com/apache/aries-rsa/tree/master/discovery/local">Local discovery</a> using xml descriptors</li>
+<li><a href="https://github.com/apache/aries-rsa/tree/master/discovery/zookeeper-server">Zookeeper based discovery</a></li>
+</ul>
+<h2 id="a-simple-example-using-apache-karaf">A simple example using Apache Karaf<a class="headerlink" href="#a-simple-example-using-apache-karaf" title="Permanent link">&para;</a></h2>
+<p>See <a href="https://github.com/apache/aries-rsa/tree/master/examples/echotcp">EchoTCP example</a>. Follow the Readme to install the example in Apache Karaf.</p>
+<p>The EchoTCP example implements a simple echo service that can be called remotely. 
+The example uses declarative services to publish and bind services.</p>
+<h3 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h3>
+<ul>
+<li>api : EchoService interface</li>
+<li>service : EchoService implementation</li>
+<li>consumer : Small consumer that uses the EchoService</li>
+</ul>
+<p>The example installation uses the tcp transport to do the remoting but the example code is not tied to any transport.</p></div>
             <!-- Content -->
           </td>
         </tr>
