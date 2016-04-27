@@ -23,7 +23,7 @@
   <meta name="keywords" content="..."/>
   <meta name="description" content="..." />
     <title>
-    Apache Aries - March 2010
+    Apache Aries - 
     </title>
   </head>
 <body onload="SetMenu()">
@@ -277,33 +277,114 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
-<p>Aries will deliver a set of pluggable Java components enabling an
-enterprise OSGi application programming model.</p>
-<p>Aries entered incubation on September 22, 2009.</p>
-<p>There are currently no issues requiring IPMC or Board attention .</p>
-<p>The following sub-components are actively being developed:</p>
+<h1 id="getting-started-with-the-transaction-control-service">Getting started with the Transaction Control Service<a class="headerlink" href="#getting-started-with-the-transaction-control-service" title="Permanent link">&para;</a></h1>
+<p>To make use of scoped resources and transactions using the transaction control service you need two things:</p>
 <ul>
-<li>Application</li>
-<li>Blueprint</li>
-<li>JMX</li>
-<li>JPA</li>
+<li>
+<p>A <code>org.osgi.service.transaction.control.TransactionControl</code> implementation 
+(found in the service registry)</p>
+</li>
+<li>
+<p>A <code>org.osgi.service.transaction.control.ResourceProvider</code> for each of the 
+resources that you want to use.</p>
+</li>
 </ul>
-<p>Several new sample applications have been developed to demonstrate the
-Aries functionality.</p>
-<p>A new component has been created to feed experience into the OSGi standards
-process.</p>
-<p>There has been a lot of activity on the mailing list this year indicating a
-vibrant community is being built.</p>
-<p>One new committer, Rex Wang, has been added. Redhat have started to
-participate in the project.</p>
-<p>We have begun the process of doing a 0.1.0 release and aim to release
-shortly.</p>
-<p>Top 2 or 3 things to resolve before graduation:</p>
+<h2 id="scoping-work-using-transactioncontrol">Scoping Work using TransactionControl<a class="headerlink" href="#scoping-work-using-transactioncontrol" title="Permanent link">&para;</a></h2>
+<p>The Transaction Control Service defines three different scopes:</p>
 <ul>
-<li>Build community</li>
-<li>Create a release</li>
-<li>Address project scope concerns raised during acceptance vote</li>
-</ul></div>
+<li>
+<p>Unscoped - There is no scope associated with the current thread</p>
+</li>
+<li>
+<p><em>No Transaction Scope</em> - There is a scope associated with the current thread, but no ongoing transaction</p>
+</li>
+<li>
+<p><em>Transactional Scope</em> - There is an ongoing transaction associated with the current thread</p>
+</li>
+</ul>
+<p>Scoped resources have different behaviours in each of these three scopes:</p>
+<ul>
+<li>
+<p>Unscoped - The resource is generally not usable and will throw exceptions</p>
+</li>
+<li>
+<p><em>No Transaction</em> Scope - The same physical resource will be used throughout the scope, 
+and will be automatically tidied up at the end of the scope (e.g. closed or returned to a pool)</p>
+</li>
+<li>
+<p><em>Transactional Scope</em> - The same physical resource will be used throughout the scope, will be 
+automatically committed or rolled back up at the end of the transaction, and then tidied up afterwards</p>
+</li>
+</ul>
+<h3 id="starting-and-finishing-scopes">Starting and Finishing scopes<a class="headerlink" href="#starting-and-finishing-scopes" title="Permanent link">&para;</a></h3>
+<p>A scope is defined using a piece of work wrapped in a <code>Callable</code>. This means that it is lambda-friendly.</p>
+<div class="codehilite"><pre><span class="n">Integer</span> <span class="n">result</span> <span class="p">=</span> <span class="n">txControl</span><span class="p">.</span><span class="n">required</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+        <span class="o">//</span><span class="n">Work</span> <span class="n">goes</span> <span class="n">in</span> <span class="n">here</span>
+        <span class="k">return</span> 42<span class="p">;</span>
+    <span class="p">});</span>
+</pre></div>
+
+
+<p>The scope starts immediately before the work is executed, and finishes immediately afterwards. The 
+<code>required</code> and <code>requiresNew</code> methods can be used to ensure that a 
+<em>Transactional</em> scope has been started. The <code>supports</code> and <code>notSupported</code>
+methods can be used to ensure that a <em>No Transaction</em> scope has been started.</p>
+<p>For more advanced scope control techniques look <a href="advancedScopes.html">here</a></p>
+<h2 id="accessing-resources">Accessing Resources<a class="headerlink" href="#accessing-resources" title="Permanent link">&para;</a></h2>
+<p>A <code>ResourceProvider</code> is a generic factory for scoped resources. Typically you will use a more 
+specific interface for type safety. For example the Transaction Control specification defines 
+<code>JDBCConnectionProvider</code> and <code>JPAEntityManagerProvider</code> interfaces. If
+needed you can <a href="advancedResourceProviders.html">make your own ResourceProvider</a>.</p>
+<p>To create your scoped resource you make one call to <code>getResource</code> passing in the 
+<code>TransactionControl</code> service that the resource should integrate with. The returned object
+is thread-safe, and can be cached for use in any scope.</p>
+<h3 id="declarative-services-example">Declarative Services Example<a class="headerlink" href="#declarative-services-example" title="Permanent link">&para;</a></h3>
+<p>The following component provides read and write access using JDBC to a list of messages created by a user. 
+The transactionality and lifecycle of the database resources is automatically managed.</p>
+<div class="codehilite"><pre><span class="p">@</span><span class="n">Component</span>
+<span class="n">public</span> <span class="n">class</span> <span class="n">MyDaoImpl</span> <span class="n">implements</span> <span class="n">MyDao</span> <span class="p">{</span>
+
+    <span class="p">@</span><span class="n">Reference</span>
+    <span class="n">TransactionControl</span> <span class="n">control</span><span class="p">;</span>
+
+    <span class="n">Connection</span> <span class="n">dbConn</span><span class="p">;</span>
+
+    <span class="p">@</span><span class="n">Reference</span>
+    <span class="n">void</span> <span class="n">setResource</span><span class="p">(</span><span class="n">JDBCConnectionProvder</span> <span class="n">provider</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dbConn</span> <span class="p">=</span> <span class="n">provider</span><span class="p">.</span><span class="n">getResource</span><span class="p">(</span><span class="n">control</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="p">@</span><span class="n">Override</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">saveMessage</span><span class="p">(</span><span class="n">String</span> <span class="n">user</span><span class="p">,</span> <span class="n">String</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">txControl</span><span class="p">.</span><span class="n">required</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+                <span class="n">PreparedStatement</span> <span class="n">ps</span> <span class="p">=</span> <span class="n">connection</span><span class="p">.</span><span class="n">prepareStatement</span><span class="p">(</span>
+                        &quot;<span class="n">Insert</span> <span class="n">into</span> <span class="n">MESSAGES</span> <span class="n">values</span> <span class="p">(</span> ?<span class="p">,</span> ? <span class="p">)</span>&quot;<span class="p">);</span>
+                <span class="n">ps</span><span class="p">.</span><span class="n">setString</span><span class="p">(</span>1<span class="p">,</span> <span class="n">user</span><span class="p">);</span>
+                <span class="n">ps</span><span class="p">.</span><span class="n">setString</span><span class="p">(</span>2<span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+                <span class="k">return</span> <span class="n">ps</span><span class="p">.</span><span class="n">executeUpdate</span><span class="p">();</span>
+            <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="p">@</span><span class="n">Override</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">getMessagesForUser</span><span class="p">(</span><span class="n">String</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">txControl</span><span class="p">.</span><span class="n">supports</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+                <span class="n">PreparedStatement</span> <span class="n">ps</span> <span class="p">=</span> <span class="n">connection</span><span class="p">.</span><span class="n">prepareStatement</span><span class="p">(</span>
+                        &quot;<span class="n">Select</span> <span class="n">MESSAGE</span> <span class="n">FROM</span> <span class="n">MESSAGES</span> <span class="n">WHERE</span> <span class="n">USER</span> <span class="p">=</span> ?&quot;<span class="p">);</span>
+                <span class="n">ps</span><span class="p">.</span><span class="n">setString</span><span class="p">(</span>1<span class="p">,</span> <span class="n">user</span><span class="p">);</span>
+
+                <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">result</span> <span class="p">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+                <span class="n">ResultSet</span> <span class="n">rs</span> <span class="p">=</span> <span class="n">ps</span><span class="p">.</span><span class="n">executeQuery</span><span class="p">();</span>
+
+                <span class="k">while</span><span class="p">(</span><span class="n">rs</span><span class="p">.</span><span class="n">next</span><span class="p">())</span> <span class="p">{</span>
+                    <span class="n">result</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">rs</span><span class="p">.</span><span class="n">getString</span><span class="p">(</span>1<span class="p">));</span>
+                <span class="p">}</span>
+
+                <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+            <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div></div>
             <!-- Content -->
           </td>
         </tr>
