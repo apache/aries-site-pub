@@ -23,7 +23,7 @@
   <meta name="keywords" content="..."/>
   <meta name="description" content="..." />
     <title>
-    Apache Aries - 
+    Apache Aries - The Aries Transaction Control Service
     </title>
   </head>
 <body onload="SetMenu()">
@@ -280,23 +280,33 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <h1 id="the-transaction-control-service">The Transaction Control service<a class="headerlink" href="#the-transaction-control-service" title="Permanent link">&para;</a></h1>
 <p>If you're new to the Transaction Control service then we suggest that you read the <a href="quickstart.html">Quick Start Page</a>
 first.</p>
+<h2 id="why-use-the-transaction-control-service">Why use the Transaction Control service?<a class="headerlink" href="#why-use-the-transaction-control-service" title="Permanent link">&para;</a></h2>
+<p>Simply put the Transaction Control service makes resource access easy! There's no need to worry about
+transaction lifecycle or closing connections, and there's built in support for useful features like 
+connection pooling.</p>
 <h3 id="the-aries-transaction-control-implementations">The Aries Transaction Control implementations<a class="headerlink" href="#the-aries-transaction-control-implementations" title="Permanent link">&para;</a></h3>
+<p>These modules provide implementations of the TransactionControl service</p>
 <ul>
-<li>TODO Local Transactions</li>
-<li>TODO XA Transactions and Last Participant support</li>
+<li><a href="localTransactions.html">The Local Transaction Control Service</a></li>
+<li><a href="xaTransactions">The XA Transaction Control Service and Last Participant support</a></li>
 </ul>
 <h3 id="configuring-jdbc-access">Configuring JDBC access<a class="headerlink" href="#configuring-jdbc-access" title="Permanent link">&para;</a></h3>
+<p>These modules provide portable JDBC resource providers with built in connection pooling and 
+transactional resource access</p>
 <ul>
-<li>TODO With Local Transactions</li>
-<li>TODO With XA Transactions</li>
+<li><a href="localJDBC.html">JDBC with Local Transactions</a></li>
+<li><a href="xaJDBC.html">JDBC with XA Transactions</a></li>
 </ul>
 <h3 id="configuring-jpa-access">Configuring JPA access<a class="headerlink" href="#configuring-jpa-access" title="Permanent link">&para;</a></h3>
+<p>These modules provide portable JPA resource providers for transactional resource access</p>
 <ul>
-<li>TODO With Local Transactions</li>
-<li>TODO With XA Transactions</li>
+<li><a href="localJPA.html">JPA with Local Transactions</a></li>
+<li><a href="xaJPA.html">JPA with XA Transactions</a></li>
 </ul>
 <h3 id="advanced-topics">Advanced topics<a class="headerlink" href="#advanced-topics" title="Permanent link">&para;</a></h3>
 <ul>
+<li><a href="coordinator.html">Using the Coordinator to optimise Transactions</a></li>
+<li><a href="lastResourceGambit.html">Making use of the Last Resource Gambit</a></li>
 <li><a href="advancedResourceProviders.html">Custom Resource Providers</a></li>
 <li><a href="advancedScopes.html">Advanced Scope control</a></li>
 </ul></div>

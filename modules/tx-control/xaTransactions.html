@@ -23,7 +23,7 @@
   <meta name="keywords" content="..."/>
   <meta name="description" content="..." />
     <title>
-    Apache Aries - Aries Transaction Control Service
+    Apache Aries - Aries XA Transaction Control implementation
     </title>
   </head>
 <body onload="SetMenu()">
@@ -277,81 +277,53 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
-<h2 id="osgi-transaction-control-service">OSGi Transaction Control Service<a class="headerlink" href="#osgi-transaction-control-service" title="Permanent link">&para;</a></h2>
-<p>This set of modules is an implementation of the proposed OSGi Transaction Control Service and related 
-services, such as JDBC and JPA resource providers.</p>
-<p>The Transaction Control Service (RFC-221) is an in-progress RFC publicly available from the OSGi 
-Alliance: <a href="https://github.com/osgi/design/blob/master/rfcs/rfc0221/rfc-0221-TransactionControl.pdf">https://github.com/osgi/design/blob/master/rfcs/rfc0221/rfc-0221-TransactionControl.pdf</a></p>
-<p>Given that the RFC is non-final the OSGi API declared in this project is subject to change at any time up 
-to its official release. Also the behaviour of this implementation may not always be up-to-date with the 
-latest wording in the RFC. The project maintainers will, however try to keep pace with the RFC, and to 
-ensure that the implementations are compliant with any OSGi specifications that result from the RFC.</p>
-<h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
-<p>If you're new to the Transaction Control service then we recommend that you read the <a href="tx-control/quickstart.html">quickstart documentation first</a>.</p>
-<p>More detailed documentation is available in the <a href="tx-control/index.html">Aries Transaction Control Project</a></p>
-<h2 id="why-use-the-transaction-control-service">Why use the Transaction Control service?<a class="headerlink" href="#why-use-the-transaction-control-service" title="Permanent link">&para;</a></h2>
-<p>Simply put the Transaction Control service makes resource access easy! There's no need to worry about
-transaction lifecycle or closing connections, and there's built in support for useful features like 
-connection pooling.</p>
-<h2 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h2>
-<p>The following modules are available for use in OSGi</p>
-<ol>
-<li>
-<p><a href="tx-control/localTransactions.html">tx-control-service-local</a> :- A purely local transaction control service implementation. This can be 
-used with any resource-local capable ResourceProvider</p>
-</li>
-<li>
-<p><a href="tx-control/xaTransactions.html">tx-control-service-xa</a> :- An XA-capable transaction control service implementation based on the 
-Geronimo Transaction Manager. This can be used with XA capable resources, or with local resources. 
-Local resources will make use of the last-participant gambit.</p>
-</li>
-<li>
-<p><a href="tx-control/localJDBC.html">tx-control-provider-jdbc-local</a> :- A JDBC resource provider that provides connection pooling and
-that can integrate with local transactions. The JDBCConnectionProviderFactory service may be used 
-directly, or a service may be configured using the <em>org.apache.aries.tx.control.jdbc.local</em> pid</p>
-</li>
-<li>
-<p><a href="tx-control/xaJDBC.html">tx-control-provider-jdbc-xa</a> :- A JDBC resource provider that provides connection pooling and 
-that can integrate with local or XA transactions. The JDBCConnectionProviderFactory service may be 
-used directly, or a service may be configured using the <em>org.apache.aries.tx.control.jdbc.xa</em> pid</p>
-</li>
-<li>
-<p><a href="tx-control/localJPA.html">tx-control-provider-jpa-local</a> :- A JPA resource provider that can integrate with local transactions. 
-The JPAEntityManagerProviderFactory service may be used directly, or a service may be configured using 
-the <em>org.apache.aries.tx.control.jpa.local</em> pid. The implementation can also provide connection pooling 
-if required</p>
-</li>
-<li>
-<p><a href="tx-control/xaJPA.html">tx-control-provider-jpa-xa</a> :- A JDBC resource provider that integrates with XA transactions. 
-The JPAEntityManagerProviderFactory service may be used directly, or a service may be configured using 
-the <em>org.apache.aries.tx.control.jpa.xa</em> pid. The implementation can also provide connection pooling 
-if required</p>
-</li>
-</ol>
-<h3 id="which-modules-should-i-use">Which modules should I use?<a class="headerlink" href="#which-modules-should-i-use" title="Permanent link">&para;</a></h3>
-<p>If you wish to use entirely lightweight, resource-local transactions then it is best to pair the 
-tx-control-service-local and tx-control-provider-jdbc-local or tx-control-provider-jpa-local bundles. 
-This will give transactional behaviour, but the result is <em>not guaranteed to be ACID if more than one 
-resource is used</em>.</p>
-<p>If ACID behaviour is needed across multiple resources then the tx-control-service-xa <em>must</em> be used.
-This service also provides an XA enabled two-phase commit algorithm, and also allows for ACID 
-behaviour when <em>one</em> of the resources only supports local transactions by using the last participant gambit.</p>
-<p>When using the XA Transaction control service then the tx-control-provider-jdbc-xa or 
-tx-control-provider-jpa-xa resource provider bundles should be used.</p>
-<p><strong>IT IS NOT RECOMMENDED</strong> to use both tx-control-service-xa and tx-control-service-local at 
-the same time. This will be confusing, and may lead to problems if different parts of the application 
-bind to different service implementations.</p>
-<p><strong>NOTE:</strong> There is also no reason to use the tx-control-provider-jdbc-local in addition to the 
-tx-control-provider-jdbc-xa service. Using both together is not typically harmful, however the 
-tx-control-provider-jdbc-xa bundle supports all of the same features as the 
-tx-control-provider-jdbc-local bundle. The same is <strong>not</strong> true of the JPA provider implementations.</p>
-<h2 id="pre-release-apis">Pre-release APIs<a class="headerlink" href="#pre-release-apis" title="Permanent link">&para;</a></h2>
-<p>As part of the Aries Transaction Control implementations pre-release versions of the OSGi Transaction Control
-API are provided. Rather than putting the API into the wrong package namespace, or outputting them at the wrong
-version, they will be exported with a mandatory attribute of <code>api.status=aries.prerelease</code>. </p>
-<p>By setting this attribute on their API imports users accept that the API may change without a change to the
-package version(s). These changes may, or may not, be binary compatible. Once the specification is final the
-attribute will be removed from the export.</p></div>
+<h1 id="aries-xa-transaction-control-implementation">Aries XA Transaction Control implementation<a class="headerlink" href="#aries-xa-transaction-control-implementation" title="Permanent link">&para;</a></h1>
+<p>The Aries XA Transaction control implementation is available at the following maven coordinates:</p>
+<div class="codehilite"><pre>    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.apache.aries.tx-control<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>tx-control-service-xa<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span><span class="cp">${</span><span class="n">aries</span><span class="o">.</span><span class="n">tx</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">version</span><span class="cp">}</span><span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+
+
+<p>It is based on the JTA transaction manager provided by Apache Geronimo.</p>
+<h2 id="using-the-transaction-control-service">Using the Transaction Control Service<a class="headerlink" href="#using-the-transaction-control-service" title="Permanent link">&para;</a></h2>
+<p>For the basics of using the Transaction Control Service see the <a href="quickstart.html#TODO">Quick Start Documentation</a></p>
+<p>As per the Transaction Control specification the Aries XA implementation registers a 
+TransactionControl service in the OSGi Service Registry.</p>
+<p>The Aries XA Transaction Control implementation is able to support the use of both XA 
+and Local Resources within the same transaction. The service is therefore registered 
+with the <code>osgi.local.enabled</code> <em>and</em> <code>osgi.xa.enabled</code>
+properties set to <code>true</code>.</p>
+<h2 id="xa-transactions">XA Transactions<a class="headerlink" href="#xa-transactions" title="Permanent link">&para;</a></h2>
+<p>The XA transactions created by the XA Transaction Control implementation are not configured
+to create a transaction log. Therefore the XA Transactions are <em>not recoverable</em> in the event of failure.
+This may change in the future if transaction log support is added to the implementation.</p>
+<p>The primary difference between XA and Local Transactions is that XA transactions <em>are</em> atomic across multiple resources. In particular, if two 
+resources. This means that all resources in the transaction will be committed or rolled back together.</p>
+<p>XA transactions are therefore best suited to scenarios where multiple resources are
+accessed within the transaction, particularly if consistency between the resources is important.</p>
+<h2 id="working-with-xa-transactions">Working with XA transactions<a class="headerlink" href="#working-with-xa-transactions" title="Permanent link">&para;</a></h2>
+<p>The XA Transaction Control Service supports participants in ongoing transactions via the 
+<code>registerXAResource(XAResource)</code> method. </p>
+<p>Lifecycle callbacks can be registered against the current scope using the 
+<code>preCompletion(Runnable)</code> and <code>postCompletion(Consumer<TransactionStatus>)</code> 
+methods.</p>
+<h2 id="local-resources-and-the-last-participant-gambit">Local Resources and the Last Participant Gambit<a class="headerlink" href="#local-resources-and-the-last-participant-gambit" title="Permanent link">&para;</a></h2>
+<p>In addition to supporting XA resources the XA Aries Transaction Control implementation also supports 
+Local Resources which can be added using the <code>registerLocalResource(LocalResource)</code> 
+method.</p>
+<p>When local resources are added to the XA transaction they are processed in a special way. When
+the two-phase commit is preparing resources it first prepares all of the registered <code>XAResources</code>, 
+then the Local resources are committed or rolled back as appropriate, then the XAResources are completed.
+This is known as the <em>Last Resource Gambit</em>.</p>
+<p>The value of the Last Resource Gambit is highest when there is exactly one Local resource in the transaction.
+In this case the Local resource is effectively doing a prepare and commit/rollback in one step, but as all of the
+other resources have been prepared already there is <em>almost</em> no risk of inconsistency across the resources.
+As the number of Local Resources involved in the transaction rises the risk of inconsistency becomes much
+greater. It is therefore recommended that XA transactions contain <em>zero</em> or <em>one</em> Local resources, although
+any number may be registered.</p></div>
             <!-- Content -->
           </td>
         </tr>

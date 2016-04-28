@@ -23,7 +23,7 @@
   <meta name="keywords" content="..."/>
   <meta name="description" content="..." />
     <title>
-    Apache Aries - Aries Transaction Control Service
+    Apache Aries - Using the Last Resource Gambit
     </title>
   </head>
 <body onload="SetMenu()">
@@ -277,81 +277,55 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
-<h2 id="osgi-transaction-control-service">OSGi Transaction Control Service<a class="headerlink" href="#osgi-transaction-control-service" title="Permanent link">&para;</a></h2>
-<p>This set of modules is an implementation of the proposed OSGi Transaction Control Service and related 
-services, such as JDBC and JPA resource providers.</p>
-<p>The Transaction Control Service (RFC-221) is an in-progress RFC publicly available from the OSGi 
-Alliance: <a href="https://github.com/osgi/design/blob/master/rfcs/rfc0221/rfc-0221-TransactionControl.pdf">https://github.com/osgi/design/blob/master/rfcs/rfc0221/rfc-0221-TransactionControl.pdf</a></p>
-<p>Given that the RFC is non-final the OSGi API declared in this project is subject to change at any time up 
-to its official release. Also the behaviour of this implementation may not always be up-to-date with the 
-latest wording in the RFC. The project maintainers will, however try to keep pace with the RFC, and to 
-ensure that the implementations are compliant with any OSGi specifications that result from the RFC.</p>
-<h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
-<p>If you're new to the Transaction Control service then we recommend that you read the <a href="tx-control/quickstart.html">quickstart documentation first</a>.</p>
-<p>More detailed documentation is available in the <a href="tx-control/index.html">Aries Transaction Control Project</a></p>
-<h2 id="why-use-the-transaction-control-service">Why use the Transaction Control service?<a class="headerlink" href="#why-use-the-transaction-control-service" title="Permanent link">&para;</a></h2>
-<p>Simply put the Transaction Control service makes resource access easy! There's no need to worry about
-transaction lifecycle or closing connections, and there's built in support for useful features like 
-connection pooling.</p>
-<h2 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h2>
-<p>The following modules are available for use in OSGi</p>
-<ol>
-<li>
-<p><a href="tx-control/localTransactions.html">tx-control-service-local</a> :- A purely local transaction control service implementation. This can be 
-used with any resource-local capable ResourceProvider</p>
-</li>
-<li>
-<p><a href="tx-control/xaTransactions.html">tx-control-service-xa</a> :- An XA-capable transaction control service implementation based on the 
-Geronimo Transaction Manager. This can be used with XA capable resources, or with local resources. 
-Local resources will make use of the last-participant gambit.</p>
-</li>
-<li>
-<p><a href="tx-control/localJDBC.html">tx-control-provider-jdbc-local</a> :- A JDBC resource provider that provides connection pooling and
-that can integrate with local transactions. The JDBCConnectionProviderFactory service may be used 
-directly, or a service may be configured using the <em>org.apache.aries.tx.control.jdbc.local</em> pid</p>
-</li>
-<li>
-<p><a href="tx-control/xaJDBC.html">tx-control-provider-jdbc-xa</a> :- A JDBC resource provider that provides connection pooling and 
-that can integrate with local or XA transactions. The JDBCConnectionProviderFactory service may be 
-used directly, or a service may be configured using the <em>org.apache.aries.tx.control.jdbc.xa</em> pid</p>
-</li>
-<li>
-<p><a href="tx-control/localJPA.html">tx-control-provider-jpa-local</a> :- A JPA resource provider that can integrate with local transactions. 
-The JPAEntityManagerProviderFactory service may be used directly, or a service may be configured using 
-the <em>org.apache.aries.tx.control.jpa.local</em> pid. The implementation can also provide connection pooling 
-if required</p>
-</li>
-<li>
-<p><a href="tx-control/xaJPA.html">tx-control-provider-jpa-xa</a> :- A JDBC resource provider that integrates with XA transactions. 
-The JPAEntityManagerProviderFactory service may be used directly, or a service may be configured using 
-the <em>org.apache.aries.tx.control.jpa.xa</em> pid. The implementation can also provide connection pooling 
-if required</p>
-</li>
-</ol>
-<h3 id="which-modules-should-i-use">Which modules should I use?<a class="headerlink" href="#which-modules-should-i-use" title="Permanent link">&para;</a></h3>
-<p>If you wish to use entirely lightweight, resource-local transactions then it is best to pair the 
-tx-control-service-local and tx-control-provider-jdbc-local or tx-control-provider-jpa-local bundles. 
-This will give transactional behaviour, but the result is <em>not guaranteed to be ACID if more than one 
-resource is used</em>.</p>
-<p>If ACID behaviour is needed across multiple resources then the tx-control-service-xa <em>must</em> be used.
-This service also provides an XA enabled two-phase commit algorithm, and also allows for ACID 
-behaviour when <em>one</em> of the resources only supports local transactions by using the last participant gambit.</p>
-<p>When using the XA Transaction control service then the tx-control-provider-jdbc-xa or 
-tx-control-provider-jpa-xa resource provider bundles should be used.</p>
-<p><strong>IT IS NOT RECOMMENDED</strong> to use both tx-control-service-xa and tx-control-service-local at 
-the same time. This will be confusing, and may lead to problems if different parts of the application 
-bind to different service implementations.</p>
-<p><strong>NOTE:</strong> There is also no reason to use the tx-control-provider-jdbc-local in addition to the 
-tx-control-provider-jdbc-xa service. Using both together is not typically harmful, however the 
-tx-control-provider-jdbc-xa bundle supports all of the same features as the 
-tx-control-provider-jdbc-local bundle. The same is <strong>not</strong> true of the JPA provider implementations.</p>
-<h2 id="pre-release-apis">Pre-release APIs<a class="headerlink" href="#pre-release-apis" title="Permanent link">&para;</a></h2>
-<p>As part of the Aries Transaction Control implementations pre-release versions of the OSGi Transaction Control
-API are provided. Rather than putting the API into the wrong package namespace, or outputting them at the wrong
-version, they will be exported with a mandatory attribute of <code>api.status=aries.prerelease</code>. </p>
-<p>By setting this attribute on their API imports users accept that the API may change without a change to the
-package version(s). These changes may, or may not, be binary compatible. Once the specification is final the
-attribute will be removed from the export.</p></div>
+<h1 id="using-the-last-resource-gambit">Using the Last Resource Gambit<a class="headerlink" href="#using-the-last-resource-gambit" title="Permanent link">&para;</a></h1>
+<p>The Last Resource Gambit is a technique by which a non-XA capable resource may be (relatively) safely
+included in a two-phase commit transaction containing multiple resources.</p>
+<p>Importantly:</p>
+<ul>
+<li>The transaction must be 2-phase (typically XA)</li>
+<li>All but one of the resources must be XA capable</li>
+<li>The Transaction Manager must support the Last Resource Gambit</li>
+</ul>
+<h2 id="how-does-it-work">How does it work?<a class="headerlink" href="#how-does-it-work" title="Permanent link">&para;</a></h2>
+<p>In a two phase commit/rollback the Transaction Manager prepares all of the resources before calling commit.
+This means that the resources have the opportunity to do any constraint checking and buffer flushing before
+committing, so that they know that a commit will succeed. If any of the prepare calls fail then all of the
+resources (including the ones that were already prepared) may be rolled back to ensure consistency.</p>
+<p>If a "local" (i.e. one phase) resource is included in the transaction then this model breaks. It
+is not possible to prepare a one-phase resource, so typically a transaction manager must "commit and hope"
+expecting that all other resources will commit successfully.</p>
+<p>In the case of the Last Resource Gambit this possiblity can be reduced to near zero by including the local
+resource as the "last resource". Specifically all of the XA resources are prepared, and if the prepare succeeds
+then the local resource is committed. If the commit succeeds then all of the XA resources are committed,
+otherwise the XA resources are rolled back. This model means that the overall transaction is robust to 
+resource failures.</p>
+<h2 id="taking-advantage-of-the-last-resource-gambit">Taking advantage of the Last Resource Gambit<a class="headerlink" href="#taking-advantage-of-the-last-resource-gambit" title="Permanent link">&para;</a></h2>
+<p>The <a href="xaTransactions.html">Aries XA Transaction Control service</a> implements the last resource gambit automatically, so there is
+nothing that needs to be explicitly done by the client to enable the behaviour, other than to use a local
+resource alongside XA resources.</p>
+<p>For example, if one database in use is HSQLDB, which does not support XA, but two others use H2, 
+which does support XA, then the following configurations would be used:</p>
+<p><em>org.apache.aries.tx.control.jdbc.xa</em></p>
+<div class="codehilite"><pre><span class="n">osgi</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">driver</span><span class="p">.</span><span class="n">class</span><span class="p">=</span><span class="n">org</span><span class="p">.</span><span class="n">h2</span><span class="p">.</span><span class="n">Driver</span>
+<span class="n">url</span><span class="p">=</span><span class="n">jdbc</span><span class="p">:</span><span class="n">h2</span><span class="p">:</span><span class="n">tcp</span><span class="p">:</span><span class="o">//</span>192<span class="p">.</span>168<span class="p">.</span>1<span class="p">.</span>31<span class="p">:</span>12345<span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">db</span>
+</pre></div>
+
+
+<p><em>org.apache.aries.tx.control.jdbc.xa</em></p>
+<div class="codehilite"><pre><span class="n">osgi</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">driver</span><span class="p">.</span><span class="n">class</span><span class="p">=</span><span class="n">org</span><span class="p">.</span><span class="n">h2</span><span class="p">.</span><span class="n">Driver</span>
+<span class="n">url</span><span class="p">=</span><span class="n">jdbc</span><span class="p">:</span><span class="n">h2</span><span class="p">:</span><span class="n">tcp</span><span class="p">:</span><span class="o">//</span>192<span class="p">.</span>168<span class="p">.</span>1<span class="p">.</span>63<span class="p">:</span>23456<span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">another</span><span class="o">/</span><span class="n">db</span>
+</pre></div>
+
+
+<p><em>org.apache.aries.tx.control.jpa.local</em></p>
+<div class="codehilite"><pre><span class="n">osgi</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">driver</span><span class="p">.</span><span class="n">class</span><span class="p">=</span><span class="n">org</span><span class="p">.</span><span class="n">hsqldb</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">JDBCDriver</span>
+<span class="n">url</span><span class="p">=</span><span class="n">jdbc</span><span class="p">:</span><span class="n">hsqldb</span><span class="p">:</span><span class="n">hsql</span><span class="p">:</span><span class="o">//</span>192<span class="p">.</span>168<span class="p">.</span>1<span class="p">.</span>127<span class="o">/</span><span class="n">xdb</span>&quot;
+<span class="n">osgi</span><span class="p">.</span><span class="n">unit</span><span class="p">.</span><span class="n">name</span><span class="p">=</span><span class="n">jpa</span><span class="o">-</span><span class="n">workspace</span>
+</pre></div>
+
+
+<p>If these three resource providers are used in the same transaction then the Last Resource Gambit will
+ensure that the one-phase resource is committed reliably.</p></div>
             <!-- Content -->
           </td>
         </tr>
