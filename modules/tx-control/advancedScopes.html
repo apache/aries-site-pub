@@ -277,7 +277,56 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
-<h1 id="todo">TODO<a class="headerlink" href="#todo" title="Permanent link">&para;</a></h1></div>
+<h1 id="advanced-scope-control">Advanced Scope control<a class="headerlink" href="#advanced-scope-control" title="Permanent link">&para;</a></h1>
+<p>There are a number of useful ways to interact with the scopes created by the Transaction Control Service</p>
+<h2 id="determining-the-current-scope">Determining the current scope<a class="headerlink" href="#determining-the-current-scope" title="Permanent link">&para;</a></h2>
+<p>The Transaction Control Service has methods which can be used to work out whether a scope is in effect:</p>
+<ul>
+<li>
+<p><code>txControl.activeScope();</code> - When <code>true</code> there is a scope in effect and resources can be 
+accessed. The scope may, or may not, be transactional. When false there is no current scope and
+<code>txControl.getCurrentContext();</code> will return <code>null</code>.</p>
+</li>
+<li>
+<p><code>txControl.activeTransaction()</code> - When <code>true</code> there is a transactional scope in 
+effect and resources can be accessed transactionally. When false there may, or may not, be a "No Transaction"
+scope in effect.</p>
+</li>
+</ul>
+<p>Note that <code>assert txControl.activeTransaction();</code> can be used to enforce the presence of a
+transaction. This is equivalent to a "Mandatory" transaction in Spring or Java EE.</p>
+<h2 id="avoiding-rollback">Avoiding rollback<a class="headerlink" href="#avoiding-rollback" title="Permanent link">&para;</a></h2>
+<p>When setting up a transaction certain exception types can be marked as not triggering rollback:</p>
+<div class="codehilite"><pre><span class="n">txControl</span><span class="p">.</span><span class="n">build</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">noRollbackFor</span><span class="p">(</span><span class="n">MyCustomException</span><span class="p">.</span><span class="n">class</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">required</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="o">//</span> <span class="n">A</span> <span class="n">MyCustomException</span> <span class="n">thrown</span> <span class="n">here</span> <span class="n">will</span> <span class="n">not</span> <span class="n">trigger</span> <span class="n">rollback</span>
+        <span class="p">});</span>
+</pre></div>
+
+
+<h2 id="nesting-a-transaction">Nesting a transaction<a class="headerlink" href="#nesting-a-transaction" title="Permanent link">&para;</a></h2>
+<p>Nesting a Transaction can easily be managed using <code>requiresNew()</code></p>
+<div class="codehilite"><pre><span class="n">txControl</span><span class="p">.</span><span class="n">required</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">Do</span> <span class="n">some</span> <span class="n">work</span><span class="p">...</span>
+
+        <span class="k">return</span> <span class="n">txControl</span><span class="p">.</span><span class="n">requiresNew</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+                <span class="o">//</span> <span class="n">Do</span> <span class="n">some</span> <span class="n">more</span> <span class="n">work</span>
+            <span class="p">});</span>
+    <span class="p">});</span>
+</pre></div>
+
+
+<h2 id="suspending-a-transaction">Suspending a transaction<a class="headerlink" href="#suspending-a-transaction" title="Permanent link">&para;</a></h2>
+<p>Suspending a Transaction can easily be managed using <code>notSupported()</code></p>
+<div class="codehilite"><pre><span class="n">txControl</span><span class="p">.</span><span class="n">required</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">Do</span> <span class="n">some</span> <span class="n">work</span><span class="p">...</span>
+
+        <span class="k">return</span> <span class="n">txControl</span><span class="p">.</span><span class="n">notSupported</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+                <span class="o">//</span> <span class="n">Do</span> <span class="n">some</span> <span class="n">more</span> <span class="n">work</span>
+            <span class="p">});</span>
+    <span class="p">});</span>
+</pre></div></div>
             <!-- Content -->
           </td>
         </tr>

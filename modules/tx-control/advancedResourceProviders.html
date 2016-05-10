@@ -277,7 +277,128 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
-<h1 id="todo">TODO<a class="headerlink" href="#todo" title="Permanent link">&para;</a></h1></div>
+<h1 id="making-your-own-resource-provider">Making your own Resource Provider<a class="headerlink" href="#making-your-own-resource-provider" title="Permanent link">&para;</a></h1>
+<p>The <code>TransactionControl</code> service is based around the use of <code>ResourceProvider</code>
+instances. When combined the client receives a thread-safe resource instance that they can use.</p>
+<p>Resource Provider implementations already exist for <a href="localJDBC.html">JDBC</a>, <a href="xaJDBC.html">XA JDBC</a>, <a href="localJPA.html">JPA</a> and <a href="xaJPA.html">XA JPA</a></p>
+<h2 id="create-an-interface">Create an interface<a class="headerlink" href="#create-an-interface" title="Permanent link">&para;</a></h2>
+<p>If you need to create your own Resource Provider then you should define a sub-interface which declares the
+type of the resource. This allows clients type-safe access to the resources, and makes it easier to identify
+the right Resource Provider at runtime.</p>
+<div class="codehilite"><pre><span class="n">public</span> <span class="n">interface</span> <span class="n">MyCustomResourceProvider</span> <span class="n">extends</span> 
+                    <span class="n">ResourceProvider</span><span class="o">&lt;</span><span class="n">MyCustomResource</span><span class="o">&gt;</span> <span class="p">{}</span>
+</pre></div>
+
+
+<h2 id="create-an-implementation">Create an implementation<a class="headerlink" href="#create-an-implementation" title="Permanent link">&para;</a></h2>
+<p>The implementation of a ResourceProvider should return a thread-safe delegating proxy. This may be a
+dynamic proxy or a static one. The proxy delegates to the real resource, and is responsible for ensuring
+that the thread consistently accesses the same physical resource throughout the scope. Note that even 
+when multiple proxies are created they should share the same physical resource throughout the life of the
+context.</p>
+<h3 id="lifecycle-first-access">Lifecycle - first access<a class="headerlink" href="#lifecycle-first-access" title="Permanent link">&para;</a></h3>
+<p>Whenever the resource is accessed then it must check to see whether it has already been accessed 
+within the current scope. If not then a resource should be selected and associated with the scope. This
+physical resource must then be used for the rest of the scope.</p>
+<p>Note that if there is no active scope when the resource is accessed then the resource access should 
+fail with a TransactionException.</p>
+<div class="codehilite"><pre><span class="cm">/**</span>
+<span class="cm"> *  A resource method</span>
+<span class="cm"> */</span>
+<span class="p">@</span><span class="n">Override</span>
+<span class="n">public</span> <span class="n">boolean</span> <span class="n">doSomething</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">txControl</span><span class="p">.</span><span class="n">activeScope</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">throw</span> <span class="k">new</span> <span class="n">TransactionException</span><span class="p">(</span><span class="s">&quot;There is no scope currently active&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Locate, or create and associate</span>
+    <span class="n">MyCustomResource</span> <span class="n">delegate</span> <span class="o">=</span> <span class="n">locateDelegate</span><span class="p">(</span><span class="n">txControl</span><span class="p">.</span><span class="n">getCurrentContext</span><span class="p">());</span>
+
+    <span class="k">return</span> <span class="n">delegate</span><span class="p">.</span><span class="n">doSomething</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="lifecycle-enlisting">Lifecycle - enlisting<a class="headerlink" href="#lifecycle-enlisting" title="Permanent link">&para;</a></h3>
+<p>If a transaction is active then the resource should enlist with it when it is first used. If the resource is
+usable with XA transactions then it should register an XAResource.</p>
+<div class="codehilite"><pre><span class="n">private</span> <span class="n">MyCustomResource</span> <span class="n">locateDelegate</span><span class="p">(</span><span class="n">TransactionContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">MyCustomResource</span> <span class="n">resource</span> <span class="p">=</span> <span class="n">findExisting</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">resource</span> !<span class="p">=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">resource</span> <span class="p">=</span> <span class="n">getNewDelegate</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">activeTransaction</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">supportsXA</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">context</span><span class="p">.</span><span class="n">registerXAResource</span><span class="p">(</span><span class="n">resource</span><span class="p">.</span><span class="n">getXAResource</span><span class="p">());</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">throw</span> <span class="n">new</span> <span class="n">TransactionException</span><span class="p">(</span>&quot;<span class="n">The</span> <span class="n">transaction</span> <span class="n">does</span> <span class="n">not</span> <span class="n">support</span> <span class="n">XA</span> <span class="n">resources</span>&quot;<span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="o">//</span> <span class="n">Other</span> <span class="n">resource</span> <span class="n">preparation</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">resource</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Local resources are similar, but they register a LocalResource, not an XAResource.</p>
+<div class="codehilite"><pre><span class="n">private</span> <span class="n">MyCustomResource</span> <span class="n">locateDelegate</span><span class="p">(</span><span class="n">TransactionContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">MyCustomResource</span> <span class="n">resource</span> <span class="p">=</span> <span class="n">findExisting</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">resource</span> !<span class="p">=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">resource</span> <span class="p">=</span> <span class="n">getNewDelegate</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">activeTransaction</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">supportsLocal</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">context</span><span class="p">.</span><span class="n">registerLocalResource</span><span class="p">(</span><span class="n">resource</span><span class="p">.</span><span class="n">getLocalesource</span><span class="p">());</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">throw</span> <span class="n">new</span> <span class="n">TransactionException</span><span class="p">(</span>&quot;<span class="n">The</span> <span class="n">transaction</span> <span class="n">does</span> <span class="n">not</span> <span class="n">support</span> <span class="n">Local</span> <span class="n">resources</span>&quot;<span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="o">//</span> <span class="n">Other</span> <span class="n">resource</span> <span class="n">preparation</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">resource</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="lifecycle-tidying-up">Lifecycle - Tidying up<a class="headerlink" href="#lifecycle-tidying-up" title="Permanent link">&para;</a></h3>
+<p>In addition to registering with an active transaction the resource should also register for cleanup at the end
+of the scope. This may involve closing the physical resource, or returning it to a pool.</p>
+<div class="codehilite"><pre><span class="c1">// Other resource preparation</span>
+
+<span class="k">context</span><span class="p">.</span><span class="n">postCompletion</span><span class="p">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="n">resource</span><span class="p">.</span><span class="k">release</span><span class="p">());</span>
+</pre></div>
+
+
+<h2 id="other-things-to-look-out-for">Other things to look out for...<a class="headerlink" href="#other-things-to-look-out-for" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>A client must have a friendly way to access the ResourceProvider. This may be directly via the OSGi Service 
+Registry or via a factory service of some kind.</p>
+</li>
+<li>
+<p>A resource must remain valid throughout a scope, therefore clients should not be able to close or return the
+resource by making calls on the thread-safe proxy. Typically calls to close should be a silent no-op (the
+actual close will occur when the scope ends).</p>
+</li>
+<li>
+<p>When a transaction is active clients must not be able to manually commit or rollback the resource.
+Methods like <code>commit</code>, <code>rollback</code> and <code>setRollbackOnly</code> must
+fail with a TransactionException indicating the incorrect usage. This is different from <code>close</code>
+behaviour because unlike deferring a <code>close</code> ignoring a <code>rollback</code> results in a 
+different overall result from the client's perspective.</p>
+</li>
+<li>
+<p>Resources must not rely on the Transaction Control service recognising duplicate enlistments. A resource
+should be enlisted at most once.</p>
+</li>
+</ol></div>
             <!-- Content -->
           </td>
         </tr>
