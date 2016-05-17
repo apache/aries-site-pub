@@ -23,7 +23,7 @@
   <meta name="keywords" content="..."/>
   <meta name="description" content="..." />
     <title>
-    Apache Aries - The Aries Transaction Control Service
+    Apache Aries - Exception Management
     </title>
   </head>
 <body onload="SetMenu()">
@@ -277,40 +277,68 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
   visibility: hidden;
 }
 h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, dt:hover > .elementid-permalink { visibility: visible }</style>
-<h1 id="the-transaction-control-service">The Transaction Control service<a class="headerlink" href="#the-transaction-control-service" title="Permanent link">&para;</a></h1>
-<p>If you're new to the Transaction Control service then we suggest that you read the <a href="quickstart.html">Quick Start Page</a>
-first.</p>
-<h2 id="why-use-the-transaction-control-service">Why use the Transaction Control service?<a class="headerlink" href="#why-use-the-transaction-control-service" title="Permanent link">&para;</a></h2>
-<p>Simply put the Transaction Control service makes resource access easy! There's no need to worry about
-transaction lifecycle or closing connections, and there's built in support for useful features like 
-connection pooling.</p>
-<h3 id="the-aries-transaction-control-implementations">The Aries Transaction Control implementations<a class="headerlink" href="#the-aries-transaction-control-implementations" title="Permanent link">&para;</a></h3>
-<p>These modules provide implementations of the TransactionControl service</p>
-<ul>
-<li><a href="localTransactions.html">The Local Transaction Control Service</a></li>
-<li><a href="xaTransactions">The XA Transaction Control Service and Last Participant support</a></li>
-</ul>
-<h3 id="configuring-jdbc-access">Configuring JDBC access<a class="headerlink" href="#configuring-jdbc-access" title="Permanent link">&para;</a></h3>
-<p>These modules provide portable JDBC resource providers with built in connection pooling and 
-transactional resource access</p>
-<ul>
-<li><a href="localJDBC.html">JDBC with Local Transactions</a></li>
-<li><a href="xaJDBC.html">JDBC with XA Transactions</a></li>
-</ul>
-<h3 id="configuring-jpa-access">Configuring JPA access<a class="headerlink" href="#configuring-jpa-access" title="Permanent link">&para;</a></h3>
-<p>These modules provide portable JPA resource providers for transactional resource access</p>
-<ul>
-<li><a href="localJPA.html">JPA with Local Transactions</a></li>
-<li><a href="xaJPA.html">JPA with XA Transactions</a></li>
-</ul>
-<h3 id="advanced-topics">Advanced topics<a class="headerlink" href="#advanced-topics" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="coordinator.html">Using the Coordinator to optimise Transactions</a></li>
-<li><a href="lastResourceGambit.html">Making use of the Last Resource Gambit</a></li>
-<li><a href="advancedResourceProviders.html">Custom Resource Providers</a></li>
-<li><a href="advancedScopes.html">Advanced Scope control</a></li>
-<li><a href="exceptionManagement.html">Exception Management</a></li>
-</ul></div>
+<h1 id="exception-management">Exception Management<a class="headerlink" href="#exception-management" title="Permanent link">&para;</a></h1>
+<p>Managing Exceptions should not be a core part of your business logic. In fact with the Transaction Control 
+Service is doing its job you shouldn't need to worry about exceptions at all! A key design goal for the
+Transaction Control Service is to avoid the need for try/catch/finally blocks as far as possible.</p>
+<h2 id="throwing-exceptions-from-scoped-work">Throwing Exceptions from scoped work<a class="headerlink" href="#throwing-exceptions-from-scoped-work" title="Permanent link">&para;</a></h2>
+<p>Resources can be tempramental sometimes, and usually have defined exceptions that are thrown in certain
+error cases. These can be generic, like <code>SQLException</code> or <code>JMSException</code>, 
+or specific like <code>EntityNotFoundException</code>.</p>
+<p>In any event - exceptions indicate that a problem has occurred. By default an exception thrown from inside a 
+transactional scope will cause the transaction to roll back. This means that the code can safely ignore any
+updates that were made. Furthermore, because a piece of scoped work is defined as a <code>Callable</code>
+it is not necessary to catch or wrap an Exception raised in a scope.</p>
+<div class="codehilite"><pre><span class="c1">// An SQLException may be raised by the query, </span>
+<span class="c1">// but we don&#39;t need to catch it</span>
+<span class="n">txControl</span><span class="p">.</span><span class="n">required</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="n">connection</span><span class="p">.</span><span class="n">createStatement</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">executeQuery</span><span class="p">(</span><span class="s">&quot;Insert into TEST_TABLE values ( &#39;Hello World!&#39; )&quot;</span><span class="p">));</span>
+</pre></div>
+
+
+<h2 id="catching-exceptions-thrown-from-scoped-work">Catching Exceptions thrown from scoped work<a class="headerlink" href="#catching-exceptions-thrown-from-scoped-work" title="Permanent link">&para;</a></h2>
+<p>In general Exceptions should not form part of your client API, so catching an Exception from a piece of scoped 
+work is rarely necessary. Usually exceptions generated by scoped work are eventually handled by catch all 
+collectors at the incoming request point (for example a servlet) and do not require special handling.</p>
+<p>Sometimes, however, we have to work within an existing API that <em>does</em> use an Exception as a type of 
+return value. In that case it is important to know what happened to the Exception.</p>
+<h3 id="the-scopedworkexception">The <code>ScopedWorkException</code><a class="headerlink" href="#the-scopedworkexception" title="Permanent link">&para;</a></h3>
+<p>Scoped work is free to throw checked or unchecked Exceptions, however these Exceptions cannot be directly
+thrown on by the TransactionControl implementation. The primary reason for this is that directly rethrowing the
+Exception would force users of the Transaction Control Service to either <em>always</em> declare 
+<code>throws Exception</code> on their methods or to add try/catch blocks around every call.</p>
+<p>Exceptions generated as part of Scoped Work are therefore wrapped by the Transaction Control Service in a 
+<code>ScopedWorkException</code>. <code>ScopedWorkException</code> is an <em>unchecked exception</em>
+and so can be ignored by your component if it does not require special handling (the typical case).</p>
+<h3 id="unwrapping-the-scopedworkexception">Unwrapping the <code>ScopedWorkException</code><a class="headerlink" href="#unwrapping-the-scopedworkexception" title="Permanent link">&para;</a></h3>
+<p>As mentioned above, sometimes it is necessary for an API to throw a particular type of Exception as a return value.</p>
+<p>This model can be supported by unwrapping the ScopedWorkException.</p>
+<div class="codehilite"><pre><span class="k">try</span> <span class="p">{</span>
+    <span class="n">txControl</span><span class="p">.</span><span class="n">required</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="n">connection</span><span class="p">.</span><span class="n">createStatement</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">executeQuery</span><span class="p">(</span>&quot;<span class="n">Insert</span> <span class="n">into</span> <span class="n">TEST_TABLE</span> <span class="n">values</span> <span class="p">(</span> <span class="s">&#39;Hello World!&#39;</span> <span class="p">)</span>&quot;<span class="p">));</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ScopedWorkException</span> <span class="n">swe</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">This</span> <span class="n">line</span> <span class="n">throws</span> <span class="n">the</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">ScopedWorkException</span> <span class="n">as</span>
+    <span class="o">//</span> <span class="n">an</span> <span class="n">SQLException</span> <span class="n">or</span> <span class="n">as</span> <span class="n">a</span> <span class="n">RuntimeException</span> <span class="k">if</span> <span class="n">appropriate</span>
+    <span class="n">throw</span> <span class="n">swe</span><span class="p">.</span><span class="n">as</span><span class="p">(</span><span class="n">SQLException</span><span class="p">.</span><span class="n">class</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>This mechanism also supports multiple Exception types:</p>
+<div class="codehilite"><pre><span class="k">try</span> <span class="p">{</span>
+    <span class="n">txControl</span><span class="p">.</span><span class="n">required</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="n">connection</span><span class="p">.</span><span class="n">createStatement</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">executeQuery</span><span class="p">(</span>&quot;<span class="n">Insert</span> <span class="n">into</span> <span class="n">TEST_TABLE</span> <span class="n">values</span> <span class="p">(</span> <span class="s">&#39;Hello World!&#39;</span> <span class="p">)</span>&quot;<span class="p">));</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ScopedWorkException</span> <span class="n">swe</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">This</span> <span class="n">line</span> <span class="n">throws</span> <span class="n">the</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">ScopedWorkException</span>
+    <span class="o">//</span> <span class="n">as</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">two</span> <span class="n">SQLException</span> <span class="n">types</span> <span class="n">or</span> <span class="n">as</span> <span class="n">a</span>
+    <span class="o">//</span> <span class="n">RuntimeException</span> <span class="k">if</span> <span class="n">appropriate</span>
+    <span class="n">throw</span> <span class="n">swe</span><span class="p">.</span><span class="n">asOneOf</span><span class="p">(</span><span class="n">SQLRecoverableException</span><span class="p">.</span><span class="n">class</span><span class="p">,</span> <span class="n">SQLTransientException</span><span class="p">.</span><span class="n">class</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Note that if you unwrap a <code>ScopedWorkException</code> into a checked exception then you will have
+to list that Exception in your <code>throws</code> clause.</p></div>
             <!-- Content -->
           </td>
         </tr>
