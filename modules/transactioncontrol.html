@@ -287,12 +287,16 @@ to its official release. Also the behaviour of this implementation may not alway
 latest wording in the RFC. The project maintainers will, however try to keep pace with the RFC, and to 
 ensure that the implementations are compliant with any OSGi specifications that result from the RFC.</p>
 <h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
-<p>If you're new to the Transaction Control service then we recommend that you read the <a href="tx-control/quickstart.html">quickstart documentation first</a>.</p>
+<p>If you're new to the Transaction Control service then we recommend that you read the 
+<a href="tx-control/quickstart.html">quickstart documentation first</a>.</p>
 <p>More detailed documentation is available in the <a href="tx-control/index.html">Aries Transaction Control Project</a></p>
 <h2 id="why-use-the-transaction-control-service">Why use the Transaction Control service?<a class="headerlink" href="#why-use-the-transaction-control-service" title="Permanent link">&para;</a></h2>
 <p>Simply put the Transaction Control service makes resource access easy! There's no need to worry about
 transaction lifecycle or closing connections, and there's built in support for useful features like 
 connection pooling.</p>
+<p>In addition to being simple the Transaction Control service also makes transaction management explicit. As a
+result it is easier to follow the transactions flowing throughout your code, and it protects you from the 
+<a href="tx-control/spring-tx.html">proxy problem</a> that declarative transaction strategies often suffer from.</p>
 <h2 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h2>
 <p>The following modules are available for use in OSGi</p>
 <ol>

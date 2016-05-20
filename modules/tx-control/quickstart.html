@@ -330,7 +330,8 @@ automatically committed or rolled back up at the end of the transaction, and the
 <em>Transactional</em> scope has been started. The <code>supports</code> and <code>notSupported</code>
 methods can be used to ensure that a <em>No Transaction</em> scope has been started.</p>
 <p>Simple scope management is perfect in most situations, but you may also wish to read about
-<a href="advancedScopes.html">more advanced scope control techniques</a> or <a href="exceptionManagement.html">exception management</a> once you've mastered the basics.</p>
+<a href="advancedScopes.html">more advanced scope control techniques</a> or <a href="exceptionManagement.html">exception management</a> once you've mastered the basics.
+There are also some things to consider if you're <a href="spring-tx.html">migrating from Spring or Java EE</a>.</p>
 <h2 id="accessing-resources">Accessing Resources<a class="headerlink" href="#accessing-resources" title="Permanent link">&para;</a></h2>
 <p>A <code>ResourceProvider</code> is a generic factory for scoped resources. Typically you will use a more 
 specific interface for type safety. For example the Transaction Control specification defines 
