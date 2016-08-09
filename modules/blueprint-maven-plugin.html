@@ -287,19 +287,20 @@ or cxf services can be created in xml while most of the beans are automatically 
 <div class="codehilite"><pre><span class="nt">&lt;plugin&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.1.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.4.0<span class="nt">&lt;/version&gt;</span>
     <span class="nt">&lt;configuration&gt;</span>
         <span class="nt">&lt;scanPaths&gt;</span>
             <span class="nt">&lt;scanPath&gt;</span>org.my.package<span class="nt">&lt;/scanPath&gt;</span>
         <span class="nt">&lt;/scanPaths&gt;</span>
     <span class="nt">&lt;/configuration&gt;</span>
     <span class="nt">&lt;executions&gt;</span>
-        <span class="nt">&lt;execution&gt;</span>
-            <span class="nt">&lt;goals&gt;</span>
-                <span class="nt">&lt;goal&gt;</span>blueprint-generate<span class="nt">&lt;/goal&gt;</span>
-            <span class="nt">&lt;/goals&gt;</span>
-            <span class="nt">&lt;phase&gt;</span>process-classes<span class="nt">&lt;/phase&gt;</span>
-        <span class="nt">&lt;/execution&gt;</span>
+        <span class="nt">&lt;executions&gt;</span>
+            <span class="nt">&lt;execution&gt;</span>
+                <span class="nt">&lt;goals&gt;</span>
+                    <span class="nt">&lt;goal&gt;</span>blueprint-generate<span class="nt">&lt;/goal&gt;</span>
+                <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;/execution&gt;</span>
+        <span class="nt">&lt;/executions&gt;</span>
     <span class="nt">&lt;/executions&gt;</span>
 <span class="nt">&lt;/plugin&gt;</span>
 </pre></div>
