@@ -280,14 +280,13 @@ h2:hover > .headerlink, h3:hover > .headerlink, h1:hover > .headerlink, h6:hover
 <p>Writing blueprint xml is quite verbose and large blueprint xmls are difficult to keep in sync with code changes and especially refactorings.
 So you would like to do most declarations using annoations and ideally these annotations should be standardized.</p>
 <h2 id="blueprint-maven-plugin">blueprint-maven-plugin<a class="headerlink" href="#blueprint-maven-plugin" title="Permanent link">&para;</a></h2>
-<p>The blueprint-maven-plugin allows to configure blueprint using annotations. It scans one or more paths for annotated classes and creates a blueprint.xml in target/generated-resources. So at runtime the bundle behaves like a normal blueprint bundle.
-The generated blueprint can also be used together with a manually created blueprint file. So for example property placeholder configurations
-or cxf services can be created in xml while most of the beans are automatically generated.</p>
+<p>The blueprint-maven-plugin allows to configure blueprint using annotations. It scans one or more paths for annotated classes and creates a blueprint.xml in target/generated-sources/blueprint/OSGI-INF/blueprint. So at runtime the bundle behaves like a normal blueprint bundle.
+The generated blueprint can also be used together with a manually created blueprint file. So for example cxf services can be created in xml while most of the beans are automatically generated.</p>
 <p>Usage:</p>
 <div class="codehilite"><pre><span class="nt">&lt;plugin&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.4.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.5.0<span class="nt">&lt;/version&gt;</span>
     <span class="nt">&lt;configuration&gt;</span>
         <span class="nt">&lt;scanPaths&gt;</span>
             <span class="nt">&lt;scanPath&gt;</span>org.my.package<span class="nt">&lt;/scanPath&gt;</span>
@@ -297,6 +296,7 @@ or cxf services can be created in xml while most of the beans are automatically 
         <span class="nt">&lt;executions&gt;</span>
             <span class="nt">&lt;execution&gt;</span>
                 <span class="nt">&lt;goals&gt;</span>
+                    <span class="nt">&lt;goal&gt;</span>add-resource-dir<span class="nt">&lt;/goal&gt;</span>
                     <span class="nt">&lt;goal&gt;</span>blueprint-generate<span class="nt">&lt;/goal&gt;</span>
                 <span class="nt">&lt;/goals&gt;</span>
             <span class="nt">&lt;/execution&gt;</span>
@@ -306,12 +306,30 @@ or cxf services can be created in xml while most of the beans are automatically 
 </pre></div>
 
 
+<h2 id="goals">Goals<a class="headerlink" href="#goals" title="Permanent link">&para;</a></h2>
+<h3 id="add-resource-dir">add-resource-dir<a class="headerlink" href="#add-resource-dir" title="Permanent link">&para;</a></h3>
+<p>Creates target/generated-sources/blueprint folder and register it as a maven resource directory in generate-resources phase, so IDEs like IntelliJ IDEA could find it automatically.</p>
+<h3 id="blueprint-generate">blueprint-generate<a class="headerlink" href="#blueprint-generate" title="Permanent link">&para;</a></h3>
+<p>Creates blueprint xml from annotations in process-classes phase and put file in target/generated-sources/blueprint/OSGI-INF/blueprint/autowire.xml. Destination directory (OSGI-INF/blueprint) and file name (autowire.xml) could be change via configuration properties: generatedDir and generatedFileName.</p>
 <h2 id="annotations">Annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h2>
 <h3 id="javaxinject-jsr-330">javax.inject (JSR 330)<a class="headerlink" href="#javaxinject-jsr-330" title="Permanent link">&para;</a></h3>
 <ul>
 <li>@Inject Inject a bean by type and optionally further qualifiers</li>
 <li>@Singleton Mark a class as being a bean</li>
 <li>@Named("Myname") Names a @Singleton and qualifies an @Inject to limit it to matches with the same bean id</li>
+<li>@Qualifier Annotation on your own annotation</li>
+</ul>
+<h3 id="javaxenterprise">javax.enterprise<a class="headerlink" href="#javaxenterprise" title="Permanent link">&para;</a></h3>
+<ul>
+<li>@Produces Create bean using factory method</li>
+</ul>
+<h3 id="javaxtransaction">javax.transaction<a class="headerlink" href="#javaxtransaction" title="Permanent link">&para;</a></h3>
+<ul>
+<li>@Transactional mark the class as transactional.</li>
+</ul>
+<h3 id="javaxtransactioncdi">javax.transaction.cdi<a class="headerlink" href="#javaxtransactioncdi" title="Permanent link">&para;</a></h3>
+<ul>
+<li>@Transactional mark the class as transactional.</li>
 </ul>
 <h3 id="javaxannotation-jsr-250">javax.annotation (JSR 250)<a class="headerlink" href="#javaxannotation-jsr-250" title="Permanent link">&para;</a></h3>
 <ul>
@@ -330,9 +348,21 @@ or cxf services can be created in xml while most of the beans are automatically 
 <li>@PersistenceContext(unitName="tasklist") inject a managed EntityManager for the given persistence unit into a field</li>
 <li>@PersistenceUnit(unitName="tasklist") inject an unmanaged EntityManagerFactory for the given persistence unit into a field</li>
 </ul>
-<h3 id="javaxtransaction">javax.transaction<a class="headerlink" href="#javaxtransaction" title="Permanent link">&para;</a></h3>
+<h3 id="configuration-annotations-orgapacheariesblueprintannotationconfig">Configuration annotations (org.apache.aries.blueprint.annotation.config)<a class="headerlink" href="#configuration-annotations-orgapacheariesblueprintannotationconfig" title="Permanent link">&para;</a></h3>
 <ul>
-<li>@Transactional mark the class as transactional. Individual methods are not yet supported</li>
+<li>@ConfigProperty Inject value as property from property-placeholder or constant</li>
+<li>@Config Creates cm:property-placehoder</li>
+<li>@DefaultProperty Configure default values for properties in property-placeholder</li>
+</ul>
+<h3 id="spring-supported-in-version-1x-probably-dropped-in-next-major-versions">Spring (supported in version 1.x, probably dropped in next major versions)<a class="headerlink" href="#spring-supported-in-version-1x-probably-dropped-in-next-major-versions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>@Autowired Inject a bean by type and optionally further qualifiers</li>
+<li>@Component Creates bean witd default or given name</li>
+<li>@DependsOn Make bean depending on another bean</li>
+<li>@Lazy Make bean lazy</li>
+<li>@Qualifier Name injected bean</li>
+<li>@Transactional mark the class as transactional</li>
+<li>@Value Inject value or constant</li>
 </ul>
 <h2 id="dependencies-for-annotations">Dependencies for annotations<a class="headerlink" href="#dependencies-for-annotations" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span class="nt">&lt;dependency&gt;</span>
@@ -344,24 +374,65 @@ or cxf services can be created in xml while most of the beans are automatically 
 <span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.ops4j.pax.cdi<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>pax-cdi-api<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>0.5.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.8.0<span class="nt">&lt;/version&gt;</span>
     <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 <span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.hibernate.javax.persistence<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>hibernate-jpa-2.1-api<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.0.0.Final<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>javax.enterprise<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>cdi-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.2<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>javax.persistence<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>persistence-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0.2<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 <span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>javax.transaction<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>javax.transaction-api<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>1.2<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin-annotation<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </pre></div>
 
 
+<h2 id="spi">SPI<a class="headerlink" href="#spi" title="Permanent link">&para;</a></h2>
+<p>Whole plugin is written using 'plugin architecture', so your own annotations could be configured for bleuprint generation. All you need to do, is to implement one of interfaces from blueprint-maven-plugin-spi:</p>
+<div class="codehilite"><pre><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin-spi<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+
+
+<p>Next add file (or files) to META-INF/services directory describing which interface implementation your artifact provides and add such artifact as plugin dependency</p>
+<div class="codehilite"><pre><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.5.0<span class="nt">&lt;/version&gt;</span>
+    ...
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint.example<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin-my-extension<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+    ...
+<span class="nt">&lt;/plugin&gt;</span>
+</pre></div>
+
+
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<p>For a complete example see <a href="https://github.com/cschneider/Karaf-Tutorial/tree/master/tasklist-blueprint-cdi">tasklist-blueprint-cdi</a> on github.</p></div>
+<p>For a complete example see <a href="https://github.com/cschneider/Karaf-Tutorial/tree/master/tasklist-blueprint-cdi">tasklist-blueprint-cdi</a> on github or <a href="http://svn.apache.org/repos/asf/aries/trunk/blueprint/plugin/blueprint-maven-plugin/src/test/">tests of blueprint-maven-plugin</a>.</p></div>
             <!-- Content -->
           </td>
         </tr>
