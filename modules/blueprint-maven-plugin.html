@@ -405,10 +405,18 @@ The generated blueprint can also be used together with a manually created bluepr
     <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin-annotation<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.servicemix.bundles<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>org.apache.servicemix.bundles.spring-beans<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>3.2.11.RELEASE_1<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </pre></div>
 
 
+<p>Note that the annotations are needed only during build run, so you can exclude them or mark optional in Import-Package header of your bundle.</p>
 <h2 id="spi">SPI<a class="headerlink" href="#spi" title="Permanent link">&para;</a></h2>
 <p>Whole plugin is written using 'plugin architecture', so your own annotations could be configured for bleuprint generation. All you need to do, is to implement one of interfaces from blueprint-maven-plugin-spi:</p>
 <div class="codehilite"><pre><span class="nt">&lt;dependency&gt;</span>
