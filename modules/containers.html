@@ -323,7 +323,7 @@ from the service registry, they need to be instantiated directly in this case.</
 <p>The OSGi example uses the Felix SCR implementation to get the currently active ServiceManager injected into a simple servlet. 
 The servlet provides a simple UI to perform some of the management operations.</p>
 <p>The servlet is written using OSGi Declarative Service annotations and OSGi Http Whiteboard annotations and can be found here: 
-<a href="https://git-wip-us.apache.org/repos/asf?p=aries-containers.git;a=blob;f=containers-examples/containers-example-osgiservlet/src/main/java/org/apache/aries/containers/examples/osgiservlet/ServiceManagerServlet.java;h=5783718d0ba80a612cf44a331a45aefeb6e71ebf;hb=HEAD">ServiceManagerServlet.java</a></p>
+<a href="https://git-wip-us.apache.org/repos/asf?p=aries-containers.git;a=blob;f=containers-examples/containers-example-osgiservlet/src/main/java/org/apache/aries/containers/examples/osgiservlet/ServiceManagerServlet.java;hb=HEAD">ServiceManagerServlet.java</a></p>
 <p>Main functionality of the servlet can be summarized as follows:</p>
 <div class="codehilite"><pre>@Component(service = Servlet.class,
     property = {HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_PATTERN + &quot;=/manager&quot;})
@@ -397,7 +397,7 @@ with the Apache Felix OSGi framework, add:</p>
 <h2 id="plain-java-example">Plain Java example<a class="headerlink" href="#plain-java-example" title="Permanent link">&para;</a></h2>
 <p>This example launches a small Java Application to create a service deployment. Initially a single container is deployed. The user can 
 modify the number of replicas from within the application.</p>
-<p>The code can be found here: <a href="https://git-wip-us.apache.org/repos/asf?p=aries-containers.git;a=blob;f=containers-examples/containers-example-javaapp/src/main/java/org/apache/aries/containers/examples/javaapp/Main.java;h=0f06a304fc5ec96ce3f50e6af338b5b320d901d1;hb=HEAD">Main.java</a></p>
+<p>The code can be found here: <a href="https://git-wip-us.apache.org/repos/asf?p=aries-containers.git;a=blob;f=containers-examples/containers-example-javaapp/src/main/java/org/apache/aries/containers/examples/javaapp/Main.java;hb=HEAD">Main.java</a></p>
 <p>The main functionality is:</p>
 <div class="codehilite"><pre>        <span class="n">ServiceManager</span> <span class="n">sm</span> <span class="p">=</span> <span class="n">new</span> <span class="n">LocalDockerServiceManager</span><span class="p">();</span>
 
