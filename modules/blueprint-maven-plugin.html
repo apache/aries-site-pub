@@ -295,7 +295,7 @@ The generated blueprint can also be used together with a manually created bluepr
 <div class="codehilite"><pre><span class="nt">&lt;plugin&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.5.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.9.0<span class="nt">&lt;/version&gt;</span>
     <span class="nt">&lt;configuration&gt;</span>
         <span class="nt">&lt;scanPaths&gt;</span>
             <span class="nt">&lt;scanPath&gt;</span>org.my.package<span class="nt">&lt;/scanPath&gt;</span>
@@ -345,13 +345,6 @@ The generated blueprint can also be used together with a manually created bluepr
 <li>@PostConstruct Marks a method to be called after DI is finished (init-method)</li>
 <li>@PreDestroy Marks a method to be called before the bean is destroyed (destroy-method)</li>
 </ul>
-<h3 id="pax-cdi">pax-cdi<a class="headerlink" href="#pax-cdi" title="Permanent link">&para;</a></h3>
-<ul>
-<li>@OsgiServiceProvider(classes={TaskService.class}) Publishes a bean as an OSGi service with the given interfaces</li>
-<li>@OsgiService creates a reference to an OSGi service. On optional filter is also possible</li>
-<li>@Properties Defines service properties for OSGiServiceProvider</li>
-<li>@Property Defines a service property</li>
-</ul>
 <h3 id="javaxpersistence">javax.persistence<a class="headerlink" href="#javaxpersistence" title="Permanent link">&para;</a></h3>
 <ul>
 <li>@PersistenceContext(unitName="tasklist") inject a managed EntityManager for the given persistence unit into a field</li>
@@ -362,6 +355,34 @@ The generated blueprint can also be used together with a manually created bluepr
 <li>@ConfigProperty Inject value as property from property-placeholder or constant</li>
 <li>@Config Creates cm:property-placehoder</li>
 <li>@DefaultProperty Configure default values for properties in property-placeholder</li>
+</ul>
+<h3 id="collection-annotations-orgapacheariesblueprintannotationcollection">Collection annotations (org.apache.aries.blueprint.annotation.collection)<a class="headerlink" href="#collection-annotations-orgapacheariesblueprintannotationcollection" title="Permanent link">&para;</a></h3>
+<ul>
+<li>@CollectionInject Inject list, set or array of existing beans of provided interface</li>
+</ul>
+<h3 id="bean-annotations-orgapacheariesblueprintannotationbean">Bean annotations (org.apache.aries.blueprint.annotation.bean)<a class="headerlink" href="#bean-annotations-orgapacheariesblueprintannotationbean" title="Permanent link">&para;</a></h3>
+<ul>
+<li>@Bean Mark a class as a bean or method as factory of bean</li>
+</ul>
+<h3 id="reference-listener-annotations-orgapacheariesblueprintannotationreferencelistener">Reference listener annotations (org.apache.aries.blueprint.annotation.referencelistener)<a class="headerlink" href="#reference-listener-annotations-orgapacheariesblueprintannotationreferencelistener" title="Permanent link">&para;</a></h3>
+<ul>
+<li>@ReferenceListener Marks bean as reference listener</li>
+<li>@Bind Method of referenence listener to be called when service registers</li>
+<li>@Unbind Method of referenence listener to be called when service unregisters</li>
+</ul>
+<h3 id="service-annotations-orgapacheariesblueprintannotationservice">Service annotations (org.apache.aries.blueprint.annotation.service)<a class="headerlink" href="#service-annotations-orgapacheariesblueprintannotationservice" title="Permanent link">&para;</a></h3>
+<ul>
+<li>@Service Publishes a bean as an OSGi service with the given interfaces</li>
+<li>@ServiceProperty Defines a service property </li>
+<li>@Reference Creates a reference to an OSGi service</li>
+<li>@ReferenceList Creates a list of references of an OSGi services</li>
+</ul>
+<h3 id="pax-cdi-supported-in-version-1x-probably-dropped-in-next-major-versions">pax-cdi (supported in version 1.x, probably dropped in next major versions)<a class="headerlink" href="#pax-cdi-supported-in-version-1x-probably-dropped-in-next-major-versions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>@OsgiServiceProvider(classes={TaskService.class}) Publishes a bean as an OSGi service with the given interfaces</li>
+<li>@OsgiService creates a reference to an OSGi service. On optional filter is also possible</li>
+<li>@Properties Defines service properties for OSGiServiceProvider</li>
+<li>@Property Defines a service property </li>
 </ul>
 <h3 id="spring-supported-in-version-1x-probably-dropped-in-next-major-versions">Spring (supported in version 1.x, probably dropped in next major versions)<a class="headerlink" href="#spring-supported-in-version-1x-probably-dropped-in-next-major-versions" title="Permanent link">&para;</a></h3>
 <ul>
@@ -378,12 +399,6 @@ The generated blueprint can also be used together with a manually created bluepr
     <span class="nt">&lt;groupId&gt;</span>javax.inject<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>javax.inject<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>1<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.ops4j.pax.cdi<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>pax-cdi-api<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>0.8.0<span class="nt">&lt;/version&gt;</span>
     <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 <span class="nt">&lt;dependency&gt;</span>
@@ -407,7 +422,13 @@ The generated blueprint can also be used together with a manually created bluepr
 <span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin-annotation<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.3.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.ops4j.pax.cdi<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>pax-cdi-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.8.0<span class="nt">&lt;/version&gt;</span>
     <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 <span class="nt">&lt;dependency&gt;</span>
@@ -425,7 +446,7 @@ The generated blueprint can also be used together with a manually created bluepr
 <div class="codehilite"><pre><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin-spi<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.1.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </pre></div>
 
@@ -434,7 +455,7 @@ The generated blueprint can also be used together with a manually created bluepr
 <div class="codehilite"><pre><span class="nt">&lt;plugin&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.5.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.9.0<span class="nt">&lt;/version&gt;</span>
     ...
     <span class="nt">&lt;dependencies&gt;</span>
         <span class="nt">&lt;dependency&gt;</span>
@@ -445,6 +466,17 @@ The generated blueprint can also be used together with a manually created bluepr
     <span class="nt">&lt;/dependencies&gt;</span>
     ...
 <span class="nt">&lt;/plugin&gt;</span>
+</pre></div>
+
+
+<h2 id="additional-configuration">Additional configuration<a class="headerlink" href="#additional-configuration" title="Permanent link">&para;</a></h2>
+<p>Bean from factories are named by bean class nams or as defined in @Named or @Bean annotations. 
+If you want to name such beans after producing method name then add configuration parameter:</p>
+<div class="codehilite"><pre><span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;customParameters&gt;</span>
+        <span class="nt">&lt;blueprint.beanFromFactory.nameFromFactoryMethodName&gt;</span>true<span class="nt">&lt;/blueprint.beanFromFactory.nameFromFactoryMethodName&gt;</span>
+    <span class="nt">&lt;/customParameters&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
 </pre></div>
 
 
