@@ -329,8 +329,24 @@ remote endpoints.</p>
 <p>Aries RSA has a custom SPI <a href="https://github.com/apache/aries-rsa/blob/master/spi/src/main/java/org/apache/aries/rsa/spi/DistributionProvider.java">DistributionProvider</a> that allows to easily create new transports and serializations.
 Existing providers are:</p>
 <ul>
-<li><a href="http://cxf.apache.org/distributed-osgi.html">CXF-DOSGi</a> (JAXRS, JAXWS)</li>
-<li><a href="https://github.com/apache/aries-rsa/tree/master/provider/tcp">TCP</a> (Light weight Java Serialization over TCP)</li>
+<li><a href="http://cxf.apache.org/distributed-osgi.html">CXF-DOSGi</a><ul>
+<li>uses Apache CXF for transport</li>
+<li>service endpoints consumable with non-java software (XML/JSON)   </li>
+</ul>
+</li>
+<li><a href="https://github.com/apache/aries-rsa/tree/master/provider/tcp">TCP</a><ul>
+<li>Java serialization over TCP (one port per service)</li>
+<li>very few dependencies</li>
+<li>easy to comprehend blueprint for own transport implementations</li>
+</ul>
+</li>
+<li><a href="https://github.com/apache/aries-rsa/tree/master/provider/fastbin">Fastbin</a> <ul>
+<li>tuned Java serialization (or Protobuf) over TCP using NIO</li>
+<li>multiplexing over a single port</li>
+<li>transparently handles InputSteams and OutputStreams in remote services</li>
+<li>synchronous and asnychronous calls supported</li>
+</ul>
+</li>
 </ul>
 <h3 id="discovery">Discovery<a class="headerlink" href="#discovery" title="Permanent link">&para;</a></h3>
 <p>A discovery implementation uses EndpointListeners to listen for local Endpoints and publishs them for other containers.
@@ -350,7 +366,10 @@ The example uses declarative services to publish and bind services.</p>
 <li>service : EchoService implementation</li>
 <li>consumer : Small consumer that uses the EchoService</li>
 </ul>
-<p>The example installation uses the tcp transport to do the remoting but the example code is not tied to any transport.</p></div>
+<p>The example installation uses the tcp transport to do the remoting but the example code is not tied to any transport.</p>
+<h2 id="example-using-fastbin-transport">Example using fastbin transport<a class="headerlink" href="#example-using-fastbin-transport" title="Permanent link">&para;</a></h2>
+<p>A similar <a href="https://github.com/apache/aries-rsa/tree/master/examples/echofastbin">example</a> exists for the fastbin transport . Follow the Readme to install the example in Apache Karaf.</p>
+<p>The example implements an echo service that showcases synchronous calls, asnychronous calls and InputStream as parameter and return value.</p></div>
             <!-- Content -->
           </td>
         </tr>
