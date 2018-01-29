@@ -341,7 +341,12 @@ MBean is still registered if the service implements the <code>MBeanRegistration<
 actual JMX Object Name to use for the registration.</p>
 <p>The name of the service as which the MBean service is registered is ignored by the Whiteboard.</p>
 <p>The service object, though, must be a valid JMX MBean: It has to either implement the <code>DynamicMBean</code> interface or implement
-an interface whose name is the object's (simple) class name with the <code>MBean</code> suffix.</p></div>
+an interface whose name is the object's (simple) class name with the <code>MBean</code> suffix.</p>
+<p>Additional Service Properties supported:</p>
+<ul>
+<li><code>warning.exceptions</code> (String+): One or more exception class names can be specified in this service property. If an exception occurs during the MBean registration and the exception
+is of one of these types mentioned, then this exception is logged as a warning. Otherwise the exception is logged as an error.</li>
+</ul></div>
             <!-- Content -->
           </td>
         </tr>
