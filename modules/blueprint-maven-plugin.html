@@ -295,7 +295,7 @@ The generated blueprint can also be used together with a manually created bluepr
 <div class="codehilite"><pre><span class="nt">&lt;plugin&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.aries.blueprint<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>blueprint-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.9.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.10.0<span class="nt">&lt;/version&gt;</span>
     <span class="nt">&lt;configuration&gt;</span>
         <span class="nt">&lt;scanPaths&gt;</span>
             <span class="nt">&lt;scanPath&gt;</span>org.my.package<span class="nt">&lt;/scanPath&gt;</span>
@@ -466,6 +466,18 @@ The generated blueprint can also be used together with a manually created bluepr
     <span class="nt">&lt;/dependencies&gt;</span>
     ...
 <span class="nt">&lt;/plugin&gt;</span>
+</pre></div>
+
+
+<h2 id="artifacts-scanning-configuration">Artifacts scanning configuration<a class="headerlink" href="#artifacts-scanning-configuration" title="Permanent link">&para;</a></h2>
+<p>All artifacts are scaned for bean classes by default. It could be limited by includeArtifacts and excludeArtifacts parameters, e. g.</p>
+<div class="codehilite"><pre><span class="nt">&lt;includeArtifacts&gt;</span>
+    <span class="nt">&lt;includeArtifact&gt;</span>org.my.group.id:.*<span class="nt">&lt;/includeArtifact&gt;</span>
+    <span class="nt">&lt;includeArtifact&gt;</span>org.another.group.id:another.artifact.id:.*<span class="nt">&lt;/includeArtifact&gt;</span>
+<span class="nt">&lt;/includeArtifacts&gt;</span>
+<span class="nt">&lt;excludeArtifacts&gt;</span>
+    <span class="nt">&lt;excludeArtifact&gt;</span>org.my.group.id:unwanted.artifact.id:.*<span class="nt">&lt;/excludeArtifact&gt;</span>
+<span class="nt">&lt;/excludeArtifacts&gt;</span>
 </pre></div>
 
 
