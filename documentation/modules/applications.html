@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aries Applications :: Apache Aries</title>
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="icon" href="../../_/img/ram.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../index.html">
+        <span>
+          <img src="../../_/img/feather.svg">
+        </span>
+        <span>
+          <img src="../../_/img/ram.svg">
+        </span>
+        Apache Aries
+      </a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="../../index.html">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Projects</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="async-svcs.html">Async Services</a>
+            <a class="navbar-item" href="blueprint.html">Blueprint</a>
+            <a class="navbar-item" href="jmx.html">JMX</a>
+            <a class="navbar-item" href="jndiproject.html">JNDI</a>
+            <a class="navbar-item" href="jpaproject.html">JPA</a>
+            <a class="navbar-item" href="rsa.html">Remote Service Admin</a>
+            <a class="navbar-item" href="spi-fly.html">Spi-Fly</a>
+            <a class="navbar-item" href="subsystems.html">Subsystems</a>
+            <a class="navbar-item" href="transactioncontrol.html">Transaction Control</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="../downloads/currentreleases.html">Downloads</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="documentation" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Community</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/boardreports.html">Board Reports</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/overview.html">Community</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/resources.html">Community Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/gettinginvolved.html">Getting Involved</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/logos.html">Logos</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/mailinglists.html">MailingLists</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/people.html">People</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Board Reports</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2011.html">April 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2012.html">April 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2013.html">April 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2014.html">April 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2015.html">April 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2016.html">April 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2018.html">April 2018 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/december-2009.html">December 2009 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/december-2010.html">December 2010 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/february-2011.html">February 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/feb-2015.html">February 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/january-2011.html">January 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/january-2012.html">January 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/january-2013.html">January 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/january-2014.html">January 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/jan-2016.html">January 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/jan-2017.html">January 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/jan-2018.html">January 2018 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2011.html">July 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2012.html">July 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2013.html">July 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2014.html">July 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2015.html">July 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2016.html">July 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2017.html">July 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2018.html">July 2018 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/june-2010.html">June 2010 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/march-2010.html">March 2010 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/march-2011.html">March 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/may-2017.html">May 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/november-2009.html">November 2009 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/nov-2015.html">November 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/october-2009.html">October 2009 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/october-2011.html">October 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/october-2012.html">October 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/oct-2013.html">October 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/oct-2014.html">October 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/september-2015.html">October 2015 Report from the Apache Aries committee [Jeremy Hughes]</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/oct-2016.html">October 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/oct-2017.html">October 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/september-2010.html">September 2010 Board Report</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/versionpolicy.html">Aries versioning policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/buildingaries.html">BuildingAries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/guidelines.html">Coding guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/compliancetesting.html">ComplianceTesting</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/resources.html">Developer Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/maintainingthewebpages.html">MaintainingTheWebPages</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/architecture.html">Module build time dependencies</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/ReleaseProcessRequirements.html">Release process requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/releasingaries.html">ReleasingAries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/verifyingrelease.html">Verifying Release Artifacts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documentation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../documentation/application-dependencies.html">Aries Application Modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../documentation/articles.html">Articles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../documentation/integrators-guide.html">Integrators guide</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../documentation/tools.html">Tools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../documentation/tutorials.html">Tutorials</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../documentation/tools/repositoryGenerator.html">Repository Generator Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tutorials</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../documentation/tutorials/blueprinthelloworldtutorial.html">BlueprintHelloWorldTutorial</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../documentation/tutorials/greetertutorial.html">Greeter: Another Blueprint Tutorial</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Downloads</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/javadoc.html">0.3 Javadocs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/currentrelease.html">Apache Aries Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/archived-releases.html">Archived releases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/currentreleases.html">Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/testresults.html">TestResults</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/ariestrader-1.0.0.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/blogsample-1.0.0.html">The Blog Sample</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Archived Releases</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.1-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.1-incubating/0.1-incubating.html">Apache Aries 0.1-incubating release</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.1-incubating/ariestrader-0.1-incubating.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.1-incubating/blogsample-0.1-incubating.html">The Blog Sample - version 0.1-incubating.</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.2-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.2-incubating/0.2-incubating.html">Apache Aries Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.2-incubating/0.2-incubating-releasenotes.html">Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.2-incubating/0.2-incubating-testresults.html">TestResults</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.2-incubating/ariestrader-0.2-incubating.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.2-incubating/blogsample-0.2-incubating.html">The Blog Sample</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.3-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.3/0.3.html">Apache Aries Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.3/0.3-releasenotes.html">Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.3/ariestrader-0.3.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.3/blogsample-0.3.html">The Blog Sample</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">CT</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.2-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/testresults.html">TestResults</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.3</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.jndi.secure.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.jndi.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/testresults.html">TestResults</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">1.0.0</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.jndi.43.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jndi.43.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.jndi.secure.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jndi.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.jpa.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jpa.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">current-release (1.0??)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Modules</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="applications.html">Aries Applications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="containers.html">Aries Containers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jpaproject.html">Aries JPA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transactioncontrol.html">Aries Transaction Control Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="async-svcs.html">Asynchronous Services</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="blueprint.html">Blueprint</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="blueprintnoosgi.html">Blueprint No-OSGi</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="blueprint-maven-plugin.html">blueprint-maven-plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="blueprintannotation.html">BlueprintAnnotation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="blueprintweb.html">BlueprintWeb</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ebamavenpluginproject.html">EBA Maven Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="esaanttask.html">ESA Ant Task</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="esamavenpluginproject.html">ESA Maven Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jmx.html">JMX</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jndiproject.html">JNDI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="subsystems.html">OSGi Subsystems</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rsa.html">RSA (Remote Service Admin)</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="samples.html">Samples</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="spi-fly.html">SPI Fly</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transactionsproject.html">Transactions Project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Samples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="samples/goatsample.html">GOAT Sample</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="samples/ariestrader.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="samples/blog-sample.html">The Blog Sample</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Transaction Control</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/advancedScopes.html">Advanced Scope control</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/localTransactions.html">Aries Local Transaction Control implementation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/localJDBC.html">Aries OSGi Transaction Control JDBC Provider (Local)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/xaJDBC.html">Aries OSGi Transaction Control JDBC Provider (XA)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/localJPA.html">Aries Transaction Control JPA Provider (Local)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/xaJPA.html">Aries Transaction Control JPA Provider (XA)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/xaTransactions.html">Aries XA Transaction Control implementation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/exceptionManagement.html">Exception Management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/quickstart.html">Getting started with the Transaction Control Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/advancedResourceProviders.html">Making your own Resource Provider</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/spring-tx.html">Migrating from declarative transactions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/index.html">The Transaction Control service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/coordinator.html">Using the Coordinator to optimise Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/lastResourceGambit.html">Using the Last Resource Gambit</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Documentation</a></li>
+    <li>Modules</li>
+    <li><a href="applications.html">Aries Applications</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/apache/aries-antora-site/edit/master/modules/ROOT/pages/modules/applications.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Aries Applications</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>An Aries application is a collection of one or more OSGi modules that together provide a coherent business function.
+An Aries application can consist of modules of many different types.
+For example, a Aries application providing Web banking might consist of bundles with Web content (Web Application Bundles), bundles with Blueprint contexts, and bundles with JPA entities and persistence configuration (Persistence Bundles).</p>
+</div>
+<div class="paragraph">
+<p>An Aries application isolates the OSGi services offered by its contained modules so that they are not visible outside the application unless explicitly configured to be exported from the application.
+Aries applications have several ways of accepting workloads: an Aries applications may include Web bundles for processing HTTP workloads;
+it may export one or more of the services offered by its contained modules to other Aries applications or for distribution as a Web service.</p>
+</div>
+<div class="paragraph">
+<p>With the isolation runtime, each Aries application runs in its own isolated OSGi framework instance with its own OSGi service registry.
+Bundles in one Aries application cannot see bundles, services, or packages that are defined in another OSGi application, unless the bundles, services, or packages are explicitly shared by both applications.
+An Aries application can also load packages and consume OSGi services from a shared bundle space, that is, the OSGi framework instance that is the parent of all the isolated framework instances of the OSGi applications.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_structure_of_an_aries_application"><a class="anchor" href="#_structure_of_an_aries_application"></a>Structure of an Aries application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An Aries application is packaged as a zip file with a '.eba' suffix.
+Its structure is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="title">Sample Aries application structure</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>META-INF/APPLICATION.MF
+bundle1.jar
+bundle2.jar
+bundle3.jar</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The file must contain either an APPLICATION.MF with at least one bundle listed in its Application-Content header (see below), or at least one bundle 'by value' within the .eba.
+No 'by value' bundles are required if a valid APPLICATION.MF is present.</p>
+</div>
+<div class="paragraph">
+<p>Application metadata, APPLICATION.MF,  stored in the .eba file defines the isolation scope of the bundles that the OSGi application uses.
+An Aries applicaiton can also use metadata to permit some of its constituent bundles to be shared.
+Sharing in this way can reduce the memory and resource requirements of a system.
+Shared bundles must be provided by reference rather than contained directly in an application.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_aries_application_manifest"><a class="anchor" href="#_aries_application_manifest"></a>Aries Application Manifest</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An Aries Application is defined using a Manifest.
+The Aries manifest is located at META-INF/APPLICATION.MF and describes modularity at the application level.
+The manifest enumerates the modules that comprise the Aries application along with any OSGi services exported from, or referenced by, those modules.
+The following is an example of an Aries manifest:</p>
+</div>
+<div class="listingblock">
+<div class="title">APPLICATION.MF</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>Manifest-Version: 1.0
+Application-ManifestVersion: 1.0
+Application-Name: Bank Account
+Application-SymbolicName: com.mybank.account.app
+Application-Version: 1.0
+Application-Content: com.mybank.account.bankWeb;version=1.0.0,
+com.mybank.account.bankAccount;version=1.0.0,
+com.mybank.account.common;version=1.0.0,
+com.mybank.account.utility;version=1.0.0
+Use-Bundle: com.mybank.account.admin;version="[1.0.0,2.0.0)"
+Application-ExportService: com.mybank.account.service.AccountService
+Application-ImportService:
+com.mybank.security.UserAuthService;filter="(security=strong)"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The manifest headers are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Manifest-Version - a version number for the manifest format.</p>
+</li>
+<li>
+<p>Application-ManifestVersion - identifies the application manifest version to which this manifest conforms</p>
+</li>
+<li>
+<p>Application-Name - a human readable name for the application</p>
+</li>
+<li>
+<p>Application-SymbolicName - a name to uniquely identify the application.
+Follows the same scheme as Bundle-SymbolicName.</p>
+</li>
+<li>
+<p>Application-Version - uniquely identify the version of the application.
+The combination of symbolic name and version must be unique within an Aries application runtime.</p>
+</li>
+<li>
+<p>Application-Content - a list of 'root' bundles to provision for the application.
+'Version' identifies a version range for the bundle to be provisioned thus allowing flexibility.
+The version format is identical to that used for OSGi import (e.g.
+Import-Package).</p>
+</li>
+<li>
+<p>Use-Bundle - a list of bundles bundles to use to satisfy the package dependencies of bundles in the Application-Content list.
+Each bundle in the Use-Bundle list must provide at least one package to at least one bundle in the Application-Content list.
+These bundles will be provisioned into the shared bundle space at run time.</p>
+</li>
+<li>
+<p>Application-ExportService - a list of service interface names and optional filters identifying services provided by the application which can be accessed outside the application.</p>
+</li>
+<li>
+<p>Application-ImportService - a list of service interface names and optional filters identifying services which the application would like to consume from outside the application.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Often, you do not require a Use-Bundle header, but there are some situations where it is useful.
+You can use it to restrict the level at which sharing is possible.
+For example, you can ensure that an application uses the same bundle for package imports that it was tested with.
+Alternatively, you can ensure that two applications use the same bundle for package imports.
+By setting the restriction at application level, the bundle can remain flexible.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_aries_deployment_manifest"><a class="anchor" href="#_aries_deployment_manifest"></a>Aries Deployment Manifest</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Aries application model allows for the possibility that the bundles listed in APPLICATION.MF&#8217;s Application-Content header, plus those optionally included within a .eba file, may have unsatisfied package or service dependencies.
+Such missing dependencies may be obtained ('provisioned') from one or more bundle repositories.
+Aries will provide a generic 'Resolver' API which may be backed by technology such as <a href="http://felix.apache.org/site/apache-felix-osgi-bundle-repository.html">Felix OBR</a>  or [Equinox p2|http://wiki.eclipse.org/Equinox_p2_Getting_Started] . Although it is possible to re-resolve an application every time it is installed, or even started, this may result in inconsistent behaviour as the contents of an associated bundle repository changes.
+Aries uses a second file, META-INF/DEPLOYMENT.MF to record a single consistent set of bundles that fully satisfy an application&#8217;s dependencies.
+The bundles recorded in DEPLOYMENT.MF will be loaded into the runtime each time the application is installed.
+A DEPLOYMENT.MF file will be generated if one does not exist, or honoured if provided.
+Here&#8217;s an example:</p>
+</div>
+<div class="listingblock">
+<div class="title">DEPLOYMENT.MF</div>
+<div class="content">
+<pre class="highlightjs highlight"><code>Manifest-Version: 1.0
+Application-Version: 1.0
+Application-SymbolicName: com.mybank.account.app
+Deployed-Content: com.mybank.account.bankWeb;deployed-version=1.0.0,
+com.mybank.account.bankAccount;deployed-version=1.0.0,
+com.mybank.account.common;deployed-version=1.2.0,
+com.mybank.account.utility;deployed-version=1.0.0,
+com.mybank.utils.logging;deployed-version=1.3.1
+Provision-Bundle: com.mybank.account.delivery;deployed-version=1.0.1
+Import-Package: com.mybank.account.admin.login;version="1.0.1";bundle-symbolic-name="com.mybank.account.admin";bundle-version="[1.0.1,1.0.1]",com.mybank.account.delivery.bycar;version="[1.0.0,2.0.0)",javax.servlet;version="2.5.0"
+Deployed-Use-Bundle: com.mybank.account.admin;deployed-version=1.0.1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The manifest headers are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Manifest-Version - a version number for the manifest format.</p>
+</li>
+<li>
+<p>Application-Version - uniquely identify the version of the application.
+Must match that in the associated APPLICATION.MF.</p>
+</li>
+<li>
+<p>Application-SymbolicName - a name to uniquely identify the application.
+Follows the same scheme as Bundle-SymbolicName.
+Must match that in the associated APPLICATION.MF.</p>
+</li>
+<li>
+<p>Deployed-Content: the complete list of bundles, with exact version numbers, that comprise the application and its dependencies.</p>
+</li>
+<li>
+<p>Deployed-Use-Bundle - a list of bundles that satisfy the package dependencies of bundles in the Deployed-Content list.
+Each element in the Deployed-Use-Bundle list must provide at least one package to at least one bundle in the Deployed-Content list.
+The Deployed-Use-Bundle list is an exact subset of the Use-Bundle list in the APPLICATION.MF.
+These bundles will be loaded into the shared bundle space at run time.
+Each bundle in the Deployed-Use-Bundle list is guaranteed to be wired to its dependent bundles in the Deployed-Content list at run time.</p>
+</li>
+<li>
+<p>Provision-Bundle - a list of additional bundles that are required as a result of resolving the OSGi application.
+Each bundle is loaded into the shared bundle space at run time.</p>
+</li>
+<li>
+<p>Import-Package - a list of the packages that the bundles in the Deployed-Content list consume from the bundles in the Deployed-Use-Bundle and Provision-Bundle lists.
+For packages that are consumed from the Deployed-Use-Bundle list, the package import has ;bundle-symbolic-name and ;bundle-version attributes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Versions in APPLICATION.MF are ranges: in DEPLOYMENT.MF they are exact.
+Hence we see Application-Content: com.mybank.account.common;
+version=1.0.0 having been interpreted as '1.0.0 or higher' and so resolved to 1.2.0.
+Also a common logging bundle at version 1.3.1 will be deployed with the application.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>Content licensed under AL2. UI licensed under MPL-2.0 with extensions licensed under AL2</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

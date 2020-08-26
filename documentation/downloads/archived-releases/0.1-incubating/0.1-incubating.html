@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Apache Aries 0.1-incubating release :: Apache Aries</title>
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="icon" href="../../../../_/img/ram.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../../index.html">
+        <span>
+          <img src="../../../../_/img/feather.svg">
+        </span>
+        <span>
+          <img src="../../../../_/img/ram.svg">
+        </span>
+        Apache Aries
+      </a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="../../../../index.html">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Projects</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="../../../modules/async-svcs.html">Async Services</a>
+            <a class="navbar-item" href="../../../modules/blueprint.html">Blueprint</a>
+            <a class="navbar-item" href="../../../modules/jmx.html">JMX</a>
+            <a class="navbar-item" href="../../../modules/jndiproject.html">JNDI</a>
+            <a class="navbar-item" href="../../../modules/jpaproject.html">JPA</a>
+            <a class="navbar-item" href="../../../modules/rsa.html">Remote Service Admin</a>
+            <a class="navbar-item" href="../../../modules/spi-fly.html">Spi-Fly</a>
+            <a class="navbar-item" href="../../../modules/subsystems.html">Subsystems</a>
+            <a class="navbar-item" href="../../../modules/transactioncontrol.html">Transaction Control</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="../../currentreleases.html">Downloads</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="documentation" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../../index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Community</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../community/boardreports.html">Board Reports</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../community/overview.html">Community</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../community/resources.html">Community Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../community/gettinginvolved.html">Getting Involved</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../community/logos.html">Logos</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../community/mailinglists.html">MailingLists</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../community/people.html">People</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Board Reports</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/april-2011.html">April 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/april-2012.html">April 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/april-2013.html">April 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/april-2014.html">April 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/april-2015.html">April 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/april-2016.html">April 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/april-2018.html">April 2018 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/december-2009.html">December 2009 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/december-2010.html">December 2010 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/february-2011.html">February 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/feb-2015.html">February 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/january-2011.html">January 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/january-2012.html">January 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/january-2013.html">January 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/january-2014.html">January 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/jan-2016.html">January 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/jan-2017.html">January 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/jan-2018.html">January 2018 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/july-2011.html">July 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/july-2012.html">July 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/july-2013.html">July 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/july-2014.html">July 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/july-2015.html">July 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/july-2016.html">July 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/july-2017.html">July 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/july-2018.html">July 2018 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/june-2010.html">June 2010 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/march-2010.html">March 2010 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/march-2011.html">March 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/may-2017.html">May 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/november-2009.html">November 2009 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/nov-2015.html">November 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/october-2009.html">October 2009 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/october-2011.html">October 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/october-2012.html">October 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/oct-2013.html">October 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/oct-2014.html">October 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/september-2015.html">October 2015 Report from the Apache Aries committee [Jeremy Hughes]</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/oct-2016.html">October 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/oct-2017.html">October 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../community/boardreports/september-2010.html">September 2010 Board Report</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../development/versionpolicy.html">Aries versioning policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../development/buildingaries.html">BuildingAries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../development/guidelines.html">Coding guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../development/compliancetesting.html">ComplianceTesting</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../development/resources.html">Developer Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../development/maintainingthewebpages.html">MaintainingTheWebPages</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../development/architecture.html">Module build time dependencies</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../development/ReleaseProcessRequirements.html">Release process requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../development/releasingaries.html">ReleasingAries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../development/verifyingrelease.html">Verifying Release Artifacts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documentation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../documentation/application-dependencies.html">Aries Application Modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../documentation/articles.html">Articles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../documentation/integrators-guide.html">Integrators guide</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../documentation/tools.html">Tools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../documentation/tutorials.html">Tutorials</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../documentation/tools/repositoryGenerator.html">Repository Generator Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tutorials</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../documentation/tutorials/blueprinthelloworldtutorial.html">BlueprintHelloWorldTutorial</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../documentation/tutorials/greetertutorial.html">Greeter: Another Blueprint Tutorial</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Downloads</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../javadoc.html">0.3 Javadocs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../currentrelease.html">Apache Aries Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../archived-releases.html">Archived releases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../currentreleases.html">Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../testresults.html">TestResults</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../ariestrader-1.0.0.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../blogsample-1.0.0.html">The Blog Sample</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Archived Releases</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.1-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link" href="0.1-incubating.html">Apache Aries 0.1-incubating release</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="ariestrader-0.1-incubating.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="blogsample-0.1-incubating.html">The Blog Sample - version 0.1-incubating.</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.2-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../0.2-incubating/0.2-incubating.html">Apache Aries Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../0.2-incubating/0.2-incubating-releasenotes.html">Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../0.2-incubating/0.2-incubating-testresults.html">TestResults</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../0.2-incubating/ariestrader-0.2-incubating.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../0.2-incubating/blogsample-0.2-incubating.html">The Blog Sample</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.3-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../0.3/0.3.html">Apache Aries Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../0.3/0.3-releasenotes.html">Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../0.3/ariestrader-0.3.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../0.3/blogsample-0.3.html">The Blog Sample</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">CT</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.2-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.2-incubating/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.2-incubating/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.2-incubating/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.2-incubating/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.2-incubating/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.2-incubating/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.2-incubating/testresults.html">TestResults</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.3</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.3/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.3/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.3/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.3/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.3/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.3/org.osgi.test.cases.jndi.secure.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.jndi.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.3/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/0.3/testresults.html">TestResults</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">1.0.0</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/1.0.0/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/1.0.0/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/1.0.0/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/1.0.0/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/1.0.0/org.osgi.test.cases.jndi.43.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jndi.43.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/1.0.0/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/1.0.0/org.osgi.test.cases.jndi.secure.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jndi.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/1.0.0/org.osgi.test.cases.jpa.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jpa.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/1.0.0/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">current-release (1.0??)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/current-release/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/current-release/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/current-release/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/current-release/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/current-release/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../ct/current-release/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Modules</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/applications.html">Aries Applications</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/containers.html">Aries Containers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/jpaproject.html">Aries JPA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/transactioncontrol.html">Aries Transaction Control Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/async-svcs.html">Asynchronous Services</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/blueprint.html">Blueprint</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/blueprintnoosgi.html">Blueprint No-OSGi</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/blueprint-maven-plugin.html">blueprint-maven-plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/blueprintannotation.html">BlueprintAnnotation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/blueprintweb.html">BlueprintWeb</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/ebamavenpluginproject.html">EBA Maven Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/esaanttask.html">ESA Ant Task</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/esamavenpluginproject.html">ESA Maven Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/jmx.html">JMX</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/jndiproject.html">JNDI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/subsystems.html">OSGi Subsystems</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/rsa.html">RSA (Remote Service Admin)</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/samples.html">Samples</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/spi-fly.html">SPI Fly</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../modules/transactionsproject.html">Transactions Project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Samples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/samples/goatsample.html">GOAT Sample</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/samples/ariestrader.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/samples/blog-sample.html">The Blog Sample</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Transaction Control</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/advancedScopes.html">Advanced Scope control</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/localTransactions.html">Aries Local Transaction Control implementation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/localJDBC.html">Aries OSGi Transaction Control JDBC Provider (Local)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/xaJDBC.html">Aries OSGi Transaction Control JDBC Provider (XA)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/localJPA.html">Aries Transaction Control JPA Provider (Local)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/xaJPA.html">Aries Transaction Control JPA Provider (XA)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/xaTransactions.html">Aries XA Transaction Control implementation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/exceptionManagement.html">Exception Management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/quickstart.html">Getting started with the Transaction Control Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/advancedResourceProviders.html">Making your own Resource Provider</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/spring-tx.html">Migrating from declarative transactions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/index.html">The Transaction Control service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/coordinator.html">Using the Coordinator to optimise Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../modules/tx-control/lastResourceGambit.html">Using the Last Resource Gambit</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../../index.html">Documentation</a></li>
+    <li>Downloads</li>
+    <li>Archived Releases</li>
+    <li>0.1-incubating</li>
+    <li><a href="0.1-incubating.html">Apache Aries 0.1-incubating release</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/apache/aries-antora-site/edit/master/modules/ROOT/pages/downloads/archived-releases/0.1-incubating/0.1-incubating.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Apache Aries 0.1-incubating release</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Apache Aries delivers a set of pluggable Java components enabling an enterprise OSGi application programming model.
+Apache Aries modules are distributed in source and binary form.
+Alternatively you may checkout the source from Subversion and build Aries yourself.
+Otherwise, the releases below are available for download.
+These <a href="http://www.apache.org/dist/incubator/aries/KEYS">KEYS</a>  can be used to verify the release archive.
+All Apache Aries products are distributed under the terms of The Apache Software License (version 2.0).
+See the LICENSE file included in each distribution for additional license information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_samples"><a class="anchor" href="#_samples"></a>Samples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The easiest way to use the samples is to download the source zip, navigate to the appropriate 'assembly' module and run mvn install to download all the released  binary artifacts.
+Alternatively you can build the entire source.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sub project</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Download</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comments</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aries Samples</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/samples-0.1-incubating-source-release.zip">zip</a> (<a href="http://archive.apache.org/dist/incubator/aries/samples-0.1-incubating-source-release.zip.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/samples-0.1-incubating-source-release.zip.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/samples-0.1-incubating-source-release.zip.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source, ready to build</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AriesTrader</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="/downloads/archived-releases/0.1-incubating/ariestrader-0.1-incubating.html">AriesTrader sample instructions</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AriesTrader JDBC app</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.ariestrader.jdbc-0.1-incubating.eba">eba</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.ariestrader.jdbc-0.1-incubating.eba.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.ariestrader.jdbc-0.1-incubating.eba.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.ariestrader.jdbc-0.1-incubating.eba.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AriesTrader app with JDBC persistence only</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AriesTrader JPA &amp; JDBC app</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.ariestrader.all-0.1-incubating.eba">eba</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.ariestrader.all-0.1-incubating.eba.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.ariestrader.all-0.1-incubating.eba.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.ariestrader.all-0.1-incubating.eba.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AriesTrader app with all available persistence methods</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blog</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="/downloads/archived-releases/0.1-incubating/blogsample-0.1-incubating.html">Blog Sample instructions</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blog JDBC app</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.blog.jdbc.eba-0.1-incubating.eba">eba</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.blog.jdbc.eba-0.1-incubating.eba.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.blog.jdbc.eba-0.1-incubating.eba.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.blog.jdbc.eba-0.1-incubating.eba.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blog app based on JDBC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blog JPA app</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.blog.jpa.eba-0.1-incubating.eba">eba</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.blog.jpa.eba-0.1-incubating.eba.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.blog.jpa.eba-0.1-incubating.eba.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.samples.blog.jpa.eba-0.1-incubating.eba.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blog app based on JPA</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blueprint HelloWorld</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blueprint ID Verifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_project_components"><a class="anchor" href="#_project_components"></a>Project components</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sub project</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Binary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/application-0.1-incubating-source-release.zip">zip</a> (<a href="http://archive.apache.org/dist/incubator/aries/application-0.1-incubating-source-release.zip.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/application-0.1-incubating-source-release.zip.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/application-0.1-incubating-source-release.zip.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application-api</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.api-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.api-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.api-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.api-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.api-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.api-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.api-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.api-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application-bundle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application-converters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.converters-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.converters-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.converters-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.converters-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.converters-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.converters-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.converters-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.converters-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application-install</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.install-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.install-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.install-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.install-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.install-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.install-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.install-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.install-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application-management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.management-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.management-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.management-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.management-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.management-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.management-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.management-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.management-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application-obr-resolver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.resolver.obr-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.resolver.obr-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.resolver.obr-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.resolver.obr-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.resolver.obr-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.resolver.obr-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.resolver.obr-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.resolver.obr-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application-runtime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.runtime-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.runtime-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.runtime-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.runtime-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.runtime-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.runtime-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.runtime-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.runtime-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application-utils</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.utils-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.utils-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.utils-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.utils-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.utils-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.utils-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.utils-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.application.utils-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blueprint</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/blueprint-0.1-incubating-source-release.zip">zip</a> (<a href="http://archive.apache.org/dist/incubator/aries/blueprint-0.1-incubating-source-release.zip.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/blueprint-0.1-incubating-source-release.zip.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/blueprint-0.1-incubating-source-release.zip.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blueprint-api</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.api-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.api-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.api-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.api-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.api-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.api-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.api-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.api-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blueprint-bundle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blueprint-cm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.cm-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.cm-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.cm-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.cm-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.cm-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.cm-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.cm-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.cm-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blueprint-core</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.core-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.core-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.core-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.core-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.core-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.core-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.core-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.blueprint.core-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eba-maven-plugin</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating-source-release.zip">zip</a> (<a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating-source-release.zip.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating-source-release.zip.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating-source-release.zip.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/eba-maven-plugin-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JMX</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/jmx-0.1-incubating-source-release.zip">zip</a> (<a href="http://archive.apache.org/dist/incubator/aries/jmx-0.1-incubating-source-release.zip.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/jmx-0.1-incubating-source-release.zip.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/jmx-0.1-incubating-source-release.zip.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jmx-api</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.api-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.api-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.api-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.api-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.api-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.api-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.api-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.api-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jmx-blueprint-api</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.api-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.api-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.api-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.api-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.api-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.api-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.api-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.api-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jmx-blueprint-bundle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jmx-blueprint-core</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.core-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.core-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.core-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.core-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.core-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.core-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.core-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.blueprint.core-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jmx-bundle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jmx-core</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.core-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.core-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.core-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.core-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.core-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.core-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.core-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jmx.core-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JNDI</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/jndi-0.1-incubating-source-release.zip">zip</a> (<a href="http://archive.apache.org/dist/incubator/aries/jndi-0.1-incubating-source-release.zip.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/jndi-0.1-incubating-source-release.zip.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/jndi-0.1-incubating-source-release.zip.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jndi-bundle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jndi-core</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.core-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.core-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.core-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.core-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.core-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.core-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.core-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.core-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jndi-url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.url-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.url-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.url-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.url-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.url-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.url-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.url-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jndi.url-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JPA</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/jpa-0.1-incubating-source-release.zip">zip</a> (<a href="http://archive.apache.org/dist/incubator/aries/jpa-0.1-incubating-source-release.zip.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/jpa-0.1-incubating-source-release.zip.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/jpa-0.1-incubating-source-release.zip.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jpa-api</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.api-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.api-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.api-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.api-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.api-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.api-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.api-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.api-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jpa-blueprint-aries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.blueprint.aries-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.blueprint.aries-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.blueprint.aries-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.blueprint.aries-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.blueprint.aries-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.blueprint.aries-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.blueprint.aries-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.blueprint.aries-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jpa-container</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jpa-container-context</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container.context-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container.context-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container.context-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container.context-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container.context-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container.context-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container.context-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.jpa.container.context-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transaction</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/transaction-0.1-incubating-source-release.zip">zip</a> (<a href="http://archive.apache.org/dist/incubator/aries/transaction-0.1-incubating-source-release.zip.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/transaction-0.1-incubating-source-release.zip.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/transaction-0.1-incubating-source-release.zip.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">transaction-blueprint</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.blueprint-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.blueprint-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.blueprint-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.blueprint-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.blueprint-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.blueprint-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.blueprint-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.blueprint-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">transaction-manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.manager-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.manager-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.manager-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.manager-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.manager-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.manager-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.manager-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.manager-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">transaction-wrappers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.wrappers-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.wrappers-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.wrappers-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.wrappers-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.wrappers-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.wrappers-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.wrappers-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.transaction.wrappers-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Util</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating-source-release.zip">zip</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating-source-release.zip.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating-source-release.zip.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating-source-release.zip.sha1">sha1</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating.jar.sha1">sha1</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating-sources.jar">jar</a> (<a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating-sources.jar.asc">asc</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating-sources.jar.md5">md5</a>, <a href="http://archive.apache.org/dist/incubator/aries/org.apache.aries.util-0.1-incubating-sources.jar.sha1">sha1</a>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>Content licensed under AL2. UI licensed under MPL-2.0 with extensions licensed under AL2</p>
+</footer>
+<script src="../../../../_/js/site.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

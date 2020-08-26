@@ -1,0 +1,9 @@
+notifications:
+  commits: site-pub@aries.apache.org
+  issues: site-pub@aries.apache.org
+  pullrequests: site-pub@aries.apache.org
+  jira_options: link label link label
+
+staging:
+  profile: beta
+  whoami: master

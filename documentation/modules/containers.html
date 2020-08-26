@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aries Containers :: Apache Aries</title>
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="icon" href="../../_/img/ram.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../index.html">
+        <span>
+          <img src="../../_/img/feather.svg">
+        </span>
+        <span>
+          <img src="../../_/img/ram.svg">
+        </span>
+        Apache Aries
+      </a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="../../index.html">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Projects</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="async-svcs.html">Async Services</a>
+            <a class="navbar-item" href="blueprint.html">Blueprint</a>
+            <a class="navbar-item" href="jmx.html">JMX</a>
+            <a class="navbar-item" href="jndiproject.html">JNDI</a>
+            <a class="navbar-item" href="jpaproject.html">JPA</a>
+            <a class="navbar-item" href="rsa.html">Remote Service Admin</a>
+            <a class="navbar-item" href="spi-fly.html">Spi-Fly</a>
+            <a class="navbar-item" href="subsystems.html">Subsystems</a>
+            <a class="navbar-item" href="transactioncontrol.html">Transaction Control</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="../downloads/currentreleases.html">Downloads</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="documentation" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Community</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/boardreports.html">Board Reports</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/overview.html">Community</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/resources.html">Community Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/gettinginvolved.html">Getting Involved</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/logos.html">Logos</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/mailinglists.html">MailingLists</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../community/people.html">People</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Board Reports</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2011.html">April 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2012.html">April 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2013.html">April 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2014.html">April 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2015.html">April 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2016.html">April 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/april-2018.html">April 2018 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/december-2009.html">December 2009 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/december-2010.html">December 2010 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/february-2011.html">February 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/feb-2015.html">February 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/january-2011.html">January 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/january-2012.html">January 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/january-2013.html">January 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/january-2014.html">January 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/jan-2016.html">January 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/jan-2017.html">January 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/jan-2018.html">January 2018 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2011.html">July 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2012.html">July 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2013.html">July 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2014.html">July 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2015.html">July 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2016.html">July 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2017.html">July 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/july-2018.html">July 2018 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/june-2010.html">June 2010 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/march-2010.html">March 2010 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/march-2011.html">March 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/may-2017.html">May 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/november-2009.html">November 2009 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/nov-2015.html">November 2015 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/october-2009.html">October 2009 Board Report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/october-2011.html">October 2011 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/october-2012.html">October 2012 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/oct-2013.html">October 2013 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/oct-2014.html">October 2014 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/september-2015.html">October 2015 Report from the Apache Aries committee [Jeremy Hughes]</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/oct-2016.html">October 2016 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/oct-2017.html">October 2017 Board report</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../community/boardreports/september-2010.html">September 2010 Board Report</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/versionpolicy.html">Aries versioning policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/buildingaries.html">BuildingAries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/guidelines.html">Coding guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/compliancetesting.html">ComplianceTesting</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/resources.html">Developer Resources</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/maintainingthewebpages.html">MaintainingTheWebPages</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/architecture.html">Module build time dependencies</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/ReleaseProcessRequirements.html">Release process requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/releasingaries.html">ReleasingAries</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../development/verifyingrelease.html">Verifying Release Artifacts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Documentation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../documentation/application-dependencies.html">Aries Application Modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../documentation/articles.html">Articles</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../documentation/integrators-guide.html">Integrators guide</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../documentation/tools.html">Tools</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../documentation/tutorials.html">Tutorials</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tools</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../documentation/tools/repositoryGenerator.html">Repository Generator Tool</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tutorials</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../documentation/tutorials/blueprinthelloworldtutorial.html">BlueprintHelloWorldTutorial</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../documentation/tutorials/greetertutorial.html">Greeter: Another Blueprint Tutorial</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Downloads</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/javadoc.html">0.3 Javadocs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/currentrelease.html">Apache Aries Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/archived-releases.html">Archived releases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/currentreleases.html">Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/testresults.html">TestResults</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/ariestrader-1.0.0.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../downloads/blogsample-1.0.0.html">The Blog Sample</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Archived Releases</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.1-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.1-incubating/0.1-incubating.html">Apache Aries 0.1-incubating release</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.1-incubating/ariestrader-0.1-incubating.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.1-incubating/blogsample-0.1-incubating.html">The Blog Sample - version 0.1-incubating.</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.2-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.2-incubating/0.2-incubating.html">Apache Aries Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.2-incubating/0.2-incubating-releasenotes.html">Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.2-incubating/0.2-incubating-testresults.html">TestResults</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.2-incubating/ariestrader-0.2-incubating.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.2-incubating/blogsample-0.2-incubating.html">The Blog Sample</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.3-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.3/0.3.html">Apache Aries Downloads</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.3/0.3-releasenotes.html">Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.3/ariestrader-0.3.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/archived-releases/0.3/blogsample-0.3.html">The Blog Sample</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">CT</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.2-incubating</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/0.2-incubating/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.2-incubating/testresults.html">TestResults</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">0.3</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.jndi.secure.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.jndi.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/0.3/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/0.3/testresults.html">TestResults</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">1.0.0</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.jndi.43.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jndi.43.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.jndi.secure.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jndi.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.jpa.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.jpa.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/1.0.0/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/1.0.0/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">current-release (1.0??)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.blueprint.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.blueprint.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.blueprint.java5.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.blueprint.java5.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.blueprint.secure.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.blueprint.secure.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.jmx.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.jmx.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.jndi.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.jndi.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../downloads/ct/current-release/org.osgi.test.cases.transaction.html">master@documentation:ROOT:downloads/ct/current-release/org.osgi.test.cases.transaction.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Modules</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="applications.html">Aries Applications</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="containers.html">Aries Containers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jpaproject.html">Aries JPA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transactioncontrol.html">Aries Transaction Control Service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="async-svcs.html">Asynchronous Services</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="blueprint.html">Blueprint</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="blueprintnoosgi.html">Blueprint No-OSGi</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="blueprint-maven-plugin.html">blueprint-maven-plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="blueprintannotation.html">BlueprintAnnotation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="blueprintweb.html">BlueprintWeb</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="ebamavenpluginproject.html">EBA Maven Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="esaanttask.html">ESA Ant Task</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="esamavenpluginproject.html">ESA Maven Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jmx.html">JMX</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jndiproject.html">JNDI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="subsystems.html">OSGi Subsystems</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rsa.html">RSA (Remote Service Admin)</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="samples.html">Samples</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="spi-fly.html">SPI Fly</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="transactionsproject.html">Transactions Project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Samples</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="samples/goatsample.html">GOAT Sample</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="samples/ariestrader.html">The AriesTrader Sample</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="samples/blog-sample.html">The Blog Sample</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Transaction Control</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/advancedScopes.html">Advanced Scope control</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/localTransactions.html">Aries Local Transaction Control implementation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/localJDBC.html">Aries OSGi Transaction Control JDBC Provider (Local)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/xaJDBC.html">Aries OSGi Transaction Control JDBC Provider (XA)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/localJPA.html">Aries Transaction Control JPA Provider (Local)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/xaJPA.html">Aries Transaction Control JPA Provider (XA)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/xaTransactions.html">Aries XA Transaction Control implementation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/exceptionManagement.html">Exception Management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/quickstart.html">Getting started with the Transaction Control Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/advancedResourceProviders.html">Making your own Resource Provider</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/spring-tx.html">Migrating from declarative transactions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/index.html">The Transaction Control service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/coordinator.html">Using the Coordinator to optimise Transactions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tx-control/lastResourceGambit.html">Using the Last Resource Gambit</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Documentation</a></li>
+    <li>Modules</li>
+    <li><a href="containers.html">Aries Containers</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/apache/aries-antora-site/edit/master/modules/ROOT/pages/modules/containers.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Aries Containers</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Aries Containers is an Apache Aries subproject to manage container deployments, such as docker-based microservices, from a Java API.</p>
+</div>
+<div class="paragraph">
+<p>Many technologies exist to manage container deployments.
+Examples include Kubernetes, Marathon/Mesos, Docker Swarm, Amazon ECS  and others.
+While each technology provides specific features, many of these management technologies share common behaviour.
+Aries Containers provides an abstraction that allows users to easily switch between these technologies.</p>
+</div>
+<div class="paragraph">
+<p>Benefits:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Requirements change - container deployers may find that they need to change target platforms at short notice.
+Using an abstraction API  helps making such changes without too much additional work.</p>
+</li>
+<li>
+<p>Testing - many container management systems require cluster of machines or otherwise large setup which may make testing during development difficult.
+Aries Containers also contains a <code>docker.local</code> binding which makes it possible to run the same code with using a local docker installation on the developer&#8217;s machine.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Current Aries Containers modules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>containers-api</code> - the API implemented by the various bindings.</p>
+</li>
+<li>
+<p><code>containers-docker-local</code> - Binding that uses the local docker installation.</p>
+</li>
+<li>
+<p><code>containers-marathon</code> - Marathon binding.</p>
+</li>
+<li>
+<p><code>containers-parent</code> - Parent pom.</p>
+</li>
+<li>
+<p><code>containers-examples</code> - Examples.</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This project could influence the design process of the <a href="https://github.com/osgi/design/blob/master/rfps/rfp-0179-ComputeManagementService.pdf">OSGi RFP 179</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_source"><a class="anchor" href="#_source"></a>Source</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Aries RSA source is in a separate <a href="https://git-wip-us.apache.org/repos/asf/aries-containers.git">git repository aries-containers</a> there is also a <a href="https://github.com/apache/aries-containers">mirror on github</a>.</p>
+</div>
+<div class="paragraph">
+<p>To build the source, just run:</p>
+</div>
+<div class="paragraph">
+<p><code>mvn install</code></p>
+</div>
+<div class="paragraph">
+<p>Java 1.8 or higher is required.
+Maven 3.3.9+ is recommended.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quick_start"><a class="anchor" href="#_quick_start"></a>Quick Start</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The easiest way to get started is with the examples and the local docker binding.
+Aries Containers work well in an OSGi  environment where bindings are provided as OSGi services.</p>
+</div>
+<div class="paragraph">
+<p>As an alternative, Aries Containers can also be used in a plain Java environment.
+Instead of obtaining the bindings from the service registry, they need to be instantiated directly in this case.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_osgi_example"><a class="anchor" href="#_osgi_example"></a>OSGi example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The OSGi example uses the Felix SCR implementation to get the currently active ServiceManager injected into a simple servlet.
+The servlet provides a simple UI to perform some of the management operations.</p>
+</div>
+<div class="paragraph">
+<p>The servlet is written using OSGi Declarative Service annotations and OSGi Http Whiteboard annotations and can be found here:  <a href="https://git-wip-us.apache.org/repos/asf?p=aries-containers.git;a=blob;f=containers-examples/containers-example-osgiservlet/src/main/java/org/apache/aries/containers/examples/osgiservlet/ServiceManagerServlet.java;hb=HEAD">ServiceManagerServlet.java</a></p>
+</div>
+<div class="paragraph">
+<p>Main functionality of the servlet can be summarized as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>@Component(service = Servlet.class,
+    property = {HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_PATTERN + "=/manager"})
+public class ServiceManagerServlet extends HttpServlet {
+
+@Reference
+ServiceManager serviceManager;
+
+@Override
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    PrintWriter pw = resp.getWriter();
+    pw.println("&lt;BODY&gt;&lt;H1&gt;Service Deployments&lt;/H1&gt;");
+
+    pw.println("&lt;UL&gt;");
+    for (String dep : serviceManager.listServices()) {
+        pw.println("&lt;LI&gt;" + dep);
+    }</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In short - an OSGi Declarative Service Component is registered as a HTTP Whiteboard Servet.
+The Aries Containers Service Manager is injected into the <code>serviceManager</code> field and then used in the servlet to manage services.</p>
+</div>
+<div class="paragraph">
+<p>This demo can be launched in any OSGi framework that supports Declarative Services and the HTTP Whiteboard.
+For example, to run this demo  with the Apache Felix OSGi framework, add:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www-us.apache.org/dist//felix/org.apache.felix.scr-2.0.10.jar">The Felix SCR Declarative Services Implementation</a></p>
+</li>
+<li>
+<p><a href="http://www-us.apache.org/dist//felix/org.apache.felix.configadmin-1.8.14.jar">Felix Configuration Admin Service Implementation</a></p>
+</li>
+<li>
+<p><a href="http://www-us.apache.org/dist//felix/org.apache.felix.eventadmin-1.4.8.jar">Felix Event Admin Service Implementation</a></p>
+</li>
+<li>
+<p><a href="http://www-us.apache.org/dist//felix/org.apache.felix.http.whiteboard-3.0.0.jar">Felix Http Whiteboard bundle</a> with <a href="http://www-us.apache.org/dist//felix/org.apache.felix.http.jetty-3.4.2.jar">Felix Jetty</a> and the <a href="http://www-us.apache.org/dist//felix/org.apache.felix.http.servlet-api-1.1.2.jar">Servlet API</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Then add the Aries Containers implementation with the appropriate binding and their dependencies.
+To run with the Docker Local binding, add</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Aries Containers API</p>
+</li>
+<li>
+<p>Aries Containers Docker Local</p>
+</li>
+<li>
+<p><a href="http://repo2.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar">SLF4J API</a> and <a href="http://repo2.maven.org/maven2/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar">implementation</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Finally add the OSGi demo bundle itself.
+The resulting bundle list will look like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>lb
+START LEVEL 1
+   ID|State      |Level|Name
+    0|Active     |    0|System Bundle (5.6.4)|5.6.4
+    1|Active     |    1|jansi (1.16.0)|1.16.0
+    2|Active     |    1|JLine Bundle (3.3.0)|3.3.0
+    3|Active     |    1|Apache Felix Bundle Repository (2.0.10)|2.0.10
+    4|Active     |    1|Apache Felix Gogo Command (1.0.2)|1.0.2
+    5|Active     |    1|Apache Felix Gogo JLine Shell (1.0.6)|1.0.6
+    6|Active     |    1|Apache Felix Gogo Runtime (1.0.6)|1.0.6
+    7|Active     |    1|Apache Felix Declarative Services (2.0.10)|2.0.10
+    8|Active     |    1|Apache Felix Http Jetty (3.4.2)|3.4.2
+    9|Active     |    1|Apache Felix Servlet API (1.1.2)|1.1.2
+   10|Active     |    1|Apache Felix Http Whiteboard (3.0.0)|3.0.0
+   11|Active     |    1|Apache Felix Configuration Admin Service (1.8.14)|1.8.14
+   12|Active     |    1|Apache Felix EventAdmin (1.4.8)|1.4.8
+   13|Active     |    1|Apache Aries Containers API (0.0.1.201705261547)|0.0.1.201705261547
+   14|Active     |    1|Apache Aries Containers impl for local Docker use (0.0.1.201705291452)|0.0.1.201705291452
+   15|Active     |    1|slf4j-api (1.7.25)|1.7.25
+   16|Resolved   |    1|slf4j-simple (1.7.25)|1.7.25
+   17|Active     |    1|Container Example OSGi Servlet (0.0.1.201705291444)|0.0.1.201705291444</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you can access the servlet at <a href="http://localhost:8080/containers/manager" class="bare">http://localhost:8080/containers/manager</a></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/modules/containers/osgidemo.png" alt="screenshot">
+</div>
+</div>
+<div class="paragraph">
+<p>After adding a container you can inspect its result by querying <code>docker</code> for its running containers:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker ps
+CONTAINER ID        IMAGE               COMMAND              STATUS              PORTS                   NAMES
+7cc5c753777e        httpd               "httpd-foreground"   Up 4 seconds        0.0.0.0:51467-&gt;80/tcp   myapache</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_plain_java_example"><a class="anchor" href="#_plain_java_example"></a>Plain Java example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This example launches a small Java Application to create a service deployment.
+Initially a single container is deployed.
+The user can  modify the number of replicas from within the application.</p>
+</div>
+<div class="paragraph">
+<p>The code can be found here: <a href="https://git-wip-us.apache.org/repos/asf?p=aries-containers.git;a=blob;f=containers-examples/containers-example-javaapp/src/main/java/org/apache/aries/containers/examples/javaapp/Main.java;hb=HEAD">Main.java</a></p>
+</div>
+<div class="paragraph">
+<p>The main functionality is:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>        ServiceManager sm = new LocalDockerServiceManager();
+
+        // If you want to run with Marathon, use the following line
+        // ServiceManager sm = new MarathonServiceManager("http://192.168.99.100:8080/");
+
+        ServiceConfig sc = ServiceConfig.builder("mytesthttpd", "httpd").
+            cpu(0.2).memory(32).port(80).build();
+        Service svc = sm.getService(sc);
+        // The service is now created</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are running this the Docker local binding, you can see the docker container created:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker ps
+CONTAINER ID        IMAGE               COMMAND              STATUS              PORTS                   NAMES
+7cc5c753777e        httpd               "httpd-foreground"   Up 4 seconds        0.0.0.0:51467-&gt;80/tcp   mytesthttpd</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The example also allows scaling up and down of replica containers for this service.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bindings"><a class="anchor" href="#_bindings"></a>Bindings</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_docker_local"><a class="anchor" href="#_docker_local"></a>Docker Local</h3>
+<div class="paragraph">
+<p>This binding works by issuing <code>docker</code> commands on the local machine and is very useful for testing.
+Make sure the environment  variables normally provided via <code>docker-machine env &lt;myenv&gt;</code> are set.</p>
+</div>
+<div class="paragraph">
+<p>OSGi ServiceManager identifier property: <code>container.factory.binding = docker.local</code></p>
+</div>
+<div class="paragraph">
+<p>Constructor, for use outside of OSGi: <code>org.apache.aries.containers.docker.local.impl.LocalDockerServiceManager</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_marathon"><a class="anchor" href="#_marathon"></a>Marathon</h3>
+<div class="paragraph">
+<p>This binding uses Marathon as the underlying container manager.
+It requires the following configuration to be set:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>service.pid: org.apache.aries.containers.marathon
+  marathon.url=&lt;the URL where marathon can be contacted&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once configured, the Marathon binding will register its OSGi service.</p>
+</div>
+<div class="paragraph">
+<p>OSGi ServiceManager identifier property: <code>container.factory.binding = marathon</code></p>
+</div>
+<div class="paragraph">
+<p>Constructors, for use outside of OSGi: <code>org.apache.aries.containers.marathon.impl.MarathonServiceManager</code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>/**
+ * Create the Marathon Service Manager.
+ *
+ * @param marathonURL The Marathon URL
+ */
+public MarathonServiceManager(String marathonURL);
+
+/**
+ * Create the Marathon Service Manager for use with DC/OS.
+ *
+ * @param marathonURL The Marathon URL.
+ * @param dcosUser The DCOS user or service-user.
+ * @param passToken The password or token to use.
+ * @param serviceAcct `true` if this is a service account `false` if this is a plain user.
+ */
+public MarathonServiceManager(String marathonURL, String dcosUser, String passToken, boolean serviceAcct);</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>Content licensed under AL2. UI licensed under MPL-2.0 with extensions licensed under AL2</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
