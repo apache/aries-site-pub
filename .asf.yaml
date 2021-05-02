@@ -6,4 +6,4 @@ notifications:
 
 staging:
   profile: beta
-  whoami: master
+  whoami: asf-site
