@@ -4,6 +4,5 @@ notifications:
   pullrequests: site-pub@aries.apache.org
   jira_options: link label link label
 
-staging:
-  profile: beta
+publish:
   whoami: asf-site
