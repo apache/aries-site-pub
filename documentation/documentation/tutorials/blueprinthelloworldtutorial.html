@@ -703,12 +703,24 @@ After you have worked through the tutorial you will</p>
 <h3 id="_the_api_server_and_client_projects"><a class="anchor" href="#_the_api_server_and_client_projects"></a>The API, Server and Client projects</h3>
 <div class="paragraph">
 <p>When you have checked out and built the Aries code your workspace will contain the four projects highlighted in the picture below.
-This is a screen shot taken from my Eclipse package explorer:
-<span class="image"><img src="../../_images/HW1.png" alt="hw1"></span>
-The project called org.apache.aries.samples.helloworld.blueprint.assembly contains no Java code and is just used to pull together the minimal OSGi platform that is needed to run the sample.
-Expanding the org.apache.aries.samples.helloworld.blueprint.api project shows this:
-<span class="image"><img src="../../_images/HW2.png" alt="hh2"></span>
-There are two interesting features of this project, the HelloWorldService.java interface and empty META-INF directory.
+This is a screen shot taken from my Eclipse package explorer:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/documentation/tutorials/HW1.png" alt="hw1">
+</div>
+</div>
+<div class="paragraph">
+<p>The project called org.apache.aries.samples.helloworld.blueprint.assembly contains no Java code and is just used to pull together the minimal OSGi platform that is needed to run the sample.
+Expanding the org.apache.aries.samples.helloworld.blueprint.api project shows this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/documentation/tutorials/HW2.png" alt="hw2">
+</div>
+</div>
+<div class="paragraph">
+<p>There are two interesting features of this project, the HelloWorldService.java interface and empty META-INF directory.
 HelloWorldService.java is the interface for the Helloworld service.
 It is good OSGi practice to keep interfaces and implementation classes in separate bundles.
 This allows implementations to be replaced independently of their interfaces.
@@ -716,16 +728,28 @@ The META-INF directory is where you would expect to see a file called MANIFEST.M
 You don&#8217;t see it because we are using a Maven plugin (look at the pom.xml) to generate the bundle manifest automatically.</p>
 </div>
 <div class="paragraph">
-<p>Expanding the org.apache.aries.samples.helloworld.blueprint.server project shows
-<span class="image"><img src="../../_images/HW3.png" alt="hw3"></span>
-There are again two interesting files.
+<p>Expanding the org.apache.aries.samples.helloworld.blueprint.server project shows</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/documentation/tutorials/HW3.png" alt="hw3">
+</div>
+</div>
+<div class="paragraph">
+<p>There are again two interesting files.
 HelloWorldServiceImpl.java is an implementation of the HelloWorldService interface in the first blueprint-helloworld-api project.
 The file config.xml is the Blueprint configuration for this package.</p>
 </div>
 <div class="paragraph">
-<p>The org.apache.aries.samples.helloworld.blueprint.client project looks like this
-<span class="image"><img src="../../_images/HW4.png" alt="hw4"></span>
-The client implementation is in HelloWorldClient.java.
+<p>The org.apache.aries.samples.helloworld.blueprint.client project looks like this</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/documentation/tutorials/HW4.png" alt="hw4">
+</div>
+</div>
+<div class="paragraph">
+<p>The client implementation is in HelloWorldClient.java.
 The file config.xml contains the Blueprint for the client.</p>
 </div>
 </div>
@@ -737,8 +761,12 @@ They also contain the information that the Blueprint runtime needs to register a
 This allows for service-based interactions between bundles.</p>
 </div>
 <div class="paragraph">
-<p>This is a view of what the xml in the two config.xml files is describing:
-image::documentation/tutorials/BPTutorial5F.png[hw5]</p>
+<p>This is a view of what the xml in the two config.xml files is describing:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/documentation/tutorials/BPTutorial5F.png" alt="hw5">
+</div>
 </div>
 <div class="paragraph">
 <p>The client configuration file has one bean definition which names the Java class that it requires and gives the name of the method that will be run when the bean has been initialised.
@@ -765,8 +793,12 @@ This registers a service under the HelloWorldService interface, implemented by t
 <h3 id="_the_java_classes"><a class="anchor" href="#_the_java_classes"></a>The Java classes</h3>
 <div class="paragraph">
 <p>Both the Java classes are very simple, there are just a couple of minor points to make about each one.
-The HelloWorldClient class looks like this:
-image::documentation/tutorials/BPTutorial8F.png[hw8]</p>
+The HelloWorldClient class looks like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/documentation/tutorials/BPTutorial8F.png" alt="hw8">
+</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -783,8 +815,12 @@ This is the default Blueprint behaviour.</p>
 </div>
 <div class="paragraph">
 <p>The HelloWorldServiceImpl class is even simpler.
-It has two methods:
-image::documentation/tutorials/BPTutorial9F.png[hw9]</p>
+It has two methods:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/documentation/tutorials/BPTutorial9F.png" alt="hw9">
+</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -812,9 +848,15 @@ To start it up go to the target directory in  org.apache.aries.samples.helloworl
 <div class="paragraph">
 <p>You will see some messages, after which you should get the 'osgi&gt;' prompt;
 sometimes you will need to press return to see it.
-At the prompt, type 'ss' to see the status of the bundles:
-image::documentation/tutorials/BPTutorial10.png[hw10]
-Next, start the Blueprint container bundle by typing 'start 5' at the osgi prompt.
+At the prompt, type 'ss' to see the status of the bundles:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/documentation/tutorials/BPTutorial10.png" alt="hw10">
+</div>
+</div>
+<div class="paragraph">
+<p>Next, start the Blueprint container bundle by typing 'start 5' at the osgi prompt.
 You will see many debug messages in the code, this is because the target/configuration/config.ini specifies the message level to be DEBUG, if there are too many messages you can change this to 'INFO'.
 The debug messages are quite interesting to look through in themselves, but a little beyond the scope of this tutorial.
 The last debug message should indicate that a Blueprint container is running in state 'created'.
