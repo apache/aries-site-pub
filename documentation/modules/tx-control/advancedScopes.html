@@ -59,6 +59,7 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
     <h3 class="title"><a href="../../index.html">Documentation</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
@@ -645,7 +646,7 @@
   </div>
   <ul class="components">
     <li class="component is-current">
-      <span class="title">Documentation</span>
+      <div class="title"><a href="../../index.html">Documentation</a></div>
       <ul class="versions">
         <li class="version is-current is-latest">
           <a href="../../index.html">master</a>
@@ -669,9 +670,12 @@
     <li><a href="advancedScopes.html">Advanced Scope control</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/apache/aries-antora-site/edit/master/modules/ROOT/pages/modules/tx-control/advancedScopes.adoc">Edit this Page</a></div>
-  </div>
+<div class="edit-this-page"><a href="https://github.com/apache/aries-antora-site/edit/master/modules/ROOT/pages/modules/tx-control/advancedScopes.adoc">Edit this Page</a></div>
+</div>
   <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
 <article class="doc">
 <h1 class="page">Advanced Scope control</h1>
 <div id="preamble">
@@ -768,16 +772,26 @@ This is equivalent to a "Mandatory" transaction in Spring or Java EE.</p>
 </div>
 </div>
 </article>
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
-  <div class="toc-menu"></div>
-</aside>
   </div>
 </main>
 </div>
 <footer class="footer">
-  <p>Content licensed under AL2. UI licensed under MPL-2.0 with extensions licensed under AL2</p>
+  <p>Copyright &copy; 2026 The Apache Software Foundation, licensed under the
+    <a href="https://www.apache.org/licenses/">Apache License, Version 2.0</a>.<br>
+    Apache Aries, Aries, Apache, the Apache feather logo, and the Apache Aries project logo are either
+    registered trademarks or trademarks of The Apache Software Foundation in the United States and other countries.
+  </p>
+  <p>
+    <a href="https://www.apache.org/">Foundation</a> |
+    <a href="https://www.apache.org/events/current-event.html">Events</a> |
+    <a href="https://www.apache.org/licenses/">License</a> |
+    <a href="https://www.apache.org/security/">Security</a> |
+    <a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a> |
+    <a href="https://www.apache.org/foundation/thanks.html">Thanks</a> |
+    <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a>
+  </p>
 </footer>
-<script src="../../../_/js/site.js"></script>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
   </body>
 </html>
