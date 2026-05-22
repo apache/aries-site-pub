@@ -14,6 +14,7 @@ github:
       branches:
         includes:
           - "~DEFAULT_BRANCH"
+          - "asf-site"
           - "release/*"
           - "rel/*"
         excludes: []
